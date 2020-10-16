@@ -72,158 +72,159 @@ import com.agiletec.aps.system.services.lang.ILangManager;
     }
 
     public JAXBUserProfile getUserProfile(Properties properties) throws ApiException, Throwable {
-<span class="nc" id="L75">        JAXBUserProfile jaxbUserProfile = null;</span>
+<span class="fc" id="L75">        JAXBUserProfile jaxbUserProfile = null;</span>
         try {
-<span class="nc" id="L77">            String username = properties.getProperty(&quot;username&quot;);</span>
-<span class="nc" id="L78">            IUserProfile userProfile = this.getUserProfileManager().getProfile(username);</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">            if (null == userProfile) {</span>
+<span class="fc" id="L77">            String username = properties.getProperty(&quot;username&quot;);</span>
+<span class="fc" id="L78">            IUserProfile userProfile = this.getUserProfileManager().getProfile(username);</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">            if (null == userProfile) {</span>
 <span class="nc" id="L80">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
                         &quot;Profile of user '&quot; + username + &quot;' does not exist&quot;, Response.Status.CONFLICT);
             }
-<span class="nc" id="L83">            jaxbUserProfile = new JAXBUserProfile(userProfile, null);</span>
-<span class="nc" id="L84">        } catch (ApiException ae) {</span>
-<span class="nc" id="L85">            throw ae;</span>
-<span class="nc" id="L86">        } catch (Throwable t) {</span>
-<span class="nc" id="L87">            _logger.error(&quot;Error extracting user profile&quot;, t);</span>
-<span class="nc" id="L88">            throw new EntException(&quot;Error extracting user profile&quot;, t);</span>
-<span class="nc" id="L89">        }</span>
-<span class="nc" id="L90">        return jaxbUserProfile;</span>
+<span class="fc" id="L83">            String langCode = properties.getProperty(SystemConstants.API_LANG_CODE_PARAMETER);</span>
+<span class="fc" id="L84">            jaxbUserProfile = new JAXBUserProfile(userProfile, langCode);</span>
+<span class="nc" id="L85">        } catch (ApiException ae) {</span>
+<span class="nc" id="L86">            throw ae;</span>
+<span class="nc" id="L87">        } catch (Throwable t) {</span>
+<span class="nc" id="L88">            _logger.error(&quot;Error extracting user profile&quot;, t);</span>
+<span class="nc" id="L89">            throw new EntException(&quot;Error extracting user profile&quot;, t);</span>
+<span class="fc" id="L90">        }</span>
+<span class="fc" id="L91">        return jaxbUserProfile;</span>
     }
 
     public StringApiResponse addUserProfile(JAXBUserProfile jaxbUserProfile) throws Throwable {
-<span class="nc" id="L94">        StringApiResponse response = new StringApiResponse();</span>
+<span class="fc" id="L95">        StringApiResponse response = new StringApiResponse();</span>
         try {
-<span class="nc" id="L96">            String username = jaxbUserProfile.getId();</span>
-<span class="nc bnc" id="L97" title="All 2 branches missed.">            if (null != this.getUserProfileManager().getProfile(username)) {</span>
-<span class="nc" id="L98">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
+<span class="fc" id="L97">            String username = jaxbUserProfile.getId();</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">            if (null != this.getUserProfileManager().getProfile(username)) {</span>
+<span class="nc" id="L99">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
                         &quot;Profile of user '&quot; + username + &quot;' already exist&quot;, Response.Status.CONFLICT);
             }
-<span class="nc" id="L101">            IApsEntity profilePrototype = this.getUserProfileManager().getEntityPrototype(jaxbUserProfile.getTypeCode());</span>
-<span class="nc bnc" id="L102" title="All 2 branches missed.">            if (null == profilePrototype) {</span>
-<span class="nc" id="L103">                throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR,</span>
-<span class="nc" id="L104">                        &quot;User Profile type with code '&quot; + jaxbUserProfile.getTypeCode() + &quot;' does not exist&quot;, Response.Status.CONFLICT);</span>
+<span class="fc" id="L102">            IApsEntity profilePrototype = this.getUserProfileManager().getEntityPrototype(jaxbUserProfile.getTypeCode());</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if (null == profilePrototype) {</span>
+<span class="nc" id="L104">                throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR,</span>
+<span class="nc" id="L105">                        &quot;User Profile type with code '&quot; + jaxbUserProfile.getTypeCode() + &quot;' does not exist&quot;, Response.Status.CONFLICT);</span>
             }
-<span class="nc" id="L106">            IUserProfile userProfile = (IUserProfile) jaxbUserProfile.buildEntity(profilePrototype, null, null);</span>
-<span class="nc" id="L107">            List&lt;ApiError&gt; errors = this.validate(userProfile);</span>
-<span class="nc bnc" id="L108" title="All 2 branches missed.">            if (errors.size() &gt; 0) {</span>
-<span class="nc" id="L109">                response.addErrors(errors);</span>
-<span class="nc" id="L110">                response.setResult(IResponseBuilder.FAILURE, null);</span>
-<span class="nc" id="L111">                return response;</span>
+<span class="fc" id="L107">            IUserProfile userProfile = (IUserProfile) jaxbUserProfile.buildEntity(profilePrototype, null, null);</span>
+<span class="fc" id="L108">            List&lt;ApiError&gt; errors = this.validate(userProfile);</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            if (errors.size() &gt; 0) {</span>
+<span class="nc" id="L110">                response.addErrors(errors);</span>
+<span class="nc" id="L111">                response.setResult(IResponseBuilder.FAILURE, null);</span>
+<span class="nc" id="L112">                return response;</span>
             }
-<span class="nc" id="L113">            this.getUserProfileManager().addProfile(username, userProfile);</span>
-<span class="nc" id="L114">            response.setResult(IResponseBuilder.SUCCESS, null);</span>
-<span class="nc" id="L115">        } catch (ApiException ae) {</span>
-<span class="nc" id="L116">            response.addErrors(ae.getErrors());</span>
-<span class="nc" id="L117">            response.setResult(IResponseBuilder.FAILURE, null);</span>
-<span class="nc" id="L118">        } catch (Throwable t) {</span>
-<span class="nc" id="L119">            _logger.error(&quot;Error adding user profile&quot;, t);</span>
-<span class="nc" id="L120">            throw new EntException(&quot;Error adding user profile&quot;, t);</span>
-<span class="nc" id="L121">        }</span>
-<span class="nc" id="L122">        return response;</span>
+<span class="fc" id="L114">            this.getUserProfileManager().addProfile(username, userProfile);</span>
+<span class="fc" id="L115">            response.setResult(IResponseBuilder.SUCCESS, null);</span>
+<span class="nc" id="L116">        } catch (ApiException ae) {</span>
+<span class="nc" id="L117">            response.addErrors(ae.getErrors());</span>
+<span class="nc" id="L118">            response.setResult(IResponseBuilder.FAILURE, null);</span>
+<span class="nc" id="L119">        } catch (Throwable t) {</span>
+<span class="nc" id="L120">            _logger.error(&quot;Error adding user profile&quot;, t);</span>
+<span class="nc" id="L121">            throw new EntException(&quot;Error adding user profile&quot;, t);</span>
+<span class="pc" id="L122">        }</span>
+<span class="fc" id="L123">        return response;</span>
     }
 
     public StringApiResponse updateUserProfile(JAXBUserProfile jaxbUserProfile) throws Throwable {
-<span class="nc" id="L126">        StringApiResponse response = new StringApiResponse();</span>
+<span class="nc" id="L127">        StringApiResponse response = new StringApiResponse();</span>
         try {
-<span class="nc" id="L128">            String username = jaxbUserProfile.getId();</span>
-<span class="nc bnc" id="L129" title="All 2 branches missed.">            if (null == this.getUserProfileManager().getProfile(username)) {</span>
-<span class="nc" id="L130">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
+<span class="nc" id="L129">            String username = jaxbUserProfile.getId();</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">            if (null == this.getUserProfileManager().getProfile(username)) {</span>
+<span class="nc" id="L131">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
                         &quot;Profile of user '&quot; + username + &quot;' does not exist&quot;, Response.Status.CONFLICT);
             }
-<span class="nc" id="L133">            IApsEntity profilePrototype = this.getUserProfileManager().getEntityPrototype(jaxbUserProfile.getTypeCode());</span>
-<span class="nc bnc" id="L134" title="All 2 branches missed.">            if (null == profilePrototype) {</span>
-<span class="nc" id="L135">                throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR,</span>
-<span class="nc" id="L136">                        &quot;User Profile type with code '&quot; + jaxbUserProfile.getTypeCode() + &quot;' does not exist&quot;, Response.Status.CONFLICT);</span>
+<span class="nc" id="L134">            IApsEntity profilePrototype = this.getUserProfileManager().getEntityPrototype(jaxbUserProfile.getTypeCode());</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">            if (null == profilePrototype) {</span>
+<span class="nc" id="L136">                throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR,</span>
+<span class="nc" id="L137">                        &quot;User Profile type with code '&quot; + jaxbUserProfile.getTypeCode() + &quot;' does not exist&quot;, Response.Status.CONFLICT);</span>
             }
-<span class="nc" id="L138">            IUserProfile userProfile = (IUserProfile) jaxbUserProfile.buildEntity(profilePrototype, null, null);</span>
-<span class="nc" id="L139">            List&lt;ApiError&gt; errors = this.validate(userProfile);</span>
-<span class="nc bnc" id="L140" title="All 2 branches missed.">            if (errors.size() &gt; 0) {</span>
-<span class="nc" id="L141">                response.addErrors(errors);</span>
-<span class="nc" id="L142">                response.setResult(IResponseBuilder.FAILURE, null);</span>
-<span class="nc" id="L143">                return response;</span>
+<span class="nc" id="L139">            IUserProfile userProfile = (IUserProfile) jaxbUserProfile.buildEntity(profilePrototype, null, null);</span>
+<span class="nc" id="L140">            List&lt;ApiError&gt; errors = this.validate(userProfile);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">            if (errors.size() &gt; 0) {</span>
+<span class="nc" id="L142">                response.addErrors(errors);</span>
+<span class="nc" id="L143">                response.setResult(IResponseBuilder.FAILURE, null);</span>
+<span class="nc" id="L144">                return response;</span>
             }
-<span class="nc" id="L145">            this.getUserProfileManager().updateProfile(username, userProfile);</span>
-<span class="nc" id="L146">            response.setResult(IResponseBuilder.SUCCESS, null);</span>
-<span class="nc" id="L147">        } catch (ApiException ae) {</span>
-<span class="nc" id="L148">            response.addErrors(ae.getErrors());</span>
-<span class="nc" id="L149">            response.setResult(IResponseBuilder.FAILURE, null);</span>
-<span class="nc" id="L150">        } catch (Throwable t) {</span>
-<span class="nc" id="L151">            _logger.error(&quot;Error updating user profile&quot;, t);</span>
+<span class="nc" id="L146">            this.getUserProfileManager().updateProfile(username, userProfile);</span>
+<span class="nc" id="L147">            response.setResult(IResponseBuilder.SUCCESS, null);</span>
+<span class="nc" id="L148">        } catch (ApiException ae) {</span>
+<span class="nc" id="L149">            response.addErrors(ae.getErrors());</span>
+<span class="nc" id="L150">            response.setResult(IResponseBuilder.FAILURE, null);</span>
+<span class="nc" id="L151">        } catch (Throwable t) {</span>
+<span class="nc" id="L152">            _logger.error(&quot;Error updating user profile&quot;, t);</span>
             //ApsSystemUtils.logThrowable(t, this, &quot;updateUserProfile&quot;);
-<span class="nc" id="L153">            throw new EntException(&quot;Error updating user profile&quot;, t);</span>
-<span class="nc" id="L154">        }</span>
-<span class="nc" id="L155">        return response;</span>
+<span class="nc" id="L154">            throw new EntException(&quot;Error updating user profile&quot;, t);</span>
+<span class="nc" id="L155">        }</span>
+<span class="nc" id="L156">        return response;</span>
     }
 
     private List&lt;ApiError&gt; validate(IUserProfile userProfile) throws EntException {
-<span class="nc" id="L159">        List&lt;ApiError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L160">        List&lt;ApiError&gt; errors = new ArrayList&lt;&gt;();</span>
         try {
-<span class="nc" id="L161">            List&lt;FieldError&gt; fieldErrors = userProfile.validate(this.getGroupManager(), this.getLangManager());</span>
-<span class="nc bnc" id="L162" title="All 2 branches missed.">            if (null != fieldErrors) {</span>
-<span class="nc bnc" id="L163" title="All 2 branches missed.">                for (int i = 0; i &lt; fieldErrors.size(); i++) {</span>
-<span class="nc" id="L164">                    FieldError fieldError = fieldErrors.get(i);</span>
-<span class="nc bnc" id="L165" title="All 2 branches missed.">                    if (fieldError instanceof AttributeFieldError) {</span>
-<span class="nc" id="L166">                        AttributeFieldError attributeError = (AttributeFieldError) fieldError;</span>
-<span class="nc" id="L167">                        errors.add(new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
-<span class="nc" id="L168">                                attributeError.getFullMessage(), Response.Status.CONFLICT));</span>
-<span class="nc" id="L169">                    } else {</span>
-<span class="nc" id="L170">                        errors.add(new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
-<span class="nc" id="L171">                                fieldError.getMessage(), Response.Status.CONFLICT));</span>
+<span class="fc" id="L162">            List&lt;FieldError&gt; fieldErrors = userProfile.validate(this.getGroupManager(), this.getLangManager());</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">            if (null != fieldErrors) {</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">                for (int i = 0; i &lt; fieldErrors.size(); i++) {</span>
+<span class="nc" id="L165">                    FieldError fieldError = fieldErrors.get(i);</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                    if (fieldError instanceof AttributeFieldError) {</span>
+<span class="nc" id="L167">                        AttributeFieldError attributeError = (AttributeFieldError) fieldError;</span>
+<span class="nc" id="L168">                        errors.add(new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
+<span class="nc" id="L169">                                attributeError.getFullMessage(), Response.Status.CONFLICT));</span>
+<span class="nc" id="L170">                    } else {</span>
+<span class="nc" id="L171">                        errors.add(new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
+<span class="nc" id="L172">                                fieldError.getMessage(), Response.Status.CONFLICT));</span>
                     }
                 }
             }
-<span class="nc" id="L175">        } catch (Throwable t) {</span>
-<span class="nc" id="L176">            _logger.error(&quot;Error validating profile&quot;, t);</span>
+<span class="nc" id="L176">        } catch (Throwable t) {</span>
+<span class="nc" id="L177">            _logger.error(&quot;Error validating profile&quot;, t);</span>
             //ApsSystemUtils.logThrowable(t, this, &quot;validate&quot;);
-<span class="nc" id="L178">            throw new EntException(&quot;Error validating profile&quot;, t);</span>
-<span class="nc" id="L179">        }</span>
-<span class="nc" id="L180">        return errors;</span>
+<span class="nc" id="L179">            throw new EntException(&quot;Error validating profile&quot;, t);</span>
+<span class="fc" id="L180">        }</span>
+<span class="fc" id="L181">        return errors;</span>
     }
 
     public void deleteUserProfile(Properties properties) throws ApiException, Throwable {
-<span class="nc" id="L184">        StringApiResponse response = new StringApiResponse();</span>
+<span class="nc" id="L185">        StringApiResponse response = new StringApiResponse();</span>
         try {
-<span class="nc" id="L186">            String username = properties.getProperty(&quot;username&quot;);</span>
-<span class="nc" id="L187">            IUserProfile userProfile = this.getUserProfileManager().getProfile(username);</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">            if (null == userProfile) {</span>
-<span class="nc" id="L189">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
+<span class="nc" id="L187">            String username = properties.getProperty(&quot;username&quot;);</span>
+<span class="nc" id="L188">            IUserProfile userProfile = this.getUserProfileManager().getProfile(username);</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">            if (null == userProfile) {</span>
+<span class="nc" id="L190">                throw new ApiException(IApiErrorCodes.API_PARAMETER_VALIDATION_ERROR,</span>
                         &quot;Profile of user '&quot; + username + &quot;' does not exist&quot;, Response.Status.CONFLICT);
             }
-<span class="nc" id="L192">            this.getUserProfileManager().deleteProfile(username);</span>
-<span class="nc" id="L193">            response.setResult(IResponseBuilder.SUCCESS, null);</span>
-<span class="nc" id="L194">        } catch (ApiException ae) {</span>
-<span class="nc" id="L195">            response.addErrors(ae.getErrors());</span>
-<span class="nc" id="L196">            response.setResult(IResponseBuilder.FAILURE, null);</span>
-<span class="nc" id="L197">        } catch (Throwable t) {</span>
-<span class="nc" id="L198">            _logger.error(&quot;Error deleting user Profile&quot;, t);</span>
+<span class="nc" id="L193">            this.getUserProfileManager().deleteProfile(username);</span>
+<span class="nc" id="L194">            response.setResult(IResponseBuilder.SUCCESS, null);</span>
+<span class="nc" id="L195">        } catch (ApiException ae) {</span>
+<span class="nc" id="L196">            response.addErrors(ae.getErrors());</span>
+<span class="nc" id="L197">            response.setResult(IResponseBuilder.FAILURE, null);</span>
+<span class="nc" id="L198">        } catch (Throwable t) {</span>
+<span class="nc" id="L199">            _logger.error(&quot;Error deleting user Profile&quot;, t);</span>
             //ApsSystemUtils.logThrowable(t, this, &quot;deleteUserProfile&quot;);
-<span class="nc" id="L200">            throw new EntException(&quot;Error deleting user Profile&quot;, t);</span>
-<span class="nc" id="L201">        }</span>
-<span class="nc" id="L202">    }</span>
+<span class="nc" id="L201">            throw new EntException(&quot;Error deleting user Profile&quot;, t);</span>
+<span class="nc" id="L202">        }</span>
+<span class="nc" id="L203">    }</span>
 
     protected IUserProfileManager getUserProfileManager() {
-<span class="nc" id="L205">        return userProfileManager;</span>
+<span class="fc" id="L206">        return userProfileManager;</span>
     }
 
     public void setUserProfileManager(IUserProfileManager userProfileManager) {
-<span class="fc" id="L209">        this.userProfileManager = userProfileManager;</span>
-<span class="fc" id="L210">    }</span>
+<span class="fc" id="L210">        this.userProfileManager = userProfileManager;</span>
+<span class="fc" id="L211">    }</span>
 
     public ILangManager getLangManager() {
-<span class="nc" id="L213">        return langManager;</span>
+<span class="fc" id="L214">        return langManager;</span>
     }
 
     public void setLangManager(ILangManager langManager) {
-<span class="fc" id="L217">        this.langManager = langManager;</span>
-<span class="fc" id="L218">    }</span>
+<span class="fc" id="L218">        this.langManager = langManager;</span>
+<span class="fc" id="L219">    }</span>
 
     protected IGroupManager getGroupManager() {
-<span class="nc" id="L221">        return groupManager;</span>
+<span class="fc" id="L222">        return groupManager;</span>
     }
 
     public void setGroupManager(IGroupManager groupManager) {
-<span class="fc" id="L225">        this.groupManager = groupManager;</span>
-<span class="fc" id="L226">    }</span>
+<span class="fc" id="L226">        this.groupManager = groupManager;</span>
+<span class="fc" id="L227">    }</span>
 
     private IUserProfileManager userProfileManager;
     private ILangManager langManager;
