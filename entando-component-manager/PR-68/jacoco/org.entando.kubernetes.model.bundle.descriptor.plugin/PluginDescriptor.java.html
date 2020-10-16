@@ -40,6 +40,10 @@ public class PluginDescriptor implements Descriptor {
      */
     private String name;
     /**
+     * Base name of the plugin deployments
+     */
+    private String deploymentBaseName;
+    /**
      * The full qualified docker image name.
      */
     private String image;
@@ -58,18 +62,18 @@ public class PluginDescriptor implements Descriptor {
 
 
     public DockerImage getDockerImage() {
-<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (dockerImage == null) {</span>
-<span class="fc bfc" id="L62" title="All 2 branches covered.">            if (!isVersion1()) {</span>
-<span class="fc" id="L63">                this.dockerImage = DockerImage.fromString(this.image);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (dockerImage == null) {</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            if (!isVersion1()) {</span>
+<span class="fc" id="L67">                this.dockerImage = DockerImage.fromString(this.image);</span>
             } else {
-<span class="fc" id="L65">                this.dockerImage = DockerImage.fromString(this.spec.getImage());</span>
+<span class="fc" id="L69">                this.dockerImage = DockerImage.fromString(this.spec.getImage());</span>
             }
         }
-<span class="fc" id="L68">        return this.dockerImage;</span>
+<span class="fc" id="L72">        return this.dockerImage;</span>
     }
 
     public boolean isVersion1() {
-<span class="fc" id="L72">        return StringUtils.isEmpty(image);</span>
+<span class="fc" id="L76">        return StringUtils.isEmpty(image);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
