@@ -1,0 +1,33 @@
+
+Showing logs for build [32mentando-k8s-environment-entando-6njkt-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-tq4q5[0m
+{"level":"warn","ts":1602843499.9762402,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1602843499.981383,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mentando-k8s-environment-entando-6njkt-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-h98nl[0m
+{"level":"warn","ts":1602843503.6482215,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1602843503.661091,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mentando-k8s-environment-entando-6njkt-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mentando-k8s-environment-entando-6njkt-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-k8s-environment-entando-zq89x[0m
+{"level":"warn","ts":1602843522.5811794,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1602843523.9688263,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando-k8s/environment-entando-**-staging.git @ master in path /workspace/source"}
+
+Showing logs for build [32mentando-k8s-environment-entando-6njkt-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:671dff74b3ade467831924652d08a9fbe0f27635,122:fbe12eecf0a33bca9232290cd1728ef6f2a6cd04
+DEBUG: ran git fetch --unshallow origin fbe12eecf0a33bca9232290cd1728ef6f2a6cd04: 671dff74b3ade467831924652d08a9fbe0f27635: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard 671dff74b3ade467831924652d08a9fbe0f27635 in 
+DEBUG: ran clean --force -d . in 
+DEBUG: ran git merge fbe12eecf0a33bca9232290cd1728ef6f2a6cd04 in 
+Merged SHA fbe12eecf0a33bca9232290cd1728ef6f2a6cd04 with commit message 'chore: Promote entando-k8s-controller-coordinator to version 6.2.11' into base branch master
+
+Showing logs for build [32mentando-k8s-environment-entando-6njkt-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-helm-build[0m
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+Successfully added Helm repository chartmuseum.jenkins-x.io.
