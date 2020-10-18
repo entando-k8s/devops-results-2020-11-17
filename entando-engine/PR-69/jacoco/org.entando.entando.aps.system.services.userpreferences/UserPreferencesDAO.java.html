@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserPreferencesDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Entando Core: Engine</a> &gt; <a href="index.source.html" class="el_package">org.entando.entando.aps.system.services.userpreferences</a> &gt; <span class="el_source">UserPreferencesDAO.java</span></div><h1>UserPreferencesDAO.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2015-Present Entando Inc. (http://www.entando.com) All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+package org.entando.entando.aps.system.services.userpreferences;
+
+import com.agiletec.aps.system.common.AbstractDAO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import org.entando.entando.ent.util.EntLogging.EntLogFactory;
+import org.entando.entando.ent.util.EntLogging.EntLogger;
+
+<span class="fc" id="L23">public class UserPreferencesDAO extends AbstractDAO implements IUserPreferencesDAO {</span>
+	
+<span class="fc" id="L25">	private static final EntLogger _logger =  EntLogFactory.getSanitizedLogger(UserPreferencesDAO.class);</span>
+
+	private static final String LOAD_USER_PREFERENCES =
+			&quot;SELECT wizard, loadonpageselect, translationwarning FROM userpreferences WHERE username = ? &quot;;
+
+	private static final String ADD_USER_PREFERENCES =
+			&quot;INSERT INTO userpreferences (username, wizard, loadonpageselect, translationwarning) VALUES ( ? , ? , ? , ? )&quot;;
+
+	private static final String UPDATE_USER_PREFERENCES =
+			&quot;UPDATE userpreferences SET wizard = ? , loadonpageselect = ? , translationwarning = ? WHERE username = ? &quot;;
+
+	private static final String DELETE_USER_PREFERENCES =
+			&quot;DELETE FROM userpreferences WHERE username = ? &quot;;
+
+	@Override
+	public UserPreferences loadUserPreferences(String username) {
+<span class="fc" id="L41">		Connection conn = null;</span>
+<span class="fc" id="L42">		UserPreferences response = null;</span>
+<span class="fc" id="L43">		PreparedStatement stat = null;</span>
+<span class="fc" id="L44">		ResultSet res = null;</span>
+		try {
+<span class="fc" id="L46">			conn = this.getConnection();</span>
+<span class="fc" id="L47">			stat = conn.prepareStatement(LOAD_USER_PREFERENCES);</span>
+<span class="fc" id="L48">			stat.setString(1, username);</span>
+<span class="fc" id="L49">			res = stat.executeQuery();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">			if (res.next()) {</span>
+<span class="fc" id="L51">				response = new UserPreferences();</span>
+<span class="fc" id="L52">				response.setUsername(username);</span>
+<span class="fc" id="L53">				response.setWizard(res.getBoolean(1));</span>
+<span class="fc" id="L54">				response.setLoadOnPageSelect(res.getBoolean(2));</span>
+<span class="fc" id="L55">				response.setTranslationWarning(res.getBoolean(3));</span>
+			}
+<span class="nc" id="L57">		} catch (Throwable t) {</span>
+<span class="nc" id="L58">			_logger.error(&quot;Error loading user preferences for user {}&quot;, username,  t);</span>
+<span class="nc" id="L59">			throw new RuntimeException(&quot;Error loading user preferences for user &quot; + username, t);</span>
+		} finally {
+<span class="fc" id="L61">			this.closeDaoResources(res, stat, conn);</span>
+		}
+<span class="fc" id="L63">		return response;</span>
+	}
+
+	@Override
+	public void addUserPreferences(UserPreferences userPreferences) {
+<span class="fc" id="L68">		Connection conn = null;</span>
+<span class="fc" id="L69">		PreparedStatement stat = null;</span>
+		try {
+<span class="fc" id="L71">			conn = this.getConnection();</span>
+<span class="fc" id="L72">			conn.setAutoCommit(false);</span>
+<span class="fc" id="L73">			stat = conn.prepareStatement(ADD_USER_PREFERENCES);</span>
+<span class="fc" id="L74">			stat.setString(1, userPreferences.getUsername());</span>
+<span class="fc" id="L75">			stat.setBoolean(2, userPreferences.isWizard());</span>
+<span class="fc" id="L76">			stat.setBoolean(3, userPreferences.isLoadOnPageSelect());</span>
+<span class="fc" id="L77">			stat.setBoolean(4, userPreferences.isTranslationWarning());</span>
+<span class="fc" id="L78">			stat.executeUpdate();</span>
+<span class="fc" id="L79">			conn.commit();</span>
+<span class="nc" id="L80">		} catch (Throwable t) {</span>
+<span class="nc" id="L81">			this.executeRollback(conn);</span>
+<span class="nc" id="L82">			_logger.error(&quot;Error while inserting user preferences {}&quot;, userPreferences,  t);</span>
+<span class="nc" id="L83">			throw new RuntimeException(&quot;Error while inserting user preferences&quot;, t);</span>
+		} finally {
+<span class="fc" id="L85">			closeDaoResources(null, stat, conn);</span>
+		}
+<span class="fc" id="L87">	}</span>
+
+	@Override
+	public void updateUserPreferences(UserPreferences userPreferences) {
+<span class="fc" id="L91">		Connection conn = null;</span>
+<span class="fc" id="L92">		PreparedStatement stat = null;</span>
+		try {
+<span class="fc" id="L94">			conn = this.getConnection();</span>
+<span class="fc" id="L95">			conn.setAutoCommit(false);</span>
+<span class="fc" id="L96">			stat = conn.prepareStatement(UPDATE_USER_PREFERENCES);</span>
+<span class="fc" id="L97">			stat.setBoolean(1, userPreferences.isWizard());</span>
+<span class="fc" id="L98">			stat.setBoolean(2, userPreferences.isLoadOnPageSelect());</span>
+<span class="fc" id="L99">			stat.setBoolean(3, userPreferences.isTranslationWarning());</span>
+<span class="fc" id="L100">			stat.setString(4, userPreferences.getUsername());</span>
+<span class="fc" id="L101">			stat.executeUpdate();</span>
+<span class="fc" id="L102">			conn.commit();</span>
+<span class="nc" id="L103">		} catch (Throwable t) {</span>
+<span class="nc" id="L104">			this.executeRollback(conn);</span>
+<span class="nc" id="L105">			_logger.error(&quot;Error detected while updating user preferences&quot;,  userPreferences, t);</span>
+<span class="nc" id="L106">			throw new RuntimeException(&quot;Error detected while updating user preferences&quot;, t);</span>
+		} finally {
+<span class="fc" id="L108">			closeDaoResources(null, stat, conn);</span>
+		}
+<span class="fc" id="L110">	}</span>
+
+	@Override
+	public void deleteUserPreferences(String username) {
+<span class="fc" id="L114">		Connection conn = null;</span>
+<span class="fc" id="L115">		PreparedStatement stat = null;</span>
+		try {
+<span class="fc" id="L117">			conn = this.getConnection();</span>
+<span class="fc" id="L118">			conn.setAutoCommit(false);</span>
+<span class="fc" id="L119">			stat = conn.prepareStatement(DELETE_USER_PREFERENCES);</span>
+<span class="fc" id="L120">			stat.setString(1, username);</span>
+<span class="fc" id="L121">			stat.executeUpdate();</span>
+<span class="fc" id="L122">			conn.commit();</span>
+<span class="nc" id="L123">		} catch (Throwable t) {</span>
+<span class="nc" id="L124">			this.executeRollback(conn);</span>
+<span class="nc" id="L125">			_logger.error(&quot;Error detected while deleting user preferences for user '{}'&quot;, username,  t);</span>
+<span class="nc" id="L126">			throw new RuntimeException(&quot;Error detected while deleting user preferences&quot;, t);</span>
+		} finally {
+<span class="fc" id="L128">			closeDaoResources(null, stat, conn);</span>
+		}
+<span class="fc" id="L130">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

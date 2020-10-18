@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserPreferencesManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Entando Core: Engine</a> &gt; <a href="index.source.html" class="el_package">org.entando.entando.aps.system.services.userpreferences</a> &gt; <span class="el_source">UserPreferencesManager.java</span></div><h1>UserPreferencesManager.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2015-Present Entando Inc. (http://www.entando.com) All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+package org.entando.entando.aps.system.services.userpreferences;
+
+import org.entando.entando.ent.exception.EntException;
+import org.entando.entando.ent.util.EntLogging.EntLogFactory;
+import org.entando.entando.ent.util.EntLogging.EntLogger;
+
+<span class="fc" id="L20">public class UserPreferencesManager implements IUserPreferencesManager {</span>
+
+<span class="fc" id="L22">    private static final EntLogger logger = EntLogFactory.getSanitizedLogger(UserPreferencesManager.class);</span>
+
+    private UserPreferencesDAO userPreferencesDAO;
+
+    @Override
+    public void addUserPreferences(UserPreferences userPreferences) throws EntException {
+        try {
+<span class="fc" id="L29">            userPreferencesDAO.addUserPreferences(userPreferences);</span>
+<span class="nc" id="L30">        } catch (Throwable t) {</span>
+<span class="nc" id="L31">            logger.error(&quot;Error saving user preferences: {}&quot;, userPreferences, t);</span>
+<span class="nc" id="L32">            throw new EntException(&quot;Error saving user preferences&quot;, t);</span>
+<span class="fc" id="L33">        }</span>
+<span class="fc" id="L34">    }</span>
+
+    @Override
+    public UserPreferences getUserPreferences(String username) throws EntException {
+        try {
+<span class="fc" id="L39">            return userPreferencesDAO.loadUserPreferences(username);</span>
+<span class="nc" id="L40">        } catch (Throwable t) {</span>
+<span class="nc" id="L41">            logger.error(&quot;Error loading user preferences for user: {}&quot;, username, t);</span>
+<span class="nc" id="L42">            throw new EntException(&quot;Error loading user preferences&quot;, t);</span>
+        }
+    }
+
+    @Override
+    public void updateUserPreferences(UserPreferences userPreferences) throws EntException {
+        try {
+<span class="fc" id="L49">            userPreferencesDAO.updateUserPreferences(userPreferences);</span>
+<span class="nc" id="L50">        } catch (Throwable t) {</span>
+<span class="nc" id="L51">            logger.error(&quot;Error updating user preferences: {}&quot;, userPreferences, t);</span>
+<span class="nc" id="L52">            throw new EntException(&quot;Error updating user preferences&quot;, t);</span>
+<span class="fc" id="L53">        }</span>
+<span class="fc" id="L54">    }</span>
+
+    @Override
+    public void deleteUserPreferences(String username) throws EntException {
+        try {
+<span class="fc" id="L59">            userPreferencesDAO.deleteUserPreferences(username);</span>
+<span class="nc" id="L60">        } catch (Throwable t) {</span>
+<span class="nc" id="L61">            logger.error(&quot;Error deleting user preferences for user: {}&quot;, username, t);</span>
+<span class="nc" id="L62">            throw new EntException(&quot;Error updating user preferences&quot;, t);</span>
+<span class="fc" id="L63">        }</span>
+<span class="fc" id="L64">    }</span>
+
+    public void setUserPreferencesDAO(
+            UserPreferencesDAO userPreferencesDAO) {
+<span class="fc" id="L68">        this.userPreferencesDAO = userPreferencesDAO;</span>
+<span class="fc" id="L69">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
