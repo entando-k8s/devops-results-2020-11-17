@@ -194,28 +194,28 @@ public class UserDto {
         }
 <span class="fc bfc" id="L195" title="All 2 branches covered.">        if (attribute.isTextAttribute()) {</span>
 <span class="fc" id="L196">            return ((ITextAttribute) attribute).getText();</span>
-<span class="pc bpc" id="L197" title="1 of 2 branches missed.">        } else if (attribute instanceof NumberAttribute) {</span>
-<span class="nc" id="L198">            return ((NumberAttribute) attribute).getValue();</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">        } else if (attribute instanceof NumberAttribute) {</span>
+<span class="fc" id="L198">            return ((NumberAttribute) attribute).getValue();</span>
 <span class="fc bfc" id="L199" title="All 2 branches covered.">        } else if (attribute instanceof BooleanAttribute) {</span>
 <span class="fc" id="L200">            return ((BooleanAttribute) attribute).getValue();</span>
-<span class="pc bpc" id="L201" title="1 of 2 branches missed.">        } else if (attribute instanceof DateAttribute) {</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">        } else if (attribute instanceof DateAttribute) {</span>
 <span class="fc" id="L202">            Date dateAttr = ((DateAttribute) attribute).getDate();</span>
 <span class="fc bfc" id="L203" title="All 2 branches covered.">            if (null == dateAttr) {</span>
 <span class="fc" id="L204">                return &quot;&quot;;</span>
             }
 <span class="fc" id="L206">            SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
 <span class="fc" id="L207">            return sdf.format(dateAttr);</span>
-<span class="nc bnc" id="L208" title="All 2 branches missed.">        } else if (!attribute.isSimple()) {</span>
-<span class="nc" id="L209">            String text = &quot;&quot;;</span>
-<span class="nc" id="L210">            List&lt;AttributeInterface&gt; attributes = ((AbstractComplexAttribute) attribute).getAttributes();</span>
-<span class="nc bnc" id="L211" title="All 2 branches missed.">            for (int i = 0; i &lt; attributes.size(); i++) {</span>
-<span class="nc bnc" id="L212" title="All 2 branches missed.">                if (i &gt; 0) {</span>
-<span class="nc" id="L213">                    text += &quot;,&quot;;</span>
+<span class="pc bpc" id="L208" title="1 of 2 branches missed.">        } else if (!attribute.isSimple()) {</span>
+<span class="fc" id="L209">            String text = &quot;&quot;;</span>
+<span class="fc" id="L210">            List&lt;AttributeInterface&gt; attributes = ((AbstractComplexAttribute) attribute).getAttributes();</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">            for (int i = 0; i &lt; attributes.size(); i++) {</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">                if (i &gt; 0) {</span>
+<span class="fc" id="L213">                    text += &quot;,&quot;;</span>
                 }
-<span class="nc" id="L215">                AttributeInterface attributeElem = attributes.get(i);</span>
-<span class="nc" id="L216">                text += this.getValue(attributeElem);</span>
+<span class="fc" id="L215">                AttributeInterface attributeElem = attributes.get(i);</span>
+<span class="fc" id="L216">                text += this.getValue(attributeElem);</span>
             }
-<span class="nc" id="L218">            return text;</span>
+<span class="fc" id="L218">            return text;</span>
         }
 <span class="nc" id="L220">        return null;</span>
     }

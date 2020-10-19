@@ -33,7 +33,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.pagesettings.model,
 Entando Core: Engine,org.entando.entando.aps.system.services.pagesettings.model,PageSettingsDtoBuilder,0,82,0,0,0,8,0,5,0,5
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileTypeService,7,96,0,0,2,20,1,17,1,17
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileManagerAspect,20,107,2,16,6,38,2,15,0,8
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileManager,74,136,3,5,18,48,3,20,1,18
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileManager,62,148,3,5,15,51,3,20,1,18
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileDAO,2,139,0,6,1,40,1,15,1,12
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileSearcherDAO,25,64,5,5,4,19,4,11,0,10
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileService,24,41,0,0,6,9,0,7,0,7
@@ -162,7 +162,7 @@ Entando Core: Engine,com.agiletec.aps.system.common.entity.event,EntityTypesChan
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.model,BasicFileAttributeViewDto,0,111,1,7,0,35,1,18,0,15
 Entando Core: Engine,org.entando.entando.web.pagemodel.validator,PageModelValidator,28,93,4,8,5,22,5,8,1,6
 Entando Core: Engine,org.entando.entando.web.language.model,LanguageRequest,0,19,0,2,0,6,0,5,0,4
-Entando Core: Engine,com.agiletec.aps.system.common.entity.parse.attribute,TimestampAttributeHandler,36,3,8,0,11,1,8,1,4,1
+Entando Core: Engine,com.agiletec.aps.system.common.entity.parse.attribute,TimestampAttributeHandler,0,39,2,6,0,12,2,7,0,5
 Entando Core: Engine,com.agiletec.aps.system.common.entity.parse.attribute,NumberAttributeHandler,0,42,2,6,0,13,2,7,0,5
 Entando Core: Engine,com.agiletec.aps.system.common.entity.parse.attribute,AbstractAttributeHandler,34,42,2,2,3,14,2,6,0,6
 Entando Core: Engine,com.agiletec.aps.system.common.entity.parse.attribute,AbstractMLAttributeHandler,0,10,0,0,0,4,0,3,0,3
@@ -200,7 +200,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.oauth2,AbstractOAut
 Entando Core: Engine,org.entando.entando.aps.system.services.oauth2,OAuthConsumerManager,11,276,3,9,3,64,3,15,0,12
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.api,AbstractApiDataObjectInterface,3,14,0,0,1,6,1,4,1,4
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.api,ApiDataObjectTypeInterface,207,11,16,0,53,5,22,3,14,3
-Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.api,ApiDataObjectInterface,1081,249,79,15,230,75,68,19,21,19
+Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.api,ApiDataObjectInterface,1081,258,79,15,230,78,68,21,21,21
 Entando Core: Engine,org.entando.entando.web.category.validator,CategoryValidator,36,126,6,16,5,22,7,12,1,7
 Entando Core: Engine,org.entando.entando.web.userprofile,ProfileTypeController,76,576,4,24,13,106,6,30,3,19
 Entando Core: Engine,org.entando.entando.web.userprofile,ProfileController,54,155,4,12,14,32,6,12,2,8
@@ -220,7 +220,7 @@ Entando Core: Engine,org.entando.entando.web.common.validator,AbstractPagination
 Entando Core: Engine,org.entando.entando.aps.system.services.jsonpatch,JsonPatchService,3,42,0,0,1,10,1,4,1,4
 Entando Core: Engine,org.entando.entando.web.dataobjectmodel.model,DataObjectModelRequest,0,38,0,0,0,17,0,11,0,11
 Entando Core: Engine,org.entando.entando.aps.system.services.health,HealthService,22,16,4,0,7,6,3,2,1,2
-Entando Core: Engine,org.entando.entando.aps.system.services.user.model,UserDto,98,232,10,24,34,57,18,28,11,18
+Entando Core: Engine,org.entando.entando.aps.system.services.user.model,UserDto,48,282,3,31,24,67,14,32,11,18
 Entando Core: Engine,org.entando.entando.aps.system.services.user.model,ProfileTypeDto,8,15,0,0,4,6,2,3,2,3
 Entando Core: Engine,org.entando.entando.aps.system.services.user.model,UserAuthorityDto,0,44,0,4,0,16,0,8,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.user.model,UserDtoBuilder,0,8,0,0,0,2,0,2,0,2
@@ -259,7 +259,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.database,DatabaseSe
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.model,UserProfileRecord,0,10,0,0,0,4,0,3,0,3
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.model,UserProfileTypeDto,3,5,0,0,2,2,1,1,1,1
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.model,UserProfileTypeDtoBuilder,0,11,0,0,0,3,0,2,0,2
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.model,UserProfile,87,77,21,7,19,25,14,11,0,11
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.model,UserProfile,85,79,20,8,18,26,13,12,0,11
 Entando Core: Engine,org.entando.entando.aps.system.common.entity.parse.attribute,EnumeratorMapAttributeHandler,0,54,2,10,0,17,2,11,0,7
 Entando Core: Engine,org.entando.entando.aps.system.services.language.utils,LanguageRequestListProcessor,2,90,1,8,1,14,1,19,0,13
 Entando Core: Engine,org.entando.entando.web.permission.model,PermissionRequest,9,0,0,0,3,0,3,0,3,0
@@ -301,7 +301,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,JAXBSto
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,LocalStorageManagerInterface,651,11,74,0,132,4,45,3,8,3
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,JAXBBasicFileAttributeView,71,0,2,0,27,0,13,0,12,0
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,BasicFileAttributeViewApiResponseResult,7,0,0,0,2,0,2,0,2,0
-Entando Core: Engine,com.agiletec.aps.system.common.entity,ApsEntityManager,345,800,30,52,84,216,31,66,6,50
+Entando Core: Engine,com.agiletec.aps.system.common.entity,ApsEntityManager,320,825,30,52,79,221,31,66,6,50
 Entando Core: Engine,com.agiletec.aps.system.common.entity,ReloadingReferencesThread,24,29,3,1,8,11,2,4,0,4
 Entando Core: Engine,com.agiletec.aps.system.common.entity,AbstractEntitySearcherDAO,122,1258,29,153,36,250,25,94,1,27
 Entando Core: Engine,com.agiletec.aps.system.common.entity,AbstractEntityDAO,124,484,1,21,34,135,1,30,0,20
@@ -375,9 +375,9 @@ Entando Core: Engine,org.entando.entando.web.widget,NavigatorWidgetConfigControl
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,AbstractAttributeValidationRules,15,144,13,19,0,41,10,22,0,16
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,BaseAttributeValidationRules,61,214,4,30,11,60,4,27,0,14
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,DateAttributeValidationRules,147,216,13,31,25,49,12,17,0,7
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,TextAttributeValidationRules,73,499,26,66,10,98,24,38,0,16
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,NumberAttributeValidationRules,107,223,13,33,18,47,12,18,0,7
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,OgnlValidationRule,98,347,28,22,19,85,23,21,0,19
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,TextAttributeValidationRules,73,499,25,67,10,98,23,39,0,16
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,NumberAttributeValidationRules,105,225,12,34,17,48,11,19,0,7
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute.util,OgnlValidationRule,96,349,27,23,18,86,22,22,0,19
 Entando Core: Engine,com.agiletec.aps.system.services.group,GroupDAO,75,199,0,2,21,66,0,13,0,12
 Entando Core: Engine,com.agiletec.aps.system.services.group,Group,9,26,2,2,3,7,4,5,2,5
 Entando Core: Engine,com.agiletec.aps.system.services.group,GroupManager,48,156,1,3,12,46,1,16,0,15
@@ -412,7 +412,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectmodel,Dat
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectmodel,DataObjectModelManager,99,383,13,29,23,100,10,35,0,24
 Entando Core: Engine,org.entando.entando.web.group,GroupController,21,174,2,4,3,37,2,13,0,12
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api,ApiMyUserProfileInterface,34,7,2,0,9,2,2,2,1,2
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api,ApiUserProfileInterface,482,15,24,0,112,6,20,4,8,4
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api,ApiUserProfileInterface,384,126,18,6,85,37,15,11,3,11
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api,ApiUserProfileTypeInterface,315,11,16,0,66,4,13,3,5,3
 Entando Core: Engine,org.entando.entando.ent.util,EntSanitization.JavaSecS5145,0,13,0,0,0,2,0,2,0,2
 Entando Core: Engine,org.entando.entando.ent.util,EntSanitization.NopSanitizer,0,12,0,0,0,2,0,2,0,2
@@ -488,7 +488,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.guifragment.model,G
 Entando Core: Engine,org.entando.entando.aps.system.services.guifragment.model,GuiFragmentDtoSmall.WidgetTypeRef,0,32,0,0,0,12,0,6,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.guifragment.model,GuiFragmentDto.FragmentRef,0,16,0,0,0,6,0,3,0,3
 Entando Core: Engine,org.entando.entando.web.user,UserController,57,421,8,26,11,79,9,24,1,15
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.model,JAXBUserProfile,84,0,8,0,26,0,12,0,8,0
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.model,JAXBUserProfile,21,63,7,1,6,20,4,8,0,8
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.model,JAXBUserDetails,52,0,4,0,17,0,10,0,8,0
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.model,JAXBUserProfileType,7,0,0,0,3,0,2,0,2,0
 Entando Core: Engine,org.entando.entando.aps.system.services.api,UnmarshalUtils,56,60,1,3,10,16,6,3,5,2
@@ -539,7 +539,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.actionlog,ActivityS
 Entando Core: Engine,org.entando.entando.aps.system.services.actionlog,ActivityStreamInfoDOM,86,0,0,0,22,0,4,0,4,0
 Entando Core: Engine,org.entando.entando.aps.system.services.actionlog,ActionLogAppenderThread,5,20,0,0,2,8,0,3,0,3
 Entando Core: Engine,org.entando.entando.aps.system.services.command.util,BulkCommandContainer,17,0,0,0,7,0,5,0,5,0
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model,ApsEntity,105,411,14,26,28,118,15,42,4,33
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model,ApsEntity,103,414,12,28,28,118,13,44,4,33
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model,JAXBEntity,99,210,23,15,27,58,19,21,2,19
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model,AttributeTracer,240,198,13,9,48,55,14,19,6,16
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model,ApsEntityRecord,4,34,1,1,1,12,1,8,0,8
@@ -666,13 +666,13 @@ Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,Check
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AbstractComplexAttribute,4,7,0,0,2,3,2,3,2,3
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,ThreeStateAttribute,0,32,0,4,0,7,0,7,0,5
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AttributeRole,0,55,0,0,0,17,0,7,0,7
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,DateAttribute,35,191,6,16,7,52,10,24,5,18
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,ListAttribute,70,319,13,27,22,85,13,22,2,13
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,DateAttribute,35,192,6,16,7,52,10,24,5,18
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,ListAttribute,70,320,13,27,22,85,13,22,2,13
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBNumberAttribute,0,10,0,0,0,4,0,3,0,3
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBListAttributeType,74,0,4,0,13,0,6,0,4,0
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AbstractListAttribute,104,138,10,8,22,38,10,14,3,12
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AttributeRole.FormFieldTypes,0,44,0,0,0,1,0,1,0,1
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,TimestampAttribute,83,3,12,0,21,1,15,1,9,1
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,TimestampAttribute,23,64,5,7,8,14,9,7,4,6
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AttributeInterface.Status,0,34,0,0,0,2,0,1,0,1
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBDateAttribute,0,10,0,0,0,4,0,3,0,3
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,DefaultJAXBAttributeType,223,0,16,0,54,0,28,0,20,0
@@ -680,13 +680,13 @@ Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,Abstr
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,HypertextAttribute,80,118,21,9,17,31,16,9,3,7
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AbstractTextAttribute,82,62,16,6,20,18,16,7,6,6
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBCompositeAttributeType,77,0,6,0,16,0,7,0,4,0
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AbstractAttribute,375,762,55,67,68,194,47,77,9,54
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,AbstractAttribute,360,746,53,65,65,189,46,76,9,54
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBListAttribute,0,13,0,0,0,5,0,3,0,3
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,EnumeratorAttribute,161,176,26,12,36,52,22,19,5,17
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,NumberAttribute,41,138,6,14,12,37,9,19,4,14
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,NumberAttribute,41,139,6,14,12,37,9,19,4,14
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,MonoTextAttribute,7,116,5,11,2,32,5,16,0,13
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,MonoListAttribute,49,237,9,19,14,61,9,19,1,13
-Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,CompositeAttribute,120,405,20,30,30,109,21,29,5,20
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,MonoListAttribute,49,239,9,19,14,61,9,19,1,13
+Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,CompositeAttribute,120,407,20,30,30,109,21,29,5,20
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBEnumeratorAttributeType,43,0,0,0,15,0,8,0,8,0
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBBooleanAttribute,0,10,0,0,0,4,0,3,0,3
 Entando Core: Engine,com.agiletec.aps.system.common.entity.model.attribute,JAXBCompositeAttribute,0,13,0,0,0,5,0,3,0,3
@@ -725,8 +725,8 @@ Entando Core: Engine,com.agiletec.aps.system.services.pagemodel,PageModelManager
 Entando Core: Engine,com.agiletec.aps.system.services.pagemodel,Frame.JAXBDefaultWidget,42,22,5,1,16,8,7,3,4,3
 Entando Core: Engine,com.agiletec.aps.system.services.pagemodel,FrameSketch,13,31,0,0,5,13,1,9,1,9
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.response,UserProfileTypeResponseResult,11,0,0,0,4,0,3,0,3,0
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.response,UserProfileResponse,15,0,0,0,5,0,4,0,4,0
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.response,UserProfileResponseResult,11,0,0,0,4,0,3,0,3,0
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.response,UserProfileResponse,8,7,0,0,3,2,2,2,2,2
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.response,UserProfileResponseResult,8,3,0,0,3,1,2,1,2,1
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile.api.response,UserProfileTypeResponse,15,0,0,0,5,0,4,0,4,0
 Entando Core: Engine,org.entando.entando.aps.system.exception,CSRFProtectionException,4,5,0,0,2,2,1,1,1,1
 Entando Core: Engine,org.entando.entando.aps.system.exception,ResourceNotFoundException,25,40,0,0,11,16,4,8,4,8
@@ -747,7 +747,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.controller.executor
 Entando Core: Engine,org.entando.entando.aps.system.services.i18n.response,I18nLabelResponseResult,4,3,0,0,1,1,1,1,1,1
 Entando Core: Engine,org.entando.entando.aps.system.services.i18n.response,I18nLabelResponse,8,7,0,0,3,2,2,2,2,2
 Entando Core: Engine,org.entando.entando.web.role.validator,RoleValidator,26,45,1,5,5,11,3,5,2,3
-Entando Core: Engine,org.entando.entando.aps.system.services.user,UserService,229,545,21,45,54,113,28,41,7,29
+Entando Core: Engine,org.entando.entando.aps.system.services.user,UserService,227,547,20,46,53,114,27,42,7,29
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.parse,DataObjectDOM,0,76,1,7,0,26,1,11,0,8
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.parse,DataTypeDOM,0,104,1,9,0,27,1,10,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobject.parse,DataObjectHandler,33,197,8,28,9,62,8,26,0,16
@@ -814,7 +814,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.entity,AbstractEnti
 Entando Core: Engine,org.entando.entando.aps.system.services.entity,AbstractEntityTypeService.new DtoBuilder() {...},0,11,0,0,0,2,0,2,0,2
 Entando Core: Engine,org.entando.entando.aps.system.services.entity,AbstractEntityTypeService.new DtoBuilder() {...},0,11,0,0,0,2,0,2,0,2
 Entando Core: Engine,org.entando.entando.aps.system.services.entity,EntityManagerService,35,88,1,1,8,17,7,6,6,6
-Entando Core: Engine,org.entando.entando.aps.system.services.entity,AbstractEntityService,342,277,30,26,55,67,24,17,2,11
+Entando Core: Engine,org.entando.entando.aps.system.services.entity,AbstractEntityService,346,282,30,26,57,68,25,18,3,12
 Entando Core: Engine,org.entando.entando.aps.system.services.entity,AttributeTypeRequestListProcessor,2,34,1,1,1,7,1,7,0,7
 Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageStatusEnum,24,0,0,0,3,0,1,0,1,0
 Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageDto,35,51,3,0,11,18,5,9,3,9

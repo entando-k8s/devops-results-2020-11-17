@@ -27,16 +27,16 @@ import com.agiletec.aps.system.common.entity.model.AttributeFieldError;
 import com.agiletec.aps.system.common.entity.model.AttributeTracer;
 import com.agiletec.aps.system.common.entity.model.IApsEntity;
 import com.agiletec.aps.system.common.searchengine.IndexableAttributeInterface;
+import com.agiletec.aps.system.services.lang.ILangManager;
 import org.entando.entando.ent.exception.EntException;
+import org.entando.entando.ent.exception.EntRuntimeException;
 
 /**
- * This class describes the Entity of a Composed Attribute. This attribute is
- * build by one or more elementary attributes of different types. These
- * elementary attributes can support multiple languages or not (and are defined
- * multi or mono-language). The Composite Attribute is only utilized in
- * conjunction with the 'Monolist' attribute. Please note that the composite
- * attribute cannot be used as an element of the &quot;List&quot; attribute since the
- * items in the List can support multiple languages.
+ * This class describes the Entity of a Composed Attribute. This attribute is build by one or more elementary attributes
+ * of different types. These elementary attributes can support multiple languages or not (and are defined multi or
+ * mono-language). The Composite Attribute is only utilized in conjunction with the 'Monolist' attribute. Please note
+ * that the composite attribute cannot be used as an element of the &quot;List&quot; attribute since the items in the List can
+ * support multiple languages.
  *
  * @author E.Santoboni
  */
@@ -164,162 +164,158 @@ public class CompositeAttribute extends AbstractComplexAttribute {
 <span class="fc" id="L164">    }</span>
 
     @Deprecated(/**
-             * INSERTED to guaranted compatibility with previsous version of
-             * jAPS 2.0.12
+             * INSERTED to guaranted compatibility with previsous version of jAPS 2.0.12
              */
             )
     private void setOldComplexAttributeConfig(Element attributeElement, Map&lt;String, AttributeInterface&gt; attrTypes) throws EntException {
-<span class="nc" id="L172">        List&lt;Element&gt; attributeElements = attributeElement.getChildren();</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">        for (int j = 0; j &lt; attributeElements.size(); j++) {</span>
-<span class="nc" id="L174">            Element currentAttrJdomElem = attributeElements.get(j);</span>
-<span class="nc" id="L175">            extractAttributeCompositeElement(attrTypes, currentAttrJdomElem);</span>
+<span class="nc" id="L171">        List&lt;Element&gt; attributeElements = attributeElement.getChildren();</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">        for (int j = 0; j &lt; attributeElements.size(); j++) {</span>
+<span class="nc" id="L173">            Element currentAttrJdomElem = attributeElements.get(j);</span>
+<span class="nc" id="L174">            extractAttributeCompositeElement(attrTypes, currentAttrJdomElem);</span>
         }
-<span class="nc" id="L177">    }</span>
+<span class="nc" id="L176">    }</span>
 
     private void extractAttributeCompositeElement(Map&lt;String, AttributeInterface&gt; attrTypes, Element currentAttrJdomElem) throws EntException {
-<span class="fc" id="L180">        String typeCode = this.extractXmlAttribute(currentAttrJdomElem, &quot;attributetype&quot;, true);</span>
-<span class="fc" id="L181">        AttributeInterface compositeAttrElem = (AttributeInterface) attrTypes.get(typeCode);</span>
-<span class="pc bpc" id="L182" title="1 of 2 branches missed.">        if (compositeAttrElem == null) {</span>
-<span class="nc" id="L183">            throw new EntException(&quot;The type &quot; + typeCode</span>
-<span class="nc" id="L184">                    + &quot; of the attribute element found in the tag &lt;&quot; + currentAttrJdomElem.getName() + &quot;&gt; of the composite attribute is not a valid one&quot;);</span>
+<span class="fc" id="L179">        String typeCode = this.extractXmlAttribute(currentAttrJdomElem, &quot;attributetype&quot;, true);</span>
+<span class="fc" id="L180">        AttributeInterface compositeAttrElem = (AttributeInterface) attrTypes.get(typeCode);</span>
+<span class="pc bpc" id="L181" title="1 of 2 branches missed.">        if (compositeAttrElem == null) {</span>
+<span class="nc" id="L182">            throw new EntException(&quot;The type &quot; + typeCode</span>
+<span class="nc" id="L183">                    + &quot; of the attribute element found in the tag &lt;&quot; + currentAttrJdomElem.getName() + &quot;&gt; of the composite attribute is not a valid one&quot;);</span>
         }
-<span class="fc" id="L186">        compositeAttrElem = (AttributeInterface) compositeAttrElem.getAttributePrototype();</span>
-<span class="fc" id="L187">        compositeAttrElem.setAttributeConfig(currentAttrJdomElem);</span>
-<span class="fc" id="L188">        compositeAttrElem.setSearchable(false);</span>
-<span class="fc" id="L189">        compositeAttrElem.setDefaultLangCode(this.getDefaultLangCode());</span>
-<span class="fc" id="L190">        this.addAttribute(compositeAttrElem);</span>
-<span class="fc" id="L191">    }</span>
+<span class="fc" id="L185">        compositeAttrElem = (AttributeInterface) compositeAttrElem.getAttributePrototype();</span>
+<span class="fc" id="L186">        compositeAttrElem.setAttributeConfig(currentAttrJdomElem);</span>
+<span class="fc" id="L187">        compositeAttrElem.setSearchable(false);</span>
+<span class="fc" id="L188">        compositeAttrElem.setDefaultLangCode(this.getDefaultLangCode());</span>
+<span class="fc" id="L189">        this.addAttribute(compositeAttrElem);</span>
+<span class="fc" id="L190">    }</span>
 
     /**
-     * Since this kind of attribute can never be indexable this method, which
-     * overrides the one of the abstract class, always returns the constant
-     * &quot;INDEXING_TYPE_NONE&quot; (defined in AttributeInterface) which explicitly
-     * declares it not indexable. Declaring indexable a complex attribute will
-     * make the contained element indexable.
+     * Since this kind of attribute can never be indexable this method, which overrides the one of the abstract class,
+     * always returns the constant &quot;INDEXING_TYPE_NONE&quot; (defined in AttributeInterface) which explicitly declares it not
+     * indexable. Declaring indexable a complex attribute will make the contained element indexable.
      *
      * @return the indexing type
-     * @see
-     * com.agiletec.aps.system.common.entity.model.attribute.AttributeInterface#getIndexingType()
+     * @see com.agiletec.aps.system.common.entity.model.attribute.AttributeInterface#getIndexingType()
      */
     @Override
     public String getIndexingType() {
-<span class="fc" id="L206">        return IndexableAttributeInterface.INDEXING_TYPE_NONE;</span>
+<span class="fc" id="L202">        return IndexableAttributeInterface.INDEXING_TYPE_NONE;</span>
     }
 
     @Override
     public Object getRenderingAttributes() {
-<span class="nc" id="L211">        return this.getAttributeMap();</span>
+<span class="nc" id="L207">        return this.getAttributeMap();</span>
     }
 
     @Override
     public void setParentEntity(IApsEntity parentEntity) {
-<span class="fc" id="L216">        super.setParentEntity(parentEntity);</span>
-<span class="fc bfc" id="L217" title="All 2 branches covered.">        for (int i = 0; i &lt; this.getAttributes().size(); i++) {</span>
-<span class="fc" id="L218">            AttributeInterface attributeElement = this.getAttributes().get(i);</span>
-<span class="fc" id="L219">            attributeElement.setParentEntity(parentEntity);</span>
+<span class="fc" id="L212">        super.setParentEntity(parentEntity);</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">        for (int i = 0; i &lt; this.getAttributes().size(); i++) {</span>
+<span class="fc" id="L214">            AttributeInterface attributeElement = this.getAttributes().get(i);</span>
+<span class="fc" id="L215">            attributeElement.setParentEntity(parentEntity);</span>
         }
-<span class="fc" id="L221">    }</span>
+<span class="fc" id="L217">    }</span>
 
     @Override
     public Object getValue() {
-<span class="fc" id="L225">        return this.getAttributeMap();</span>
+<span class="fc" id="L221">        return this.getAttributeMap();</span>
     }
 
     @Override
     protected AbstractJAXBAttribute getJAXBAttributeInstance() {
-<span class="fc" id="L230">        return new JAXBCompositeAttribute();</span>
+<span class="fc" id="L226">        return new JAXBCompositeAttribute();</span>
     }
 
     @Override
     public AbstractJAXBAttribute getJAXBAttribute(String langCode) {
-<span class="fc" id="L235">        JAXBCompositeAttribute jaxbAttribute = (JAXBCompositeAttribute) super.createJAXBAttribute(langCode);</span>
-<span class="pc bpc" id="L236" title="1 of 2 branches missed.">        if (null == jaxbAttribute) {</span>
-<span class="nc" id="L237">            return null;</span>
+<span class="fc" id="L231">        JAXBCompositeAttribute jaxbAttribute = (JAXBCompositeAttribute) super.createJAXBAttribute(langCode);</span>
+<span class="pc bpc" id="L232" title="1 of 2 branches missed.">        if (null == jaxbAttribute) {</span>
+<span class="nc" id="L233">            return null;</span>
         }
-<span class="fc" id="L239">        List&lt;AttributeInterface&gt; attributes = this.getAttributes();</span>
-<span class="pc bpc" id="L240" title="2 of 4 branches missed.">        if (null != attributes &amp;&amp; !attributes.isEmpty()) {</span>
-<span class="fc" id="L241">            Map&lt;String, AbstractJAXBAttribute&gt; jaxbAttributes = new HashMap&lt;&gt;();</span>
-<span class="fc bfc" id="L242" title="All 2 branches covered.">            for (int i = 0; i &lt; attributes.size(); i++) {</span>
-<span class="fc" id="L243">                AttributeInterface attribute = attributes.get(i);</span>
-<span class="fc" id="L244">                jaxbAttributes.put(attribute.getName(), attribute.getJAXBAttribute(langCode));</span>
+<span class="fc" id="L235">        List&lt;AttributeInterface&gt; attributes = this.getAttributes();</span>
+<span class="pc bpc" id="L236" title="2 of 4 branches missed.">        if (null != attributes &amp;&amp; !attributes.isEmpty()) {</span>
+<span class="fc" id="L237">            Map&lt;String, AbstractJAXBAttribute&gt; jaxbAttributes = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">            for (int i = 0; i &lt; attributes.size(); i++) {</span>
+<span class="fc" id="L239">                AttributeInterface attribute = attributes.get(i);</span>
+<span class="fc" id="L240">                jaxbAttributes.put(attribute.getName(), attribute.getJAXBAttribute(langCode));</span>
             }
-<span class="fc" id="L246">            jaxbAttribute.setAttributes(jaxbAttributes);</span>
+<span class="fc" id="L242">            jaxbAttribute.setAttributes(jaxbAttributes);</span>
         }
-<span class="fc" id="L248">        return jaxbAttribute;</span>
+<span class="fc" id="L244">        return jaxbAttribute;</span>
     }
 
     @Override
     public void valueFrom(AbstractJAXBAttribute jaxbAttribute, String langCode) {
-<span class="fc" id="L253">        super.valueFrom(jaxbAttribute, langCode);</span>
-<span class="fc" id="L254">        Map&lt;String, AbstractJAXBAttribute&gt; jaxbAttributes = ((JAXBCompositeAttribute) jaxbAttribute).getAttributes();</span>
-<span class="pc bpc" id="L255" title="1 of 2 branches missed.">        if (null != jaxbAttributes) {</span>
-<span class="fc" id="L256">            Iterator&lt;String&gt; iter = jaxbAttributes.keySet().iterator();</span>
-<span class="fc bfc" id="L257" title="All 2 branches covered.">            while (iter.hasNext()) {</span>
-<span class="fc" id="L258">                String key = iter.next();</span>
-<span class="fc" id="L259">                AbstractJAXBAttribute jaxbAttributeElement = jaxbAttributes.get(key);</span>
-<span class="pc bpc" id="L260" title="1 of 2 branches missed.">                if (null == jaxbAttributeElement) {</span>
-<span class="nc" id="L261">                    continue;</span>
+<span class="fc" id="L249">        super.valueFrom(jaxbAttribute, langCode);</span>
+<span class="fc" id="L250">        Map&lt;String, AbstractJAXBAttribute&gt; jaxbAttributes = ((JAXBCompositeAttribute) jaxbAttribute).getAttributes();</span>
+<span class="pc bpc" id="L251" title="1 of 2 branches missed.">        if (null != jaxbAttributes) {</span>
+<span class="fc" id="L252">            Iterator&lt;String&gt; iter = jaxbAttributes.keySet().iterator();</span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">            while (iter.hasNext()) {</span>
+<span class="fc" id="L254">                String key = iter.next();</span>
+<span class="fc" id="L255">                AbstractJAXBAttribute jaxbAttributeElement = jaxbAttributes.get(key);</span>
+<span class="pc bpc" id="L256" title="1 of 2 branches missed.">                if (null == jaxbAttributeElement) {</span>
+<span class="nc" id="L257">                    continue;</span>
                 }
-<span class="fc" id="L263">                AttributeInterface attributeElement = this.getAttributeMap().get(jaxbAttributeElement.getName());</span>
-<span class="pc bpc" id="L264" title="1 of 2 branches missed.">                if (null != attributeElement</span>
-<span class="pc bpc" id="L265" title="1 of 2 branches missed.">                        &amp;&amp; attributeElement.getType().equals(jaxbAttributeElement.getType())) {</span>
-<span class="fc" id="L266">                    attributeElement.valueFrom(jaxbAttributeElement, langCode);</span>
+<span class="fc" id="L259">                AttributeInterface attributeElement = this.getAttributeMap().get(jaxbAttributeElement.getName());</span>
+<span class="pc bpc" id="L260" title="1 of 2 branches missed.">                if (null != attributeElement</span>
+<span class="pc bpc" id="L261" title="1 of 2 branches missed.">                        &amp;&amp; attributeElement.getType().equals(jaxbAttributeElement.getType())) {</span>
+<span class="fc" id="L262">                    attributeElement.valueFrom(jaxbAttributeElement, langCode);</span>
                 }
-<span class="fc" id="L268">            }</span>
+<span class="fc" id="L264">            }</span>
         }
-<span class="fc" id="L270">    }</span>
+<span class="fc" id="L266">    }</span>
 
     @Override
     public JAXBCompositeAttributeType getJAXBAttributeType() {
-<span class="nc" id="L274">        JAXBCompositeAttributeType jaxbAttribute = (JAXBCompositeAttributeType) super.getJAXBAttributeType();</span>
-<span class="nc" id="L275">        List&lt;AttributeInterface&gt; elements = this.getAttributes();</span>
-<span class="nc bnc" id="L276" title="All 2 branches missed.">        if (null != elements) {</span>
-<span class="nc bnc" id="L277" title="All 2 branches missed.">            for (int i = 0; i &lt; elements.size(); i++) {</span>
-<span class="nc" id="L278">                AttributeInterface attributeElement = elements.get(i);</span>
-<span class="nc" id="L279">                jaxbAttribute.getElementTypes().add(attributeElement.getJAXBAttributeType());</span>
+<span class="nc" id="L270">        JAXBCompositeAttributeType jaxbAttribute = (JAXBCompositeAttributeType) super.getJAXBAttributeType();</span>
+<span class="nc" id="L271">        List&lt;AttributeInterface&gt; elements = this.getAttributes();</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">        if (null != elements) {</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">            for (int i = 0; i &lt; elements.size(); i++) {</span>
+<span class="nc" id="L274">                AttributeInterface attributeElement = elements.get(i);</span>
+<span class="nc" id="L275">                jaxbAttribute.getElementTypes().add(attributeElement.getJAXBAttributeType());</span>
             }
         }
-<span class="nc" id="L282">        return jaxbAttribute;</span>
+<span class="nc" id="L278">        return jaxbAttribute;</span>
     }
 
     @Override
     protected DefaultJAXBAttributeType getJAXBAttributeTypeInstance() {
-<span class="nc" id="L287">        return new JAXBCompositeAttributeType();</span>
+<span class="nc" id="L283">        return new JAXBCompositeAttributeType();</span>
     }
 
     @Override
     public Status getStatus() {
-<span class="fc" id="L292">        List&lt;AttributeInterface&gt; attributes = this.getAttributes();</span>
-<span class="pc bpc" id="L293" title="1 of 2 branches missed.">        for (int i = 0; i &lt; attributes.size(); i++) {</span>
-<span class="fc" id="L294">            AttributeInterface attributeElement = attributes.get(i);</span>
-<span class="fc" id="L295">            Status elementStatus = attributeElement.getStatus();</span>
-<span class="pc bpc" id="L296" title="1 of 2 branches missed.">            if (!Status.EMPTY.equals(elementStatus)) {</span>
-<span class="fc" id="L297">                return Status.VALUED;</span>
+<span class="fc" id="L288">        List&lt;AttributeInterface&gt; attributes = this.getAttributes();</span>
+<span class="pc bpc" id="L289" title="1 of 2 branches missed.">        for (int i = 0; i &lt; attributes.size(); i++) {</span>
+<span class="fc" id="L290">            AttributeInterface attributeElement = attributes.get(i);</span>
+<span class="fc" id="L291">            Status elementStatus = attributeElement.getStatus();</span>
+<span class="pc bpc" id="L292" title="1 of 2 branches missed.">            if (!Status.EMPTY.equals(elementStatus)) {</span>
+<span class="fc" id="L293">                return Status.VALUED;</span>
             }
         }
-<span class="nc" id="L300">        return Status.EMPTY;</span>
+<span class="nc" id="L296">        return Status.EMPTY;</span>
     }
 
     @Override
-    public List&lt;AttributeFieldError&gt; validate(AttributeTracer tracer) {
-<span class="fc" id="L305">        List&lt;AttributeFieldError&gt; errors = super.validate(tracer);</span>
+    public List&lt;AttributeFieldError&gt; validate(AttributeTracer tracer, ILangManager langManager) {
+<span class="fc" id="L301">        List&lt;AttributeFieldError&gt; errors = super.validate(tracer, langManager);</span>
         try {
-<span class="fc" id="L307">            List&lt;AttributeInterface&gt; attributes = this.getAttributes();</span>
-<span class="fc bfc" id="L308" title="All 2 branches covered.">            for (int i = 0; i &lt; attributes.size(); i++) {</span>
-<span class="fc" id="L309">                AttributeInterface attributeElement = attributes.get(i);</span>
-<span class="fc" id="L310">                AttributeTracer elementTracer = tracer.clone();</span>
-<span class="fc" id="L311">                elementTracer.setCompositeElement(true);</span>
-<span class="fc" id="L312">                elementTracer.setParentAttribute(this);</span>
-<span class="fc" id="L313">                List&lt;AttributeFieldError&gt; elementErrors = attributeElement.validate(elementTracer);</span>
-<span class="pc bpc" id="L314" title="1 of 2 branches missed.">                if (null != elementErrors) {</span>
-<span class="fc" id="L315">                    errors.addAll(elementErrors);</span>
+<span class="fc" id="L303">            List&lt;AttributeInterface&gt; attributes = this.getAttributes();</span>
+<span class="fc bfc" id="L304" title="All 2 branches covered.">            for (int i = 0; i &lt; attributes.size(); i++) {</span>
+<span class="fc" id="L305">                AttributeInterface attributeElement = attributes.get(i);</span>
+<span class="fc" id="L306">                AttributeTracer elementTracer = tracer.clone();</span>
+<span class="fc" id="L307">                elementTracer.setCompositeElement(true);</span>
+<span class="fc" id="L308">                elementTracer.setParentAttribute(this);</span>
+<span class="fc" id="L309">                List&lt;AttributeFieldError&gt; elementErrors = attributeElement.validate(elementTracer, langManager);</span>
+<span class="pc bpc" id="L310" title="1 of 2 branches missed.">                if (null != elementErrors) {</span>
+<span class="fc" id="L311">                    errors.addAll(elementErrors);</span>
                 }
             }
-<span class="nc" id="L318">        } catch (Throwable t) {</span>
-<span class="nc" id="L319">            _logger.error(&quot;Error validating composite attribute&quot;, t);</span>
-<span class="nc" id="L320">            throw new RuntimeException(&quot;Error validating composite attribute&quot;, t);</span>
-<span class="fc" id="L321">        }</span>
-<span class="fc" id="L322">        return errors;</span>
+<span class="nc" id="L314">        } catch (Exception t) {</span>
+<span class="nc" id="L315">            _logger.error(&quot;Error validating composite attribute&quot;, t);</span>
+<span class="nc" id="L316">            throw new EntRuntimeException(&quot;Error validating composite attribute&quot;, t);</span>
+<span class="fc" id="L317">        }</span>
+<span class="fc" id="L318">        return errors;</span>
     }
 
     private List&lt;AttributeInterface&gt; _attributeList;

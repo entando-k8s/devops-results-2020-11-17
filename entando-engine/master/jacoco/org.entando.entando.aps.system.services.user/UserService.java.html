@@ -226,8 +226,8 @@ import org.springframework.validation.BindingResult;
             try {
 <span class="fc" id="L227">                EntitySearchFilter[] attributes = new EntitySearchFilter[entityFilters.size()];</span>
 <span class="fc" id="L228">                List&lt;String&gt; userNames = this.getUserProfileManager().searchId(entityFilters.toArray(attributes));</span>
-<span class="pc bpc" id="L229" title="2 of 4 branches missed.">                if (userNames.size() == 0 || !userNames.contains(user.getUsername())) {</span>
-<span class="nc" id="L230">                    return false;</span>
+<span class="pc bpc" id="L229" title="1 of 4 branches missed.">                if (userNames.size() == 0 || !userNames.contains(user.getUsername())) {</span>
+<span class="fc" id="L230">                    return false;</span>
                 }
 <span class="nc" id="L232">            } catch (EntException ex) {</span>
 <span class="nc" id="L233">                logger.error(&quot;error in filter users by profile attribute&quot;, ex);</span>

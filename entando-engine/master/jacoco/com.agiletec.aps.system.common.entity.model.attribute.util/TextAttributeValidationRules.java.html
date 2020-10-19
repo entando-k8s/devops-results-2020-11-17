@@ -135,7 +135,7 @@ import com.agiletec.aps.system.services.lang.Lang;
 <span class="fc" id="L135">        Integer minLength = this.getMinLength();</span>
 <span class="pc bpc" id="L136" title="4 of 8 branches missed.">        if ((null != maxLength &amp;&amp; maxLength &gt; -1) || (null != minLength &amp;&amp; minLength &gt; -1)) {</span>
 <span class="fc" id="L137">            String text = this.getTextForCheckLength(attribute, lang);</span>
-<span class="pc bpc" id="L138" title="1 of 4 branches missed.">            if (text != null &amp;&amp; text.trim().length() &gt; 0) {</span>
+<span class="fc bfc" id="L138" title="All 4 branches covered.">            if (text != null &amp;&amp; text.trim().length() &gt; 0) {</span>
 <span class="fc" id="L139">                text = text.trim();</span>
 <span class="pc bpc" id="L140" title="2 of 6 branches missed.">                if ((null != maxLength &amp;&amp; maxLength &gt; -1) &amp;&amp; text.length() &gt; maxLength) {</span>
 <span class="fc" id="L141">					AttributeFieldError error = new AttributeFieldError(attribute, FieldError.INVALID_MAX_LENGTH, tracer);</span>

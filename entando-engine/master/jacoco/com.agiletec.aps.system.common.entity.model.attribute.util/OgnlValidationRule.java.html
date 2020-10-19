@@ -111,8 +111,8 @@ public class OgnlValidationRule implements Serializable {
 <span class="pc bpc" id="L111" title="2 of 4 branches missed.">        if (null == expression || expression.trim().length() == 0) {</span>
 <span class="nc" id="L112">            return null;</span>
         }
-<span class="pc bpc" id="L114" title="2 of 4 branches missed.">        if (this.isEvalExpressionOnValuedAttribute() &amp;&amp; attribute.getStatus().equals(AttributeInterface.Status.EMPTY)) {</span>
-<span class="nc" id="L115">            return null;</span>
+<span class="pc bpc" id="L114" title="1 of 4 branches missed.">        if (this.isEvalExpressionOnValuedAttribute() &amp;&amp; attribute.getStatus().equals(AttributeInterface.Status.EMPTY)) {</span>
+<span class="fc" id="L115">            return null;</span>
         }
         try {
 <span class="fc" id="L118">            Object expr = Ognl.parseExpression(expression);</span>
