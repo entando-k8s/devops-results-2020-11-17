@@ -73,7 +73,7 @@ import org.springframework.validation.MapBindingResult;
 
     public static final String ERRCODE_SELF_DELETE = &quot;8&quot;;
 
-    public static final String ERRCODE_WIZARD_OTHER_UPDATE = &quot;9&quot;;
+    public static final String ERRCODE_UPDATE_OTHER = &quot;9&quot;;
 
     @Autowired
     @Qualifier(&quot;compatiblePasswordEncoder&quot;)
@@ -200,9 +200,9 @@ import org.springframework.validation.MapBindingResult;
         }
 <span class="fc" id="L201">    }</span>
 
-    public void validateUpdateOther(String username, String currentUser, BindingResult bindingResult) {
+    public void validateSameUser(String username, String currentUser, BindingResult bindingResult) {
 <span class="pc bpc" id="L204" title="1 of 2 branches missed.">        if (!username.equals(currentUser)) {</span>
-<span class="nc" id="L205">            bindingResult.reject(ERRCODE_WIZARD_OTHER_UPDATE, new String[]{username}, &quot;user.wizard.other.user.update&quot;);</span>
+<span class="nc" id="L205">            bindingResult.reject(ERRCODE_UPDATE_OTHER, new String[]{username}, &quot;user.preferences.update.other&quot;);</span>
 <span class="nc" id="L206">            throw new ResourcePermissionsException(bindingResult);</span>
         }
 <span class="fc" id="L208">    }</span>
