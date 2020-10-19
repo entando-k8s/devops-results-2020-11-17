@@ -735,7 +735,7 @@ Entando Core: Engine,org.entando.entando.aps.system.exception,CacheItemNotFoundE
 Entando Core: Engine,com.agiletec.aps.system.services.lang,LangManager,11,180,1,11,3,55,1,21,0,16
 Entando Core: Engine,com.agiletec.aps.system.services.lang,Lang,0,34,0,0,0,12,0,8,0,8
 Entando Core: Engine,com.agiletec.aps.system.services.lang,LangDOM,12,216,2,10,3,58,2,12,0,8
-Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesManager,48,34,0,0,12,14,0,7,0,7
+Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesManager,0,27,0,0,0,10,0,6,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferences,29,31,0,0,1,13,1,9,1,9
 Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesDAO,64,180,0,2,15,54,0,7,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesService,39,104,0,10,9,28,0,10,0,5

@@ -56,7 +56,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 <span class="fc" id="L56">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(response), HttpStatus.OK);</span>
     }
 
-    @PutMapping(value = &quot;/userPreferences/{username}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = &quot;/userPreferences/{username:.+}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;SimpleRestResponse&lt;UserPreferencesDto&gt;&gt; updateUserPreferences(
             @ModelAttribute(&quot;user&quot;) UserDetails user, @PathVariable String username,
             @Valid @RequestBody UserPreferencesRequest bodyRequest, BindingResult bindingResult) {
