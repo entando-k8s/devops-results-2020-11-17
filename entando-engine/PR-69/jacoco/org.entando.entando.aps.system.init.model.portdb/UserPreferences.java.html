@@ -16,46 +16,32 @@ package org.entando.entando.aps.system.init.model.portdb;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import org.entando.entando.aps.system.init.model.servdb.UserProfile;
 
 @DatabaseTable(tableName = UserPreferences.TABLE_NAME)
-public class UserPreferences {
+<span class="fc" id="L21">public class UserPreferences {</span>
 
     public static final String TABLE_NAME = &quot;userpreferences&quot;;
-
-<span class="fc" id="L26">    public UserPreferences() {</span>
-<span class="fc" id="L27">    }</span>
 
     @DatabaseField(columnName = &quot;username&quot;,
             dataType = DataType.STRING,
             width = 80,
             canBeNull = false, id = true)
-    private String _username;
+    private String username;
 
     @DatabaseField(columnName = &quot;wizard&quot;,
             dataType = DataType.SHORT,
             canBeNull = false)
-    private short _wizard;
+    private short wizard;
 
     @DatabaseField(columnName = &quot;loadonpageselect&quot;,
             dataType = DataType.SHORT,
             canBeNull = false)
-    private short _loadonpageselect;
+    private short loadonpageselect;
 
     @DatabaseField(columnName = &quot;translationwarning&quot;,
             dataType = DataType.SHORT,
             canBeNull = false)
-    private short _translationwarning;
+    private short translationwarning;
 
 }
-/*
-CREATE TABLE userpreferences
-(
-  username character varying(80) NOT NULL,
-  wizard smallint NOT NULL,
-  loadonpageselect smallint NOT NULL,
-  translationwarning smallint NOT NULL,
-  CONSTRAINT userpreferences_pkey PRIMARY KEY (username)
-);
- */
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

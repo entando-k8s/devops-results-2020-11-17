@@ -24,52 +24,52 @@ import javax.xml.bind.annotation.XmlType;
 
 	@XmlElement(name = &quot;username&quot;, required = true)
 	public String getUsername() {
-<span class="fc" id="L27">		return _username;</span>
+<span class="fc" id="L27">		return username;</span>
 	}
 
 	public void setUsername(String username) {
-<span class="fc" id="L31">		this._username = username;</span>
+<span class="fc" id="L31">		this.username = username;</span>
 <span class="fc" id="L32">	}</span>
 
 	@XmlElement(name = &quot;wizard&quot;, required = true)
 	public boolean isWizard() {
-<span class="fc" id="L36">		return _wizard;</span>
+<span class="fc" id="L36">		return wizard;</span>
 	}
 
 	public void setWizard(boolean wizard) {
-<span class="fc" id="L40">		this._wizard = wizard;</span>
+<span class="fc" id="L40">		this.wizard = wizard;</span>
 <span class="fc" id="L41">	}</span>
 
 	@XmlElement(name = &quot;loadOnPageSelect&quot;, required = true)
 	public boolean isLoadOnPageSelect() {
-<span class="fc" id="L45">		return _loadOnPageSelect;</span>
+<span class="fc" id="L45">		return loadOnPageSelect;</span>
 	}
 
 	public void setLoadOnPageSelect(boolean loadOnPageSelect) {
-<span class="fc" id="L49">		this._loadOnPageSelect = loadOnPageSelect;</span>
+<span class="fc" id="L49">		this.loadOnPageSelect = loadOnPageSelect;</span>
 <span class="fc" id="L50">	}</span>
 
 	@XmlElement(name = &quot;translationWarning&quot;, required = true)
 	public boolean isTranslationWarning() {
-<span class="fc" id="L54">		return _translationWarning;</span>
+<span class="fc" id="L54">		return translationWarning;</span>
 	}
 
 	public void setTranslationWarning(boolean translationWarning) {
-<span class="fc" id="L58">		this._translationWarning = translationWarning;</span>
+<span class="fc" id="L58">		this.translationWarning = translationWarning;</span>
 <span class="fc" id="L59">	}</span>
 
-	private String _username;
-	private boolean _wizard;
-	private boolean _loadOnPageSelect;
-	private boolean _translationWarning;
+	private String username;
+	private boolean wizard;
+	private boolean loadOnPageSelect;
+	private boolean translationWarning;
 
 	@Override
 	public String toString() {
 <span class="nc" id="L68">		return &quot;UserPreferences{&quot; +</span>
-				&quot;username='&quot; + _username + '\'' +
-				&quot;, wizard=&quot; + _wizard +
-				&quot;, loadOnPageSelect=&quot; + _loadOnPageSelect +
-				&quot;, translationWarning=&quot; + _translationWarning +
+				&quot;username='&quot; + username + '\'' +
+				&quot;, wizard=&quot; + wizard +
+				&quot;, loadOnPageSelect=&quot; + loadOnPageSelect +
+				&quot;, translationWarning=&quot; + translationWarning +
 				'}';
 	}
 }
