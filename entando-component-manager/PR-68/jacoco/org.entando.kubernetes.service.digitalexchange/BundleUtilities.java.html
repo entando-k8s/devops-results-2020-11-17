@@ -114,13 +114,13 @@ public class BundleUtilities {
     private static String validateAndReturnDeploymentBaseName(String deploymentBaseName, String errorSuffix) {
 
         // deploymentBaseName has to not be longer than 63 chars
-<span class="pc bpc" id="L117" title="1 of 2 branches missed.">        if (deploymentBaseName.length() &gt; MAX_ENTANDO_K8S_POD_NAME_LENGTH) {</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (deploymentBaseName.length() &gt; MAX_ENTANDO_K8S_POD_NAME_LENGTH) {</span>
 
-<span class="nc" id="L119">            throw new EntandoComponentManagerException(</span>
-<span class="nc" id="L120">                    String.format(</span>
+<span class="fc" id="L119">            throw new EntandoComponentManagerException(</span>
+<span class="fc" id="L120">                    String.format(</span>
                             DEPLOYMENT_BASE_NAME_MAX_LENGHT_EXCEEDED_ERROR,
                             deploymentBaseName,
-<span class="nc" id="L123">                            MAX_ENTANDO_K8S_POD_NAME_LENGTH,</span>
+<span class="fc" id="L123">                            MAX_ENTANDO_K8S_POD_NAME_LENGTH,</span>
                             errorSuffix));
         }
 
