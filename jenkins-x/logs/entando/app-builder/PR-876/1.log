@@ -1,0 +1,56 @@
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-d9kxg[0m
+{"level":"warn","ts":1603199841.6329188,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603199841.640613,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-2598r[0m
+{"level":"warn","ts":1603199844.5018978,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1603199844.518108,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-entando-app-builder-pr-876-pm9th[0m
+{"level":"warn","ts":1603199928.418381,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603199932.6763191,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/app-builder.git @ d41ebb9d40224531edf0f34410e1ed291c264753 in path /workspace/source"}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:d41ebb9d40224531edf0f34410e1ed291c264753,876:2b2b3755417053fae846026788141693c6bc37cb
+DEBUG: ran git fetch --unshallow origin 2b2b3755417053fae846026788141693c6bc37cb: d41ebb9d40224531edf0f34410e1ed291c264753: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard d41ebb9d40224531edf0f34410e1ed291c264753 in 
+DEBUG: ran clean --force -d . in 
+error: error during merge: merging 2b2b3755417053fae846026788141693c6bc37cb into master: git output: Auto-merging src/ui/app/App.js
+CONFLICT (content): Merge conflict in src/ui/app/App.js
+Automatic merge failed; fix conflicts and then commit the result.: failed to run 'git merge 2b2b3755417053fae846026788141693c6bc37cb' command in directory '', output: 'Auto-merging src/ui/app/App.js
+CONFLICT (content): Merge conflict in src/ui/app/App.js
+Automatic merge failed; fix conflicts and then commit the result.'
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-git-merge'. The execution of the pipeline has stopped.[0m
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-d9kxg[0m
+{"level":"warn","ts":1603199841.6329188,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603199841.640613,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-2598r[0m
+{"level":"warn","ts":1603199844.5018978,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1603199844.518108,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-entando-app-builder-pr-876-pm9th[0m
+{"level":"warn","ts":1603199928.418381,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603199932.6763191,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/app-builder.git @ d41ebb9d40224531edf0f34410e1ed291c264753 in path /workspace/source"}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-876-g6sx8-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:d41ebb9d40224531edf0f34410e1ed291c264753,876:2b2b3755417053fae846026788141693c6bc37cb
+DEBUG: ran git fetch --unshallow origin 2b2b3755417053fae846026788141693c6bc37cb: d41ebb9d40224531edf0f34410e1ed291c264753: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard d41ebb9d40224531edf0f34410e1ed291c264753 in 
+DEBUG: ran clean --force -d . in 
+error: error during merge: merging 2b2b3755417053fae846026788141693c6bc37cb into master: git output: Auto-merging src/ui/app/App.js
+CONFLICT (content): Merge conflict in src/ui/app/App.js
+Automatic merge failed; fix conflicts and then commit the result.: failed to run 'git merge 2b2b3755417053fae846026788141693c6bc37cb' command in directory '', output: 'Auto-merging src/ui/app/App.js
+CONFLICT (content): Merge conflict in src/ui/app/App.js
+Automatic merge failed; fix conflicts and then commit the result.'
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-git-merge'. The execution of the pipeline has stopped.[0m
