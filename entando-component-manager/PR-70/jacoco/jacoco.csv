@@ -73,7 +73,7 @@ Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PageTe
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,LabelInstallable,0,49,0,0,0,14,0,8,0,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,ContentTemplateInstallable,0,49,0,0,0,14,0,8,0,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,WidgetInstallable,0,49,0,0,0,14,0,8,0,8
-Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PluginInstallable,0,66,0,2,0,17,0,9,0,8
+Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PluginInstallable,6,66,0,2,2,17,0,9,0,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,CategoryInstallable,0,49,0,0,0,14,0,8,0,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,GroupInstallable,0,49,0,0,0,14,0,8,0,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,Installable,14,29,0,0,6,8,2,5,2,5
