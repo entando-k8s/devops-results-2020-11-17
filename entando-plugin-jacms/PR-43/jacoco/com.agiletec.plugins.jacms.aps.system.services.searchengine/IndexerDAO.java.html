@@ -74,9 +74,9 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc" id="L74">            writer = new IndexWriter(this.dir, this.getIndexWriterConfig());</span>
 <span class="fc" id="L75">            Document document = this.createDocument(entity);</span>
 <span class="fc" id="L76">            writer.addDocument(document);</span>
-<span class="nc" id="L77">        } catch (Throwable t) {</span>
-<span class="nc" id="L78">            _logger.error(&quot;Errore saving entity {}&quot;, entity.getId(), t);</span>
-<span class="nc" id="L79">            throw new EntException(&quot;Error saving entity&quot;, t);</span>
+<span class="fc" id="L77">        } catch (Throwable t) {</span>
+<span class="fc" id="L78">            _logger.error(&quot;Errore saving entity {}&quot;, entity.getId(), t);</span>
+<span class="fc" id="L79">            throw new EntException(&quot;Error saving entity&quot;, t);</span>
         } finally {
 <span class="pc bpc" id="L81" title="1 of 2 branches missed.">            if (null != writer) {</span>
                 try {
