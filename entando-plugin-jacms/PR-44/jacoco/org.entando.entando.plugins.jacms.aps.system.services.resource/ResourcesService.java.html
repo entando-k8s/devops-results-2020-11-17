@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResourcesService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Entando Plugin: CMS</a> &gt; <a href="index.source.html" class="el_package">org.entando.entando.plugins.jacms.aps.system.services.resource</a> &gt; <span class="el_source">ResourcesService.java</span></div><h1>ResourcesService.java</h1><pre class="source lang-java linenums">package org.entando.entando.plugins.jacms.aps.system.services.resource;
+
+import static org.entando.entando.plugins.jacms.web.resource.ResourcesController.ERRCODE_CATEGORY_NOT_FOUND;
+import static org.entando.entando.plugins.jacms.web.resource.ResourcesController.ERRCODE_GROUP_NOT_FOUND;
+import static org.entando.entando.plugins.jacms.web.resource.ResourcesController.ERRCODE_INVALID_FILE_TYPE;
+import static org.entando.entando.plugins.jacms.web.resource.ResourcesController.ERRCODE_INVALID_RESOURCE_TYPE;
+import static org.entando.entando.plugins.jacms.web.resource.ResourcesController.ERRCODE_RESOURCE_NOT_FOUND;
+
+import com.agiletec.aps.system.common.FieldSearchFilter;
+import com.agiletec.aps.system.common.FieldSearchFilter.LikeOptionType;
+import com.agiletec.aps.system.common.entity.model.EntitySearchFilter;
+import com.agiletec.aps.system.common.model.dao.SearcherDaoPaginatedResult;
+import com.agiletec.aps.system.services.role.Permission;
+import org.entando.entando.ent.exception.EntException;
+import org.entando.entando.ent.exception.EntException;
+import com.agiletec.aps.system.services.authorization.IAuthorizationManager;
+import com.agiletec.aps.system.services.category.Category;
+import com.agiletec.aps.system.services.category.ICategoryManager;
+import com.agiletec.aps.system.services.group.Group;
+import com.agiletec.aps.system.services.user.UserDetails;
+import com.agiletec.plugins.jacms.aps.system.services.content.helper.BaseContentListHelper;
+import com.agiletec.plugins.jacms.aps.system.services.resource.IResourceManager;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.AttachResource;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.BaseResourceDataBean;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResource;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResourceDimension;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.ResourceInstance;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.ResourceInterface;
+import com.agiletec.plugins.jacms.aps.system.services.resource.model.util.IImageDimensionReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanComparator;
+import org.entando.entando.aps.system.exception.ResourceNotFoundException;
+import org.entando.entando.aps.system.exception.RestServerError;
+import org.entando.entando.aps.util.GenericResourceUtils;
+import org.entando.entando.ent.util.EntLogging;
+import org.entando.entando.plugins.jacms.web.resource.model.AssetDto;
+import org.entando.entando.plugins.jacms.web.resource.model.FileAssetDto;
+import org.entando.entando.plugins.jacms.web.resource.model.ImageAssetDto;
+import org.entando.entando.plugins.jacms.web.resource.model.ImageMetadataDto;
+import org.entando.entando.plugins.jacms.web.resource.model.ListAssetsFolderResponse;
+import org.entando.entando.plugins.jacms.web.resource.request.ListResourceRequest;
+import org.entando.entando.web.common.exceptions.ValidationGenericException;
+import org.entando.entando.web.common.model.Filter;
+import org.entando.entando.web.common.model.FilterOperator;
+import org.entando.entando.web.common.model.PagedMetadata;
+import org.entando.entando.web.common.model.RestListRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.web.multipart.MultipartFile;
+
+@Getter
+<span class="nc" id="L67">@Setter</span>
+<span class="fc" id="L68">@Slf4j</span>
+@Service
+<span class="fc" id="L70">public class ResourcesService {</span>
+
+    @Autowired
+<span class="nc" id="L73">    private IResourceManager resourceManager;</span>
+
+    @Autowired
+<span class="nc" id="L76">    private ICategoryManager categoryManager;</span>
+
+    @Autowired
+<span class="nc" id="L79">    private IImageDimensionReader imageDimensionManager;</span>
+
+    @Autowired
+<span class="nc" id="L82">    private IAuthorizationManager authorizationManager;</span>
+
+    @Value(&quot;#{'${jacms.imageResource.allowedExtensions}'.split(',')}&quot;)
+<span class="nc" id="L85">    private List&lt;String&gt; imageAllowedExtensions;</span>
+
+    @Value(&quot;#{'${jacms.attachResource.allowedExtensions}'.split(',')}&quot;)
+<span class="nc" id="L88">    private List&lt;String&gt; fileAllowedExtensions;</span>
+
+    public PagedMetadata&lt;AssetDto&gt; listAssets(ListResourceRequest requestList, UserDetails user) {
+<span class="fc" id="L91">        List&lt;AssetDto&gt; assets = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="fc" id="L93">            List&lt;String&gt; resourceIds = resourceManager.searchResourcesId(createSearchFilters(requestList),</span>
+<span class="fc" id="L94">                    extractCategoriesFromFilters(requestList));</span>
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            for(String id : resourceIds) {</span>
+<span class="fc" id="L97">                AssetDto resource = convertResourceToDto(resourceManager.loadResource(id));</span>
+<span class="fc" id="L98">                final Collection&lt;String&gt; allowedGroupCodes = BaseContentListHelper.getAllowedGroupCodes(user);</span>
+<span class="fc" id="L99">                boolean resourceAccessibleByGroup = allowedGroupCodes.stream().anyMatch(group -&gt;</span>
+<span class="fc" id="L100">                    GenericResourceUtils</span>
+<span class="fc" id="L101">                        .isResourceAccessibleByGroup(group,resource.getGroup(), null)</span>
+                );
+<span class="fc bfc" id="L103" title="All 4 branches covered.">                if ((resourceAccessibleByGroup) &amp;&amp; (isCompatibleWithLinkabilityFilter(resource.getGroup(), requestList))){</span>
+<span class="fc" id="L104">                    assets.add(resource);</span>
+                }
+<span class="fc" id="L106">            }</span>
+
+<span class="nc" id="L108">        } catch (EntException e) {</span>
+<span class="nc" id="L109">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.list&quot;, e);</span>
+<span class="fc" id="L110">        }</span>
+
+<span class="fc" id="L112">        SearcherDaoPaginatedResult&lt;AssetDto&gt; paginatedResult = new SearcherDaoPaginatedResult&lt;&gt;(assets.size(), assets);</span>
+<span class="fc" id="L113">        PagedMetadata&lt;AssetDto&gt; pagedResults = new PagedMetadata&lt;&gt;(requestList, paginatedResult);</span>
+<span class="fc" id="L114">        pagedResults.setBody(requestList.getSublist(assets));</span>
+
+<span class="fc" id="L116">        return pagedResults;</span>
+    }
+
+    public ListAssetsFolderResponse listAssetsFolder(String folderPath) {
+
+<span class="fc" id="L121">        ListAssetsFolderResponse response = new ListAssetsFolderResponse();</span>
+
+        try {
+<span class="fc" id="L124">            List&lt;AssetDto&gt; assets = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L126">            List&lt;String&gt; resourceIds = resourceManager.searchResourcesId(createFolderPathSearchFilter(folderPath), null);</span>
+
+<span class="fc" id="L128">            Set&lt;String&gt; allFolders = new HashSet&lt;&gt;();</span>
+
+<span class="fc bfc" id="L130" title="All 2 branches covered.">            for(String id : resourceIds) {</span>
+<span class="fc" id="L131">                AssetDto asset = convertResourceToDto(resourceManager.loadResource(id));</span>
+<span class="fc bfc" id="L132" title="All 4 branches covered.">                if (asset.getFolderPath() != null &amp;&amp; !asset.getFolderPath().equals(folderPath)) {</span>
+<span class="fc" id="L133">                    allFolders.add(asset.getFolderPath());</span>
+                }
+<span class="fc bfc" id="L135" title="All 2 branches covered.">                if (shouldAddAsset(folderPath, asset.getFolderPath())) {</span>
+<span class="fc" id="L136">                    assets.add(asset);</span>
+                }
+<span class="fc" id="L138">            }</span>
+
+<span class="fc" id="L140">            response.setAssets(assets);</span>
+<span class="fc" id="L141">            response.setFolderPath(folderPath);</span>
+<span class="fc" id="L142">            response.setSubfolders(getSubfolders(folderPath, allFolders));</span>
+
+<span class="nc" id="L144">        } catch (EntException e) {</span>
+<span class="nc" id="L145">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.list&quot;, e);</span>
+<span class="fc" id="L146">        }</span>
+
+<span class="fc" id="L148">        return response;</span>
+    }
+
+    private boolean isCompatibleWithLinkabilityFilter(String resourceMainGroup, ListResourceRequest requestList) {
+<span class="fc bfc" id="L152" title="All 2 branches covered.">        if (requestList.getForLinkingWithOwnerGroup() == null) {</span>
+<span class="fc" id="L153">            return true;</span>
+        }
+<span class="fc" id="L155">        return GenericResourceUtils.isResourceLinkableByContent(</span>
+                resourceMainGroup,
+                null,
+<span class="fc" id="L158">                requestList.getForLinkingWithOwnerGroup(),</span>
+<span class="fc" id="L159">                Optional.ofNullable(requestList.getForLinkingWithExtraGroups())</span>
+<span class="fc" id="L160">                        .orElse(null)</span>
+        );
+    }
+
+    private boolean shouldAddAsset(String folderPath, String assetFolderPath) {
+<span class="fc bfc" id="L165" title="All 2 branches covered.">        return (assetFolderAndFolderPathIsNull(folderPath, assetFolderPath)</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">                || assetFolderStartsWithFolderPath(folderPath, assetFolderPath))</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">                &amp;&amp; assetFolderAndFolderPathHasSameDepth(folderPath, assetFolderPath);</span>
+    }
+
+    private boolean assetFolderStartsWithFolderPath(String folderPath, String assetFolderPath) {
+<span class="fc bfc" id="L171" title="All 4 branches covered.">        return folderPath != null &amp;&amp; folderPath.startsWith(assetFolderPath);</span>
+    }
+
+    private boolean assetFolderAndFolderPathIsNull(String folderPath, String assetFolderPath) {
+<span class="fc bfc" id="L175" title="All 4 branches covered.">        return folderPath == null &amp;&amp; assetFolderPath == null;</span>
+    }
+
+    private boolean assetFolderAndFolderPathHasSameDepth(String folderPath, String assetFolderPath) {
+<span class="pc bpc" id="L179" title="1 of 2 branches missed.">        return getFolderPathDepth(folderPath) == getFolderPathDepth(assetFolderPath);</span>
+    }
+
+    private int getFolderPathDepth(String folderPath) {
+<span class="fc bfc" id="L183" title="All 2 branches covered.">        if (folderPath == null) {</span>
+<span class="fc" id="L184">            return 0;</span>
+        } else {
+<span class="fc" id="L186">            return folderPath.split(&quot;/&quot;).length;</span>
+        }
+    }
+
+    private List&lt;String&gt; getSubfolders(String folderPath, Set&lt;String&gt; allFolders) {
+<span class="fc" id="L191">        Set&lt;String&gt; result = new TreeSet&lt;&gt;();</span>
+
+<span class="fc" id="L193">        int folderPathDepth = getFolderPathDepth(folderPath);</span>
+
+<span class="fc bfc" id="L195" title="All 2 branches covered.">        for (String folder : allFolders) {</span>
+<span class="fc" id="L196">            result.add(getFolderPathByDepth(folder, folderPathDepth));</span>
+<span class="fc" id="L197">        }</span>
+
+<span class="fc" id="L199">        return new ArrayList&lt;&gt;(result);</span>
+    }
+
+    private String getFolderPathByDepth(String folder, int folderPathDepth) {
+<span class="fc" id="L203">        StringBuilder sb = new StringBuilder();</span>
+
+<span class="fc" id="L205">        String[] folders = folder.split(&quot;/&quot;);</span>
+<span class="fc" id="L206">        int currentDepth = 0;</span>
+
+<span class="pc bpc" id="L208" title="1 of 4 branches missed.">        while (folderPathDepth &gt;= currentDepth &amp;&amp; currentDepth &lt; folders.length) {</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">            if (currentDepth &gt; 0) {</span>
+<span class="fc" id="L210">                sb.append(&quot;/&quot;);</span>
+            }
+<span class="fc" id="L212">            sb.append(folders[currentDepth]);</span>
+<span class="fc" id="L213">            currentDepth++;</span>
+        }
+
+<span class="fc" id="L216">        return sb.toString();</span>
+    }
+
+    public AssetDto createAsset(String type, MultipartFile file, String group, List&lt;String&gt; categories, String folderPath, UserDetails user) {
+<span class="fc" id="L220">        BaseResourceDataBean resourceFile = new BaseResourceDataBean();</span>
+
+<span class="fc" id="L222">        validateMimeType(type, file.getContentType());</span>
+<span class="fc" id="L223">        validateGroup(user, group);</span>
+
+        try {
+<span class="fc" id="L226">            resourceFile.setInputStream(file.getInputStream());</span>
+<span class="fc" id="L227">            resourceFile.setFileSize(file.getBytes().length / 1000);</span>
+<span class="fc" id="L228">            resourceFile.setFileName(file.getOriginalFilename());</span>
+<span class="fc" id="L229">            resourceFile.setMimeType(file.getContentType());</span>
+<span class="fc" id="L230">            resourceFile.setDescr(file.getOriginalFilename());</span>
+<span class="fc" id="L231">            resourceFile.setMainGroup(group);</span>
+<span class="fc" id="L232">            resourceFile.setResourceType(convertResourceType(type));</span>
+<span class="fc" id="L233">            resourceFile.setCategories(convertCategories(categories));</span>
+<span class="fc" id="L234">            resourceFile.setOwner(user.getUsername());</span>
+<span class="fc" id="L235">            resourceFile.setFolderPath(folderPath);</span>
+
+<span class="fc" id="L237">            ResourceInterface resource = resourceManager.addResource(resourceFile);</span>
+<span class="fc" id="L238">            return convertResourceToDto(resourceManager.loadResource(resource.getId()));</span>
+<span class="nc" id="L239">        } catch (EntException e) {</span>
+<span class="nc" id="L240">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.list&quot;, e);</span>
+<span class="nc" id="L241">        } catch (IOException e) {</span>
+<span class="nc" id="L242">            log.error(&quot;Error reading file input stream&quot;, e);</span>
+<span class="nc" id="L243">            throw new RestServerError(&quot;plugins.jacms.resources.image.errorReadingStream&quot;, e);</span>
+        }
+    }
+
+    public AssetDto cloneAsset(String resourceId) {
+
+        try {
+<span class="fc" id="L250">            ResourceInterface clonedResource = loadResource(resourceId);</span>
+<span class="fc" id="L251">            clonedResource.setId(null);</span>
+<span class="fc" id="L252">            resourceManager.addResource(clonedResource);</span>
+
+<span class="fc" id="L254">            return convertResourceToDto(resourceManager.loadResource(clonedResource.getId()));</span>
+<span class="nc" id="L255">        } catch (EntException e) {</span>
+<span class="nc" id="L256">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.list&quot;, e);</span>
+        }
+    }
+
+    public AssetDto getAsset(String resourceId) {
+        try {
+<span class="fc" id="L262">            ResourceInterface resource = resourceManager.loadResource(resourceId);</span>
+<span class="fc bfc" id="L263" title="All 2 branches covered.">            if (resource == null) {</span>
+<span class="fc" id="L264">                throw new ResourceNotFoundException(ERRCODE_RESOURCE_NOT_FOUND, &quot;asset&quot;, resourceId);</span>
+            }
+
+<span class="fc" id="L267">            return convertResourceToDto(resource);</span>
+<span class="nc" id="L268">        } catch (EntException e) {</span>
+<span class="nc" id="L269">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.get&quot;, e);</span>
+        }
+    }
+
+    public void deleteAsset(String resourceId) {
+        try {
+<span class="fc" id="L275">            ResourceInterface resource = resourceManager.loadResource(resourceId);</span>
+<span class="pc bpc" id="L276" title="1 of 2 branches missed.">            if (resource == null) {</span>
+<span class="nc" id="L277">                throw new ResourceNotFoundException(ERRCODE_RESOURCE_NOT_FOUND, &quot;asset&quot;, resourceId);</span>
+            }
+<span class="fc" id="L279">            resourceManager.deleteResource(resource);</span>
+<span class="nc" id="L280">        } catch (EntException e) {</span>
+<span class="nc" id="L281">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.delete&quot;, e);</span>
+<span class="fc" id="L282">        }</span>
+<span class="fc" id="L283">    }</span>
+
+    private ResourceInterface loadResource(String resourceId) {
+        try {
+<span class="fc" id="L287">            ResourceInterface resource = resourceManager.loadResource(resourceId);</span>
+
+<span class="fc bfc" id="L289" title="All 2 branches covered.">            if (resource == null) {</span>
+<span class="fc" id="L290">                throw new ResourceNotFoundException(ERRCODE_RESOURCE_NOT_FOUND, &quot;asset&quot;, resourceId);</span>
+            }
+
+<span class="fc" id="L293">            return resource;</span>
+<span class="nc" id="L294">        } catch (EntException e) {</span>
+<span class="nc" id="L295">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.persistence&quot;, e);</span>
+        }
+    }
+
+    public AssetDto editAsset(String resourceId, MultipartFile file, String description, List&lt;String&gt; categories, String folderPath) {
+        try {
+<span class="fc" id="L301">            ResourceInterface resource = loadResource(resourceId);</span>
+
+<span class="fc" id="L303">            BaseResourceDataBean resourceFile = new BaseResourceDataBean();</span>
+<span class="fc" id="L304">            resourceFile.setResourceType(resource.getType());</span>
+<span class="fc" id="L305">            resourceFile.setResourceId(resourceId);</span>
+<span class="fc" id="L306">            resourceFile.setMetadata(resource.getMetadata());</span>
+<span class="fc" id="L307">            resourceFile.setOwner(resource.getOwner());</span>
+<span class="fc" id="L308">            resourceFile.setFolderPath(resource.getFolderPath());</span>
+
+<span class="fc bfc" id="L310" title="All 2 branches covered.">            if (file != null) {</span>
+<span class="fc" id="L311">                validateMimeType(unconvertResourceType(resource.getType()), file.getContentType());</span>
+
+<span class="fc" id="L313">                resourceFile.setInputStream(file.getInputStream());</span>
+<span class="fc" id="L314">                resourceFile.setFileSize(file.getBytes().length / 1000);</span>
+<span class="fc" id="L315">                resourceFile.setFileName(file.getOriginalFilename());</span>
+<span class="fc" id="L316">                resourceFile.setMimeType(file.getContentType());</span>
+<span class="fc" id="L317">                resourceFile.setDescr(file.getOriginalFilename());</span>
+
+<span class="pc bpc" id="L319" title="4 of 6 branches missed.">                if ((description == null || description.trim().length() == 0 ) &amp;&amp; resource.getDescription().equals(resource.getMasterFileName())) {</span>
+<span class="nc" id="L320">                    description = resourceFile.getFileName();</span>
+                }
+            }
+
+<span class="pc bpc" id="L324" title="2 of 4 branches missed.">            if (description != null &amp;&amp; !description.trim().isEmpty()) {</span>
+<span class="fc" id="L325">                resourceFile.setDescr(description.trim());</span>
+            } else {
+<span class="nc" id="L327">                resourceFile.setDescr(resource.getDescription());</span>
+            }
+
+<span class="fc bfc" id="L330" title="All 2 branches covered.">            if (folderPath != null) {</span>
+<span class="fc" id="L331">                resourceFile.setFolderPath(folderPath);</span>
+            }
+
+<span class="fc" id="L334">            resourceFile.setMainGroup(resource.getMainGroup());</span>
+<span class="fc" id="L335">            resourceFile.setCategories(convertCategories(categories));</span>
+
+<span class="fc" id="L337">            resourceManager.updateResource(resourceFile);</span>
+<span class="fc" id="L338">            return convertResourceToDto(resourceManager.loadResource(resourceId));</span>
+<span class="nc" id="L339">        } catch (EntException e) {</span>
+<span class="nc" id="L340">            throw new RestServerError(&quot;plugins.jacms.resources.resourceManager.error.persistence&quot;, e);</span>
+<span class="nc" id="L341">        } catch (IOException e) {</span>
+<span class="nc" id="L342">            log.error(&quot;Error reading file input stream&quot;, e);</span>
+<span class="nc" id="L343">            throw new RestServerError(&quot;plugins.jacms.resources.image.errorReadingStream&quot;, e);</span>
+        }
+    }
+
+    /****** Auxiliary Methods ******/
+
+    private List&lt;Category&gt; convertCategories(List&lt;String&gt; categories) {
+<span class="fc" id="L350">        return categories.stream().map(code -&gt; Optional.ofNullable(categoryManager.getCategory(code))</span>
+<span class="fc" id="L351">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L352">                    BeanPropertyBindingResult errors = new BeanPropertyBindingResult(code, &quot;resources.category&quot;);</span>
+<span class="nc" id="L353">                    errors.reject(ERRCODE_CATEGORY_NOT_FOUND, &quot;plugins.jacms.category.error.notFound&quot;);</span>
+<span class="nc" id="L354">                    return new ValidationGenericException(errors);</span>
+                }))
+<span class="fc" id="L356">                .collect(Collectors.toList());</span>
+    }
+
+    public void validateGroup(UserDetails user, String group) {
+<span class="fc" id="L360">        List&lt;Group&gt; groups = authorizationManager.getGroupsByPermission(user, Permission.MANAGE_RESOURCES);</span>
+<span class="fc" id="L361">        groups.addAll(authorizationManager.getGroupsByPermission(user, Permission.CONTENT_EDITOR));</span>
+<span class="fc" id="L362">        groups.addAll(authorizationManager.getGroupsByPermission(user, Permission.CONTENT_SUPERVISOR));</span>
+<span class="fc" id="L363">        groups = groups.stream()</span>
+<span class="fc" id="L364">                .distinct()</span>
+<span class="fc" id="L365">                .collect(Collectors.toList());</span>
+
+<span class="pc bpc" id="L367" title="1 of 2 branches missed.">        for(Group g : groups) {</span>
+<span class="fc bfc" id="L368" title="All 2 branches covered.">            if (g.getAuthority().equals(group)) {</span>
+<span class="fc" id="L369">                return;</span>
+            }
+<span class="fc" id="L371">        }</span>
+
+<span class="nc" id="L373">        BeanPropertyBindingResult errors = new BeanPropertyBindingResult(group, &quot;resources.group&quot;);</span>
+<span class="nc" id="L374">        errors.reject(ERRCODE_GROUP_NOT_FOUND, &quot;plugins.jacms.group.error.notFound&quot;);</span>
+<span class="nc" id="L375">        throw new ValidationGenericException(errors);</span>
+    }
+
+    public void validateMimeType(String resourceType, final String mimeType) {
+<span class="fc" id="L379">        String type = Optional.ofNullable(mimeType)</span>
+<span class="fc" id="L380">                .map(t -&gt; t.split(&quot;/&quot;)[1])</span>
+<span class="fc" id="L381">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L382">                    BeanPropertyBindingResult errors = new BeanPropertyBindingResult(mimeType, &quot;resources.file.type&quot;);</span>
+<span class="nc" id="L383">                    errors.reject(ERRCODE_INVALID_FILE_TYPE, &quot;plugins.jacms.resources.invalidMimeType&quot;);</span>
+<span class="nc" id="L384">                    return new ValidationGenericException(errors);</span>
+                });
+
+        List&lt;String&gt; allowedExtensions;
+<span class="fc bfc" id="L388" title="All 2 branches covered.">        if (ImageAssetDto.RESOURCE_TYPE.equals(resourceType)){</span>
+<span class="fc" id="L389">            allowedExtensions = imageAllowedExtensions;</span>
+<span class="pc bpc" id="L390" title="1 of 2 branches missed.">        } else if (FileAssetDto.RESOURCE_TYPE.equals(resourceType)){</span>
+<span class="fc" id="L391">            allowedExtensions = fileAllowedExtensions;</span>
+        } else {
+<span class="nc" id="L393">            BeanPropertyBindingResult errors = new BeanPropertyBindingResult(mimeType, &quot;resources.file.type&quot;);</span>
+<span class="nc" id="L394">            errors.reject(ERRCODE_INVALID_RESOURCE_TYPE, &quot;plugins.jacms.resources.invalidResourceType&quot;);</span>
+<span class="nc" id="L395">            throw new ValidationGenericException(errors);</span>
+        }
+
+<span class="fc bfc" id="L398" title="All 2 branches covered.">        if (!allowedExtensions.contains(type)) {</span>
+<span class="fc" id="L399">            BeanPropertyBindingResult errors = new BeanPropertyBindingResult(mimeType, &quot;resources.file.type&quot;);</span>
+<span class="fc" id="L400">            errors.reject(ERRCODE_INVALID_FILE_TYPE, &quot;plugins.jacms.resources.invalidMimeType&quot;);</span>
+<span class="fc" id="L401">            throw new ValidationGenericException(errors);</span>
+        }
+<span class="fc" id="L403">    }</span>
+
+    private List&lt;ImageResourceDimension&gt; getImageDimensions() {
+<span class="fc" id="L406">        Map&lt;Integer, ImageResourceDimension&gt; master = imageDimensionManager.getImageDimensions();</span>
+<span class="fc" id="L407">        List&lt;ImageResourceDimension&gt; dimensions = new ArrayList&lt;&gt;(master.values());</span>
+<span class="fc" id="L408">        BeanComparator comparator = new BeanComparator(&quot;dimx&quot;);</span>
+<span class="fc" id="L409">        Collections.sort(dimensions, comparator);</span>
+<span class="fc" id="L410">        return dimensions;</span>
+    }
+
+    private FieldSearchFilter[] createSearchFilters(ListResourceRequest requestList) {
+<span class="fc" id="L414">        List&lt;FieldSearchFilter&gt; filters = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L416" title="All 2 branches covered.">        if (requestList.getType() != null) {</span>
+<span class="fc" id="L417">            filters.add(</span>
+<span class="fc" id="L418">                    new FieldSearchFilter(IResourceManager.RESOURCE_TYPE_FILTER_KEY, convertResourceType(requestList.getType()), false)</span>
+            );
+        }
+
+<span class="fc" id="L422">        List&lt;String&gt; groups = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L423" title="All 2 branches covered.">        for (Filter filter : Optional.ofNullable(requestList.getFilters()).orElse(new Filter[]{})) {</span>
+            String attr;
+<span class="fc" id="L425">            boolean useLikeOption = false;</span>
+<span class="pc bpc" id="L426" title="3 of 8 branches missed.">            switch (filter.getAttribute()) {</span>
+                case &quot;name&quot;:
+<span class="nc" id="L428">                    attr = IResourceManager.RESOURCE_FILENAME_FILTER_KEY;</span>
+<span class="nc" id="L429">                    useLikeOption = true;</span>
+<span class="nc" id="L430">                    break;</span>
+                case &quot;description&quot;:
+<span class="nc" id="L432">                    attr = IResourceManager.RESOURCE_DESCR_FILTER_KEY;</span>
+<span class="nc" id="L433">                    useLikeOption = true;</span>
+<span class="nc" id="L434">                    break;</span>
+                case &quot;createdAt&quot;:
+<span class="fc" id="L436">                    filters.add(createEntitySearchFilter(IResourceManager.RESOURCE_CREATION_DATE_FILTER_KEY, filter));</span>
+<span class="fc" id="L437">                    continue;</span>
+                case &quot;updatedAt&quot;:
+<span class="fc" id="L439">                    filters.add(createEntitySearchFilter(IResourceManager.RESOURCE_MODIFY_DATE_FILTER_KEY, filter));</span>
+<span class="fc" id="L440">                    continue;</span>
+                case &quot;group&quot;:
+<span class="fc" id="L442">                    groups.add(filter.getValue());</span>
+<span class="fc" id="L443">                    continue;</span>
+                case &quot;owner&quot;:
+<span class="fc" id="L445">                    attr = IResourceManager.RESOURCE_OWNER_FILTER_KEY;</span>
+<span class="fc" id="L446">                    break;</span>
+                case &quot;folderPath&quot;:
+<span class="nc" id="L448">                    useLikeOption = true;</span>
+<span class="nc" id="L449">                    attr = IResourceManager.RESOURCE_FOLDER_PATH_FILTER_KEY;</span>
+<span class="nc" id="L450">                    break;</span>
+                default:
+<span class="fc" id="L452">                    log.warn(&quot;Invalid filter attribute: &quot; + filter.getAttribute());</span>
+<span class="fc" id="L453">                    continue;</span>
+            }
+
+<span class="fc" id="L456">            filters.add(</span>
+<span class="fc" id="L457">                    new FieldSearchFilter(attr, filter.getValue(), useLikeOption)</span>
+            );
+
+        }
+
+<span class="fc bfc" id="L462" title="All 2 branches covered.">        if (groups.size() &gt; 0) {</span>
+<span class="fc" id="L463">            filters.add(</span>
+                    new FieldSearchFilter(IResourceManager.RESOURCE_MAIN_GROUP_FILTER_KEY, groups, false)
+            );
+        }
+
+<span class="fc" id="L468">        filters.add(createOrderFilter(requestList));</span>
+
+<span class="fc" id="L470">        return filters.stream().toArray(FieldSearchFilter[]::new);</span>
+    }
+
+    private FieldSearchFilter[] createFolderPathSearchFilter(String folderPath) {
+<span class="fc" id="L474">        List&lt;FieldSearchFilter&gt; filters = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L475" title="All 2 branches covered.">        if (folderPath != null) {</span>
+<span class="fc" id="L476">            filters.add(new FieldSearchFilter(IResourceManager.RESOURCE_FOLDER_PATH_FILTER_KEY, folderPath, true));</span>
+        }
+<span class="fc" id="L478">        return filters.stream().toArray(FieldSearchFilter[]::new);</span>
+    }
+
+    private EntitySearchFilter createEntitySearchFilter(String attribute, Filter filter) {
+<span class="fc" id="L482">        EntitySearchFilter result = null;</span>
+
+<span class="fc bfc" id="L484" title="All 2 branches covered.">        if (FilterOperator.GREATER.getValue().equalsIgnoreCase(filter.getOperator())) {</span>
+<span class="fc" id="L485">            result = new EntitySearchFilter(attribute, false, filter.getValue(), null);</span>
+<span class="pc bpc" id="L486" title="1 of 2 branches missed.">        } else if (FilterOperator.LOWER.getValue().equalsIgnoreCase(filter.getOperator())) {</span>
+<span class="fc" id="L487">            result = new EntitySearchFilter(attribute, false, null, filter.getValue());</span>
+<span class="nc bnc" id="L488" title="All 2 branches missed.">        } else if (FilterOperator.NOT_EQUAL.getValue().equalsIgnoreCase(filter.getOperator())) {</span>
+<span class="nc" id="L489">            result = new EntitySearchFilter(attribute, false, filter.getValue(), false);</span>
+<span class="nc" id="L490">            result.setNotOption(true);</span>
+        } else {
+<span class="nc" id="L492">            result = new EntitySearchFilter(attribute, false, filter.getValue(),</span>
+<span class="nc" id="L493">                    FilterOperator.LIKE.getValue().equalsIgnoreCase(filter.getOperator()),</span>
+                    LikeOptionType.COMPLETE);
+        }
+<span class="fc" id="L496">        result.setOrder(filter.getOrder());</span>
+
+<span class="fc" id="L498">        return result;</span>
+    }
+
+    private EntitySearchFilter createOrderFilter(RestListRequest requestList) {
+<span class="fc" id="L502">        String groupBy = requestList.getSort();</span>
+
+<span class="fc" id="L504">        String key = IResourceManager.RESOURCE_DESCR_FILTER_KEY; //default</span>
+
+<span class="pc bpc" id="L506" title="1 of 2 branches missed.">        if (&quot;description&quot;.equals(groupBy)) {</span>
+<span class="nc" id="L507">            key = IResourceManager.RESOURCE_DESCR_FILTER_KEY;</span>
+<span class="pc bpc" id="L508" title="1 of 2 branches missed.">        } else if (&quot;updatedAt&quot;.equals(groupBy)) {</span>
+<span class="nc" id="L509">            key = IResourceManager.RESOURCE_MODIFY_DATE_FILTER_KEY;</span>
+<span class="pc bpc" id="L510" title="1 of 2 branches missed.">        } else if (&quot;createdAt&quot;.equals(groupBy)) {</span>
+<span class="nc" id="L511">            key = IResourceManager.RESOURCE_CREATION_DATE_FILTER_KEY;</span>
+<span class="fc bfc" id="L512" title="All 2 branches covered.">        } else if (&quot;name&quot;.equals(groupBy)) {</span>
+<span class="fc" id="L513">            key = IResourceManager.RESOURCE_FILENAME_FILTER_KEY;</span>
+<span class="pc bpc" id="L514" title="1 of 2 branches missed.">        } else if (&quot;owner&quot;.equals(groupBy)) {</span>
+<span class="nc" id="L515">            key = IResourceManager.RESOURCE_OWNER_FILTER_KEY;</span>
+<span class="pc bpc" id="L516" title="1 of 2 branches missed.">        } else if (&quot;group&quot;.equals(groupBy)) {</span>
+<span class="fc" id="L517">            key = IResourceManager.RESOURCE_MAIN_GROUP_FILTER_KEY;</span>
+<span class="nc bnc" id="L518" title="All 2 branches missed.">        } else if (&quot;folderPath&quot;.equals(groupBy)) {</span>
+<span class="nc" id="L519">            key = IResourceManager.RESOURCE_FOLDER_PATH_FILTER_KEY;</span>
+        }
+
+<span class="fc" id="L522">        EntitySearchFilter filter = new EntitySearchFilter(key, true);</span>
+<span class="fc bfc" id="L523" title="All 2 branches covered.">        filter.setOrder(requestList.getDirection().equals(EntitySearchFilter.DESC_ORDER) ?</span>
+<span class="fc" id="L524">                EntitySearchFilter.DESC_ORDER : EntitySearchFilter.ASC_ORDER);</span>
+
+<span class="fc" id="L526">        return filter;</span>
+    }
+
+    private List&lt;String&gt; extractCategoriesFromFilters(RestListRequest requestList) {
+<span class="fc" id="L530">        List&lt;String&gt; categories = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L532" title="All 2 branches covered.">        for (Filter filter : Optional.ofNullable(requestList.getFilters()).orElse(new Filter[]{})) {</span>
+<span class="fc bfc" id="L533" title="All 2 branches covered.">            if (filter.getAttribute().equals(&quot;categories&quot;)) {</span>
+<span class="fc" id="L534">                categories.add(filter.getValue());</span>
+            }
+        }
+
+<span class="fc" id="L538">        return categories;</span>
+    }
+
+    public AssetDto convertResourceToDto(ResourceInterface resource) {
+<span class="fc" id="L542">        String type = unconvertResourceType(resource.getType());</span>
+
+<span class="fc bfc" id="L544" title="All 2 branches covered.">        if (ImageAssetDto.RESOURCE_TYPE.equals(type)) {</span>
+<span class="fc" id="L545">            return convertImageResourceToDto((ImageResource) resource);</span>
+<span class="pc bpc" id="L546" title="1 of 2 branches missed.">        } else if (FileAssetDto.RESOURCE_TYPE.equals(type)) {</span>
+<span class="fc" id="L547">            return convertFileResourceToDto((AttachResource) resource);</span>
+        } else {
+<span class="nc" id="L549">            log.error(&quot;Resource type not allowed&quot;);</span>
+<span class="nc" id="L550">            BeanPropertyBindingResult errors = new BeanPropertyBindingResult(type, &quot;resources.file.type&quot;);</span>
+<span class="nc" id="L551">            errors.reject(ERRCODE_INVALID_RESOURCE_TYPE, &quot;plugins.jacms.resources.invalidResourceType&quot;);</span>
+<span class="nc" id="L552">            throw new ValidationGenericException(errors);</span>
+        }
+    }
+
+    private ImageAssetDto convertImageResourceToDto(ImageResource resource) {
+<span class="fc" id="L557">        ImageAssetDto.ImageAssetDtoBuilder builder = ImageAssetDto.builder()</span>
+<span class="fc" id="L558">                .id(resource.getId())</span>
+<span class="fc" id="L559">                .name(resource.getMasterFileName())</span>
+<span class="fc" id="L560">                .description(resource.getDescription())</span>
+<span class="fc" id="L561">                .createdAt(resource.getCreationDate())</span>
+<span class="fc" id="L562">                .updatedAt(resource.getLastModified())</span>
+<span class="fc" id="L563">                .group(resource.getMainGroup())</span>
+<span class="fc" id="L564">                .categories(resource.getCategories().stream()</span>
+<span class="fc" id="L565">                        .map(Category::getCode).collect(Collectors.toList()))</span>
+<span class="fc" id="L566">                .metadata(resource.getMetadata())</span>
+<span class="fc" id="L567">                .version(ImageMetadataDto.builder()</span>
+<span class="fc" id="L568">                        .path(resource.getImagePath(&quot;0&quot;))</span>
+<span class="fc" id="L569">                        .size(resource.getDefaultInstance().getFileLength())</span>
+<span class="fc" id="L570">                        .build())</span>
+<span class="fc" id="L571">                .owner(resource.getOwner())</span>
+<span class="fc" id="L572">                .folderPath(resource.getFolderPath());</span>
+
+<span class="fc bfc" id="L574" title="All 2 branches covered.">        for (ImageResourceDimension dimensions : getImageDimensions()) {</span>
+<span class="fc" id="L575">            ResourceInstance instance = resource.getInstance(dimensions.getIdDim(), null);</span>
+
+<span class="pc bpc" id="L577" title="1 of 2 branches missed.">            if (instance == null) {</span>
+<span class="nc" id="L578">                log.warn(&quot;ResourceInstance not found for dimensions id {} and image id {}&quot;, dimensions.getIdDim(), resource.getId());</span>
+<span class="nc" id="L579">                continue;</span>
+            }
+
+<span class="fc" id="L582">            builder.version(ImageMetadataDto.builder()</span>
+<span class="fc" id="L583">                    .path(resource.getImagePath(String.valueOf(dimensions.getIdDim())))</span>
+<span class="fc" id="L584">                    .size(instance.getFileLength())</span>
+<span class="fc" id="L585">                    .dimensions(String.format(&quot;%dx%d px&quot;, dimensions.getDimx(), dimensions.getDimy()))</span>
+<span class="fc" id="L586">                    .build());</span>
+<span class="fc" id="L587">        }</span>
+
+<span class="fc" id="L589">        return builder.build();</span>
+    }
+
+    private FileAssetDto convertFileResourceToDto(AttachResource resource){
+<span class="fc" id="L593">        return FileAssetDto.builder()</span>
+<span class="fc" id="L594">                .id(resource.getId())</span>
+<span class="fc" id="L595">                .name(resource.getMasterFileName())</span>
+<span class="fc" id="L596">                .description(resource.getDescription())</span>
+<span class="fc" id="L597">                .createdAt(resource.getCreationDate())</span>
+<span class="fc" id="L598">                .updatedAt(resource.getLastModified())</span>
+<span class="fc" id="L599">                .group(resource.getMainGroup())</span>
+<span class="fc" id="L600">                .path(resource.getAttachPath())</span>
+<span class="fc" id="L601">                .size(resource.getDefaultInstance().getFileLength())</span>
+<span class="fc" id="L602">                .categories(resource.getCategories().stream()</span>
+<span class="fc" id="L603">                        .map(Category::getCode).collect(Collectors.toList()))</span>
+<span class="fc" id="L604">                .owner(resource.getOwner())</span>
+<span class="fc" id="L605">                .folderPath(resource.getFolderPath())</span>
+<span class="fc" id="L606">                .build();</span>
+    }
+
+    public String convertResourceType(String type) {
+<span class="fc bfc" id="L610" title="All 2 branches covered.">        if (ImageAssetDto.RESOURCE_TYPE.equals(type)) {</span>
+<span class="fc" id="L611">            return &quot;Image&quot;;</span>
+<span class="pc bpc" id="L612" title="1 of 2 branches missed.">        } else if (FileAssetDto.RESOURCE_TYPE.equals(type)) {</span>
+<span class="fc" id="L613">            return &quot;Attach&quot;;</span>
+        } else {
+<span class="nc" id="L615">            throw new RestServerError(String.format(&quot;Invalid resource type: %s&quot;, type), null);</span>
+        }
+    }
+
+    public String unconvertResourceType(String resourceType) {
+<span class="fc bfc" id="L620" title="All 2 branches covered.">        if (&quot;Image&quot;.equals(resourceType)) {</span>
+<span class="fc" id="L621">            return ImageAssetDto.RESOURCE_TYPE;</span>
+<span class="pc bpc" id="L622" title="1 of 2 branches missed.">        } else if (&quot;Attach&quot;.equals(resourceType)) {</span>
+<span class="fc" id="L623">            return FileAssetDto.RESOURCE_TYPE;</span>
+        } else {
+<span class="nc" id="L625">            throw new RestServerError(String.format(&quot;Invalid resource type: %s&quot;, resourceType), null);</span>
+        }
+    }
+
+    public void setResourceManager(IResourceManager resourceManager) {
+<span class="nc" id="L630">        this.resourceManager = resourceManager;</span>
+<span class="nc" id="L631">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
