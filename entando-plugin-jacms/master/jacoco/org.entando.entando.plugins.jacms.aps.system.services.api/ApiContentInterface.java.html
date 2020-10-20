@@ -387,7 +387,7 @@ import org.entando.entando.plugins.jacms.aps.system.services.api.model.JAXBCmsRe
 <span class="pc bpc" id="L387" title="1 of 2 branches missed.">            if (null == content.getMainGroup()) {</span>
 <span class="nc" id="L388">                errors.add(new ApiError(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Main group null&quot;, Response.Status.CONFLICT));</span>
             }
-<span class="fc" id="L390">            List&lt;FieldError&gt; fieldErrors = content.validate(this.getGroupManager());</span>
+<span class="fc" id="L390">            List&lt;FieldError&gt; fieldErrors = content.validate(this.getGroupManager(), this.getLangManager());</span>
 <span class="pc bpc" id="L391" title="1 of 2 branches missed.">            if (null != fieldErrors) {</span>
 <span class="pc bpc" id="L392" title="1 of 2 branches missed.">                for (int i = 0; i &lt; fieldErrors.size(); i++) {</span>
 <span class="nc" id="L393">                    FieldError fieldError = fieldErrors.get(i);</span>
@@ -399,7 +399,7 @@ import org.entando.entando.plugins.jacms.aps.system.services.api.model.JAXBCmsRe
                     }
                 }
             }
-<span class="nc" id="L402">        } catch (Throwable t) {</span>
+<span class="nc" id="L402">        } catch (Exception t) {</span>
 <span class="nc" id="L403">            _logger.error(&quot;Error validating content&quot;, t);</span>
 <span class="nc" id="L404">            throw new EntException(&quot;Error validating content&quot;, t);</span>
 <span class="fc" id="L405">        }</span>
@@ -509,7 +509,7 @@ import org.entando.entando.plugins.jacms.aps.system.services.api.model.JAXBCmsRe
 <span class="fc" id="L509">    }</span>
 
     public ILangManager getLangManager() {
-<span class="nc" id="L512">        return _langManager;</span>
+<span class="fc" id="L512">        return _langManager;</span>
     }
     public void setLangManager(ILangManager langManager) {
 <span class="fc" id="L515">        this._langManager = langManager;</span>
