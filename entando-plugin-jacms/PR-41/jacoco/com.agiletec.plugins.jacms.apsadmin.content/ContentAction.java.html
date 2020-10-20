@@ -66,8 +66,8 @@ import java.util.Map;
     public void validate() {
 <span class="fc" id="L67">        Content content = this.updateContentOnSession(true);</span>
 <span class="fc" id="L68">        super.validate();</span>
-<span class="nc" id="L69">        this.getContentActionHelper().scanEntity(content, this);</span>
-<span class="nc" id="L70">    }</span>
+<span class="fc" id="L69">        this.getContentActionHelper().scanEntity(content, this);</span>
+<span class="fc" id="L70">    }</span>
 
     /**
      * Esegue l'azione di edit di un contenuto.
@@ -226,7 +226,7 @@ import java.util.Map;
      * @return Il codice del risultato dell'azione.
      */
     public String saveContent() {
-<span class="nc" id="L229">        return this.saveContent(false);</span>
+<span class="fc" id="L229">        return this.saveContent(false);</span>
     }
 
     /**
@@ -241,36 +241,36 @@ import java.util.Map;
 
     protected String saveContent(boolean approve) {
         try {
-<span class="nc" id="L244">            Content currentContent = this.getContent();</span>
-<span class="nc bnc" id="L245" title="All 2 branches missed.">            if (null != currentContent) {</span>
-<span class="nc bnc" id="L246" title="All 2 branches missed.">                int strutsAction = (null == currentContent.getId()) ? ApsAdminSystemConstants.ADD : ApsAdminSystemConstants.EDIT;</span>
-<span class="nc bnc" id="L247" title="All 2 branches missed.">                if (approve) {</span>
+<span class="fc" id="L244">            Content currentContent = this.getContent();</span>
+<span class="pc bpc" id="L245" title="1 of 2 branches missed.">            if (null != currentContent) {</span>
+<span class="fc bfc" id="L246" title="All 2 branches covered.">                int strutsAction = (null == currentContent.getId()) ? ApsAdminSystemConstants.ADD : ApsAdminSystemConstants.EDIT;</span>
+<span class="pc bpc" id="L247" title="1 of 2 branches missed.">                if (approve) {</span>
 <span class="nc" id="L248">                    strutsAction += 10;</span>
                 }
-<span class="nc bnc" id="L250" title="All 2 branches missed.">                if (!this.getContentActionHelper().isUserAllowed(currentContent, this.getCurrentUser())) {</span>
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">                if (!this.getContentActionHelper().isUserAllowed(currentContent, this.getCurrentUser())) {</span>
 <span class="nc" id="L251">                    _logger.info(&quot;User not allowed to save content {}&quot;, currentContent.getId());</span>
 <span class="nc" id="L252">                    return USER_NOT_ALLOWED;</span>
                 }
-<span class="nc" id="L254">                currentContent.setLastEditor(this.getCurrentUser().getUsername());</span>
-<span class="nc bnc" id="L255" title="All 2 branches missed.">                if (approve) {</span>
+<span class="fc" id="L254">                currentContent.setLastEditor(this.getCurrentUser().getUsername());</span>
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">                if (approve) {</span>
 <span class="nc" id="L256">                    this.getContentManager().insertOnLineContent(currentContent);</span>
                 } else {
-<span class="nc" id="L258">                    this.getContentManager().saveContent(currentContent);</span>
+<span class="fc" id="L258">                    this.getContentManager().saveContent(currentContent);</span>
                 }
-<span class="nc" id="L260">                this.addActivityStreamInfo(currentContent, strutsAction, true);</span>
-<span class="nc" id="L261">                this.getRequest().getSession().removeAttribute(ContentActionConstants.SESSION_PARAM_NAME_CURRENT_CONTENT_PREXIX</span>
-<span class="nc" id="L262">                        + super.getContentOnSessionMarker());</span>
-<span class="nc" id="L263">                this.getRequest().getSession().removeAttribute(ContentActionConstants.SESSION_PARAM_NAME_CURRENT_CONTENT_GROUP);</span>
-<span class="nc" id="L264">                _logger.info(&quot;Saving content {} - Description: '{}' - User: {}&quot;, currentContent.getId(), currentContent.getDescription(),</span>
-<span class="nc" id="L265">                        this.getCurrentUser().getUsername());</span>
-<span class="nc" id="L266">            } else {</span>
+<span class="fc" id="L260">                this.addActivityStreamInfo(currentContent, strutsAction, true);</span>
+<span class="fc" id="L261">                this.getRequest().getSession().removeAttribute(ContentActionConstants.SESSION_PARAM_NAME_CURRENT_CONTENT_PREXIX</span>
+<span class="fc" id="L262">                        + super.getContentOnSessionMarker());</span>
+<span class="fc" id="L263">                this.getRequest().getSession().removeAttribute(ContentActionConstants.SESSION_PARAM_NAME_CURRENT_CONTENT_GROUP);</span>
+<span class="fc" id="L264">                _logger.info(&quot;Saving content {} - Description: '{}' - User: {}&quot;, currentContent.getId(), currentContent.getDescription(),</span>
+<span class="fc" id="L265">                        this.getCurrentUser().getUsername());</span>
+<span class="fc" id="L266">            } else {</span>
 <span class="nc" id="L267">                _logger.error(&quot;Save/approve NULL content - User: {}&quot;, this.getCurrentUser().getUsername());</span>
             }
 <span class="nc" id="L269">        } catch (Throwable t) {</span>
 <span class="nc" id="L270">            _logger.error(&quot;error in saveContent&quot;, t);</span>
 <span class="nc" id="L271">            return FAILURE;</span>
-<span class="nc" id="L272">        }</span>
-<span class="nc" id="L273">        return SUCCESS;</span>
+<span class="fc" id="L272">        }</span>
+<span class="fc" id="L273">        return SUCCESS;</span>
     }
 
     /**
@@ -281,16 +281,16 @@ import java.util.Map;
      */
     public String suspend() {
         try {
-<span class="nc" id="L284">            Content currentContent = this.updateContentOnSession();</span>
-<span class="nc bnc" id="L285" title="All 2 branches missed.">            if (null != currentContent) {</span>
-<span class="nc bnc" id="L286" title="All 2 branches missed.">                if (!this.getContentActionHelper().isUserAllowed(currentContent, this.getCurrentUser())) {</span>
+<span class="fc" id="L284">            Content currentContent = this.updateContentOnSession();</span>
+<span class="pc bpc" id="L285" title="1 of 2 branches missed.">            if (null != currentContent) {</span>
+<span class="pc bpc" id="L286" title="1 of 2 branches missed.">                if (!this.getContentActionHelper().isUserAllowed(currentContent, this.getCurrentUser())) {</span>
 <span class="nc" id="L287">                    _logger.info(&quot;User not allowed to unpublish content {}&quot;, currentContent.getId());</span>
 <span class="nc" id="L288">                    return USER_NOT_ALLOWED;</span>
                 }
-<span class="nc" id="L290">                Map extractedReferences = this.getContentActionHelper().getReferencingObjects(currentContent, this.getRequest());</span>
-<span class="nc bnc" id="L291" title="All 2 branches missed.">                if (extractedReferences.size() &gt; 0) {</span>
-<span class="nc" id="L292">                    this.setReferences(extractedReferences);</span>
-<span class="nc" id="L293">                    return &quot;references&quot;;</span>
+<span class="fc" id="L290">                Map extractedReferences = this.getContentActionHelper().getReferencingObjects(currentContent, this.getRequest());</span>
+<span class="pc bpc" id="L291" title="1 of 2 branches missed.">                if (extractedReferences.size() &gt; 0) {</span>
+<span class="fc" id="L292">                    this.setReferences(extractedReferences);</span>
+<span class="fc" id="L293">                    return &quot;references&quot;;</span>
                 }
 <span class="nc" id="L295">                this.getContentManager().removeOnLineContent(currentContent);</span>
 <span class="nc" id="L296">                this.addActivityStreamInfo(currentContent, (ApsAdminSystemConstants.DELETE + 10), true);</span>
@@ -366,12 +366,12 @@ import java.util.Map;
     }
 
     public Map getReferences() {
-<span class="nc" id="L369">        return references;</span>
+<span class="fc" id="L369">        return references;</span>
     }
 
     protected void setReferences(Map references) {
-<span class="nc" id="L373">        this.references = references;</span>
-<span class="nc" id="L374">    }</span>
+<span class="fc" id="L373">        this.references = references;</span>
+<span class="fc" id="L374">    }</span>
 
     protected IPageManager getPageManager() {
 <span class="nc" id="L377">        return pageManager;</span>

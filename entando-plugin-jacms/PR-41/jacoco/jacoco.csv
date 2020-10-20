@@ -47,9 +47,9 @@ Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.resource,ResourcesCont
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.resource.request,UpdateResourceRequest,0,24,0,0,0,10,0,7,0,7
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.resource.request,ListResourceRequest,70,24,14,0,11,10,9,7,2,7
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.resource.request,CreateResourceRequest,0,31,0,0,0,13,0,9,0,9
-Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.manager,ResourceAttributeManager,43,92,7,7,11,19,8,5,3,3
+Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.manager,ResourceAttributeManager,24,111,5,9,5,25,6,7,1,5
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.manager,HypertextAttributeManager,62,3,12,0,16,1,7,1,1,1
-Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.manager,LinkAttributeManager,53,3,12,0,16,1,8,1,2,1
+Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.manager,LinkAttributeManager,19,37,6,6,6,11,7,2,1,2
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.action.link,LinkAttributeAction,157,147,13,3,53,53,21,25,12,23
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.action.link,UrlLinkAction,101,94,9,3,24,27,14,13,8,13
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.action.link,PageLinkAction,111,186,10,10,30,50,16,22,8,20
@@ -99,7 +99,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.resource,MultipleResourc
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.group,JoinGroupBulkCommand,18,45,5,5,4,10,6,2,1,2
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.group,BaseContentGroupBulkCommand,21,134,12,14,7,40,10,13,0,10
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.group,RemoveGroupBulkCommand,18,45,5,5,4,10,6,2,1,2
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.dispenser,BaseContentDispenser,59,470,17,31,19,95,17,34,0,27
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.dispenser,BaseContentDispenser,60,469,18,30,19,95,18,33,0,27
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.dispenser,ContentRenderizationInfo,71,84,3,7,23,23,13,9,10,7
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.widget.util,FilterUtils,150,63,5,5,30,13,9,6,6,4
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.widget.util,EntitySearchFilterDOM,29,0,0,0,7,0,5,0,5,0
@@ -136,7 +136,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.contentmodel.
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model.util,ImageDimensionReader,16,38,1,1,4,14,1,7,0,7
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.contentmodel.event,ContentModelChangedEvent,3,21,0,0,1,9,1,6,1,6
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.portal.specialwidget.rowcontentlist,RowContentListViewerWidgetAction,592,0,62,0,163,0,64,0,33,0
-Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.helper,ContentActionHelper,107,499,32,64,28,113,30,34,0,16
+Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.helper,ContentActionHelper,103,503,30,66,26,115,28,36,0,16
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.tags.util,SearcherTagHelper,71,0,6,0,16,0,5,0,2,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,ImageAttribute,0,32,0,2,0,10,0,6,0,5
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,AttachAttribute,10,93,3,7,4,28,3,8,0,6
@@ -147,7 +147,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,ContentStatusState,83,0,8,0,16,0,7,0,3,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,JAXBResourceValue,0,31,0,0,0,13,0,9,0,9
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,JAXBLinkAttribute,0,10,0,0,0,4,0,3,0,3
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,AbstractResourceAttribute,173,575,29,45,46,144,32,52,10,37
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute,AbstractResourceAttribute,171,577,28,46,45,145,31,53,10,37
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.contentmodel,ContentModelRequestListProcessor,16,66,2,5,4,11,4,13,2,10
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.contentmodel,ContentModelReferencesRequestListProcessor,52,25,6,1,9,6,11,5,6,5
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.portal.specialwidget.viewer,ContentViewerWidgetAction,88,107,2,10,22,33,5,15,4,10
@@ -195,7 +195,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource,Reso
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource,ResourceManager,527,700,21,21,124,183,23,48,9,41
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource,ResourceReloaderThread,94,0,12,0,27,0,13,0,7,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource,ResourceDAO,228,831,8,48,51,210,10,50,3,29
-Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.helper,ContentHelper,30,101,4,8,6,27,4,9,0,7
+Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.helper,ContentHelper,17,114,3,9,5,28,3,10,0,7
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.contentmodel,ContentRestriction,3,11,0,4,1,1,1,3,1,1
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.contentmodel,ContentModelManager,56,666,13,75,11,165,11,62,0,28
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.contentmodel,ContentModel,35,64,12,4,8,23,8,15,2,13
@@ -263,7 +263,7 @@ Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.preview,C
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.preview,ContentPreviewDispenser,124,11,12,0,27,4,10,3,4,3
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.servlet,ProtectedResourceProvider,335,39,36,0,85,18,31,10,13,10
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute.util,HypertextAttributeUtil,241,28,35,5,55,8,24,3,5,2
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute.util,SymbolicLinkValidator,56,274,8,28,10,79,8,25,0,13
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.model.attribute.util,SymbolicLinkValidator,54,276,7,29,9,80,7,26,0,13
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.portal.specialwidget.listviewer,NumberAttributeFilterAction,0,68,0,6,0,22,0,13,0,10
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.portal.specialwidget.listviewer,BaseFilterAction,146,163,17,11,37,55,22,24,10,22
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.portal.specialwidget.listviewer,TextAttributeFilterAction,78,12,10,0,22,5,13,4,8,4
@@ -274,10 +274,10 @@ Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.resource.validator,Res
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentAdminAction,52,453,12,34,14,122,13,50,3,37
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentInspectionAction,187,257,11,25,33,72,10,25,1,16
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentCategoryAction,18,115,2,6,7,34,3,16,1,14
-Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentAction,481,282,44,14,120,76,44,23,19,19
-Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentFinderAction,1052,876,117,67,275,251,116,70,47,47
+Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentAction,354,409,35,23,90,106,38,29,14,24
+Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentFinderAction,1007,921,112,72,262,264,113,73,47,47
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,ContentFinderSearchInfo,103,119,9,13,30,31,19,12,13,7
-Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,AbstractContentAction,117,132,3,3,26,33,10,21,8,19
+Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,AbstractContentAction,106,143,3,3,23,36,9,22,7,20
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content,IntroNewContentAction,32,161,2,6,12,46,2,17,0,15
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.util,CmsPageActionUtil,15,0,0,0,4,0,4,0,4,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.util,ResourceIconUtil,59,11,8,0,14,5,9,3,5,3

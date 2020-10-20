@@ -425,8 +425,8 @@ public abstract class AbstractResourceAttribute extends TextAttribute
     public Status getStatus() {
 <span class="fc" id="L426">        Status textStatus = super.getStatus();</span>
 <span class="fc bfc" id="L427" title="All 2 branches covered.">        Status resourceStatus = (null != this.getResource()) ? Status.VALUED : Status.EMPTY;</span>
-<span class="pc bpc" id="L428" title="1 of 2 branches missed.">        if (!textStatus.equals(resourceStatus)) {</span>
-<span class="nc" id="L429">            return Status.INCOMPLETE;</span>
+<span class="fc bfc" id="L428" title="All 2 branches covered.">        if (!textStatus.equals(resourceStatus)) {</span>
+<span class="fc" id="L429">            return Status.INCOMPLETE;</span>
         }
 <span class="pc bpc" id="L431" title="1 of 4 branches missed.">        if (textStatus.equals(resourceStatus) &amp;&amp; textStatus.equals(Status.VALUED)) {</span>
 <span class="fc" id="L432">            return Status.VALUED;</span>

@@ -44,9 +44,9 @@ import org.apache.commons.beanutils.BeanComparator;
 <span class="fc" id="L44">	private static final EntLogger _logger = EntLogFactory.getSanitizedLogger(AbstractContentAction.class);</span>
 	
 	protected void addActivityStreamInfo(Content content, int strutsAction, boolean addLink) {
-<span class="nc" id="L47">		ActivityStreamInfo asi = this.getContentActionHelper().createActivityStreamInfo(content, strutsAction, addLink);</span>
-<span class="nc" id="L48">		super.addActivityStreamInfo(asi);</span>
-<span class="nc" id="L49">	}</span>
+<span class="fc" id="L47">		ActivityStreamInfo asi = this.getContentActionHelper().createActivityStreamInfo(content, strutsAction, addLink);</span>
+<span class="fc" id="L48">		super.addActivityStreamInfo(asi);</span>
+<span class="fc" id="L49">	}</span>
 	
 	/**
 	 * Restituisce il contenuto vo in base all'identificativo.

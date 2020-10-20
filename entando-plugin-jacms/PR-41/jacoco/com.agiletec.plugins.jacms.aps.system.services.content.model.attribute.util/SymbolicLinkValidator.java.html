@@ -128,10 +128,10 @@ public class SymbolicLinkValidator {
         }
 <span class="fc" id="L129">        Set&lt;String&gt; linkingContentGroups = this.extractContentGroups(content);</span>
 <span class="fc" id="L130">        boolean check = CollectionUtils.containsAll(linkedContentGroups, linkingContentGroups);</span>
-<span class="pc bpc" id="L131" title="1 of 2 branches missed.">        if (!check) {</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">        if (!check) {</span>
 <span class="fc" id="L132">            return new AttributeFieldError(null, ICmsAttributeErrorCodes.INVALID_CONTENT_GROUPS, null);</span>
         }
-<span class="nc" id="L134">        return null;</span>
+<span class="fc" id="L134">        return null;</span>
     }
 
     protected AttributeFieldError checkResourceDest(SymbolicLink symbLink, Content content) {

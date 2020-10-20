@@ -312,7 +312,7 @@ import org.apache.commons.lang3.ArrayUtils;
             }
 <span class="fc" id="L313">            Iterator&lt;String&gt; iter = this.getContentIds().iterator();</span>
 <span class="fc" id="L314">            List&lt;Content&gt; publishedContents = new ArrayList&lt;Content&gt;();</span>
-<span class="pc bpc" id="L315" title="1 of 2 branches missed.">            while (iter.hasNext()) {</span>
+<span class="fc bfc" id="L315" title="All 2 branches covered.">            while (iter.hasNext()) {</span>
 <span class="fc" id="L316">                String contentId = (String) iter.next();</span>
 <span class="fc" id="L317">                Content contentToPublish = this.getContentManager().loadContent(contentId, false);</span>
 <span class="fc" id="L318">                String[] msgArg = new String[1];</span>
@@ -322,28 +322,28 @@ import org.apache.commons.lang3.ArrayUtils;
 <span class="nc" id="L322">                    continue;</span>
                 }
 <span class="fc" id="L324">                msgArg[0] = contentToPublish.getDescription();</span>
-<span class="nc bnc" id="L325" title="All 2 branches missed.">                if (!this.isUserAllowed(contentToPublish)) {</span>
-<span class="nc" id="L326">                    this.addActionError(this.getText(&quot;error.content.userNotAllowedToPublishContent&quot;, msgArg));</span>
-<span class="nc" id="L327">                    continue;</span>
+<span class="fc bfc" id="L325" title="All 2 branches covered.">                if (!this.isUserAllowed(contentToPublish)) {</span>
+<span class="fc" id="L326">                    this.addActionError(this.getText(&quot;error.content.userNotAllowedToPublishContent&quot;, msgArg));</span>
+<span class="fc" id="L327">                    continue;</span>
                 }
-<span class="nc" id="L329">                this.getContentActionHelper().scanEntity(contentToPublish, this);</span>
-<span class="nc bnc" id="L330" title="All 2 branches missed.">                if (this.getFieldErrors().size() &gt; 0) {</span>
-<span class="nc" id="L331">                    this.addActionError(this.getText(&quot;error.content.publishingContentWithErrors&quot;, msgArg));</span>
-<span class="nc" id="L332">                    continue;</span>
+<span class="fc" id="L329">                this.getContentActionHelper().scanEntity(contentToPublish, this);</span>
+<span class="fc bfc" id="L330" title="All 2 branches covered.">                if (this.getFieldErrors().size() &gt; 0) {</span>
+<span class="fc" id="L331">                    this.addActionError(this.getText(&quot;error.content.publishingContentWithErrors&quot;, msgArg));</span>
+<span class="fc" id="L332">                    continue;</span>
                 }
-<span class="nc" id="L334">                this.getContentManager().insertOnLineContent(contentToPublish);</span>
-<span class="nc" id="L335">                logger.info(&quot;Published content {} by user {}&quot;, contentToPublish.getId(),</span>
-<span class="nc" id="L336">                        this.getCurrentUser().getUsername());</span>
-<span class="nc" id="L337">                publishedContents.add(contentToPublish);</span>
-<span class="nc" id="L338">                this.addActivityStreamInfo(contentToPublish, (ApsAdminSystemConstants.ADD + 10), true);</span>
-<span class="nc" id="L339">            }</span>
+<span class="fc" id="L334">                this.getContentManager().insertOnLineContent(contentToPublish);</span>
+<span class="fc" id="L335">                logger.info(&quot;Published content {} by user {}&quot;, contentToPublish.getId(),</span>
+<span class="fc" id="L336">                        this.getCurrentUser().getUsername());</span>
+<span class="fc" id="L337">                publishedContents.add(contentToPublish);</span>
+<span class="fc" id="L338">                this.addActivityStreamInfo(contentToPublish, (ApsAdminSystemConstants.ADD + 10), true);</span>
+<span class="fc" id="L339">            }</span>
             // RIVISITARE LABEL e LOGICA DI COSTRUZIONE LABEL
-<span class="nc" id="L341">            this.addConfirmMessage(&quot;message.content.publishedContents&quot;, publishedContents);</span>
-<span class="fc" id="L342">        } catch (Throwable t) {</span>
-<span class="fc" id="L343">            logger.error(&quot;error in insertOnLine&quot;, t);</span>
-<span class="fc" id="L344">            throw new RuntimeException(&quot;Error publishing contents&quot;, t);</span>
-<span class="nc" id="L345">        }</span>
-<span class="nc" id="L346">        return SUCCESS;</span>
+<span class="fc" id="L341">            this.addConfirmMessage(&quot;message.content.publishedContents&quot;, publishedContents);</span>
+<span class="nc" id="L342">        } catch (Throwable t) {</span>
+<span class="nc" id="L343">            logger.error(&quot;error in insertOnLine&quot;, t);</span>
+<span class="nc" id="L344">            throw new RuntimeException(&quot;Error publishing contents&quot;, t);</span>
+<span class="fc" id="L345">        }</span>
+<span class="fc" id="L346">        return SUCCESS;</span>
     }
 
     /**
