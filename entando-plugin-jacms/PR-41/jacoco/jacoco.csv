@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.bulk,ContentBulkAction,118,44,5,1,28,15,17,11,14,11
+Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.bulk,ContentBulkAction,50,112,4,2,11,32,10,18,7,18
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.bulk,ContentCategoryBulkAction,64,219,11,11,19,65,14,29,4,28
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.bulk,ContentGroupBulkAction,40,191,4,8,14,58,7,30,3,28
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.manager.util,SymbolicLinkErrorMessenger,232,0,41,0,59,0,32,0,10,0
@@ -113,7 +113,7 @@ Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.content.validator,Cont
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.web.content.validator,ContentTypeValidator,3,6,0,0,1,3,1,1,1,1
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.linkresolver,LinkResolverManager,49,341,8,32,11,98,12,33,4,21
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command,RemoveOnlineContentBulkCommand,52,0,6,0,13,0,9,0,6,0
-Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command,InsertOnlineContentBulkCommand,99,0,18,0,26,0,18,0,9,0
+Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command,InsertOnlineContentBulkCommand,12,87,9,9,3,23,10,8,1,8
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command,DeleteContentBulkCommand,28,0,2,0,8,0,4,0,3,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.event,PublicContentChangedEvent,0,24,0,0,0,10,0,7,0,7
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.resource.helper,ResourceActionHelper,21,77,3,7,7,18,3,6,0,4
