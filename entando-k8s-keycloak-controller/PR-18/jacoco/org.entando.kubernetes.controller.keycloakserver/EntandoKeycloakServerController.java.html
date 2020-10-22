@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EntandoKeycloakServerController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Entando K8S Controller for Keycloak</a> &gt; <a href="index.source.html" class="el_package">org.entando.kubernetes.controller.keycloakserver</a> &gt; <span class="el_source">EntandoKeycloakServerController.java</span></div><h1>EntandoKeycloakServerController.java</h1><pre class="source lang-java linenums">/*
+ *
+ * Copyright 2015-Present Entando Inc. (http://www.entando.com) All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ *
+ */
+
+package org.entando.kubernetes.controller.keycloakserver;
+
+import static java.lang.String.format;
+
+import io.fabric8.kubernetes.api.model.Secret;
+import io.fabric8.kubernetes.api.model.SecretBuilder;
+import io.fabric8.kubernetes.client.KubernetesClient;
+import io.quarkus.runtime.StartupEvent;
+import java.util.Optional;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.entando.kubernetes.controller.AbstractDbAwareController;
+import org.entando.kubernetes.controller.DeployCommand;
+import org.entando.kubernetes.controller.EntandoOperatorConfig;
+import org.entando.kubernetes.controller.ExposedService;
+import org.entando.kubernetes.controller.KeycloakConnectionConfig;
+import org.entando.kubernetes.controller.KubeUtils;
+import org.entando.kubernetes.controller.SimpleKeycloakClient;
+import org.entando.kubernetes.controller.common.KeycloakConnectionSecret;
+import org.entando.kubernetes.controller.database.DatabaseServiceResult;
+import org.entando.kubernetes.controller.k8sclient.SimpleK8SClient;
+import org.entando.kubernetes.model.DbmsVendor;
+import org.entando.kubernetes.model.keycloakserver.EntandoKeycloakServer;
+
+public class EntandoKeycloakServerController extends AbstractDbAwareController&lt;EntandoKeycloakServer&gt; {
+
+    @Inject
+    public EntandoKeycloakServerController(KubernetesClient kubernetesClient) {
+<span class="nc" id="L46">        super(kubernetesClient);</span>
+<span class="nc" id="L47">    }</span>
+
+    public EntandoKeycloakServerController(KubernetesClient kubernetesClient, boolean exitAutomatically) {
+<span class="nc" id="L50">        super(kubernetesClient, exitAutomatically);</span>
+<span class="nc" id="L51">    }</span>
+
+    public EntandoKeycloakServerController(SimpleK8SClient&lt;?&gt; k8sClient, SimpleKeycloakClient keycloakClient) {
+<span class="fc" id="L54">        super(k8sClient, keycloakClient);</span>
+<span class="fc" id="L55">    }</span>
+
+    public void onStartup(@Observes StartupEvent event) {
+<span class="fc" id="L58">        processCommand();</span>
+<span class="fc" id="L59">    }</span>
+
+    @Override
+    protected void synchronizeDeploymentState(EntandoKeycloakServer newEntandoKeycloakServer) {
+<span class="fc" id="L63">        DatabaseServiceResult databaseServiceResult = prepareKeycloakDatabaseService(newEntandoKeycloakServer);</span>
+<span class="fc" id="L64">        Secret existingKeycloakAdminSecret = prepareLocalKeycloakAdminSecret(newEntandoKeycloakServer);</span>
+<span class="fc" id="L65">        KeycloakServiceDeploymentResult serviceDeploymentResult = deployKeycloak(newEntandoKeycloakServer, databaseServiceResult,</span>
+                existingKeycloakAdminSecret);
+<span class="fc" id="L67">        ensureHttpAccess(serviceDeploymentResult);</span>
+<span class="fc" id="L68">        Secret myLocalKeycloakAdminSecret = overwriteMyKeycloakAdminSecret(newEntandoKeycloakServer, serviceDeploymentResult);</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (newEntandoKeycloakServer.getSpec().isDefault()) {</span>
+<span class="fc" id="L70">            overwriteDefaultKeycloakAdminSecret(serviceDeploymentResult);</span>
+        }
+<span class="fc" id="L72">        ensureKeycloakRealm(new KeycloakConnectionSecret(myLocalKeycloakAdminSecret));</span>
+<span class="fc" id="L73">        k8sClient.entandoResources().updateStatus(newEntandoKeycloakServer, serviceDeploymentResult.getStatus());</span>
+<span class="fc" id="L74">    }</span>
+
+    private void overwriteDefaultKeycloakAdminSecret(KeycloakServiceDeploymentResult serviceDeploymentResult) {
+        //Create or overwrite the default local keycloak admin secret in case new credentials were created.
+<span class="fc" id="L78">        overwriteKeycloakSecret(</span>
+                serviceDeploymentResult,
+<span class="fc" id="L80">                EntandoOperatorConfig.getDefaultKeycloakSecretName(),</span>
+<span class="fc" id="L81">                new KeycloakConnectionSecret(serviceDeploymentResult.getKeycloakAdminSecret()));</span>
+<span class="fc" id="L82">    }</span>
+
+    private Secret overwriteMyKeycloakAdminSecret(EntandoKeycloakServer newEntandoKeycloakServer,
+            KeycloakServiceDeploymentResult serviceDeploymentResult) {
+        //Create or overwrite the local keycloak admin secret for this EntandoKeycloakServer in case new credentials were created.
+<span class="fc" id="L87">        return overwriteKeycloakSecret(</span>
+                serviceDeploymentResult,
+<span class="fc" id="L89">                myLocalKeycloakAdminSecretName(newEntandoKeycloakServer),</span>
+<span class="fc" id="L90">                new KeycloakConnectionSecret(serviceDeploymentResult.getKeycloakAdminSecret()));</span>
+    }
+
+    private void ensureHttpAccess(KeycloakServiceDeploymentResult serviceDeploymentResult) {
+        //Give the operator access over http for cluster.local calls
+<span class="fc" id="L95">        k8sClient.pods().executeOnPod(serviceDeploymentResult.getPod(), &quot;server-container&quot;,</span>
+                &quot;cd /opt/jboss/keycloak/bin&quot;,
+                &quot;./kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user $KEYCLOAK_USER --password &quot;
+                        + &quot;$KEYCLOAK_PASSWORD&quot;,
+                &quot;./kcadm.sh update realms/master -s sslRequired=NONE&quot;
+        );
+<span class="fc" id="L101">    }</span>
+
+    private KeycloakServiceDeploymentResult deployKeycloak(EntandoKeycloakServer newEntandoKeycloakServer,
+            DatabaseServiceResult databaseServiceResult, Secret existingKeycloakAdminSecret) {
+        // Create the Keycloak service using the provided database and  the locally stored keycloak admin credentials
+        // for this EntandoKeycloakServer.
+<span class="fc" id="L107">        KeycloakDeployable keycloakDeployable = new KeycloakDeployable(</span>
+                newEntandoKeycloakServer,
+                databaseServiceResult,
+                existingKeycloakAdminSecret);
+<span class="fc" id="L111">        DeployCommand&lt;KeycloakServiceDeploymentResult, EntandoKeycloakServer&gt; keycloakCommand = new DeployCommand&lt;&gt;(keycloakDeployable);</span>
+<span class="fc" id="L112">        return keycloakCommand.execute(k8sClient, Optional.of(keycloakClient)).withStatus(keycloakCommand.getStatus());</span>
+    }
+
+    private Secret prepareLocalKeycloakAdminSecret(EntandoKeycloakServer newEntandoKeycloakServer) {
+<span class="fc" id="L116">        Secret existingKeycloakAdminSecret = k8sClient.secrets()</span>
+<span class="fc" id="L117">                .loadControllerSecret(myLocalKeycloakAdminSecretName(newEntandoKeycloakServer));</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (existingKeycloakAdminSecret == null) {</span>
+            //We need to FIRST populate the secret in the controller's namespace so that, if deployment fails, we have the credentials
+            // that the secret in the Deployment's namespace was based on, because we may not have read access to it.
+<span class="fc" id="L121">            existingKeycloakAdminSecret = new SecretBuilder()</span>
+<span class="fc" id="L122">                    .withNewMetadata()</span>
+<span class="fc" id="L123">                    .withName(myLocalKeycloakAdminSecretName(newEntandoKeycloakServer))</span>
+<span class="fc" id="L124">                    .endMetadata()</span>
+<span class="fc" id="L125">                    .addToStringData(KubeUtils.USERNAME_KEY, &quot;entando_keycloak_admin&quot;)</span>
+<span class="fc" id="L126">                    .addToStringData(KubeUtils.PASSSWORD_KEY, RandomStringUtils.randomAlphanumeric(10))</span>
+<span class="fc" id="L127">                    .build();</span>
+<span class="fc" id="L128">            k8sClient.secrets().overwriteControllerSecret(existingKeycloakAdminSecret);</span>
+
+        }
+<span class="fc" id="L131">        return existingKeycloakAdminSecret;</span>
+    }
+
+    private DatabaseServiceResult prepareKeycloakDatabaseService(EntandoKeycloakServer newEntandoKeycloakServer) {
+        // Create database for Keycloak
+<span class="fc" id="L136">        return prepareDatabaseService(</span>
+                newEntandoKeycloakServer,
+<span class="fc" id="L138">                newEntandoKeycloakServer.getSpec().getDbms().orElse(DbmsVendor.EMBEDDED),</span>
+                &quot;db&quot;);
+    }
+
+    private String myLocalKeycloakAdminSecretName(EntandoKeycloakServer newEntandoKeycloakServer) {
+<span class="fc" id="L143">        return newEntandoKeycloakServer.getMetadata().getName() + &quot;-connection-secret&quot;;</span>
+    }
+
+    private Secret overwriteKeycloakSecret(ExposedService serviceDeploymentResult, String secretName,
+            KeycloakConnectionConfig keycloakConnectionConfig) {
+<span class="fc" id="L148">        Secret secret = new SecretBuilder()</span>
+<span class="fc" id="L149">                .withNewMetadata()</span>
+<span class="fc" id="L150">                .withName(secretName)</span>
+<span class="fc" id="L151">                .endMetadata()</span>
+<span class="fc" id="L152">                .addToStringData(KubeUtils.USERNAME_KEY, keycloakConnectionConfig.getUsername())</span>
+<span class="fc" id="L153">                .addToStringData(KubeUtils.PASSSWORD_KEY, keycloakConnectionConfig.getPassword())</span>
+<span class="fc" id="L154">                .addToStringData(KubeUtils.URL_KEY, serviceDeploymentResult.getExternalBaseUrl())</span>
+<span class="fc" id="L155">                .addToStringData(KubeUtils.INTERNAL_URL_KEY, serviceDeploymentResult.getInternalBaseUrl())</span>
+<span class="fc" id="L156">                .build();</span>
+<span class="fc" id="L157">        k8sClient.secrets().overwriteControllerSecret(secret);</span>
+<span class="fc" id="L158">        return secret;</span>
+    }
+
+    private void ensureKeycloakRealm(KeycloakConnectionConfig keycloakConnectionConfig) {
+<span class="fc" id="L162">        logger.severe(() -&gt; format(&quot;Attempting to log into Keycloak at %s&quot;, keycloakConnectionConfig.determineBaseUrl()));</span>
+<span class="fc" id="L163">        keycloakClient.login(keycloakConnectionConfig.determineBaseUrl(), keycloakConnectionConfig.getUsername(),</span>
+<span class="fc" id="L164">                keycloakConnectionConfig.getPassword());</span>
+<span class="fc" id="L165">        keycloakClient.ensureRealm(KubeUtils.ENTANDO_KEYCLOAK_REALM);</span>
+<span class="fc" id="L166">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
