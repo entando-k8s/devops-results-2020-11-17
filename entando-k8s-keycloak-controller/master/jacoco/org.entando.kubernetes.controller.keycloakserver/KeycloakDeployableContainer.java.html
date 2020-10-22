@@ -80,7 +80,7 @@ public class KeycloakDeployableContainer implements IngressingContainer, DbAware
     }
 
     @Override
-    public int getPort() {
+    public int getPrimaryPort() {
 <span class="fc" id="L84">        return 8080;</span>
     }
 
@@ -93,74 +93,75 @@ public class KeycloakDeployableContainer implements IngressingContainer, DbAware
 
     @Override
     public void addDatabaseConnectionVariables(List&lt;EnvVar&gt; vars) {
-<span class="fc bfc" id="L96" title="All 4 branches covered.">        if (keycloakServer.getSpec().getDbms().map(dbmsImageVendor -&gt; dbmsImageVendor == DbmsVendor.NONE).orElse(true)) {</span>
-<span class="fc" id="L97">            vars.add(new EnvVar(&quot;DB_VENDOR&quot;, &quot;h2&quot;, null));</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        if (keycloakServer.getSpec().getDbms()</span>
+<span class="pc bpc" id="L97" title="1 of 4 branches missed.">                .map(dbmsImageVendor -&gt; dbmsImageVendor == DbmsVendor.NONE || dbmsImageVendor == DbmsVendor.EMBEDDED).orElse(true)) {</span>
+<span class="fc" id="L98">            vars.add(new EnvVar(&quot;DB_VENDOR&quot;, &quot;h2&quot;, null));</span>
         } else {
-<span class="fc" id="L99">            DatabaseSchemaCreationResult databaseSchemaCreationResult = dbSchemas.get(&quot;db&quot;);</span>
-<span class="fc" id="L100">            vars.add(new EnvVar(&quot;DB_ADDR&quot;, databaseSchemaCreationResult.getInternalServiceHostname(), null));</span>
-<span class="fc" id="L101">            vars.add(new EnvVar(&quot;DB_PORT&quot;, databaseSchemaCreationResult.getPort(), null));</span>
-<span class="fc" id="L102">            vars.add(new EnvVar(&quot;DB_DATABASE&quot;, databaseSchemaCreationResult.getDatabase(), null));</span>
-<span class="fc" id="L103">            vars.add(new EnvVar(&quot;DB_PASSWORD&quot;, null, databaseSchemaCreationResult.getPasswordRef()));</span>
-<span class="fc" id="L104">            vars.add(new EnvVar(&quot;DB_USER&quot;, null, databaseSchemaCreationResult.getUsernameRef()));</span>
-<span class="fc" id="L105">            vars.add(new EnvVar(&quot;DB_VENDOR&quot;, determineKeycloaksNonStandardDbVendorName(databaseSchemaCreationResult), null));</span>
-<span class="fc" id="L106">            vars.add(new EnvVar(&quot;DB_SCHEMA&quot;, databaseSchemaCreationResult.getSchemaName(), null));</span>
-<span class="fc" id="L107">            vars.add(new EnvVar(&quot;JDBC_PARAMS&quot;,</span>
-<span class="pc" id="L108">                    databaseServiceResult.getJdbcParameters().entrySet().stream().map(entry -&gt; entry.getKey() + &quot;=&quot; + entry.getValue())</span>
-<span class="fc" id="L109">                            .collect(</span>
-<span class="fc" id="L110">                                    Collectors.joining(&quot;&amp;&quot;)), null));</span>
+<span class="fc" id="L100">            DatabaseSchemaCreationResult databaseSchemaCreationResult = dbSchemas.get(&quot;db&quot;);</span>
+<span class="fc" id="L101">            vars.add(new EnvVar(&quot;DB_ADDR&quot;, databaseSchemaCreationResult.getInternalServiceHostname(), null));</span>
+<span class="fc" id="L102">            vars.add(new EnvVar(&quot;DB_PORT&quot;, databaseSchemaCreationResult.getPort(), null));</span>
+<span class="fc" id="L103">            vars.add(new EnvVar(&quot;DB_DATABASE&quot;, databaseSchemaCreationResult.getDatabase(), null));</span>
+<span class="fc" id="L104">            vars.add(new EnvVar(&quot;DB_PASSWORD&quot;, null, databaseSchemaCreationResult.getPasswordRef()));</span>
+<span class="fc" id="L105">            vars.add(new EnvVar(&quot;DB_USER&quot;, null, databaseSchemaCreationResult.getUsernameRef()));</span>
+<span class="fc" id="L106">            vars.add(new EnvVar(&quot;DB_VENDOR&quot;, determineKeycloaksNonStandardDbVendorName(databaseSchemaCreationResult), null));</span>
+<span class="fc" id="L107">            vars.add(new EnvVar(&quot;DB_SCHEMA&quot;, databaseSchemaCreationResult.getSchemaName(), null));</span>
+<span class="fc" id="L108">            vars.add(new EnvVar(&quot;JDBC_PARAMS&quot;,</span>
+<span class="pc" id="L109">                    databaseServiceResult.getJdbcParameters().entrySet().stream().map(entry -&gt; entry.getKey() + &quot;=&quot; + entry.getValue())</span>
+<span class="fc" id="L110">                            .collect(</span>
+<span class="fc" id="L111">                                    Collectors.joining(&quot;&amp;&quot;)), null));</span>
 
         }
-<span class="fc" id="L113">    }</span>
+<span class="fc" id="L114">    }</span>
 
     @Override
     public void addTlsVariables(List&lt;EnvVar&gt; vars) {
-<span class="fc" id="L117">        String certFiles = String.join(&quot; &quot;,</span>
-<span class="fc" id="L118">                EntandoOperatorConfig.getCertificateAuthorityCertPaths().stream()</span>
-<span class="fc" id="L119">                        .map(path -&gt; SecretCreator.standardCertPathOf(path.getFileName().toString()))</span>
-<span class="fc" id="L120">                        .collect(Collectors.toList()));</span>
-<span class="fc" id="L121">        vars.add(new EnvVar(&quot;X509_CA_BUNDLE&quot;,</span>
+<span class="fc" id="L118">        String certFiles = String.join(&quot; &quot;,</span>
+<span class="fc" id="L119">                EntandoOperatorConfig.getCertificateAuthorityCertPaths().stream()</span>
+<span class="fc" id="L120">                        .map(path -&gt; SecretCreator.standardCertPathOf(path.getFileName().toString()))</span>
+<span class="fc" id="L121">                        .collect(Collectors.toList()));</span>
+<span class="fc" id="L122">        vars.add(new EnvVar(&quot;X509_CA_BUNDLE&quot;,</span>
                 &quot;/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt /var/run/secrets/kubernetes.io/serviceaccount/ca.crt &quot;
                         + certFiles, null));
-<span class="fc" id="L124">    }</span>
+<span class="fc" id="L125">    }</span>
 
     private String determineKeycloaksNonStandardDbVendorName(DatabaseSchemaCreationResult databaseSchemaCreationResult) {
-<span class="pc bpc" id="L127" title="1 of 2 branches missed.">        return FluentTernary.use(&quot;postgres&quot;).when(databaseSchemaCreationResult.getVendor() == DbmsDockerVendorStrategy.POSTGRESQL)</span>
-<span class="fc" id="L128">                .orElse(databaseSchemaCreationResult.getVendor().getName());</span>
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">        return FluentTernary.use(&quot;postgres&quot;).when(databaseSchemaCreationResult.getVendor() == DbmsDockerVendorStrategy.POSTGRESQL)</span>
+<span class="fc" id="L129">                .orElse(databaseSchemaCreationResult.getVendor().getName());</span>
     }
 
     @Override
     public String getWebContextPath() {
-<span class="fc" id="L133">        return &quot;/auth&quot;;</span>
+<span class="fc" id="L134">        return &quot;/auth&quot;;</span>
     }
 
     @Override
     public Optional&lt;String&gt; getHealthCheckPath() {
-<span class="fc" id="L138">        return Optional.of(getWebContextPath());</span>
+<span class="fc" id="L139">        return Optional.of(getWebContextPath());</span>
     }
 
     @Override
     public List&lt;String&gt; getDbSchemaQualifiers() {
-<span class="pc bpc" id="L143" title="1 of 2 branches missed.">        if (keycloakServer.getSpec().getDbms().orElse(DbmsVendor.NONE) != DbmsVendor.NONE) {</span>
-<span class="fc" id="L144">            return Arrays.asList(&quot;db&quot;);</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if (keycloakServer.getSpec().getDbms().orElse(DbmsVendor.NONE) != DbmsVendor.NONE) {</span>
+<span class="fc" id="L145">            return Arrays.asList(&quot;db&quot;);</span>
         } else {
-<span class="nc" id="L146">            return Collections.emptyList();</span>
+<span class="nc" id="L147">            return Collections.emptyList();</span>
         }
     }
 
     @Override
     public Optional&lt;DatabasePopulator&gt; useDatabaseSchemas(Map&lt;String, DatabaseSchemaCreationResult&gt; dbSchemas) {
-<span class="fc" id="L152">        this.dbSchemas = dbSchemas;</span>
-<span class="fc" id="L153">        return Optional.empty();</span>
+<span class="fc" id="L153">        this.dbSchemas = dbSchemas;</span>
+<span class="fc" id="L154">        return Optional.empty();</span>
     }
 
     @Override
     public String getVolumeMountPath() {
-<span class="fc" id="L158">        return &quot;/opt/jboss/keycloak/standalone/data&quot;;</span>
+<span class="fc" id="L159">        return &quot;/opt/jboss/keycloak/standalone/data&quot;;</span>
     }
 
     @Override
     public EntandoDeploymentSpec getCustomResourceSpec() {
-<span class="fc" id="L163">        return keycloakServer.getSpec();</span>
+<span class="fc" id="L164">        return keycloakServer.getSpec();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
