@@ -118,8 +118,8 @@ import org.springframework.cache.annotation.Cacheable;
 <span class="fc" id="L118">            stat.setString(4, resource.getMainGroup());</span>
 <span class="fc" id="L119">            stat.setString(5, resource.getXML());</span>
 <span class="fc" id="L120">            stat.setString(6, resource.getMasterFileName().trim());</span>
-<span class="fc bfc" id="L121" title="All 2 branches covered.">            Date creationDate = (null != resource.getCreationDate())</span>
-<span class="fc" id="L122">                    ? resource.getCreationDate() : new Date();</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">            Date creationDate = (null != resource.getCreationDate())</span>
+<span class="pc" id="L122">                    ? resource.getCreationDate() : new Date();</span>
 <span class="fc" id="L123">            stat.setTimestamp(7, new java.sql.Timestamp(creationDate.getTime()));</span>
 <span class="fc" id="L124">            stat.setTimestamp(8, new java.sql.Timestamp(creationDate.getTime()));</span>
 <span class="fc" id="L125">            stat.setString(9, resource.getOwner());</span>
