@@ -414,7 +414,7 @@ public abstract class AbstractResource implements ResourceInterface, Serializabl
 <span class="fc" id="L414">        return urlPath.toString();</span>
     }
 
-    protected boolean isProtectedResource() {
+    public boolean isProtectedResource() {
 <span class="fc bfc" id="L418" title="All 2 branches covered.">        return (!Group.FREE_GROUP_NAME.equals(this.getMainGroup()));</span>
     }
 
