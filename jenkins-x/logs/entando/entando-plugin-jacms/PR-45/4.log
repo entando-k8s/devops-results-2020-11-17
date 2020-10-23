@@ -1,0 +1,32 @@
+
+Showing logs for build [32mmeta-entando-entando-plugin-jac-b62h8-4[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-2nzfc[0m
+{"level":"warn","ts":1603452676.6271977,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603452676.6325645,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-entando-entando-plugin-jac-b62h8-4[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-rb6nh[0m
+{"level":"warn","ts":1603452677.827391,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1603452677.8394954,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mmeta-entando-entando-plugin-jac-b62h8-4[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmeta-entando-entando-plugin-jac-b62h8-4[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-entando-entando-plugin-jac-wkfbj[0m
+{"level":"warn","ts":1603452693.6819198,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603452695.7513804,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/entando-plugin-jacms.git @ 46cb0665c2fa5e4a2634685f5d4e3a501cdb9cae in path /workspace/source"}
+
+Showing logs for build [32mmeta-entando-entando-plugin-jac-b62h8-4[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:46cb0665c2fa5e4a2634685f5d4e3a501cdb9cae,45:c3dda6f901a0d37119bdc4a4bc80de3f2cc869e7
+DEBUG: ran git fetch --unshallow origin c3dda6f901a0d37119bdc4a4bc80de3f2cc869e7: 46cb0665c2fa5e4a2634685f5d4e3a501cdb9cae: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard 46cb0665c2fa5e4a2634685f5d4e3a501cdb9cae in 
+DEBUG: ran clean --force -d . in 
+error: error during merge: merging c3dda6f901a0d37119bdc4a4bc80de3f2cc869e7 into master: git output: Auto-merging src/test/java/org/entando/entando/plugins/jacms/web/resource/ResourcesControllerIntegrationTest.java
+Auto-merging src/main/java/org/entando/entando/plugins/jacms/aps/******/services/resource/ResourcesService.java
+CONFLICT (content): Merge conflict in src/main/java/org/entando/entando/plugins/jacms/aps/******/services/resource/ResourcesService.java
+Auto-merging src/main/java/com/agiletec/plugins/jacms/aps/******/services/resource/model/AbstractResource.java
+Automatic merge failed; fix conflicts and then commit the result.: failed to run 'git merge c3dda6f901a0d37119bdc4a4bc80de3f2cc869e7' command in directory '', output: 'Auto-merging src/test/java/org/entando/entando/plugins/jacms/web/resource/ResourcesControllerIntegrationTest.java
+Auto-merging src/main/java/org/entando/entando/plugins/jacms/aps/******/services/resource/ResourcesService.java
+CONFLICT (content): Merge conflict in src/main/java/org/entando/entando/plugins/jacms/aps/******/services/resource/ResourcesService.java
+Auto-merging src/main/java/com/agiletec/plugins/jacms/aps/******/services/resource/model/AbstractResource.java
+Automatic merge failed; fix conflicts and then commit the result.'
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-git-merge'. The execution of the pipeline has stopped.[0m
