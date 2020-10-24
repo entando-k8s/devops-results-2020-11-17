@@ -8,7 +8,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetSe
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetType,337,403,98,50,72,107,66,45,3,34
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetTypeDAO,96,446,6,34,21,117,6,23,0,9
 Entando Core: Engine,org.entando.entando.web.language,LanguageController,4,94,0,2,2,19,1,8,1,7
-Entando Core: Engine,org.entando.entando.web.common.model,RestNamedId,69,0,8,0,13,0,8,0,4,0
+Entando Core: Engine,org.entando.entando.web.common.model,RestNamedId,0,60,1,7,0,12,1,8,0,5
 Entando Core: Engine,org.entando.entando.web.common.model,SimpleRestResponse,11,7,0,0,4,2,2,1,2,1
 Entando Core: Engine,org.entando.entando.web.common.model,RestError,3,23,0,0,1,10,1,5,1,5
 Entando Core: Engine,org.entando.entando.web.common.model,RestResponse,31,38,1,1,12,13,6,6,5,6
