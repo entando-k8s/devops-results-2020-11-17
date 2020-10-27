@@ -1,26 +1,26 @@
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-t4bxc[0m
-{"level":"warn","ts":1603192574.3375266,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1603192574.3467708,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-s8zwd[0m
+{"level":"warn","ts":1603796233.0062666,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603796233.0097086,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-8fk8b[0m
-{"level":"warn","ts":1603192577.8155787,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
-{"level":"info","ts":1603192577.8412998,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-9vf5k[0m
+{"level":"warn","ts":1603796237.615835,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1603796237.6242013,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-app-builder-master-rele-kv2mc[0m
-{"level":"warn","ts":1603192615.130926,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1603192617.8410125,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/app-builder.git @ v6.1.225 in path /workspace/source"}
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-app-builder-master-rele-vmbhh[0m
+{"level":"warn","ts":1603796262.797645,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1603796265.737565,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/app-builder.git @ v6.1.242 in path /workspace/source"}
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
-Using SHAs from PULL_REFS=master:d41ebb9d40224531edf0f34410e1ed291c264753
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:9b1878b729f8a0e70af69f08b82d94ecfb1e1e93
 WARNING: no SHAs to merge, falling back to initial cloned commit
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
 Generated Git credentials file /workspace/xdg_config/git/credentials
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-install[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-install[0m
 
 > husky@1.3.1 install /workspace/source/node_modules/husky
 > node husky install
@@ -69,11 +69,11 @@ Binary is fine
 > node ./scripts/postinstall.js || exit 0
 
 Use styled-components at work? Consider supporting our development efforts at https://opencollective.com/styled-components
+added 2159 packages from 1798 contributors and audited 2164 packages in 81.098s
 npm WARN The package whatwg-fetch is included as both a dev and production dependency.
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.9 (node_modules/fsevents):
 npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.9: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 
-added 2159 packages from 1798 contributors and audited 2164 packages in 62.024s
 
 3 packages are looking for funding
   run `npm fund` for details
@@ -98,13 +98,13 @@ node-sass@4.13.1 /workspace/source/node_modules/node-sass
 > eslint ./src
 
 
-/workspace/source/src/state/user-preferences/actions.js
-  14:5  warning  Unexpected console statement  no-console
+/workspace/source/src/ui/user-profile/common/UserProfileForm.js
+  93:5  warning  Unexpected console statement  no-console
 
 ✖ 1 problem (0 errors, 1 warning)
 
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-test[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-test[0m
 
 > app-builder@6.3.0 coverage /workspace/source
 > node scripts/test.js --env=jsdom --coverage
@@ -113,27 +113,38 @@ Webpack Resolver using: ./config/webpack.config.dev.js
 Webpack Resolver using: ./config/webpack.config.dev.js
 Webpack Resolver using: ./config/webpack.config.dev.js
 Webpack Resolver using: ./config/webpack.config.dev.js
-PASS test/state/data-types/actions.test.js (7.589s)
+PASS test/state/data-types/actions.test.js (8.05s)
 PASS test/state/profile-types/actions.test.js
+PASS test/state/pages/actions.test.js (12.428s)
+PASS test/state/page-config/actions.test.js (12.725s)
 PASS test/helpers/entities.test.js
-PASS test/state/page-templates/actions.test.js
-PASS test/state/widgets/actions.test.js
-PASS test/state/pages/actions.test.js (11.99s)
-PASS test/state/page-config/actions.test.js (11.887s)
-PASS test/state/users/actions.test.js
-PASS test/state/component-repository/components/reducer.test.js
-PASS test/state/component-repository/components/actions.test.js
-PASS test/state/groups/actions.test.js
-PASS test/state/file-browser/actions.test.js
 PASS test/ui/app-tour/AppTour.test.js
   ● Console
 
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-2'. Please check the 'steps' Tour prop Array at position 2.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-2'. Please check the 'steps' Tour prop Array at position 2.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-1'. Please check the 'steps' Tour prop Array at position 1.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-1'. Please check the 'steps' Tour prop Array at position 1.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-3'. Please check the 'steps' Tour prop Array at position 3.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-3'. Please check the 'steps' Tour prop Array at position 3.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-3'. Please check the 'steps' Tour prop Array at position 3.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-2'. Please check the 'steps' Tour prop Array at position 2.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-2'. Please check the 'steps' Tour prop Array at position 2.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-4'. Please check the 'steps' Tour prop Array at position 4.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-3'. Please check the 'steps' Tour prop Array at position 3.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-3'. Please check the 'steps' Tour prop Array at position 3.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-5'. Please check the 'steps' Tour prop Array at position 5.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
@@ -141,23 +152,51 @@ PASS test/ui/app-tour/AppTour.test.js
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-7'. Please check the 'steps' Tour prop Array at position 7.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-6'. Please check the 'steps' Tour prop Array at position 6.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-6'. Please check the 'steps' Tour prop Array at position 6.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-8'. Please check the 'steps' Tour prop Array at position 8.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-7'. Please check the 'steps' Tour prop Array at position 7.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-7'. Please check the 'steps' Tour prop Array at position 7.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-9'. Please check the 'steps' Tour prop Array at position 9.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-8'. Please check the 'steps' Tour prop Array at position 8.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-8'. Please check the 'steps' Tour prop Array at position 8.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-10'. Please check the 'steps' Tour prop Array at position 10.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-9'. Please check the 'steps' Tour prop Array at position 9.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-9'. Please check the 'steps' Tour prop Array at position 9.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-11'. Please check the 'steps' Tour prop Array at position 11.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-10'. Please check the 'steps' Tour prop Array at position 10.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-10'. Please check the 'steps' Tour prop Array at position 10.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-12'. Please check the 'steps' Tour prop Array at position 12.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-13'. Please check the 'steps' Tour prop Array at position 13.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-12'. Please check the 'steps' Tour prop Array at position 12.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-12'. Please check the 'steps' Tour prop Array at position 12.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-14'. Please check the 'steps' Tour prop Array at position 14.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-15'. Please check the 'steps' Tour prop Array at position 15.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-16'. Please check the 'steps' Tour prop Array at position 16.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-15'. Please check the 'steps' Tour prop Array at position 15.
+    console.warn node_modules/reactour/dist/reactour.cjs.js:1184
+      Doesn't find a DOM node '.app-tour-step-15'. Please check the 'steps' Tour prop Array at position 15.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-17'. Please check the 'steps' Tour prop Array at position 17.
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
@@ -173,39 +212,39 @@ PASS test/ui/app-tour/AppTour.test.js
     console.warn node_modules/reactour/dist/reactour.cjs.js:1184
       Doesn't find a DOM node '.app-tour-step-23'. Please check the 'steps' Tour prop Array at position 23.
 
+PASS test/state/page-templates/actions.test.js
+PASS test/state/widgets/actions.test.js
+PASS test/state/users/actions.test.js
+PASS test/state/component-repository/components/reducer.test.js
+PASS test/state/component-repository/components/actions.test.js
+PASS test/state/groups/actions.test.js
+PASS test/state/file-browser/actions.test.js
 PASS test/state/fragments/actions.test.js
-PASS test/api/dataTypes.test.js
 PASS test/state/pages/reducer.test.js
+PASS test/api/dataTypes.test.js
 PASS test/state/labels/actions.test.js
-PASS test/state/database/actions.test.js
 PASS test/state/component-repository/component-repositories/actions.test.js
-PASS test/state/page-templates/selectors.test.js
+PASS test/state/database/actions.test.js
 PASS test/state/categories/actions.test.js
+PASS test/state/page-templates/selectors.test.js
 PASS test/api/pages.test.js
 PASS test/api/profileTypes.test.js
-PASS test/state/page-config/selectors.test.js
 PASS test/state/roles/actions.test.js
+PASS test/state/page-config/selectors.test.js
 PASS test/state/pages/selectors.test.js
-PASS test/state/data-models/actions.test.js
 PASS test/state/pagination/reducer.test.js
+PASS test/state/data-models/actions.test.js
 PASS test/ui/pages/common/PageTreeActionMenu.test.js
 PASS test/state/activity-stream/actions.test.js
 PASS test/state/page-templates/helpers.test.js
 PASS test/ui/users/common/UserForm.test.js
 PASS test/ui/pages/config/WidgetFrame.test.js
+PASS test/state/page-config/reducer.test.js
 PASS test/state/languages/actions.test.js
 PASS test/state/categories/selectors.test.js
-PASS test/state/page-config/reducer.test.js
-PASS test/ui/pages/common/PageForm.test.js
-PASS test/ui/pages/config/PageConfigPage.test.js
-  ● Console
-
-    console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `match` is marked as required in `PageConfigPage`, but its value is `undefined`.
-          in PageConfigPage
-
-PASS test/ui/pages/config/PageConfigPageContainer.test.js
+PASS test/ui/pages/common/PageForm.test.js (5.373s)
 PASS test/ui/pages/common/PageTreeContainer.test.js
+PASS test/ui/pages/config/PageConfigPageContainer.test.js (7.949s)
 PASS test/ui/pages/common/PageTree.test.js
   ● Console
 
@@ -296,10 +335,229 @@ PASS test/ui/pages/common/PageTree.test.js
       Check your code at PageTree.js:158.
 
 PASS test/ui/user-profile/common/UserProfileForm.test.js
+  ● Console
+
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId *****
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+    console.log src/ui/user-profile/common/UserProfileForm.js:93
+      customErrorId undefined
+
 PASS test/api/users.test.js
 PASS test/ui/pages/add/PagesAddFormContainer.test.js
+PASS test/ui/pages/config/PageConfigPage.test.js
+  ● Console
+
+    console.error node_modules/fbjs/lib/warning.js:33
+      Warning: Failed prop type: The prop `match` is marked as required in `PageConfigPage`, but its value is `undefined`.
+          in PageConfigPage
+
 PASS test/api/fragments.test.js
-PASS test/ui/file-browser/list/FilesListTable.test.js
 PASS test/ui/pages/common/MultiSelectRenderer.test.js
   ● Console
 
@@ -323,12 +581,15 @@ PASS test/ui/pages/common/MultiSelectRenderer.test.js
           in MultiSelectRendererBody (created by WrapperComponent)
           in WrapperComponent
 
+PASS test/ui/file-browser/list/FilesListTable.test.js
 PASS test/api/fileBrowser.test.js
 PASS test/state/page-templates/reducer.test.js
 PASS test/state/user-profile/actions.test.js
 PASS test/state/plugins/thunks.test.js
-PASS test/ui/page-templates/common/PageTemplateForm.test.js
 PASS test/state/categories/reducer.test.js
+PASS test/ui/page-templates/common/PageTemplateForm.test.js
+PASS test/state/dashboard/actions.test.js
+PASS test/state/widget-config/actions.test.js
 PASS test/ui/widgets/config/WidgetConfigMicrofrontend.test.js
   ● Console
 
@@ -364,10 +625,9 @@ PASS test/ui/widgets/config/WidgetConfigMicrofrontend.test.js
     console.error node_modules/react-intl/lib/index.js:525
       [React Intl] Cannot format message: "app.save", using message id as fallback.
 
-PASS test/state/dashboard/actions.test.js
-PASS test/state/widget-config/actions.test.js
-PASS test/api/groups.test.js
 PASS test/ui/pages/clone/CloneFormContainer.test.js
+PASS test/api/groups.test.js
+PASS test/ui/pages/edit/PagesEditFormContainer.test.js
 PASS test/api/roles.test.js
 PASS test/ui/categories/common/CategoryTreeSelector.test.js
 PASS test/ui/widgets/common/WidgetForm.test.js
@@ -384,7 +644,6 @@ PASS test/ui/widgets/common/WidgetForm.test.js
           in WidgetFormBody (at WidgetForm.test.js:35)
 
 PASS test/api/dataModels.test.js
-PASS test/ui/pages/edit/PagesEditFormContainer.test.js
 PASS test/ui/common/form/JsonCodeEditorRenderer.test.js
 PASS test/state/data-types/selectors.test.js
 PASS test/api/categories.test.js
@@ -409,10 +668,10 @@ PASS test/ui/page-templates/list/PageTemplateListTable.test.js
 PASS test/state/data-types/reducer.test.js
 PASS test/state/permissions/actions.test.js
 PASS test/state/pagination/selectors.test.js
+PASS test/state/login-form/actions.test.js
 PASS test/ui/file-browser/common/FileBreadcrumb.test.js
 PASS test/api/labels.test.js
 PASS test/ui/pages/common/PageSettingsForm.test.js
-PASS test/state/login-form/actions.test.js
 PASS test/state/component-repository/categories/actions.test.js
 PASS test/ui/common/form/RenderListField.test.js
 PASS test/ui/page-templates/common/PageTemplateFormContainer.test.js
@@ -447,6 +706,7 @@ PASS test/ui/roles/common/RoleForm.test.js
 PASS test/ui/component-repository/ExtraTabBarFilterContainer.test.js
 PASS test/state/labels/reducer.test.js
 PASS test/ui/data-types/list/DataTypeListTable.test.js
+PASS test/ui/activity-stream/NotificationListContainer.test.js
 PASS test/ui/profile-types/list/ProfileTypeListTable.test.js
   ● Console
 
@@ -454,11 +714,11 @@ PASS test/ui/profile-types/list/ProfileTypeListTable.test.js
       Warning: Failed prop type: The prop `reloadProfileType` is marked as required in `ProfileTypeListTable`, but its value is `undefined`.
           in ProfileTypeListTable
 
-PASS test/ui/activity-stream/NotificationListContainer.test.js
+PASS test/ui/pages/config/ToolbarPageConfigContaier.test.js
 PASS test/state/component-repository/component-repositories/reducer.test.js
 PASS test/ui/file-browser/list/FilesListMenuActions.test.js
-PASS test/ui/fragments/list/FragmentListTable.test.js
 PASS test/ui/pages/config/ToolbarContentIcon.test.js
+PASS test/ui/fragments/list/FragmentListTable.test.js
 PASS test/ui/file-browser/list/FilesListTableContainer.test.js
 PASS test/state/component-repository/components/selectors.test.js
 PASS test/ui/labels/common/LabelsForm.test.js
@@ -523,18 +783,19 @@ PASS test/ui/labels/common/LabelsForm.test.js
           in Provider (created by WrapperComponent)
           in WrapperComponent
 
-PASS test/ui/component-repository/settings/common/Form.test.js
 PASS test/ui/component-repository/TabBarFilter.test.js
+PASS test/ui/component-repository/settings/common/Form.test.js
 PASS test/ui/groups/common/GenericModal.test.js
-PASS test/ui/common/form/RenderDateTimePickerInput.test.js
 PASS test/ui/component-repository/CategoryTabBarFilterContainer.test.js
+PASS test/ui/common/form/RenderDateTimePickerInput.test.js
 PASS test/ui/modal/GenericModal.test.js
 PASS test/ui/pages/config/PageConfigGridCol.test.js
+PASS test/ui/pages/config/ContentPageContainer.test.js
 PASS test/ui/page-templates/detail/PageTemplatePageReferencesTableContainer.test.js
 PASS test/ui/categories/list/CategoryTreeContainer.test.js
 PASS test/ui/categories/common/CategoryForm.test.js
-PASS test/ui/app/App.test.js (38.333s)
 PASS test/state/groups/reducer.test.js
+PASS test/ui/app/App.test.js (49.281s)
 PASS test/state/app-tour/reducer.test.js
 PASS test/state/widgets/reducer.test.js
 PASS test/ui/categories/detail/DetailCategoryTable.test.js
@@ -548,7 +809,6 @@ PASS test/ui/groups/list/GroupListTable.test.js
 PASS test/ui/component-repository/ComponentRepositoryFilter.test.js
 PASS test/ui/data-types/list/DataTypeListTableContainer.test.js
 PASS test/ui/pages/config/EmptyFrame.test.js
-PASS test/ui/component-repository/components/list/ComponentListGridView.test.js
 PASS test/ui/users/list/UserListTable.test.js
   ● Console
 
@@ -565,9 +825,9 @@ PASS test/ui/users/list/UserListTable.test.js
       Warning: Failed prop type: Invalid prop `status` of value `passwordExpired` supplied to `UserStatus`, expected one of ["active","disabled","inactive"].
           in UserStatus (at UserListTable.js:55)
 
-PASS test/ui/pages/config/ToolbarPageConfigContaier.test.js
-PASS test/ui/data-models/list/DataModelListTable.test.js
+PASS test/ui/component-repository/components/list/ComponentListGridView.test.js
 PASS test/ui/pages/config/frameDropTarget.test.js
+PASS test/ui/data-models/list/DataModelListTable.test.js
 PASS test/ui/users/authority/UserAuthorityTable.test.js
 PASS test/api/languages.test.js
 PASS test/ui/widgets/config/WidgetConfigPage.test.js
@@ -606,45 +866,45 @@ PASS test/ui/common/attributes/AttributeListTableActions.test.js
 PASS test/state/fragments/reducer.test.js
 PASS test/ui/component-repository/settings/list/DeleteSettingsModal.test.js
 PASS test/ui/page-templates/common/PageTemplateDeleteModal.test.js
-PASS test/ui/data-types/attributes/DeleteAttributeModal.test.js
 PASS test/ui/profile-types/common/ProfileTypesDeleteModal.test.js
+PASS test/ui/data-types/attributes/DeleteAttributeModal.test.js
 PASS test/ui/file-browser/common/DeleteFolderModal.test.js
-PASS test/ui/component-repository/components/item/install-controls/ComponentInstallActionsContainer.test.js
 PASS test/state/component-repository/actions.test.js
+PASS test/ui/component-repository/components/item/install-controls/ComponentInstallActionsContainer.test.js
 PASS test/ui/component-repository/RatingFilterItem.test.js
-PASS test/ui/labels/common/DeleteLabelAndLanguagesModal.test.js
 PASS test/ui/user-profile/edit/EditUserProfilePage.test.js
-PASS test/ui/data-models/common/DeleteDataModelModal.test.js
+PASS test/ui/labels/common/DeleteLabelAndLanguagesModal.test.js
 PASS test/ui/profile-types/list/ProfileTypeListTableContainer.test.js
 PASS test/ui/file-browser/common/DeleteFileModal.test.js
+PASS test/ui/data-models/common/DeleteDataModelModal.test.js
 PASS test/ui/pages/common/UnpublishPageModal.test.js
 PASS test/ui/database/common/DeleteDatabaseModal.test.js
 PASS test/ui/categories/common/DeleteCategoryModal.test.js
-PASS test/ui/pages/common/PublishPageModal.test.js
 PASS test/ui/categories/edit/EditFormContainer.test.js
 PASS test/ui/pages/common/MovePageModal.test.js
+PASS test/ui/pages/common/PublishPageModal.test.js
 PASS test/ui/groups/common/DeleteGroupModal.test.js
-PASS test/ui/groups/detail/GroupDetailTabPages.test.js
 PASS test/ui/users/common/DeleteUserModal.test.js
+PASS test/ui/groups/detail/GroupDetailTabPages.test.js
 PASS test/ui/pages/common/DeletePageModal.test.js
-PASS test/state/languages/reducer.test.js
-PASS test/ui/groups/list/GroupListMenuActions.test.js
 PASS test/ui/roles/common/DeleteRoleModal.test.js
+PASS test/state/languages/reducer.test.js
 PASS test/state/fragments/selectors.test.js
+PASS test/ui/groups/list/GroupListMenuActions.test.js
 PASS test/ui/fragments/list/FragmentListTableContainer.test.js
 PASS test/ui/groups/detail/GroupDetailTabUsers.test.js
 PASS test/ui/labels/list/LanguageFormContainer.test.js
+PASS test/ui/widgets/edit/EditWidgetFormContainer.test.js
 PASS test/ui/pages/list/PageListSearchTable.test.js
   ● Console
 
     console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `domain` is marked as required in `PageTreeActionMenu`, but its value is `undefined`.
-          in PageTreeActionMenu (at PageListSearchTable.js:86)
+      Warning: Failed prop type: The prop `domain` is marked as required in `PageListSearchTable`, but its value is `undefined`.
+          in PageListSearchTable
     console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `locale` is marked as required in `PageTreeActionMenu`, but its value is `undefined`.
-          in PageTreeActionMenu (at PageListSearchTable.js:86)
+      Warning: Failed prop type: The prop `domain` is marked as required in `PageTreeActionMenu`, but its value is `undefined`.
+          in PageTreeActionMenu (at PageListSearchTable.js:92)
 
-PASS test/ui/widgets/edit/EditWidgetFormContainer.test.js
 PASS test/ui/dashboard/DashboardPage.test.js
   ● Console
 
@@ -706,8 +966,6 @@ PASS test/ui/dashboard/DashboardPage.test.js
       Check your code at DashboardPage.js:81.
 
 PASS test/ui/component-repository/settings/list/SettingsListContainer.test.js
-PASS test/state/app-tour/actions.test.js
-PASS test/ui/file-browser/edit/EditTextFileFormContainer.test.js
 PASS test/ui/pages/common/PageTreeCompact.test.js
   ● Console
 
@@ -718,19 +976,10 @@ PASS test/ui/pages/common/PageTreeCompact.test.js
       Warning: Failed prop type: The prop `onClickDelete` is marked as required in `PageTreeCompact`, but its value is `undefined`.
           in PageTreeCompact (at PageTreeCompact.test.js:34)
     console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `onClickDetails` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at PageTreeCompact.test.js:34)
-    console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickUnPublish` is marked as required in `PageTreeCompact`, but its value is `undefined`.
           in PageTreeCompact (at PageTreeCompact.test.js:34)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickAdd` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at PageTreeCompact.test.js:34)
-    console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `onClickEdit` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at PageTreeCompact.test.js:34)
-    console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `onClickConfigure` is marked as required in `PageTreeCompact`, but its value is `undefined`.
           in PageTreeCompact (at PageTreeCompact.test.js:34)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickPublish` is marked as required in `PageTreeCompact`, but its value is `undefined`.
@@ -748,7 +997,8 @@ PASS test/ui/pages/common/PageTreeCompact.test.js
       Warning: Failed prop type: The prop `locale` is marked as required in `PageTreeCompact`, but its value is `undefined`.
           in PageTreeCompact (at PageTreeCompact.test.js:34)
 
-PASS test/ui/categories/detail/DetailCategoryTableContainer.test.js
+PASS test/state/app-tour/actions.test.js
+PASS test/ui/file-browser/edit/EditTextFileFormContainer.test.js
 PASS test/ui/common/references/GenericRefsTable.test.js
   ● Console
 
@@ -765,13 +1015,14 @@ PASS test/ui/common/references/GenericRefsTable.test.js
       Warning: Failed prop type: The prop `itemCount` is marked as required in `Paginator`, but its value is `undefined`.
           in Paginator (at GenericRefsTable.js:88)
 
+PASS test/ui/categories/detail/DetailCategoryTableContainer.test.js
 PASS test/ui/fragments/list/FragmentSearchForm.test.js
 PASS test/ui/page-templates/list/PageTemplateListMenuActions.test.js
 PASS test/state/roles/reducer.test.js
 PASS test/ui/file-browser/add/CreateFolderForm.test.js
-PASS test/state/reload-configuration/actions.test.js
 PASS test/ui/common/references/UserRefsTable.test.js
 PASS test/ui/roles/list/RoleListTableContainer.test.js
+PASS test/state/reload-configuration/actions.test.js
 PASS test/ui/groups/detail/GroupDetailTabContentsContainer.test.js
 PASS test/ui/labels/edit/EditFormContainer.test.js
 PASS test/ui/common/form/FormLabel.test.js
@@ -814,17 +1065,17 @@ PASS test/ui/common/form/FormLabel.test.js
     console.error node_modules/react-intl/lib/index.js:525
       [React Intl] Cannot format message: "label.id", using message id as fallback.
 
-PASS test/ui/groups/detail/GroupDetailTabUsersContainer.test.js
 PASS test/ui/groups/list/GroupListTableContainer.test.js
+PASS test/ui/groups/detail/GroupDetailTabUsersContainer.test.js
 PASS test/state/languages/selectors.test.js
-PASS test/ui/fragments/list/FragmentSearchFormContainer.test.js
 PASS test/ui/groups/detail/GroupDetailTabResourcesContainer.test.js
+PASS test/ui/fragments/list/FragmentSearchFormContainer.test.js
 PASS test/ui/groups/detail/GroupDetailTabWidgetsContainer.test.js
 PASS test/api/userProfile.test.js
 PASS test/ui/groups/detail/GroupDetailTabPagesContainer.test.js
-PASS test/ui/labels/list/LanguageForm.test.js
-PASS test/ui/roles/detail/DetailRoleTable.test.js
 PASS test/ui/categories/list/CategoryTree.test.js
+PASS test/ui/roles/detail/DetailRoleTable.test.js
+PASS test/ui/labels/list/LanguageForm.test.js
 PASS test/ui/pages/config/DraggableWidgetFrame.test.js
 PASS test/ui/common/attributes/AttributeEnumMapSettings.test.js
   ● Console
@@ -873,14 +1124,15 @@ PASS test/ui/common/attributes/AttributeEnumMapSettings.test.js
           in WrapperComponent
 
 PASS test/ui/groups/detail/GroupDetailTabWidgetTypes.test.js
-PASS test/ui/groups/detail/GroupDetailTabResources.test.js
 PASS test/ui/groups/detail/GroupDetailTabContents.test.js
+PASS test/ui/groups/detail/GroupDetailTabResources.test.js
 PASS test/ui/labels/common/DeleteLabelAndLanguagesModalContainer.test.js
 PASS test/ui/roles/edit/EditFormContainer.test.js
 PASS test/ui/roles/add/AddFormContainer.test.js
 PASS test/state/users/reducer.test.js
 PASS test/api/plugins.test.js
 PASS test/ui/common/attributes/AttributeListMenuActionsProfile.test.js
+PASS test/ui/users/list/UserListTableContainer.test.js
 PASS test/ui/common/attributes/AttributeEnumSettings.test.js
   ● Console
 
@@ -927,26 +1179,24 @@ PASS test/ui/common/attributes/AttributeEnumSettings.test.js
           in Provider (created by WrapperComponent)
           in WrapperComponent
 
-PASS test/ui/users/list/UserListTableContainer.test.js
-PASS test/ui/labels/add/AddFormContainer.test.js
 PASS test/state/roles/selectors.test.js
+PASS test/ui/labels/add/AddFormContainer.test.js
 PASS test/ui/pages/config/ToolbarPageConfig.test.js
 PASS test/ui/labels/list/LabelsAndLanguagesPageContainer.test.js
 PASS test/state/permissions/reducer.test.js
-PASS test/ui/roles/detail/DetailRoleTableContainer.test.js
 PASS test/ui/users/common/UserAuthorityPageFormContainer.test.js
+PASS test/ui/roles/detail/DetailRoleTableContainer.test.js
+PASS test/ui/users/authority/UserAuthorityModal.test.js
 PASS test/ui/page-templates/detail/PageTemplateDetailTable.test.js
 PASS test/ui/component-repository/RatingFilter.test.js
-PASS test/ui/users/authority/UserAuthorityModal.test.js
-PASS test/ui/fragments/detail/DetailFragmentPageContainer.test.js
 PASS test/ui/users/list/UserSearchForm.test.js
-PASS test/state/file-browser/reducer.test.js
+PASS test/ui/fragments/detail/DetailFragmentPageContainer.test.js
 PASS test/ui/database/report/ReportDatabasePageContainer.test.js
+PASS test/state/file-browser/reducer.test.js
 PASS test/state/database/selectors.test.js
 PASS test/ui/pages/detail/PagesDetailPageContainer.test.js
 PASS test/ui/database/report/ReportDatabaseListTable.test.js
 PASS test/ui/common/form/RenderFileInput.test.js
-PASS test/ui/fragments/detail/PageModelReferenceTable.test.js
 PASS test/ui/users/my-profile/AccountForm.test.js
   ● Console
 
@@ -957,26 +1207,26 @@ PASS test/ui/users/my-profile/AccountForm.test.js
       Warning: Failed prop type: The prop `onModalFormSubmit` is marked as required in `AccountFormBody`, but its value is `undefined`.
           in AccountFormBody (at AccountForm.test.js:13)
 
+PASS test/ui/fragments/detail/PageModelReferenceTable.test.js
 PASS test/state/store.test.js
 PASS test/ui/component-repository/settings/edit/SettingsEditFormContainer.test.js
 PASS test/ui/categories/list/CategoryListMenuActions.test.js
-PASS test/ui/pages/config/ContentPageContainer.test.js
 PASS test/state/component-repository/extra-filters/actions.test.js
 PASS test/ui/labels/list/ActiveLangTable.test.js
 PASS test/api/userPreferences.test.js
 PASS test/ui/widgets/detail/DetailWidgetPageContainer.test.js
 PASS test/ui/file-browser/common/FileBreadcrumbContainer.test.js
-PASS test/ui/data-types/common/DataTypeReferenceStatusContainer.test.js
 PASS test/ui/labels/list/LabelsTabsContainer.test.js
-PASS test/ui/pages/config/ContentWidget.test.js
+PASS test/ui/data-types/common/DataTypeReferenceStatusContainer.test.js
 PASS test/state/widget-config/selectors.test.js
+PASS test/ui/pages/config/ContentWidget.test.js
 PASS test/ui/fragments/detail/FragmentReferenceTable.test.js
 PASS test/ui/component-repository/components/list/ComponentListContainer.test.js
 PASS test/ui/pages/config/PageConfigGrid.test.js
 PASS test/ui/pages/config/DroppableEmptyFrame.test.js
 PASS test/ui/data-models/common/DataModelForm.test.js
-PASS test/ui/groups/edit/EditFormContainer.test.js
 PASS test/ui/users/add/AddFormContainer.test.js
+PASS test/ui/groups/edit/EditFormContainer.test.js
 PASS test/ui/widgets/list/WidgetListTable.test.js
   ● Console
 
@@ -1003,15 +1253,15 @@ PASS test/ui/pages/common/PageSettingsFormContainer.test.js
 PASS test/api/userSettings.test.js
 PASS test/ui/pages/config/DroppableWidgetFrame.test.js
 PASS test/ui/common/attributes/AttributeListTableProfile.test.js
-PASS test/ui/roles/detail/UserRefsTableContainer.test.js
 PASS test/ui/pages/add/PagesAddPageContainer.test.js
+PASS test/ui/roles/detail/UserRefsTableContainer.test.js
 PASS test/ui/groups/detail/GroupDetailTableContainer.test.js
 PASS test/ui/categories/common/CategoryTreeSelectorContainer.test.js
 PASS test/ui/page-templates/detail/PageTemplateDetailPage.test.js
 PASS test/ui/file-browser/upload/UploadFileBrowserPage.test.js
+PASS test/api/dashboard.test.js
 PASS test/ui/plugins/PluginConfigPageContainer.test.js
 PASS test/ui/data-models/common/DataModelListActionsMenu.test.js
-PASS test/api/dashboard.test.js
 PASS test/ui/common/form/ErrorsAlert.test.js
 PASS test/ui/labels/list/LabelListMenuActions.test.js
 PASS test/ui/component-repository/components/list/ComponentListViewModeSwitcherContainer.test.js
@@ -1020,23 +1270,23 @@ PASS test/ui/dashboard/PagesListContainer.test.js
 PASS test/ui/pages/config/frameDragSource.test.js
 PASS test/state/locale/actions.test.js
 PASS test/ui/reload-configuration/ReloadConfig.test.js
-PASS test/ui/component-repository/components/SearchBarContainer.test.js
 PASS test/ui/common/BreadcrumbItem.test.js
+PASS test/ui/component-repository/components/SearchBarContainer.test.js
 PASS test/ui/labels/list/LabelSearchForm.test.js
 PASS test/ui/pages/common/PageStatusIcon.test.js
 PASS test/state/component-repository/extra-filters/reducer.test.js
 PASS test/login/LoginFormContainer.test.js
-PASS test/ui/data-models/edit/EditDataModelFormContainer.test.js
 PASS test/ui/database/dump/DatabaseDumpTablePageContainer.test.js
-PASS test/ui/users/my-profile/AppSettingsForm.test.js
+PASS test/ui/data-models/edit/EditDataModelFormContainer.test.js
 PASS test/ui/common/attributes/AttributeListTable.test.js
-PASS test/ui/fragments/list/SettingsFragmentForm.test.js
 PASS test/ui/widgets/detail/DetailWidgetElement.test.js
+PASS test/ui/fragments/list/SettingsFragmentForm.test.js
 PASS test/state/permissions/selectors.test.js
-PASS test/state/component-repository/categories/reducer.test.js
 PASS test/ui/widgets/common/WidgetFormContainer.test.js
-PASS test/ui/users/list/UserSearchFormContainer.test.js
+PASS test/state/component-repository/categories/reducer.test.js
+PASS test/ui/users/my-profile/AppSettingsForm.test.js
 PASS test/ui/component-repository/settings/list/SettingsList.test.js
+PASS test/ui/users/list/UserSearchFormContainer.test.js
 PASS test/ui/widgets/detail/DetailWidgetPage.test.js
 PASS test/ui/database/add/AddDatabaseListTableContainer.test.js
 PASS test/ui/reload-configuration/ReloadConfirm.test.js
@@ -1049,22 +1299,22 @@ PASS test/ui/users/detail/DetailUserTableContainer.test.js
 PASS test/ui/dashboard/UxPatternsContainer.test.js
 PASS test/ui/users/restrictions/RestrictionsFormContainer.test.js
 PASS test/ui/pages/detail/PagesDetailPage.test.js
-PASS test/state/plugins/actions.test.js
 PASS test/ui/widgets/config/forms/InternalServletConfigForm.test.js
+PASS test/state/plugins/actions.test.js
 PASS test/ui/users/my-profile/AccountFormContainer.test.js
+PASS test/state/modal/reducer.test.js
 PASS test/ui/common/form/RenderSelectInput.test.js
 PASS test/ui/data-models/list/DataModelSearchFormContainer.test.js
-PASS test/state/modal/reducer.test.js
 PASS test/ui/common/form/RenderRadioInput.test.js
 PASS test/ui/login/LoginFormContainer.test.js
-PASS test/ui/pages/common/UnpublishPageModalContainer.test.js
 PASS test/ui/fragments/list/SettingsFragmentFormContainer.test.js
+PASS test/ui/pages/common/UnpublishPageModalContainer.test.js
 PASS test/ui/pages/common/PublishPageModalContainer.test.js
-PASS test/ui/dashboard/UserManagementContainer.test.js
 PASS test/ui/pages/common/DeletePageModalContainer.test.js
+PASS test/ui/dashboard/UserManagementContainer.test.js
 PASS test/state/component-repository/component-repositories/selectors.test.js
 PASS test/ui/users/edit/EditFormContainer.test.js
-PASS test/ui/fragments/list/ListFragmentPage.test.js
+PASS test/ui/data-models/add/AddDataModelFormContainer.test.js
 PASS test/ui/users/my-profile/MyProfilePage.test.js
   ● Console
 
@@ -1072,12 +1322,13 @@ PASS test/ui/users/my-profile/MyProfilePage.test.js
       Warning: Failed prop type: The prop `onTabSelect` is marked as required in `MyProfilePage`, but its value is `undefined`.
           in MyProfilePage (at MyProfilePage.test.js:13)
 
+PASS test/ui/fragments/list/ListFragmentPage.test.js
 PASS test/state/app-tour/selectors.test.js
 PASS test/state/dashboard/selectors.test.js
-PASS test/ui/data-models/add/AddDataModelFormContainer.test.js
 PASS test/ui/fragments/detail/WidgetTypeReferenceTable.test.js
 PASS test/state/component-repository/categories/selectors.test.js
 PASS test/ui/file-browser/upload/UploadFileBrowserForm.test.js
+PASS test/ui/database/report/ReportDatabasePage.test.js
 PASS test/ui/roles/common/PermissionGrid.test.js
   ● Console
 
@@ -1088,91 +1339,82 @@ PASS test/ui/roles/common/PermissionGrid.test.js
       Warning: Failed prop type: The prop `superuserToggled` is marked as required in `PermissionGrid`, but its value is `undefined`.
           in PermissionGrid (at PermissionGrid.test.js:11)
 
-PASS test/ui/database/report/ReportDatabasePage.test.js
 PASS test/ui/groups/detail/GroupDetailTabs.test.js
-PASS test/ui/data-types/common/DataTypeStatusIcon.test.js
 PASS test/ui/common/form/ErrorsAlertContainer.test.js
-PASS test/ui/plugins/PluginsPage.test.js
+PASS test/ui/data-types/common/DataTypeStatusIcon.test.js
 PASS test/ui/labels/list/LabelSearchFormContainer.test.js
 PASS test/ui/dashboard/PagesList.test.js
+PASS test/ui/plugins/PluginsPage.test.js
 PASS test/state/plugins/selectors.test.js
 PASS test/ui/widgets/list/WidgetListRow.test.js
 PASS test/ui/common/form/SwitchRenderer.test.js
 PASS test/state/labels/selectors.test.js
 PASS test/ui/fragments/list/FragmentListMenuActions.test.js
+PASS test/api/login.test.js
+PASS test/ui/data-types/common/DataTypeReferenceStatus.test.js
+PASS test/state/groups/selectors.test.js
+PASS test/ui/users/restrictions/UserRestrictionsPage.test.js
+PASS test/ui/widgets/edit/EditWidgetPageContainer.test.js
+PASS test/ui/labels/list/LabelsTabs.test.js
+PASS test/ui/app/AppContainer.test.js
+PASS test/state/users/selectors.test.js
+PASS test/ui/pages/add/PageSearchForm.test.js
+PASS test/ui/pages/list/PageTreePageContainer.test.js
+PASS test/ui/fragments/detail/DetailFragmentTable.test.js
+PASS test/ui/common/form/RenderTextAreaInput.test.js
+PASS test/ui/widgets/list/ListWidgetPage.test.js
+PASS test/ui/pages/common/PageTreeSelectorContainer.test.js
+PASS test/ui/database/add/AddDatabaseListTable.test.js
+PASS test/ui/pages/list/PageTreePage.test.js
+PASS test/ui/common/form/RenderTextInput.test.js
+PASS test/state/dashboard/integrations/reducer.test.js
+PASS test/ui/page-templates/common/PageTemplateDeleteModalContainer.test.js
+PASS test/ui/profile-types/common/ProfileTypesDeleteModalContainer.test.js
+PASS test/ui/component-repository/settings/add/SettingsAddFormContainer.test.js
+PASS test/state/component-repository/extra-filters/selectors.test.js
+PASS test/ui/data-types/list/DataTypeListMenuActions.test.js
+PASS test/ui/profile-types/list/ListDataTypePage.test.js
 PASS test/ui/pages/config/ContentPages.test.js
   ● Console
 
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickClone` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickDelete` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
-    console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `onClickDetails` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickUnPublish` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickAdd` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
-    console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `onClickEdit` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
-    console.error node_modules/fbjs/lib/warning.js:33
-      Warning: Failed prop type: The prop `onClickConfigure` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickPublish` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickViewPublishedPage` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `onClickPreview` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `domain` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
     console.error node_modules/fbjs/lib/warning.js:33
       Warning: Failed prop type: The prop `locale` is marked as required in `PageTreeCompact`, but its value is `undefined`.
-          in PageTreeCompact (at ContentPages.js:56)
+          in PageTreeCompact (at ContentPages.js:165)
 
-PASS test/api/login.test.js
-PASS test/ui/data-types/common/DataTypeReferenceStatus.test.js
-PASS test/state/groups/selectors.test.js
-PASS test/ui/users/restrictions/UserRestrictionsPage.test.js
-PASS test/ui/labels/list/LabelsTabs.test.js
-PASS test/ui/widgets/edit/EditWidgetPageContainer.test.js
-PASS test/ui/pages/add/PageSearchForm.test.js
-PASS test/state/users/selectors.test.js
-PASS test/ui/pages/list/PageTreePageContainer.test.js
-PASS test/ui/fragments/detail/DetailFragmentTable.test.js
-PASS test/ui/widgets/list/ListWidgetPage.test.js
-PASS test/ui/common/form/RenderTextAreaInput.test.js
-PASS test/ui/pages/list/PageTreePage.test.js
-PASS test/ui/pages/common/PageTreeSelectorContainer.test.js
-PASS test/ui/database/add/AddDatabaseListTable.test.js
-PASS test/ui/common/form/RenderTextInput.test.js
-PASS test/state/dashboard/integrations/reducer.test.js
-PASS test/ui/page-templates/common/PageTemplateDeleteModalContainer.test.js
-PASS test/ui/app/AppContainer.test.js
-PASS test/ui/profile-types/common/ProfileTypesDeleteModalContainer.test.js
-PASS test/state/component-repository/extra-filters/selectors.test.js
-PASS test/ui/component-repository/settings/add/SettingsAddFormContainer.test.js
-PASS test/ui/data-types/list/DataTypeListMenuActions.test.js
-PASS test/ui/profile-types/list/ListDataTypePage.test.js
-PASS test/ui/common/form/ActiveLanguagesFields.test.js
 PASS test/state/user-profile/reducer.test.js
 PASS test/ui/pages/config/ContentWidgetElement.test.js
+PASS test/ui/common/form/ActiveLanguagesFields.test.js
 PASS test/ui/profile-types/common/ProfileTypeStatusIcon.test.js
 PASS test/state/user-preferences/reducer.test.js
 PASS test/ui/page-templates/list/PageTemplateListPage.test.js
-PASS test/ui/component-repository/settings/list/DeleteSettingsModalContainer.test.js
 PASS test/ui/pages/config/PageConfigGridRow.test.js
+PASS test/ui/component-repository/settings/list/DeleteSettingsModalContainer.test.js
 PASS test/ui/component-repository/settings/edit/SettingsEditPage.test.js
+PASS test/ui/modal/GenericModalContainer.test.js
 PASS test/ui/dashboard/UserManagement.test.js
   ● Console
 
@@ -1181,7 +1423,6 @@ PASS test/ui/dashboard/UserManagement.test.js
       
       Check your code at UserManagement.js:36.
 
-PASS test/ui/modal/GenericModalContainer.test.js
 PASS test/state/dashboard/page-status/reducer.test.js
 PASS test/ui/data-models/common/DeleteDataModelModalContainer.test.js
 PASS test/ui/data-types/attributes/DeleteAttributeModalContainer.test.js
@@ -1189,13 +1430,12 @@ PASS test/ui/component-repository/settings/add/SettingsAddPage.test.js
 PASS test/ui/categories/common/DeleteCategoryModalContainer.test.js
 PASS test/ui/profile-types/list/ProfileTypeListMenuActions.test.js
 PASS test/ui/component-repository/Sidebar.test.js
-PASS test/ui/fragments/edit/EditFragmentPageContainer.test.js
 PASS test/ui/file-browser/common/DeleteFolderModalContainer.test.js
+PASS test/ui/fragments/edit/EditFragmentPageContainer.test.js
 PASS test/ui/component-repository/settings/list/SettingsListPage.test.js
 PASS test/ui/data-types/list/ListDataTypePage.test.js
 PASS test/ui/categories/list/ListCategoryPage.test.js
 PASS test/ui/database/common/DeleteDatabaseModalContainer.test.js
-PASS test/ui/file-browser/common/DeleteFileModalContainer.test.js
 PASS test/ui/users/list/ListDataTypePage.test.js
   ● Console
 
@@ -1220,12 +1460,13 @@ PASS test/ui/users/list/ListDataTypePage.test.js
       
       Check your code at UserListPage.js:51.
 
+PASS test/ui/file-browser/common/DeleteFileModalContainer.test.js
 PASS test/api/reloadConfiguration.test.js
 PASS test/ui/activity-stream/ActivityStreamContainer.test.js
 PASS test/ui/groups/common/DeleteGroupModalContainer.test.js
-PASS test/ui/roles/common/DeleteRoleModalContainer.test.js
 PASS test/ui/users/common/DeleteUserModalContainer.test.js
 PASS test/ui/dashboard/Languages.test.js
+PASS test/ui/roles/common/DeleteRoleModalContainer.test.js
 PASS test/ui/dashboard/UxPatterns.test.js
 PASS test/ui/database/add/AddDatabasePage.test.js
 PASS test/ui/file-browser/add/CreateFolderPage.test.js
@@ -1233,21 +1474,21 @@ PASS test/state/pagination/actions.test.js
 PASS test/locales/locales.test.js
 PASS test/ui/pages/common/MovePageModalContainer.test.js
 PASS test/ui/groups/list/ListGroupPage.test.js
-PASS test/ui/file-browser/upload/UploadFileBrowserFormContainer.test.js
 PASS test/ui/roles/list/ListRolePage.test.js
+PASS test/ui/file-browser/upload/UploadFileBrowserFormContainer.test.js
 PASS test/ui/file-browser/add/CreateFolderFormContainer.test.js
 PASS test/ui/pages/clone/PagesClonePage.test.js
 PASS test/ui/file-browser/list/ListFilesPage.test.js
 PASS test/ui/database/add/AddDatabasePageContainer.test.js
 PASS test/state/modal/actions.test.js
 PASS test/ui/pages/add/PagesAddPage.test.js
-PASS test/ui/common/attributes/AttributeCheckIcon.test.js
 PASS test/ui/pages/edit/PagesEditPage.test.js
+PASS test/ui/common/attributes/AttributeCheckIcon.test.js
 PASS test/state/loading/reducer.test.js
 PASS test/ui/database/report/ReportDatabaseDataSourceContainer.test.js
+PASS test/ui/file-browser/add/CreateTextFileFormContainer.test.js
 PASS test/ui/pages/common/PageInfoTable.test.js
 PASS test/ui/users/detail/DetailUserTable.test.js
-PASS test/ui/file-browser/add/CreateTextFileFormContainer.test.js
 PASS test/ui/users/common/UserStatus.test.js
 PASS test/ui/component-repository/components/item/ComponentImage.test.js
 PASS test/ui/common/form/RenderDatePickerInput.test.js
@@ -1257,8 +1498,8 @@ PASS test/ui/labels/list/LabelsTable.test.js
 PASS test/ui/pages/config/SinglePageSettingsModalContainer.test.js
 PASS test/ui/roles/detail/DetailRolePage.test.js
 PASS test/state/modal/selectors.test.js
-PASS test/ui/internal-page/PageTitle.test.js
 PASS test/ui/users/edit/EditUserPage.test.js
+PASS test/ui/internal-page/PageTitle.test.js
 PASS test/ui/users/authority/UserAuthorityPage.test.js
 PASS test/ui/reload-configuration/ReloadConfirmPage.test.js
 PASS test/ui/categories/detail/DetailCategoryPage.test.js
@@ -1272,35 +1513,35 @@ PASS test/ui/users/common/UserAuthorityPageForm.test.js
       Warning: Failed prop type: The prop `onCloseModal` is marked as required in `UserAuthorityPageFormBody`, but its value is `undefined`.
           in UserAuthorityPageFormBody (at UserAuthorityPageForm.test.js:16)
 
-PASS test/ui/groups/detail/DetailGroupPage.test.js
 PASS test/ui/reload-configuration/ReloadConfigPage.test.js
 PASS test/ui/database/list/ListDatabasePage.test.js
+PASS test/ui/groups/detail/DetailGroupPage.test.js
+PASS test/ui/groups/edit/EditGroupPage.test.js
 PASS test/ui/users/detail/DetailUserPage.test.js
 PASS test/ui/categories/add/AddCategoryPage.test.js
-PASS test/ui/groups/edit/EditGroupPage.test.js
 PASS test/ui/labels/edit/EditLabelPage.test.js
-PASS test/ui/labels/add/AddLabelsPage.test.js
 PASS test/ui/roles/edit/EditRolePage.test.js
+PASS test/ui/labels/add/AddLabelsPage.test.js
 PASS test/ui/common/tree-node/TreeNodeFolderIcon.test.js
 PASS test/state/file-browser/selectors.test.js
-PASS test/ui/groups/add/AddGroupPage.test.js
 PASS test/ui/dashboard/PageStatusContainer.test.js
+PASS test/ui/groups/add/AddGroupPage.test.js
 PASS test/ui/users/add/AddUserPage.test.js
-PASS test/ui/dashboard/PageStatus.test.js
 PASS test/ui/roles/add/AddRolePage.test.js
+PASS test/ui/dashboard/PageStatus.test.js
 PASS test/ui/internal-page/UserMenu.test.js
-PASS test/ui/fragments/list/FragmentListContent.test.js
 PASS test/ui/app/ToastsContainer.test.js
-PASS test/ui/component-repository/components/list/ComponentListPageDisabled.test.js
+PASS test/ui/fragments/list/FragmentListContent.test.js
 PASS test/state/login-form/reducer.test.js
+PASS test/ui/component-repository/components/list/ComponentListPageDisabled.test.js
 PASS test/ui/dashboard/LanguagesContainer.test.js
 PASS test/ui/dashboard/IntegrationsContainer.test.js
 PASS test/ui/page-templates/edit/PageTemplateEditPage.test.js
-PASS test/ui/component-repository/components/list/ComponentListPage.test.js
 PASS test/ui/reload-configuration/ReloadConfigContainer.test.js
+PASS test/ui/component-repository/components/list/ComponentListPage.test.js
 PASS test/ui/component-repository/common/StarIcon.test.js
-PASS test/ui/page-templates/add/PageTemplateAddPage.test.js
 PASS test/ui/activity-stream/ActivityStreamMenuContainer.test.js
+PASS test/ui/page-templates/add/PageTemplateAddPage.test.js
 PASS test/state/loading/actions.test.js
 PASS test/ui/pages/settings/PageSettings.test.js
 PASS test/ui/internal-page/UserMenuContainer.test.js
@@ -1311,10 +1552,11 @@ PASS test/ui/widgets/edit/EditWidgetPage.test.js
 PASS test/ui/internal-page/LanguageSelectContainer.test.js
 PASS test/ui/pages/common/SelectedPageInfoTableContainer.test.js
 PASS test/ui/pages/common/PageTreePreview.test.js
-PASS test/ui/data-models/list/DataModelSearchForm.test.js
 PASS test/ui/internal-page/HomePageLink.test.js
-PASS test/ui/page-templates/detail/PageTemplateDetailPageContainer.test.js
+PASS test/ui/data-models/list/DataModelSearchForm.test.js
 PASS test/ui/database/dump/DatabaseDumpTablePage.test.js
+PASS test/ui/page-templates/detail/PageTemplateDetailPageContainer.test.js
+PASS test/state/reload-configuration/reducer.test.js
 PASS test/ui/component-repository/components/item/install-controls/ComponentInstallActions.test.js
   ● Console
 
@@ -1349,18 +1591,17 @@ PASS test/ui/component-repository/components/item/install-controls/ComponentInst
       Warning: Failed prop type: The prop `componentUsageList` is marked as required in `ComponentInstallActions`, but its value is `undefined`.
           in ComponentInstallActions
 
-PASS test/state/reload-configuration/reducer.test.js
+PASS test/ui/activity-stream/NotificationList.test.js
 PASS test/ui/data-models/edit/EditDataModelPage.test.js
 PASS test/ui/reload-configuration/ReloadConfirmContainer.test.js
-PASS test/ui/activity-stream/NotificationList.test.js
 PASS test/ui/fragments/add/AddFragmentPage.test.js
 PASS test/ui/database/report/ReportDatabaseListDataSource.test.js
 PASS test/ui/fragments/edit/EditFragmentPage.test.js
 PASS test/state/reload-configuration/selectors.test.js
-PASS test/ui/pages/config/SinglePageSettingsModal.test.js
 PASS test/ui/data-models/add/AddDataModelPage.test.js
-PASS test/ui/file-browser/edit/EditTextFilePage.test.js
+PASS test/ui/pages/config/SinglePageSettingsModal.test.js
 PASS test/ui/internal-page/LanguageSelect.test.js
+PASS test/ui/file-browser/edit/EditTextFilePage.test.js
 PASS test/ui/pages/common/RowSpinner.test.js
 PASS test/ui/widgets/add/AddWidgetPage.test.js
 PASS test/ui/fragments/edit/EditFormContainer.test.js
@@ -1368,14 +1609,14 @@ PASS test/ui/common/form/RenderSearchFormInput.test.js
 PASS test/state/locale/reducer.test.js
 PASS test/ui/plugins/PluginsPageContainer.test.js
 PASS test/ui/dashboard/Integrations.test.js
-PASS test/ui/app/Toasts.test.js
 PASS test/ui/groups/detail/GroupDetailTable.test.js
+PASS test/ui/app/Toasts.test.js
+PASS test/ui/common/attributes/AttributeInfo.test.js
 PASS test/state/forms/selectors.test.js
 PASS test/ui/plugins/PluginsPageEmptyState.test.js
-PASS test/ui/common/attributes/AttributeInfo.test.js
-PASS test/ui/data-models/list/DataModelListTableContainer.test.js
 PASS test/state/user-settings/selectors.test.js
 PASS test/api/notification.test.js
+PASS test/ui/data-models/list/DataModelListTableContainer.test.js
 PASS test/ui/component-repository/components/list/ComponentList.test.js
   ● Console
 
@@ -1398,32 +1639,32 @@ PASS test/ui/component-repository/components/list/ComponentList.test.js
       Warning: Failed prop type: The prop `itemCount` is marked as required in `Paginator`, but its value is `undefined`.
           in Paginator (at ComponentList.js:74)
 
-PASS test/ui/data-models/list/DataModelListPage.test.js
-PASS test/state/user-preferences/selectors.test.js
 PASS test/ui/users/authority/UserAuthorityPageContainer.test.js
 PASS test/ui/widgets/list/WidgetSectionTitle.test.js
-PASS test/ui/component-repository/common/StarRating.test.js
+PASS test/ui/data-models/list/DataModelListPage.test.js
+PASS test/state/user-preferences/selectors.test.js
 PASS test/ui/common/attributes/AttributeHypeLongMonoTextSettings.test.js
+PASS test/ui/component-repository/common/StarRating.test.js
 PASS test/ui/locale/IntlProviderContainer.test.js
-PASS test/ui/common/form/FormSectionTitle.test.js
 PASS test/ui/fragments/detail/EmptyData.test.js
+PASS test/ui/common/form/FormSectionTitle.test.js
 PASS test/ui/common/form/SearchForm.test.js
 PASS test/ui/fragments/add/AddFormContainer.test.js
 PASS test/ui/internal-page/InternalPage.test.js
 PASS test/ui/common/attributes/AttributesNumber.test.js
-PASS test/state/data-models/selectors.test.js
 PASS test/state/dashboard/reducer.test.js
+PASS test/state/data-models/selectors.test.js
 PASS test/state/user-profile/selectors.test.js
 PASS test/state/activity-stream/selectors.test.js
-PASS test/ui/internal-page/HomePageLinkContainer.test.js
 PASS test/state/loading/selectors.test.js
 PASS test/state/login-form/selectors.test.js
-PASS test/state/locale/selectors.test.js
 PASS test/state/data-models/reducer.test.js
+PASS test/ui/internal-page/HomePageLinkContainer.test.js
+PASS test/state/locale/selectors.test.js
 ----------------------------------------------------------|----------|----------|----------|----------|-------------------|
 File                                                      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 ----------------------------------------------------------|----------|----------|----------|----------|-------------------|
-All files                                                 |    7***4 |    62.35 |    70.75 |    79.41 |                   |
+All files                                                 |    79.71 |    62.25 |    70.76 |    79.51 |                   |
  api                                                      |     82.4 |    46.73 |    68.72 |    87.04 |                   |
   activityStream.js                                       |      100 |      100 |      100 |      100 |                   |
   categories.js                                           |    94.74 |       75 |      100 |    94.74 |                 9 |
@@ -1468,9 +1709,9 @@ All files                                                 |    7***4 |    62.35 
   withDefaultAuth.js                                      |       60 |      100 |    33.33 |       60 |              8,16 |
  auth/keycloak                                            |        0 |        0 |        0 |        0 |                   |
   KeycloakProviderContainer.js                            |        0 |        0 |        0 |        0 |... 33,34,36,37,39 |
- helpers                                                  |     59.4 |    57.36 |    52.31 |    59.26 |                   |
+ helpers                                                  |     59.4 |    57.25 |    52.31 |    59.26 |                   |
   conversion.js                                           |     6.06 |        0 |        0 |     6.45 |... 42,43,45,46,51 |
-  entities.js                                             |    99.08 |    91.07 |      100 |      100 |  69,88,95,119,145 |
+  entities.js                                             |    99.08 |    8***6 |      100 |      100 |... ,89,96,120,146 |
   getAppBuilderWidgetForm.js                              |    88.89 |    66.67 |       50 |      100 |           8,20,21 |
   getRuntimeEnv.js                                        |    72.22 |    64.71 |      100 |    66.67 |     9,18,24,25,27 |
   getSearchParam.js                                       |        0 |      100 |        0 |        0 |                 1 |
@@ -1607,11 +1848,11 @@ All files                                                 |    7***4 |    62.35 
   reducer.js                                              |      100 |      100 |      100 |      100 |                   |
   selectors.js                                            |      100 |      100 |      100 |      100 |                   |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
- state/page-config                                        |    97.43 |    92.81 |    92.68 |    97.86 |                   |
+ state/page-config                                        |    97.45 |    92.26 |    92.77 |    97.87 |                   |
   actions.js                                              |    95.92 |     91.3 |    88.24 |    96.77 |   104,105,174,262 |
   const.js                                                |      100 |      100 |      100 |      100 |                   |
   reducer.js                                              |      100 |      100 |      100 |      100 |                   |
-  selectors.js                                            |    98.63 |    89.58 |      100 |    98.28 |                14 |
+  selectors.js                                            |    98.67 |       88 |      100 |    98.31 |                19 |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
  state/page-templates                                     |    99.71 |    99.24 |    93.22 |    9***7 |                   |
   actions.js                                              |      100 |      100 |    88.57 |      100 |                   |
@@ -1643,8 +1884,8 @@ All files                                                 |    7***4 |    62.35 
   selectors.js                                            |      100 |      100 |      100 |      100 |                   |
   thunks.js                                               |      100 |      100 |       88 |      100 |                   |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
- state/profile-types                                      |    78.02 |    72.34 |    67.78 |    79.86 |                   |
-  actions.js                                              |    76.68 |    66.13 |    65.97 |    77.27 |... 71,477,478,480 |
+ state/profile-types                                      |    77.66 |    71.88 |     67.4 |    7***6 |                   |
+  actions.js                                              |    76.17 |    65.63 |    65.52 |       77 |... 74,480,481,483 |
   reducer.js                                              |    82.35 |       90 |      100 |    80.43 |... 9,80,81,82,108 |
   selectors.js                                            |    75.51 |        0 |     62.5 |    87.88 |       44,45,46,50 |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
@@ -1658,13 +1899,13 @@ All files                                                 |    7***4 |    62.35 
   reducer.js                                              |      100 |      100 |      100 |      100 |                   |
   selectors.js                                            |    95.24 |       75 |      100 |    92.31 |                24 |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
- state/user-preferences                                   |    33.33 |       40 |       20 |    34.48 |                   |
-  actions.js                                              |    14.29 |        0 |     7.69 |    13.64 |... 34,35,41,42,44 |
+ state/user-preferences                                   |    34.29 |       40 |       20 |    35.71 |                   |
+  actions.js                                              |    14.81 |        0 |     7.69 |    14.29 |... 33,34,40,41,43 |
   reducer.js                                              |      100 |      100 |      100 |      100 |                   |
   selectors.js                                            |      100 |      100 |      100 |      100 |                   |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
  state/user-profile                                       |     92.5 |    90.91 |    93.75 |    93.94 |                   |
-  actions.js                                              |    90.63 |    85.71 |    92.86 |    92.31 |             63,64 |
+  actions.js                                              |    90.63 |    85.71 |    92.86 |    92.31 |             64,65 |
   reducer.js                                              |      100 |      100 |      100 |      100 |                   |
   selectors.js                                            |      100 |      100 |      100 |      100 |                   |
   types.js                                                |      100 |      100 |      100 |      100 |                   |
@@ -1697,16 +1938,16 @@ All files                                                 |    7***4 |    62.35 
   Notification.js                                         |     7.69 |        0 |        0 |     7.69 |... 99,100,101,104 |
   NotificationList.js                                     |       80 |      100 |       25 |       80 |                11 |
   NotificationListContainer.js                            |      100 |      100 |      100 |      100 |                   |
- ui/app                                                   |    67.31 |     62.5 |    44.44 |    65.96 |                   |
-  App.js                                                  |    65.22 |    68.18 |    46.15 |    65.22 |... 48,349,350,351 |
+ ui/app                                                   |    69.09 |    65.38 |       50 |       68 |                   |
+  App.js                                                  |    69.23 |    70.83 |    57.14 |    69.23 |... 57,358,359,360 |
   AppContainer.js                                         |    85.71 |      100 |       75 |       80 |                15 |
   PageNotFound.js                                         |       60 |        0 |        0 |       60 |              9,12 |
   PageNotFoundContainer.js                                |       40 |      100 |        0 |       50 |             11,12 |
   Toasts.js                                               |    71.43 |      100 |    33.33 |    71.43 |              8,11 |
   ToastsContainer.js                                      |       80 |      100 |    66.67 |    66.67 |                11 |
- ui/app-tour                                              |    23.42 |    38.46 |    11.25 |    23.23 |                   |
-  AppTour.js                                              |     28.1 |    51.28 |    14.52 |    27.73 |... 83,394,406,423 |
-  AppTourContainer.js                                     |     8.11 |        0 |        0 |     8.33 |... 88,91,92,95,96 |
+ ui/app-tour                                              |    37.18 |    46.94 |       30 |    37.25 |                   |
+  AppTour.js                                              |    46.61 |    63.89 |    38.71 |    46.55 |... 44,391,403,420 |
+  AppTourContainer.js                                     |     7.89 |        0 |        0 |     8.11 |... 89,92,93,96,97 |
  ui/auth                                                  |       55 |        0 |    33.33 |    52.94 |                   |
   withPermissions.js                                      |       55 |        0 |    33.33 |    52.94 |... 30,36,55,83,84 |
  ui/categories/add                                        |      100 |      100 |      100 |      100 |                   |
@@ -1736,7 +1977,7 @@ All files                                                 |    7***4 |    62.35 
   IntlMessage.js                                          |    66.67 |        0 |        0 |    66.67 |                 7 |
  ui/common/accessibility                                  |       75 |        0 |        0 |       75 |                   |
   KeyCodes.js                                             |       75 |        0 |        0 |       75 |          12,13,14 |
- ui/common/attributes                                     |     55.3 |    38.46 |       34 |    56.25 |                   |
+ ui/common/attributes                                     |     55.3 |    37.04 |       34 |    56.25 |                   |
   AttributeCheckIcon.js                                   |      100 |      100 |      100 |      100 |                   |
   AttributeEnumMapSettings.js                             |    88.89 |    16.67 |    66.67 |    88.89 |                12 |
   AttributeEnumSettings.js                                |    77.78 |    16.67 |    33.33 |    77.78 |             13,25 |
@@ -1756,7 +1997,7 @@ All files                                                 |    7***4 |    62.35 
  ui/common/cancel-modal                                   |    46.15 |        0 |        0 |       50 |                   |
   ConfirmCancelModal.js                                   |    44.44 |        0 |        0 |    44.44 |    18,22,31,37,43 |
   ConfirmCancelModalContainer.js                          |       50 |      100 |        0 |    66.67 |                 7 |
- ui/common/form                                           |    55.02 |    40.08 |       55 |    54.45 |                   |
+ ui/common/form                                           |    54.83 |    39.75 |       55 |    54.26 |                   |
   ActiveLanguagesFields.js                                |    83.33 |    33.33 |       75 |       90 |                38 |
   AttributeForm.js                                        |       10 |        0 |        0 |       10 |... 13,114,120,123 |
   EditAttributeForm.js                                    |     7.89 |        0 |        0 |     7.89 |... 38,148,152,155 |
@@ -1777,7 +2018,7 @@ All files                                                 |    7***4 |    62.35 
   RenderSelectInput.js                                    |    83.33 |    56.25 |    66.67 |    83.33 |             16,21 |
   RenderTextAreaInput.js                                  |      100 |    88.89 |      100 |      100 |                25 |
   RenderTextInput.js                                      |      100 |    92.31 |      100 |      100 |                28 |
-  RoleSelectRenderer.js                                   |     7.14 |        0 |        0 |     7.14 |... 72,78,79,86,89 |
+  RoleSelectRenderer.js                                   |      6.9 |        0 |        0 |      6.9 |... 73,79,80,87,90 |
   SearchForm.js                                           |    27.27 |        0 |        0 |       30 |... 14,15,16,20,21 |
   SwitchRenderer.js                                       |    92.86 |       65 |      100 |    92.86 |                10 |
  ui/common/modal                                          |    93.33 |    83.33 |      100 |    92.31 |                   |
@@ -2019,16 +2260,16 @@ All files                                                 |    7***4 |    62.35 
   GroupListTable.js                                       |    88.89 |      100 |    72.73 |    88.89 |             22,26 |
   GroupListTableContainer.js                              |      100 |        0 |      100 |      100 |                24 |
   ListGroupPage.js                                        |      100 |      100 |      100 |      100 |                   |
- ui/internal-page                                         |    52.76 |     9.17 |    18.75 |    52.54 |                   |
+ ui/internal-page                                         |    53.97 |     10.1 |    18.75 |    53.85 |                   |
   BrandMenuContainer.js                                   |    58.82 |      2.5 |        0 |     62.5 | 52,54,55,59,63,85 |
   HomePageLink.js                                         |      100 |      100 |      100 |      100 |                   |
   HomePageLinkContainer.js                                |      100 |      100 |      100 |      100 |                   |
   InfoDropdown.js                                         |       60 |      100 |        0 |       60 |              8,13 |
-  InfoMenu.js                                             |       50 |      100 |        0 |       50 |                 8 |
+  InfoMenu.js                                             |    66.67 |      100 |        0 |    66.67 |                 9 |
   InternalPage.js                                         |      100 |       50 |      100 |      100 |          13,17,24 |
   LanguageSelect.js                                       |    83.33 |       50 |       50 |    83.33 |                13 |
   LanguageSelectContainer.js                              |       80 |      100 |    66.67 |    66.67 |                12 |
-  LegacyAdminConsoleMenuContainer.js                      |    28.79 |        0 |        0 |    30.16 |... 69,374,385,406 |
+  LegacyAdminConsoleMenuContainer.js                      |    2***9 |        0 |        0 |    31.15 |... 08,409,410,411 |
   PageTitle.js                                            |      100 |    83.33 |      100 |      100 |                30 |
   UserMenu.js                                             |      100 |      100 |      100 |      100 |                   |
   UserMenuContainer.js                                    |       80 |      100 |    66.67 |    66.67 |                11 |
@@ -2081,14 +2322,14 @@ All files                                                 |    7***4 |    62.35 
   PageTemplateListPage.js                                 |      100 |      100 |      100 |      100 |                   |
   PageTemplateListTable.js                                |      100 |      100 |      100 |      100 |                   |
   PageTemplateListTableContainer.js                       |      100 |      100 |      100 |      100 |                   |
- ui/pages/add                                             |    60.87 |    27.27 |    66.67 |    57.14 |                   |
-  PagesAddFormContainer.js                                |    47.06 |    22.58 |    54.55 |    43.75 |... 17,118,122,123 |
+ ui/pages/add                                             |     61.7 |    28.57 |    66.67 |    58.14 |                   |
+  PagesAddFormContainer.js                                |    48.57 |    24.24 |    54.55 |    45.45 |... 19,120,124,125 |
   PagesAddPage.js                                         |      100 |      100 |      100 |      100 |                   |
   PagesAddPageContainer.js                                |      100 |      100 |      100 |      100 |                   |
  ui/pages/clone                                           |    68.75 |       60 |     87.5 |    64.29 |                   |
-  CloneFormContainer.js                                   |    64.29 |       60 |    85.71 |    58.33 |    34,35,38,39,46 |
+  CloneFormContainer.js                                   |    64.29 |       60 |    85.71 |    58.33 |    35,36,39,40,47 |
   PagesClonePage.js                                       |      100 |      100 |      100 |      100 |                   |
- ui/pages/common                                          |    80.22 |    56.12 |    63.27 |     80.7 |                   |
+ ui/pages/common                                          |    79.84 |    58.06 |    62.42 |    80.06 |                   |
   DeletePageModal.js                                      |      100 |      100 |      100 |      100 |                   |
   DeletePageModalContainer.js                             |      100 |      100 |      100 |      100 |                   |
   FindTemplateModal.js                                    |    13.04 |      100 |        0 |    13.04 |... ,87,93,104,107 |
@@ -2102,8 +2343,8 @@ All files                                                 |    7***4 |    62.35 
   PageSettingsFormContainer.js                            |      100 |      100 |      100 |      100 |                   |
   PageStatusIcon.js                                       |      100 |      100 |      100 |      100 |                   |
   PageTree.js                                             |    94.74 |       90 |       60 |    94.74 |               107 |
-  PageTreeActionMenu.js                                   |       96 |       95 |      100 |    95.45 |                39 |
-  PageTreeCompact.js                                      |     87.5 |       50 |    66.67 |    96.43 |                85 |
+  PageTreeActionMenu.js                                   |    95.65 |    92.31 |      100 |       95 |                39 |
+  PageTreeCompact.js                                      |    84.38 |    55.88 |    57.14 |    8***6 |          19,20,98 |
   PageTreeContainer.js                                    |    83.87 |      100 |    70.59 |    82.76 |    45,84,87,97,98 |
   PageTreePreview.js                                      |      100 |      100 |      100 |      100 |                   |
   PageTreeSelectorContainer.js                            |       75 |      100 |       60 |    66.67 |             19,20 |
@@ -2123,9 +2364,9 @@ All files                                                 |    7***4 |    62.35 
   DragHandle.js                                           |    26.09 |        0 |        0 |    27.27 |... 62,66,67,68,70 |
   TableDragLayer.js                                       |    27.27 |        0 |        0 |    28.57 |... 54,56,57,60,61 |
   TableRow.js                                             |       20 |        0 |        0 |    20.45 |... 13,118,121,122 |
- ui/pages/config                                          |    78.92 |    63.98 |    70.49 |     78.2 |                   |
-  ContentPages.js                                         |      100 |      100 |       50 |      100 |                   |
-  ContentPagesContainer.js                                |    24.14 |      100 |       25 |    18.52 |... 81,84,87,89,90 |
+ ui/pages/config                                          |    76.01 |    59.22 |    62.14 |    75.54 |                   |
+  ContentPages.js                                         |       45 |       25 |    22.22 |    47.37 |... 84,88,89,90,92 |
+  ContentPagesContainer.js                                |    28.13 |        0 |    22.22 |    23.33 |... 00,101,108,113 |
   ContentWidget.js                                        |      100 |      100 |      100 |      100 |                   |
   ContentWidgetContainer.js                               |      100 |      100 |      100 |      100 |                   |
   ContentWidgetElement.js                                 |      100 |      100 |      100 |      100 |                   |
@@ -2139,15 +2380,15 @@ All files                                                 |    7***4 |    62.35 
   PageConfigGridCol.js                                    |      100 |     87.5 |      100 |      100 |                44 |
   PageConfigGridContainer.js                              |      100 |      100 |      100 |      100 |                   |
   PageConfigGridRow.js                                    |      100 |      100 |      100 |      100 |                   |
-  PageConfigPage.js                                       |    60.87 |    46.77 |       55 |    60.61 |... 33,305,402,416 |
+  PageConfigPage.js                                       |    67.39 |    54.76 |    52.94 |    67.44 |... 98,102,103,367 |
   PageConfigPageContainer.js                              |       85 |    83.33 |    90.91 |    84.21 |          34,35,41 |
   SinglePageSettingsForm.js                               |    88.46 |      100 |    72.73 |    95.65 |                32 |
   SinglePageSettingsFormContainer.js                      |      100 |      100 |      100 |      100 |                   |
   SinglePageSettingsModal.js                              |      100 |      100 |      100 |      100 |                   |
   SinglePageSettingsModalContainer.js                     |      100 |      100 |      100 |      100 |                   |
   ToolbarContentIcon.js                                   |      100 |     87.5 |       50 |      100 |                15 |
-  ToolbarPageConfig.js                                    |    81.25 |     62.5 |      100 |    81.25 |          18,25,26 |
-  ToolbarPageConfigContainer.js                           |      100 |    83.33 |      100 |      100 |                10 |
+  ToolbarPageConfig.js                                    |    68.18 |       50 |    57.14 |    68.18 |... 25,26,34,41,42 |
+  ToolbarPageConfigContainer.js                           |     87.5 |       75 |       75 |    85.71 |             38,43 |
   WidgetFrame.js                                          |       90 |    82.14 |       50 |    88.89 |         29,41,103 |
   const.js                                                |      100 |      100 |      100 |      100 |                   |
   frameDragSource.js                                      |      100 |      100 |      100 |      100 |                   |
@@ -2155,11 +2396,11 @@ All files                                                 |    7***4 |    62.35 
  ui/pages/detail                                          |    93.33 |      100 |    77.78 |    92.31 |                   |
   PagesDetailPage.js                                      |     87.5 |      100 |       60 |     87.5 |                27 |
   PagesDetailPageContainer.js                             |      100 |      100 |      100 |      100 |                   |
- ui/pages/edit                                            |    78.26 |    71.43 |    77.78 |       75 |                   |
-  PagesEditFormContainer.js                               |    72.22 |       60 |    71.43 |    68.75 |    38,39,42,43,56 |
+ ui/pages/edit                                            |    79.17 |    71.43 |    77.78 |    76.19 |                   |
+  PagesEditFormContainer.js                               |    73.68 |       60 |    71.43 |    70.59 |    42,43,46,47,60 |
   PagesEditPage.js                                        |      100 |      100 |      100 |      100 |                   |
- ui/pages/list                                            |    75.93 |       60 |    61.54 |       75 |                   |
-  PageListSearchTable.js                                  |    89.47 |      100 |       80 |    89.47 |             22,26 |
+ ui/pages/list                                            |    74.55 |     62.5 |    57.14 |    73.58 |                   |
+  PageListSearchTable.js                                  |       85 |       75 |    66.67 |       85 |          22,26,86 |
   PageSearchForm.js                                       |      100 |      100 |      100 |      100 |                   |
   PageTreePage.js                                         |    66.67 |    66.67 |       50 |    66.67 |          29,84,88 |
   PageTreePageContainer.js                                |    55.56 |        0 |     37.5 |       50 |... 34,40,41,42,45 |
@@ -2175,12 +2416,12 @@ All files                                                 |    7***4 |    62.35 
  ui/profile-types/add                                     |     37.5 |        0 |        0 |       50 |                   |
   AddFormContainer.js                                     |    33.33 |        0 |        0 |       50 |             15,18 |
   AddProfileTypesPage.js                                  |       50 |      100 |        0 |       50 |                14 |
- ui/profile-types/attributes                              |       40 |        0 |        0 |    46.51 |                   |
+ ui/profile-types/attributes                              |    39.22 |        0 |        0 |    45.45 |                   |
   AddFormContainer.js                                     |    28.57 |        0 |        0 |       40 |          25,28,39 |
   AddProfileTypeAttributePage.js                          |       80 |      100 |        0 |       80 |                21 |
   DeleteAttributeModal.js                                 |       50 |      100 |        0 |       50 |       15,16,22,25 |
   DeleteAttributeModalContainer.js                        |    42.86 |      100 |        0 |       60 |             13,14 |
-  EditFormContainer.js                                    |    16.67 |        0 |        0 |       20 |... 48,49,50,52,72 |
+  EditFormContainer.js                                    |    15.79 |        0 |        0 |    18.75 |... 49,50,51,65,74 |
   EditProfileTypeAttributePage.js                         |       80 |      100 |        0 |       80 |                22 |
  ui/profile-types/attributes/monolist                     |       30 |        0 |        0 |     37.5 |                   |
   FormContainer.js                                        |    33.33 |      100 |        0 |       50 |             17,20 |
@@ -2231,8 +2472,8 @@ All files                                                 |    7***4 |    62.35 
   RoleListMenuActions.js                                  |      100 |      100 |      100 |      100 |                   |
   RoleListTable.js                                        |      100 |      100 |      100 |      100 |                   |
   RoleListTableContainer.js                               |      100 |      100 |      100 |      100 |                   |
- ui/user-profile/common                                   |     86.3 |    68.09 |       70 |    88.41 |                   |
-  UserProfileForm.js                                      |     86.3 |    68.09 |       70 |    88.41 |... ,96,97,102,268 |
+ ui/user-profile/common                                   |    86.49 |    64.71 |       70 |    88.57 |                   |
+  UserProfileForm.js                                      |    86.49 |    64.71 |       70 |    88.57 |... 00,101,106,274 |
  ui/user-profile/edit                                     |    38.89 |        0 |     12.5 |    46.67 |                   |
   EditUserProfileFormContainer.js                         |    31.25 |        0 |        0 |    38.46 |... 33,36,39,40,41 |
   EditUserProfilePage.js                                  |      100 |      100 |      100 |      100 |                   |
@@ -2272,7 +2513,7 @@ All files                                                 |    7***4 |    62.35 
   AppSettingsForm.js                                      |      100 |      100 |      100 |      100 |                   |
   AppSettingsFormContainer.js                             |    33.33 |      100 |        0 |       50 |             17,18 |
   MyProfileEditForm.js                                    |    14.29 |        0 |        0 |    14.75 |... 03,204,212,215 |
-  MyProfileEditFormContainer.js                           |       25 |      100 |        0 |    33.33 |       20,21,24,27 |
+  MyProfileEditFormContainer.js                           |       25 |      100 |        0 |    33.33 |       28,29,32,35 |
   MyProfilePage.js                                        |       80 |      100 |       50 |       80 |                16 |
   MyProfilePageContainer.js                               |    33.33 |      100 |        0 |       50 |                 8 |
  ui/users/restrictions                                    |    94.44 |        0 |     87.5 |    93.75 |                   |
@@ -2291,12 +2532,12 @@ All files                                                 |    7***4 |    62.35 
   WidgetConfigMicrofrontend.js                            |      100 |    92.86 |      100 |      100 |                23 |
   WidgetConfigPage.js                                     |    59.38 |    35.71 |    66.67 |    56.67 |... 55,56,58,80,89 |
   WidgetConfigPageContainer.js                            |      100 |    66.67 |      100 |      100 |             32,33 |
- ui/widgets/config/forms                                  |     22.5 |        0 |     4.88 |    22.41 |                   |
+ ui/widgets/config/forms                                  |    22.13 |        0 |     4.88 |    22.03 |                   |
   InternalServletConfigForm.js                            |      100 |      100 |      100 |      100 |                   |
-  NavigationBarConfigForm.js                              |    11.11 |        0 |        0 |    11.11 |... 5,57,61,63,121 |
-  NavigationBarConfigFormContainer.js                     |      8.7 |        0 |        0 |     9.09 |... 05,109,110,111 |
+  NavigationBarConfigForm.js                              |    11.11 |        0 |        0 |    11.11 |... 6,58,62,64,122 |
+  NavigationBarConfigFormContainer.js                     |     8.33 |        0 |        0 |      8.7 |... 08,112,113,114 |
   NavigationBarExpressionsList.js                         |    22.58 |        0 |        0 |    23.33 |... 08,109,120,121 |
-  NavigationBarTargetPage.js                              |       25 |      100 |        0 |       25 | 12,14,34,47,59,63 |
+  NavigationBarTargetPage.js                              |       25 |      100 |        0 |       25 | 13,15,35,48,61,65 |
   NavigatorBarOperator.js                                 |    42.86 |        0 |        0 |    42.86 |       21,24,35,44 |
   ToggleButtonGroupField.js                               |    66.67 |      100 |        0 |    66.67 |                 6 |
  ui/widgets/detail                                        |    90.48 |       40 |    88.89 |    89.47 |                   |
@@ -2333,12 +2574,12 @@ You can add a runtime option to disable the check or this warning:
 See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
 
 Test Suites: 1 skipped, 539 passed, 539 of 540 total
-Tests:       53 skipped, 3440 passed, 3493 total
+Tests:       53 skipped, 3449 passed, 3502 total
 Snapshots:   0 total
-Time:        124.461s
+Time:        144.319s
 Ran all test suites.
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-build[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-build[0m
 
 > app-builder@6.3.0 app-install /workspace/source
 > node apps/install.js "cms"
@@ -2354,16 +2595,16 @@ npm WARN eslint-config-react-app@2.1.0 requires a peer of babel-eslint@^7.2.3 bu
 npm WARN eslint-config-react-app@2.1.0 requires a peer of eslint-plugin-jsx-a11y@^5.1.1 but none is installed. You must install peer dependencies yourself.
 npm WARN react-ellipsis-with-tooltip@1.0.7 requires a peer of react-bootstrap@^0.31.0 but none is installed. You must install peer dependencies yourself.
 npm WARN table-resolver@3.3.0 requires a peer of redux@>= 3.0.0 < 4.0.0 but none is installed. You must install peer dependencies yourself.
-npm WARN babel-core@7.0.0-bridge.0 requires a peer of @babel/core@^7.0.0-0 but none is installed. You must install peer dependencies yourself.
-npm WARN react-html-table-to-excel@2.0.0 requires a peer of react@^15.x.x but none is installed. You must install peer dependencies yourself.
 npm WARN react-excel-workbook@0.0.4 requires a peer of react@^15.0.0 but none is installed. You must install peer dependencies yourself.
 npm WARN react-excel-workbook@0.0.4 requires a peer of react-dom@^15.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN babel-core@7.0.0-bridge.0 requires a peer of @babel/core@^7.0.0-0 but none is installed. You must install peer dependencies yourself.
+npm WARN react-html-table-to-excel@2.0.0 requires a peer of react@^15.x.x but none is installed. You must install peer dependencies yourself.
 npm WARN The package whatwg-fetch is included as both a dev and production dependency.
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.9 (node_modules/fsevents):
 npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.9: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 
-+ @entando/cms@0.2.167
-added 72 packages from 74 contributors and audited 2164 packages in 25.748s
++ @entando/cms@0.2.172
+added 72 packages from 74 contributors and audited 2164 packages in 24.073s
 
 5 packages are looking for funding
   run `npm fund` for details
@@ -2387,10 +2628,10 @@ CREATING APP IMPORT FILE
 Creating an optimized production build...
 Compiled with warnings.
 
-./src/state/user-preferences/actions.js
+./src/ui/user-profile/common/UserProfileForm.js
 Module Warning (from ./node_modules/eslint-loader/index.js):
 
-  Line 14:  Unexpected console statement  no-console
+  Line 93:  Unexpected console statement  no-console
 
 classnames
   Multiple versions of classnames found:
@@ -2444,31 +2685,31 @@ Assets:
   static/media/OpenSans-ExtraBoldItalic-webfont.6be75e80.svg (853 KiB)
   static/media/OpenSans-ExtraBold-webfont.c13d9e6d.svg (850 KiB)
   static/media/fontawesome-webfont.912ec66d.svg (434 KiB)
-  main.css (583 KiB)
-  static/js/main.5165142a.js (6.6 MiB)
+  main.css (586 KiB)
+  static/js/main.44fe7c54.js (6.61 MiB)
 
 entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
 Entrypoints:
-  main (7.17 MiB)
+  main (7.18 MiB)
       main.css
-      static/js/main.5165142a.js
+      static/js/main.44fe7c54.js
 
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
 File sizes after gzip:
 
-  1.66 MB   build/static/js/main.5165142a.js
-  98.4 KB   build/main.css
-  53.98 KB  build/static/js/0.0e225014.chunk.js
-  11.37 KB  build/static/js/3.ab87f2a5.chunk.js
-  5.24 KB   build/static/js/1.b2aa3b5c.chunk.js
-  4.16 KB   build/static/js/4.fe136436.chunk.js
-  2.45 KB   build/static/js/9.5afcdb1c.chunk.js
-  1.82 KB   build/static/js/7.d10f3229.chunk.js
-  1.33 KB   build/static/js/5.d0b38c77.chunk.js
-  927 B     build/static/js/6.164c6c1a.chunk.js
-  607 B     build/static/js/8.063dc097.chunk.js
+  1.67 MB   build/static/js/main.44fe7c54.js
+  98.9 KB   build/main.css
+  53.98 KB  build/static/js/0.b5c0fba8.chunk.js
+  11.37 KB  build/static/js/3.3d28ef0e.chunk.js
+  5.24 KB   build/static/js/1.40246bf2.chunk.js
+  4.16 KB   build/static/js/4.a8fa97d8.chunk.js
+  2.45 KB   build/static/js/9.a411e9af.chunk.js
+  1.82 KB   build/static/js/7.90677ce1.chunk.js
+  1.32 KB   build/static/js/5.b8e6a848.chunk.js
+  926 B     build/static/js/6.561bbaf4.chunk.js
+  604 B     build/static/js/8.c01eda8e.chunk.js
 
 The bundle size is significantly larger than recommended.
 Consider reducing it with code splitting: https://goo.gl/9VhYWB
@@ -2484,7 +2725,7 @@ Find out more about deployment here:
   http://bit.ly/CRA-deploy
 
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
 [36mINFO[0m[0000] Downloading base image centos/nginx-112-centos7:latest 
 [36mINFO[0m[0001] Error while retrieving image from cache: getting file info: stat /workspace/sha256:af171c38298e64664a9f999194480ce7e392858e773904df22f7585a1731ad0d: no such file or directory 
 [36mINFO[0m[0001] Downloading base image centos/nginx-112-centos7:latest 
@@ -2493,57 +2734,57 @@ Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage 
 [36mINFO[0m[0002] Adding exposed port: 8081/tcp                
 [36mINFO[0m[0002] Using files from context: [/workspace/source/build] 
 [36mINFO[0m[0002] cmd: USER                                    
-[36mINFO[0m[0002] Checking for cached layer docker.io/todo/cache:147e805a84a3cb7e5aa62a166604ab73da722a7c353589cc71c622de932c3fba... 
+[36mINFO[0m[0002] Checking for cached layer docker.io/todo/cache:297a4017d473b645aa02e5a2b14f611ae5e6e78deadd357b3797201ce0218a7d... 
 [36mINFO[0m[0003] No cached layer found for cmd RUN fix-permissions /opt/app-****/src/app-builder 
 [36mINFO[0m[0003] Unpacking ****fs as cmd RUN fix-permissions /opt/app-****/src/app-builder requires it. 
-[36mINFO[0m[0014] Taking snapshot of full file******...        
-[36mINFO[0m[0019] EXPOSE 8081                                  
-[36mINFO[0m[0019] cmd: EXPOSE                                  
-[36mINFO[0m[0019] Adding exposed port: 8081/tcp                
-[36mINFO[0m[0019] No files changed in this command, skipping snapshotting. 
-[36mINFO[0m[0019] Using files from context: [/workspace/source/build] 
-[36mINFO[0m[0019] COPY ./build /opt/app-****/src/app-builder   
-[36mINFO[0m[0020] Taking snapshot of files...                  
-[36mINFO[0m[0021] USER ****                                    
-[36mINFO[0m[0021] cmd: USER                                    
+[36mINFO[0m[0015] Taking snapshot of full file******...        
+[36mINFO[0m[0021] EXPOSE 8081                                  
+[36mINFO[0m[0021] cmd: EXPOSE                                  
+[36mINFO[0m[0021] Adding exposed port: 8081/tcp                
 [36mINFO[0m[0021] No files changed in this command, skipping snapshotting. 
-[36mINFO[0m[0021] RUN fix-permissions /opt/app-****/src/app-builder 
-[36mINFO[0m[0021] cmd: /bin/sh                                 
-[36mINFO[0m[0021] args: [-c fix-permissions /opt/app-****/src/app-builder] 
-[36mINFO[0m[0021] Taking snapshot of full file******...        
-[36mINFO[0m[0025] Using files from context: [/workspace/source/nginx.conf] 
-[36mINFO[0m[0025] COPY ./nginx.conf ${NGINX_CONF_PATH}         
-[36mINFO[0m[0025] Taking snapshot of files...                  
-[36mINFO[0m[0025] USER default                                 
-[36mINFO[0m[0025] cmd: USER                                    
-[36mINFO[0m[0025] No files changed in this command, skipping snapshotting. 
-[36mINFO[0m[0025] Using files from context: [/workspace/source/docker-entrypoint.sh] 
-[36mINFO[0m[0025] COPY ./docker-entrypoint.sh /usr/local/bin   
-[36mINFO[0m[0025] Taking snapshot of files...                  
-[36mINFO[0m[0025] ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"] 
-[36mINFO[0m[0025] No files changed in this command, skipping snapshotting. 
-[36mINFO[0m[0025] CMD ${STI_SCRIPTS_PATH}/run                  
-[36mINFO[0m[0025] No files changed in this command, skipping snapshotting. 
-[36mINFO[0m[0025] Pushing layer docker.io/todo/cache:147e805a84a3cb7e5aa62a166604ab73da722a7c353589cc71c622de932c3fba to cache now 
-[33mWARN[0m[0026] error uploading layer to cache: failed to push to destination index.docker.io/todo/cache:147e805a84a3cb7e5aa62a166604ab73da722a7c353589cc71c622de932c3fba: unsupported status code 401; body:  
-2020/10/20 11:25:57 existing blob: sha256:209c879d58e346569af72cb6679624bb55931409acfa16f6d3d3a6d6c4828168
-2020/10/20 11:25:57 existing blob: sha256:b04f3cd8f5dc045e3ae4422060d42f5f6dd5806456355c6b29ded4fdde954ea6
-2020/10/20 11:25:57 existing blob: sha256:7464432c3f01f12f120b6d3ae41e44e8d275853a753219eba70a892a7432e769
-2020/10/20 11:25:57 existing blob: sha256:0de1e67a7118421a74c9c895161d260b6c7eaf2f55ff7b93711e61f0c20a5ea1
-2020/10/20 11:25:57 existing blob: sha256:ab5ef0e5819490abe86106fd9f4381123e37a03e80e650be39f7938d30ecb530
-2020/10/20 11:25:57 existing blob: sha256:0c1ab5ee9c31fdcb600b9ecf81f30e25937b4d4baff7a1855d7595138431b542
-2020/10/20 11:25:57 existing blob: sha256:4bb32ba4aeb6359f33b40ddb44e9f96ae5e02baf1a3a3fab9a4a098ae2af6a83
-2020/10/20 11:25:57 existing blob: sha256:41395b31da21a688545397d323f065898a754c1194f75d25d4bc2f511a0496ac
-2020/10/20 11:25:58 pushed blob: sha256:e955c36dced32fa6a28d47acd219f8ebe0c22ad5344a9975479868ec6faa902e
-2020/10/20 11:25:59 pushed blob: sha256:09567db46f54cc9c0842ceafe42fce4bff556df0ab29abf5d49ebcd085d11813
-2020/10/20 11:25:59 pushed blob: sha256:a11c7360a35d4dc4a12939de78bb72e90c292f96efa21ea81c7d80b86aea8da5
-2020/10/20 11:26:02 pushed blob: sha256:1dde96ca640b8cb317ab95c4d328deaed08396a3afbe19e564fb2365358af759
-2020/10/20 11:26:03 pushed blob: sha256:105b4cc8a3b2bccf9abac6869a9660bd5219205d640602e830a89ad5c503896c
-2020/10/20 11:26:04 index.docker.io/entando/app-builder:6.1.225: digest: sha256:3c827a1c6a76b3f5d9d357bb98cffc177871d5080e2e77c91cbf4bffcc80cfac size: 2219
+[36mINFO[0m[0021] Using files from context: [/workspace/source/build] 
+[36mINFO[0m[0021] COPY ./build /opt/app-****/src/app-builder   
+[36mINFO[0m[0021] Taking snapshot of files...                  
+[36mINFO[0m[0023] USER ****                                    
+[36mINFO[0m[0023] cmd: USER                                    
+[36mINFO[0m[0023] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0023] RUN fix-permissions /opt/app-****/src/app-builder 
+[36mINFO[0m[0023] cmd: /bin/sh                                 
+[36mINFO[0m[0023] args: [-c fix-permissions /opt/app-****/src/app-builder] 
+[36mINFO[0m[0023] Taking snapshot of full file******...        
+[36mINFO[0m[0027] Using files from context: [/workspace/source/nginx.conf] 
+[36mINFO[0m[0027] COPY ./nginx.conf ${NGINX_CONF_PATH}         
+[36mINFO[0m[0028] Taking snapshot of files...                  
+[36mINFO[0m[0028] USER default                                 
+[36mINFO[0m[0028] cmd: USER                                    
+[36mINFO[0m[0028] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0028] Using files from context: [/workspace/source/docker-entrypoint.sh] 
+[36mINFO[0m[0028] COPY ./docker-entrypoint.sh /usr/local/bin   
+[36mINFO[0m[0028] Taking snapshot of files...                  
+[36mINFO[0m[0028] ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"] 
+[36mINFO[0m[0028] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0028] CMD ${STI_SCRIPTS_PATH}/run                  
+[36mINFO[0m[0028] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0028] Pushing layer docker.io/todo/cache:297a4017d473b645aa02e5a2b14f611ae5e6e78deadd357b3797201ce0218a7d to cache now 
+[33mWARN[0m[0028] error uploading layer to cache: failed to push to destination index.docker.io/todo/cache:297a4017d473b645aa02e5a2b14f611ae5e6e78deadd357b3797201ce0218a7d: unsupported status code 401; body:  
+2020/10/27 11:07:55 existing blob: sha256:ab5ef0e5819490abe86106fd9f4381123e37a03e80e650be39f7938d30ecb530
+2020/10/27 11:07:55 existing blob: sha256:0de1e67a7118421a74c9c895161d260b6c7eaf2f55ff7b93711e61f0c20a5ea1
+2020/10/27 11:07:55 existing blob: sha256:b04f3cd8f5dc045e3ae4422060d42f5f6dd5806456355c6b29ded4fdde954ea6
+2020/10/27 11:07:55 existing blob: sha256:41395b31da21a688545397d323f065898a754c1194f75d25d4bc2f511a0496ac
+2020/10/27 11:07:55 existing blob: sha256:0c1ab5ee9c31fdcb600b9ecf81f30e25937b4d4baff7a1855d7595138431b542
+2020/10/27 11:07:55 existing blob: sha256:4bb32ba4aeb6359f33b40ddb44e9f96ae5e02baf1a3a3fab9a4a098ae2af6a83
+2020/10/27 11:07:55 existing blob: sha256:7464432c3f01f12f120b6d3ae41e44e8d275853a753219eba70a892a7432e769
+2020/10/27 11:07:55 existing blob: sha256:209c879d58e346569af72cb6679624bb55931409acfa16f6d3d3a6d6c4828168
+2020/10/27 11:07:56 pushed blob: sha256:60a4359096d939033612d2e969b298a8ca558edc886c0eeb326a170350fd3b2d
+2020/10/27 11:07:57 pushed blob: sha256:dce1cdb8d6cf3f1fc16a0da2986a83757fb6181e6ab1c9b9820055f5608aee83
+2020/10/27 11:07:57 pushed blob: sha256:a07c7b1b67093f9e54c31529d479293fe94dccfa050eb85afc23ee0d324d23ad
+2020/10/27 11:08:00 pushed blob: sha256:723e85aef63c78ccba76ffa476a9f131a3facb013ab451b28a1cd1ef1bc9552b
+2020/10/27 11:08:01 pushed blob: sha256:d7c8dc2b3d22c27ee49be8f8aafe18934c330c11b467862c3693a5bcfbb08767
+2020/10/27 11:08:01 index.docker.io/entando/app-builder:6.1.242: digest: sha256:f08186e0f7ba7dce01852b8c7dbf48ec397a85d2b5331c434bb7be16556c9749 size: 2219
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-post-build[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-post-build[0m
 no CVE provider running in the current ** namespace so skip adding image to be analysed
 
-Showing logs for build [32mentando-app-builder-master-rele-xtxpt-11[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-update-image-map[0m
+Showing logs for build [32mentando-app-builder-master-rele-nxtn6-11[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-update-image-map[0m
 Publishing image info for app-builder
 configmap/entando-docker-image-info patched
