@@ -185,7 +185,7 @@ public class EntandoBundleInstallService implements EntandoBundleJobExecutor {
 
     private Queue&lt;Installable&gt; getInstallableComponentsByPriority(BundleReader bundleReader) {
 <span class="pc" id="L187">        return processorMap.values().stream()</span>
-<span class="pc" id="L188">                .map(processor -&gt; processor.process(bundleReader))</span>
+<span class="fc" id="L188">                .map(processor -&gt; processor.process(bundleReader))</span>
 <span class="fc" id="L189">                .flatMap(List::stream)</span>
 <span class="fc" id="L190">                .sorted(Comparator.comparingInt(Installable::getPriority))</span>
 <span class="nc" id="L191">                .collect(Collectors.toCollection(ArrayDeque::new));</span>
