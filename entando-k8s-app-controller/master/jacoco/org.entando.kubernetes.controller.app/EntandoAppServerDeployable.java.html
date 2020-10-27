@@ -16,8 +16,6 @@
 
 package org.entando.kubernetes.controller.app;
 
-import static org.entando.kubernetes.model.JeeServer.EAP;
-
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.api.model.apps.Deployment;
@@ -39,15 +37,10 @@ public class EntandoAppServerDeployable implements PublicIngressingDeployable&lt
         DbAwareDeployable {
 
     /**
-     * The operating system level id of the default user in the EAP base image. Was determined to be 185 running the 'id' command in the
-     * entando/entando-eap71-base image
+     * The operating system level id of the default user in the EAP and Wildfly base images. Was determined to be 185 running the 'id'
+     * command in the entando/entando-eap72-clusted-base image or entando/entando-wildfly17-base image
      */
-    public static final long DEFAULT_USERID_IN_EAP_BASE_IMAGE = 185L;
-    /**
-     * The operating system level id of the default user in the wildfly base image. Was determined to be 1001 running the 'id' command in
-     * the entando/entando-wildfly12-base image
-     */
-    public static final long DEFAULT_USERID_IN_WILDFLY_BASE_IMAGE = 1001L;
+    public static final long DEFAULT_USERID_IN_JBOSS_BASE_IMAGES = 185L;
     private final EntandoApp entandoApp;
     private final List&lt;DeployableContainer&gt; containers;
     private final DatabaseServiceResult databaseServiceResult;
@@ -56,82 +49,75 @@ public class EntandoAppServerDeployable implements PublicIngressingDeployable&lt
     public EntandoAppServerDeployable(EntandoApp entandoApp,
             KeycloakConnectionConfig keycloakConnectionConfig,
             InfrastructureConfig infrastructureConfig,
-<span class="fc" id="L59">            DatabaseServiceResult databaseServiceResult) {</span>
-<span class="fc" id="L60">        this.entandoApp = entandoApp;</span>
-<span class="fc" id="L61">        this.databaseServiceResult = databaseServiceResult;</span>
-<span class="fc" id="L62">        this.containers = Arrays.asList(new EntandoAppDeployableContainer(entandoApp, keycloakConnectionConfig),</span>
+<span class="fc" id="L52">            DatabaseServiceResult databaseServiceResult) {</span>
+<span class="fc" id="L53">        this.entandoApp = entandoApp;</span>
+<span class="fc" id="L54">        this.databaseServiceResult = databaseServiceResult;</span>
+<span class="fc" id="L55">        this.containers = Arrays.asList(new EntandoAppDeployableContainer(entandoApp, keycloakConnectionConfig),</span>
                 new ComponentManagerDeployableContainer(entandoApp, keycloakConnectionConfig, infrastructureConfig),
                 new AppBuilderDeployableContainer(entandoApp)
         );
-<span class="fc" id="L66">        this.keycloakConnectionConfig = keycloakConnectionConfig;</span>
-<span class="fc" id="L67">    }</span>
+<span class="fc" id="L59">        this.keycloakConnectionConfig = keycloakConnectionConfig;</span>
+<span class="fc" id="L60">    }</span>
 
     @Override
     public Optional&lt;Long&gt; getFileSystemUserAndGroupId() {
-<span class="fc" id="L71">        return entandoApp.getSpec().getStandardServerImage().map(jeeServer -&gt; {</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (jeeServer == EAP) {</span>
-<span class="fc" id="L73">                return DEFAULT_USERID_IN_EAP_BASE_IMAGE;</span>
-            } else {
-<span class="fc" id="L75">                return DEFAULT_USERID_IN_WILDFLY_BASE_IMAGE;</span>
-            }
-        });
-
+<span class="fc" id="L64">        return Optional.of(DEFAULT_USERID_IN_JBOSS_BASE_IMAGES);</span>
     }
 
     @Override
     public boolean hasContainersExpectingSchemas() {
-<span class="pc bpc" id="L83" title="1 of 4 branches missed.">        return entandoApp.getSpec().getDbms().map(v -&gt; v != DbmsVendor.NONE &amp;&amp; v != DbmsVendor.EMBEDDED).orElse(false);</span>
+<span class="pc bpc" id="L69" title="1 of 4 branches missed.">        return entandoApp.getSpec().getDbms().map(v -&gt; v != DbmsVendor.NONE &amp;&amp; v != DbmsVendor.EMBEDDED).orElse(false);</span>
     }
 
     @Override
     public int getReplicas() {
-<span class="fc" id="L88">        return entandoApp.getSpec().getReplicas().orElse(1);</span>
+<span class="fc" id="L74">        return entandoApp.getSpec().getReplicas().orElse(1);</span>
     }
 
     @Override
     public List&lt;DeployableContainer&gt; getContainers() {
-<span class="fc" id="L93">        return containers;</span>
+<span class="fc" id="L79">        return containers;</span>
     }
 
     @Override
     public DatabaseServiceResult getDatabaseServiceResult() {
-<span class="fc" id="L98">        return databaseServiceResult;</span>
+<span class="fc" id="L84">        return databaseServiceResult;</span>
     }
 
     @Override
     public String getNameQualifier() {
-<span class="fc" id="L103">        return KubeUtils.DEFAULT_SERVER_QUALIFIER;</span>
+<span class="fc" id="L89">        return KubeUtils.DEFAULT_SERVER_QUALIFIER;</span>
     }
 
     @Override
     public EntandoApp getCustomResource() {
-<span class="fc" id="L108">        return entandoApp;</span>
+<span class="fc" id="L94">        return entandoApp;</span>
     }
 
     @Override
     public EntandoAppDeploymentResult createResult(Deployment deployment, Service service, Ingress ingress, Pod pod) {
-<span class="fc" id="L113">        return new EntandoAppDeploymentResult(pod, service, ingress);</span>
+<span class="fc" id="L99">        return new EntandoAppDeploymentResult(pod, service, ingress);</span>
     }
 
     @Override
     public String getIngressName() {
-<span class="fc" id="L118">        return entandoApp.getMetadata().getName() + &quot;-&quot; + KubeUtils.DEFAULT_INGRESS_SUFFIX;</span>
+<span class="fc" id="L104">        return entandoApp.getMetadata().getName() + &quot;-&quot; + KubeUtils.DEFAULT_INGRESS_SUFFIX;</span>
     }
 
     @Override
     public String getIngressNamespace() {
-<span class="fc" id="L123">        return entandoApp.getMetadata().getNamespace();</span>
+<span class="fc" id="L109">        return entandoApp.getMetadata().getNamespace();</span>
     }
 
     @Override
     public String getPublicKeycloakClientId() {
         //Needs to reflect the EntandoApp.name, but will that affect AppBuilder?
-<span class="fc" id="L129">        return &quot;entando&quot;;</span>
+<span class="fc" id="L115">        return &quot;entando&quot;;</span>
     }
 
     @Override
     public KeycloakConnectionConfig getKeycloakDeploymentResult() {
-<span class="fc" id="L134">        return keycloakConnectionConfig;</span>
+<span class="fc" id="L120">        return keycloakConnectionConfig;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
