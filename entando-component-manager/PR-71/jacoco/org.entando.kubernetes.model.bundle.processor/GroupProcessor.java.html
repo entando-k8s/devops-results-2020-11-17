@@ -63,17 +63,17 @@ public class GroupProcessor implements ComponentProcessor&lt;GroupDescriptor&gt;
 
     @Override
     public List&lt;Installable&lt;GroupDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L66">        return components.stream()</span>
-<span class="nc bnc" id="L67" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.GROUP)</span>
-<span class="nc" id="L68">                .map(c -&gt; new GroupInstallable(engineService, this.buildDescriptorFromComponentJob(c)))</span>
-<span class="nc" id="L69">                .collect(Collectors.toList());</span>
+<span class="fc" id="L66">        return components.stream()</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.GROUP)</span>
+<span class="fc" id="L68">                .map(c -&gt; new GroupInstallable(engineService, this.buildDescriptorFromComponentJob(c)))</span>
+<span class="fc" id="L69">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public GroupDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L74">        return GroupDescriptor.builder()</span>
-<span class="nc" id="L75">                .code(component.getComponentId())</span>
-<span class="nc" id="L76">                .build();</span>
+<span class="fc" id="L74">        return GroupDescriptor.builder()</span>
+<span class="fc" id="L75">                .code(component.getComponentId())</span>
+<span class="fc" id="L76">                .build();</span>
     }
 
 }

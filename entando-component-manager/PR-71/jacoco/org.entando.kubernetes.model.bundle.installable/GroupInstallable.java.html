@@ -18,28 +18,28 @@ public class GroupInstallable extends Installable&lt;GroupDescriptor&gt; {
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="nc" id="L21">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="nc" id="L22">            log.info(&quot;Registering Label {}&quot;, getName());</span>
-<span class="nc" id="L23">            engineService.registerGroup(representation);</span>
-<span class="nc" id="L24">        });</span>
+<span class="fc" id="L21">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L22">            log.info(&quot;Registering Label {}&quot;, getName());</span>
+<span class="fc" id="L23">            engineService.registerGroup(representation);</span>
+<span class="fc" id="L24">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="nc" id="L29">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="nc" id="L30">            log.info(&quot;Removing Label {}&quot;, getName());</span>
-<span class="nc" id="L31">            engineService.deleteGroup(getName());</span>
-<span class="nc" id="L32">        });</span>
+<span class="fc" id="L29">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L30">            log.info(&quot;Removing Label {}&quot;, getName());</span>
+<span class="fc" id="L31">            engineService.deleteGroup(getName());</span>
+<span class="fc" id="L32">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="nc" id="L37">        return ComponentType.GROUP;</span>
+<span class="fc" id="L37">        return ComponentType.GROUP;</span>
     }
 
     @Override
     public String getName() {
-<span class="nc" id="L42">        return representation.getCode();</span>
+<span class="fc" id="L42">        return representation.getCode();</span>
     }
 
 }
