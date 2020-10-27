@@ -79,7 +79,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.mode
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,JaxbMetadataMapping,1,67,2,2,1,20,2,5,0,5
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,AttachResource,22,71,0,0,7,17,3,4,3,4
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,JaxbMetadataMapping.MetadataFieldMapping,0,17,0,0,0,7,0,5,0,5
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,ImageResource,425,416,15,15,81,100,19,24,9,19
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,ImageResource,425,421,15,15,81,100,19,24,9,19
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.common,BaseContentPropertyBulkCommand,0,8,0,0,0,2,0,2,0,2
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.common,BaseContentBulkCommand,114,69,25,5,27,20,19,10,4,10
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.common,ContentBulkCommandContext,0,15,0,0,0,6,0,3,0,3

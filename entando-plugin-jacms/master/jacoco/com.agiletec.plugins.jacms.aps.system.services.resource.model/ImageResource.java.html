@@ -294,7 +294,7 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 <span class="fc" id="L294">                resizedInstance.setSize(dimension.getIdDim());</span>
 <span class="fc" id="L295">                resizedInstance.setFileLength(String.valueOf(realLength) + &quot; Kb&quot;);</span>
 <span class="fc" id="L296">                resizedInstance.setMimeType(bean.getMimeType());</span>
-<span class="fc" id="L297">                resizedInstance.setFileName(bean.getFileName());</span>
+<span class="fc" id="L297">                resizedInstance.setFileName(subPath.substring(subPath.lastIndexOf(&quot;/&quot;) + 1));</span>
 <span class="fc" id="L298">                this.getStorageManager().saveFile(subPath, this.isProtectedResource(), new FileInputStream(bean.getFile()));</span>
 <span class="fc" id="L299">                this.addInstance(resizedInstance);</span>
 <span class="fc" id="L300">            }else {</span>
