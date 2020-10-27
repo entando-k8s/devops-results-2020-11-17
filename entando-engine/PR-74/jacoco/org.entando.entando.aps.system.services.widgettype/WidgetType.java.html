@@ -14,14 +14,15 @@
 package org.entando.entando.aps.system.services.widgettype;
 
 import com.agiletec.aps.util.ApsProperties;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
+import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.ServletContext;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * Rappresenta un tipo di oggetto visuale che può essere inserito in una pagina,
@@ -31,7 +32,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
  *
  * @author M.Diana - E.Santoboni
  */
-<span class="fc" id="L34">public class WidgetType implements Serializable {</span>
+<span class="fc" id="L35">public class WidgetType implements Serializable {</span>
 
     /**
      * Il codice del tipo di widget.
@@ -72,37 +73,37 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
     /**
-     * The readonlyDefaultConfig boolean field is read during the widget configuration, if It's false the user
+     * The readonlyPageWidgetConfig boolean field is read during the widget configuration, if It's false the user
      * can override the widget type default configuration in the instance of the widget
      */
-    private boolean readonlyDefaultConfig;
+    private boolean readonlyPageWidgetConfig;
 
     public final static String WIDGET_LOCATION = &quot;aps/jsp/widgets/&quot;;
 
     @Override
     public WidgetType clone() {
-<span class="fc" id="L84">        WidgetType clone = new WidgetType();</span>
-<span class="fc" id="L85">        clone.setAction(this.getAction());</span>
-<span class="fc" id="L86">        clone.setCode(this.getCode());</span>
-<span class="fc bfc" id="L87" title="All 2 branches covered.">        if (null != this.getConfig()) {</span>
-<span class="fc" id="L88">            clone.setConfig(this.getConfig().clone());</span>
+<span class="fc" id="L85">        WidgetType clone = new WidgetType();</span>
+<span class="fc" id="L86">        clone.setAction(this.getAction());</span>
+<span class="fc" id="L87">        clone.setCode(this.getCode());</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (null != this.getConfig()) {</span>
+<span class="fc" id="L89">            clone.setConfig(this.getConfig().clone());</span>
         }
-<span class="fc" id="L90">        clone.setLocked(this.isLocked());</span>
-<span class="fc" id="L91">        clone.setParentType(this.getParentType());</span>
-<span class="fc" id="L92">        clone.setParentTypeCode(this.getParentTypeCode());</span>
-<span class="fc" id="L93">        clone.setPluginCode(this.getPluginCode());</span>
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">        if (null != this.getTitles()) {</span>
-<span class="fc" id="L95">            clone.setTitles(this.getTitles().clone());</span>
+<span class="fc" id="L91">        clone.setLocked(this.isLocked());</span>
+<span class="fc" id="L92">        clone.setParentType(this.getParentType());</span>
+<span class="fc" id="L93">        clone.setParentTypeCode(this.getParentTypeCode());</span>
+<span class="fc" id="L94">        clone.setPluginCode(this.getPluginCode());</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if (null != this.getTitles()) {</span>
+<span class="fc" id="L96">            clone.setTitles(this.getTitles().clone());</span>
         }
-<span class="fc bfc" id="L97" title="All 2 branches covered.">        if (null != this.getTypeParameters()) {</span>
-<span class="fc" id="L98">            List&lt;WidgetTypeParameter&gt; params = new ArrayList&lt;WidgetTypeParameter&gt;();</span>
-<span class="fc bfc" id="L99" title="All 2 branches covered.">            for (int i = 0; i &lt; this.getTypeParameters().size(); i++) {</span>
-<span class="fc" id="L100">                params.add(this.getTypeParameters().get(i).clone());</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (null != this.getTypeParameters()) {</span>
+<span class="fc" id="L99">            List&lt;WidgetTypeParameter&gt; params = new ArrayList&lt;WidgetTypeParameter&gt;();</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">            for (int i = 0; i &lt; this.getTypeParameters().size(); i++) {</span>
+<span class="fc" id="L101">                params.add(this.getTypeParameters().get(i).clone());</span>
             }
-<span class="fc" id="L102">            clone.setTypeParameters(params);</span>
+<span class="fc" id="L103">            clone.setTypeParameters(params);</span>
         }
-<span class="fc" id="L104">        clone.setMainGroup(this.getMainGroup());</span>
-<span class="fc" id="L105">        return clone;</span>
+<span class="fc" id="L105">        clone.setMainGroup(this.getMainGroup());</span>
+<span class="fc" id="L106">        return clone;</span>
     }
 
     /**
@@ -111,7 +112,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @return Il codice del tipo di widget
      */
     public String getCode() {
-<span class="fc" id="L114">        return _code;</span>
+<span class="fc" id="L115">        return _code;</span>
     }
 
     /**
@@ -120,16 +121,16 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @param code Il codice del tipo di widget
      */
     public void setCode(String code) {
-<span class="fc" id="L123">        this._code = code;</span>
-<span class="fc" id="L124">    }</span>
+<span class="fc" id="L124">        this._code = code;</span>
+<span class="fc" id="L125">    }</span>
 
     public ApsProperties getTitles() {
-<span class="fc" id="L127">        return _titles;</span>
+<span class="fc" id="L128">        return _titles;</span>
     }
 
     public void setTitles(ApsProperties titles) {
-<span class="fc" id="L131">        this._titles = titles;</span>
-<span class="fc" id="L132">    }</span>
+<span class="fc" id="L132">        this._titles = titles;</span>
+<span class="fc" id="L133">    }</span>
 
     /**
      * Restituisce la lista dei parametri previsti per il tipo di widget.
@@ -137,17 +138,17 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @return La lista di parametri in oggetti del tipo WidgetTypeParameter.
      */
     public List&lt;WidgetTypeParameter&gt; getTypeParameters() {
-<span class="fc" id="L140">        return _parameters;</span>
+<span class="fc" id="L141">        return _parameters;</span>
     }
 
     public boolean hasTypeParameter(WidgetTypeParameter param) {
-<span class="nc bnc" id="L144" title="All 2 branches missed.">        for (WidgetTypeParameter parameter : getTypeParameters()) {</span>
-<span class="nc bnc" id="L145" title="All 2 branches missed.">            if (parameter.getName().equals(param.getName())) {</span>
-<span class="nc" id="L146">                return true;</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        for (WidgetTypeParameter parameter : getTypeParameters()) {</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if (parameter.getName().equals(param.getName())) {</span>
+<span class="nc" id="L147">                return true;</span>
             }
-<span class="nc" id="L148">        }</span>
+<span class="nc" id="L149">        }</span>
 
-<span class="nc" id="L150">        return false;</span>
+<span class="nc" id="L151">        return false;</span>
     }
 
     /**
@@ -157,40 +158,40 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @param typeParameters The parameters to set.
      */
     public void setTypeParameters(List&lt;WidgetTypeParameter&gt; typeParameters) {
-<span class="fc" id="L160">        this._parameters = typeParameters;</span>
-<span class="fc" id="L161">    }</span>
+<span class="fc" id="L161">        this._parameters = typeParameters;</span>
+<span class="fc" id="L162">    }</span>
 
     public boolean hasParameter(String paramName) {
-<span class="pc bpc" id="L164" title="1 of 2 branches missed.">        if (null == this.getTypeParameters()) {</span>
-<span class="nc" id="L165">            return false;</span>
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">        if (null == this.getTypeParameters()) {</span>
+<span class="nc" id="L166">            return false;</span>
         }
-<span class="fc" id="L167">        boolean startWith = false;</span>
-<span class="fc" id="L168">        boolean endWith = false;</span>
-<span class="pc bpc" id="L169" title="1 of 2 branches missed.">        if (paramName.endsWith(&quot;%&quot;)) {</span>
-<span class="nc" id="L170">            paramName = paramName.substring(0, paramName.length() - 1);</span>
-<span class="nc" id="L171">            startWith = true;</span>
+<span class="fc" id="L168">        boolean startWith = false;</span>
+<span class="fc" id="L169">        boolean endWith = false;</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">        if (paramName.endsWith(&quot;%&quot;)) {</span>
+<span class="nc" id="L171">            paramName = paramName.substring(0, paramName.length() - 1);</span>
+<span class="nc" id="L172">            startWith = true;</span>
         }
-<span class="pc bpc" id="L173" title="1 of 2 branches missed.">        if (paramName.startsWith(&quot;%&quot;)) {</span>
-<span class="nc" id="L174">            paramName = paramName.substring(1);</span>
-<span class="nc" id="L175">            endWith = true;</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">        if (paramName.startsWith(&quot;%&quot;)) {</span>
+<span class="nc" id="L175">            paramName = paramName.substring(1);</span>
+<span class="nc" id="L176">            endWith = true;</span>
         }
-<span class="fc bfc" id="L177" title="All 2 branches covered.">        for (int i = 0; i &lt; this.getTypeParameters().size(); i++) {</span>
-<span class="fc" id="L178">            WidgetTypeParameter param = this.getTypeParameters().get(i);</span>
-<span class="pc bpc" id="L179" title="1 of 2 branches missed.">            String name = (null != param) ? param.getName() : null;</span>
-<span class="pc bpc" id="L180" title="1 of 2 branches missed.">            if (null == name) {</span>
-<span class="nc" id="L181">                continue;</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">        for (int i = 0; i &lt; this.getTypeParameters().size(); i++) {</span>
+<span class="fc" id="L179">            WidgetTypeParameter param = this.getTypeParameters().get(i);</span>
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">            String name = (null != param) ? param.getName() : null;</span>
+<span class="pc bpc" id="L181" title="1 of 2 branches missed.">            if (null == name) {</span>
+<span class="nc" id="L182">                continue;</span>
             }
-<span class="pc bpc" id="L183" title="5 of 6 branches missed.">            if (startWith &amp;&amp; endWith &amp;&amp; name.contains(paramName)) {</span>
-<span class="nc" id="L184">                return true;</span>
-<span class="pc bpc" id="L185" title="3 of 4 branches missed.">            } else if (startWith &amp;&amp; name.startsWith(paramName)) {</span>
-<span class="nc" id="L186">                return true;</span>
-<span class="pc bpc" id="L187" title="3 of 4 branches missed.">            } else if (endWith &amp;&amp; name.endsWith(paramName)) {</span>
-<span class="nc" id="L188">                return true;</span>
-<span class="fc bfc" id="L189" title="All 2 branches covered.">            } else if (paramName.equals(name)) {</span>
-<span class="fc" id="L190">                return true;</span>
+<span class="pc bpc" id="L184" title="5 of 6 branches missed.">            if (startWith &amp;&amp; endWith &amp;&amp; name.contains(paramName)) {</span>
+<span class="nc" id="L185">                return true;</span>
+<span class="pc bpc" id="L186" title="3 of 4 branches missed.">            } else if (startWith &amp;&amp; name.startsWith(paramName)) {</span>
+<span class="nc" id="L187">                return true;</span>
+<span class="pc bpc" id="L188" title="3 of 4 branches missed.">            } else if (endWith &amp;&amp; name.endsWith(paramName)) {</span>
+<span class="nc" id="L189">                return true;</span>
+<span class="fc bfc" id="L190" title="All 2 branches covered.">            } else if (paramName.equals(name)) {</span>
+<span class="fc" id="L191">                return true;</span>
             }
         }
-<span class="fc" id="L193">        return false;</span>
+<span class="fc" id="L194">        return false;</span>
     }
 
     /**
@@ -201,7 +202,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * specifica.
      */
     public String getAction() {
-<span class="fc" id="L204">        return _action;</span>
+<span class="fc" id="L205">        return _action;</span>
     }
 
     /**
@@ -210,8 +211,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @param action Il nome della action specifica.
      */
     public void setAction(String action) {
-<span class="fc" id="L213">        this._action = action;</span>
-<span class="fc" id="L214">    }</span>
+<span class="fc" id="L214">        this._action = action;</span>
+<span class="fc" id="L215">    }</span>
 
     /**
      * Return the code of the plugin owner of widget type. The field is null if
@@ -220,7 +221,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @return The plugin code.
      */
     public String getPluginCode() {
-<span class="fc" id="L223">        return _pluginCode;</span>
+<span class="fc" id="L224">        return _pluginCode;</span>
     }
 
     /**
@@ -229,213 +230,213 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
      * @param pluginCode The plugin code.
      */
     public void setPluginCode(String pluginCode) {
-<span class="fc" id="L232">        this._pluginCode = pluginCode;</span>
-<span class="fc" id="L233">    }</span>
+<span class="fc" id="L233">        this._pluginCode = pluginCode;</span>
+<span class="fc" id="L234">    }</span>
 
     public String getParentTypeCode() {
-<span class="fc" id="L236">        return _parentTypeCode;</span>
+<span class="fc" id="L237">        return _parentTypeCode;</span>
     }
 
     protected void setParentTypeCode(String parentTypeCode) {
-<span class="fc" id="L240">        this._parentTypeCode = parentTypeCode;</span>
-<span class="fc" id="L241">    }</span>
+<span class="fc" id="L241">        this._parentTypeCode = parentTypeCode;</span>
+<span class="fc" id="L242">    }</span>
 
     public WidgetType getParentType() {
-<span class="fc" id="L244">        return _parentType;</span>
+<span class="fc" id="L245">        return _parentType;</span>
     }
 
     public void setParentType(WidgetType parentType) {
-<span class="fc" id="L248">        this._parentType = parentType;</span>
-<span class="fc bfc" id="L249" title="All 2 branches covered.">        if (null != parentType) {</span>
-<span class="fc" id="L250">            this.setParentTypeCode(parentType.getCode());</span>
+<span class="fc" id="L249">        this._parentType = parentType;</span>
+<span class="fc bfc" id="L250" title="All 2 branches covered.">        if (null != parentType) {</span>
+<span class="fc" id="L251">            this.setParentTypeCode(parentType.getCode());</span>
         }
-<span class="fc" id="L252">    }</span>
+<span class="fc" id="L253">    }</span>
 
     public ApsProperties getConfig() {
-<span class="fc" id="L255">        return _config;</span>
+<span class="fc" id="L256">        return _config;</span>
     }
 
     public void setConfig(ApsProperties config) {
-<span class="fc" id="L259">        this._config = config;</span>
-<span class="fc" id="L260">    }</span>
+<span class="fc" id="L260">        this._config = config;</span>
+<span class="fc" id="L261">    }</span>
 
     public boolean isLogic() {
-<span class="fc bfc" id="L263" title="All 2 branches covered.">        return (null != this.getParentType());</span>
+<span class="fc bfc" id="L264" title="All 2 branches covered.">        return (null != this.getParentType());</span>
     }
 
     public boolean isUserType() {
-<span class="fc bfc" id="L267" title="All 8 branches covered.">        return (this.isLogic() &amp;&amp; !this.isLocked() || (!this.isLogic() &amp;&amp; !this.isLocked()));</span>
+<span class="fc bfc" id="L268" title="All 8 branches covered.">        return (this.isLogic() &amp;&amp; !this.isLocked() || (!this.isLogic() &amp;&amp; !this.isLocked()));</span>
     }
 
     public boolean isLocked() {
-<span class="fc" id="L271">        return _locked;</span>
+<span class="fc" id="L272">        return _locked;</span>
     }
 
     public void setLocked(boolean locked) {
-<span class="fc" id="L275">        this._locked = locked;</span>
-<span class="fc" id="L276">    }</span>
+<span class="fc" id="L276">        this._locked = locked;</span>
+<span class="fc" id="L277">    }</span>
 
-    public boolean isReadonlyDefaultConfig() {
-<span class="fc" id="L279">        return readonlyDefaultConfig;</span>
+    public boolean isReadonlyPageWidgetConfig() {
+<span class="fc" id="L280">        return readonlyPageWidgetConfig;</span>
     }
 
-    public void setReadonlyDefaultConfig(boolean readonlyDefaultConfig) {
-<span class="fc" id="L283">        this.readonlyDefaultConfig = readonlyDefaultConfig;</span>
-<span class="fc" id="L284">    }</span>
+    public void setReadonlyPageWidgetConfig(boolean readonlyPageWidgetConfig) {
+<span class="fc" id="L284">        this.readonlyPageWidgetConfig = readonlyPageWidgetConfig;</span>
+<span class="fc" id="L285">    }</span>
 
     public String getMainGroup() {
-<span class="fc" id="L287">        return _mainGroup;</span>
+<span class="fc" id="L288">        return _mainGroup;</span>
     }
 
     public void setMainGroup(String mainGroup) {
-<span class="fc" id="L291">        this._mainGroup = mainGroup;</span>
-<span class="fc" id="L292">    }</span>
+<span class="fc" id="L292">        this._mainGroup = mainGroup;</span>
+<span class="fc" id="L293">    }</span>
 
     public String getConfigUi() {
-<span class="fc" id="L295">        return configUi;</span>
+<span class="fc" id="L296">        return configUi;</span>
     }
 
     public void setConfigUi(String configUi) {
-<span class="fc" id="L299">        this.configUi = configUi;</span>
-<span class="fc" id="L300">    }</span>
+<span class="fc" id="L300">        this.configUi = configUi;</span>
+<span class="fc" id="L301">    }</span>
 
     public String getBundleId() {
-<span class="fc" id="L303">        return bundleId;</span>
+<span class="fc" id="L304">        return bundleId;</span>
     }
 
     public void setBundleId(String bundleId) {
-<span class="fc" id="L307">        this.bundleId = bundleId;</span>
-<span class="fc" id="L308">    }</span>
+<span class="fc" id="L308">        this.bundleId = bundleId;</span>
+<span class="fc" id="L309">    }</span>
 
     public String getJspPath() {
-<span class="nc bnc" id="L311" title="All 2 branches missed.">        WidgetType widgetType = (this.isLogic()) ? this.getParentType() : this;</span>
-<span class="nc" id="L312">        return getJspPath(widgetType.getCode(), widgetType.getPluginCode());</span>
+<span class="nc bnc" id="L312" title="All 2 branches missed.">        WidgetType widgetType = (this.isLogic()) ? this.getParentType() : this;</span>
+<span class="nc" id="L313">        return getJspPath(widgetType.getCode(), widgetType.getPluginCode());</span>
     }
 
     public static String getJspPath(String code, String pluginCode) {
-<span class="fc" id="L316">        StringBuilder jspPath = new StringBuilder(&quot;/WEB-INF/&quot;);</span>
-<span class="pc bpc" id="L317" title="2 of 4 branches missed.">        boolean isWidgetPlugin = (null != pluginCode &amp;&amp; pluginCode.trim().length() &gt; 0);</span>
-<span class="pc bpc" id="L318" title="1 of 2 branches missed.">        if (isWidgetPlugin) {</span>
-<span class="fc" id="L319">            jspPath.append(&quot;plugins/&quot;).append(pluginCode.trim()).append(&quot;/&quot;);</span>
+<span class="fc" id="L317">        StringBuilder jspPath = new StringBuilder(&quot;/WEB-INF/&quot;);</span>
+<span class="pc bpc" id="L318" title="2 of 4 branches missed.">        boolean isWidgetPlugin = (null != pluginCode &amp;&amp; pluginCode.trim().length() &gt; 0);</span>
+<span class="pc bpc" id="L319" title="1 of 2 branches missed.">        if (isWidgetPlugin) {</span>
+<span class="fc" id="L320">            jspPath.append(&quot;plugins/&quot;).append(pluginCode.trim()).append(&quot;/&quot;);</span>
         }
-<span class="fc" id="L321">        jspPath.append(WIDGET_LOCATION).append(code).append(&quot;.jsp&quot;);</span>
-<span class="fc" id="L322">        return jspPath.toString();</span>
+<span class="fc" id="L322">        jspPath.append(WIDGET_LOCATION).append(code).append(&quot;.jsp&quot;);</span>
+<span class="fc" id="L323">        return jspPath.toString();</span>
     }
 
     public static boolean existsJsp(ServletContext srvCtx, String code, String pluginCode) throws IOException {
-<span class="fc" id="L326">        String jspPath = getJspPath(code, pluginCode);</span>
-<span class="fc" id="L327">		String folderPath = srvCtx.getRealPath(&quot;/&quot;);</span>
-<span class="fc" id="L328">		boolean existsJsp = (new File(folderPath + jspPath)).exists();</span>
-<span class="pc bpc" id="L329" title="1 of 2 branches missed.">		if (existsJsp) {</span>
-<span class="nc" id="L330">			return true;</span>
+<span class="fc" id="L327">        String jspPath = getJspPath(code, pluginCode);</span>
+<span class="fc" id="L328">		String folderPath = srvCtx.getRealPath(&quot;/&quot;);</span>
+<span class="fc" id="L329">		boolean existsJsp = (new File(folderPath + jspPath)).exists();</span>
+<span class="pc bpc" id="L330" title="1 of 2 branches missed.">		if (existsJsp) {</span>
+<span class="nc" id="L331">			return true;</span>
 		}
-<span class="fc" id="L332">		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();</span>
-<span class="fc" id="L333">		Resource[] resources = resolver.getResources(&quot;file:**&quot; + jspPath);</span>
-<span class="pc bpc" id="L334" title="1 of 2 branches missed.">		for (int i = 0; i &lt; resources.length; i++) {</span>
-<span class="nc" id="L335">			Resource resource = resources[i];</span>
-<span class="nc bnc" id="L336" title="All 2 branches missed.">			if (resource.exists()) {</span>
-<span class="nc" id="L337">				return true;</span>
+<span class="fc" id="L333">		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();</span>
+<span class="fc" id="L334">		Resource[] resources = resolver.getResources(&quot;file:**&quot; + jspPath);</span>
+<span class="pc bpc" id="L335" title="1 of 2 branches missed.">		for (int i = 0; i &lt; resources.length; i++) {</span>
+<span class="nc" id="L336">			Resource resource = resources[i];</span>
+<span class="nc bnc" id="L337" title="All 2 branches missed.">			if (resource.exists()) {</span>
+<span class="nc" id="L338">				return true;</span>
 			}
 		}
-<span class="fc" id="L340">        return false;</span>
+<span class="fc" id="L341">        return false;</span>
     }
 
     @Override
     public int hashCode() {
-<span class="nc" id="L345">        final int prime = 31;</span>
-<span class="nc" id="L346">        int result = 1;</span>
-<span class="nc bnc" id="L347" title="All 2 branches missed.">        result = prime * result + ((_action == null) ? 0 : _action.hashCode());</span>
-<span class="nc bnc" id="L348" title="All 2 branches missed.">        result = prime * result + ((_code == null) ? 0 : _code.hashCode());</span>
-<span class="nc bnc" id="L349" title="All 2 branches missed.">        result = prime * result + ((_config == null) ? 0 : _config.hashCode());</span>
-<span class="nc bnc" id="L350" title="All 2 branches missed.">        result = prime * result + (_locked ? 1231 : 1237);</span>
-<span class="nc bnc" id="L351" title="All 2 branches missed.">        result = prime * result + ((_mainGroup == null) ? 0 : _mainGroup.hashCode());</span>
-<span class="nc bnc" id="L352" title="All 2 branches missed.">        result = prime * result + ((_parameters == null) ? 0 : _parameters.hashCode());</span>
-<span class="nc bnc" id="L353" title="All 2 branches missed.">        result = prime * result + ((_parentType == null) ? 0 : _parentType.hashCode());</span>
-<span class="nc bnc" id="L354" title="All 2 branches missed.">        result = prime * result + ((_parentTypeCode == null) ? 0 : _parentTypeCode.hashCode());</span>
-<span class="nc bnc" id="L355" title="All 2 branches missed.">        result = prime * result + ((_pluginCode == null) ? 0 : _pluginCode.hashCode());</span>
-<span class="nc bnc" id="L356" title="All 2 branches missed.">        result = prime * result + ((_titles == null) ? 0 : _titles.hashCode());</span>
-<span class="nc" id="L357">        return result;</span>
+<span class="nc" id="L346">        final int prime = 31;</span>
+<span class="nc" id="L347">        int result = 1;</span>
+<span class="nc bnc" id="L348" title="All 2 branches missed.">        result = prime * result + ((_action == null) ? 0 : _action.hashCode());</span>
+<span class="nc bnc" id="L349" title="All 2 branches missed.">        result = prime * result + ((_code == null) ? 0 : _code.hashCode());</span>
+<span class="nc bnc" id="L350" title="All 2 branches missed.">        result = prime * result + ((_config == null) ? 0 : _config.hashCode());</span>
+<span class="nc bnc" id="L351" title="All 2 branches missed.">        result = prime * result + (_locked ? 1231 : 1237);</span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">        result = prime * result + ((_mainGroup == null) ? 0 : _mainGroup.hashCode());</span>
+<span class="nc bnc" id="L353" title="All 2 branches missed.">        result = prime * result + ((_parameters == null) ? 0 : _parameters.hashCode());</span>
+<span class="nc bnc" id="L354" title="All 2 branches missed.">        result = prime * result + ((_parentType == null) ? 0 : _parentType.hashCode());</span>
+<span class="nc bnc" id="L355" title="All 2 branches missed.">        result = prime * result + ((_parentTypeCode == null) ? 0 : _parentTypeCode.hashCode());</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        result = prime * result + ((_pluginCode == null) ? 0 : _pluginCode.hashCode());</span>
+<span class="nc bnc" id="L357" title="All 2 branches missed.">        result = prime * result + ((_titles == null) ? 0 : _titles.hashCode());</span>
+<span class="nc" id="L358">        return result;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L362" title="1 of 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L363">            return true;</span>
+<span class="pc bpc" id="L363" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L364">            return true;</span>
         }
-<span class="pc bpc" id="L365" title="1 of 2 branches missed.">        if (obj == null) {</span>
-<span class="nc" id="L366">            return false;</span>
+<span class="pc bpc" id="L366" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L367">            return false;</span>
         }
-<span class="pc bpc" id="L368" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L369">            return false;</span>
+<span class="pc bpc" id="L369" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L370">            return false;</span>
         }
-<span class="fc" id="L371">        WidgetType other = (WidgetType) obj;</span>
-<span class="pc bpc" id="L372" title="1 of 2 branches missed.">        if (_action == null) {</span>
-<span class="nc bnc" id="L373" title="All 2 branches missed.">            if (other._action != null) {</span>
-<span class="nc" id="L374">                return false;</span>
+<span class="fc" id="L372">        WidgetType other = (WidgetType) obj;</span>
+<span class="pc bpc" id="L373" title="1 of 2 branches missed.">        if (_action == null) {</span>
+<span class="nc bnc" id="L374" title="All 2 branches missed.">            if (other._action != null) {</span>
+<span class="nc" id="L375">                return false;</span>
             }
-<span class="pc bpc" id="L376" title="1 of 2 branches missed.">        } else if (!_action.equals(other._action)) {</span>
-<span class="nc" id="L377">            return false;</span>
+<span class="pc bpc" id="L377" title="1 of 2 branches missed.">        } else if (!_action.equals(other._action)) {</span>
+<span class="nc" id="L378">            return false;</span>
         }
-<span class="pc bpc" id="L379" title="1 of 2 branches missed.">        if (_code == null) {</span>
-<span class="nc bnc" id="L380" title="All 2 branches missed.">            if (other._code != null) {</span>
-<span class="nc" id="L381">                return false;</span>
+<span class="pc bpc" id="L380" title="1 of 2 branches missed.">        if (_code == null) {</span>
+<span class="nc bnc" id="L381" title="All 2 branches missed.">            if (other._code != null) {</span>
+<span class="nc" id="L382">                return false;</span>
             }
-<span class="pc bpc" id="L383" title="1 of 2 branches missed.">        } else if (!_code.equals(other._code)) {</span>
-<span class="nc" id="L384">            return false;</span>
+<span class="pc bpc" id="L384" title="1 of 2 branches missed.">        } else if (!_code.equals(other._code)) {</span>
+<span class="nc" id="L385">            return false;</span>
         }
-<span class="pc bpc" id="L386" title="1 of 2 branches missed.">        if (_config == null) {</span>
-<span class="pc bpc" id="L387" title="1 of 2 branches missed.">            if (other._config != null) {</span>
-<span class="nc" id="L388">                return false;</span>
+<span class="pc bpc" id="L387" title="1 of 2 branches missed.">        if (_config == null) {</span>
+<span class="pc bpc" id="L388" title="1 of 2 branches missed.">            if (other._config != null) {</span>
+<span class="nc" id="L389">                return false;</span>
             }
-<span class="nc bnc" id="L390" title="All 2 branches missed.">        } else if (!_config.equals(other._config)) {</span>
-<span class="nc" id="L391">            return false;</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">        } else if (!_config.equals(other._config)) {</span>
+<span class="nc" id="L392">            return false;</span>
         }
-<span class="pc bpc" id="L393" title="1 of 2 branches missed.">        if (_locked != other._locked) {</span>
-<span class="nc" id="L394">            return false;</span>
+<span class="pc bpc" id="L394" title="1 of 2 branches missed.">        if (_locked != other._locked) {</span>
+<span class="nc" id="L395">            return false;</span>
         }
-<span class="pc bpc" id="L396" title="1 of 2 branches missed.">        if (_mainGroup == null) {</span>
-<span class="pc bpc" id="L397" title="1 of 2 branches missed.">            if (other._mainGroup != null) {</span>
-<span class="nc" id="L398">                return false;</span>
+<span class="pc bpc" id="L397" title="1 of 2 branches missed.">        if (_mainGroup == null) {</span>
+<span class="pc bpc" id="L398" title="1 of 2 branches missed.">            if (other._mainGroup != null) {</span>
+<span class="nc" id="L399">                return false;</span>
             }
-<span class="nc bnc" id="L400" title="All 2 branches missed.">        } else if (!_mainGroup.equals(other._mainGroup)) {</span>
-<span class="nc" id="L401">            return false;</span>
+<span class="nc bnc" id="L401" title="All 2 branches missed.">        } else if (!_mainGroup.equals(other._mainGroup)) {</span>
+<span class="nc" id="L402">            return false;</span>
         }
-<span class="pc bpc" id="L403" title="1 of 2 branches missed.">        if (_parameters == null) {</span>
-<span class="nc bnc" id="L404" title="All 2 branches missed.">            if (other._parameters != null) {</span>
-<span class="nc" id="L405">                return false;</span>
+<span class="pc bpc" id="L404" title="1 of 2 branches missed.">        if (_parameters == null) {</span>
+<span class="nc bnc" id="L405" title="All 2 branches missed.">            if (other._parameters != null) {</span>
+<span class="nc" id="L406">                return false;</span>
             }
-<span class="pc bpc" id="L407" title="1 of 2 branches missed.">        } else if (!_parameters.equals(other._parameters)) {</span>
-<span class="fc" id="L408">            return false;</span>
+<span class="pc bpc" id="L408" title="1 of 2 branches missed.">        } else if (!_parameters.equals(other._parameters)) {</span>
+<span class="fc" id="L409">            return false;</span>
         }
-<span class="nc bnc" id="L410" title="All 2 branches missed.">        if (_parentType == null) {</span>
-<span class="nc bnc" id="L411" title="All 2 branches missed.">            if (other._parentType != null) {</span>
-<span class="nc" id="L412">                return false;</span>
+<span class="nc bnc" id="L411" title="All 2 branches missed.">        if (_parentType == null) {</span>
+<span class="nc bnc" id="L412" title="All 2 branches missed.">            if (other._parentType != null) {</span>
+<span class="nc" id="L413">                return false;</span>
             }
-<span class="nc bnc" id="L414" title="All 2 branches missed.">        } else if (!_parentType.equals(other._parentType)) {</span>
-<span class="nc" id="L415">            return false;</span>
+<span class="nc bnc" id="L415" title="All 2 branches missed.">        } else if (!_parentType.equals(other._parentType)) {</span>
+<span class="nc" id="L416">            return false;</span>
         }
-<span class="nc bnc" id="L417" title="All 2 branches missed.">        if (_parentTypeCode == null) {</span>
-<span class="nc bnc" id="L418" title="All 2 branches missed.">            if (other._parentTypeCode != null) {</span>
-<span class="nc" id="L419">                return false;</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">        if (_parentTypeCode == null) {</span>
+<span class="nc bnc" id="L419" title="All 2 branches missed.">            if (other._parentTypeCode != null) {</span>
+<span class="nc" id="L420">                return false;</span>
             }
-<span class="nc bnc" id="L421" title="All 2 branches missed.">        } else if (!_parentTypeCode.equals(other._parentTypeCode)) {</span>
-<span class="nc" id="L422">            return false;</span>
+<span class="nc bnc" id="L422" title="All 2 branches missed.">        } else if (!_parentTypeCode.equals(other._parentTypeCode)) {</span>
+<span class="nc" id="L423">            return false;</span>
         }
-<span class="nc bnc" id="L424" title="All 2 branches missed.">        if (_pluginCode == null) {</span>
-<span class="nc bnc" id="L425" title="All 2 branches missed.">            if (other._pluginCode != null) {</span>
-<span class="nc" id="L426">                return false;</span>
+<span class="nc bnc" id="L425" title="All 2 branches missed.">        if (_pluginCode == null) {</span>
+<span class="nc bnc" id="L426" title="All 2 branches missed.">            if (other._pluginCode != null) {</span>
+<span class="nc" id="L427">                return false;</span>
             }
-<span class="nc bnc" id="L428" title="All 2 branches missed.">        } else if (!_pluginCode.equals(other._pluginCode)) {</span>
-<span class="nc" id="L429">            return false;</span>
+<span class="nc bnc" id="L429" title="All 2 branches missed.">        } else if (!_pluginCode.equals(other._pluginCode)) {</span>
+<span class="nc" id="L430">            return false;</span>
         }
-<span class="nc bnc" id="L431" title="All 2 branches missed.">        if (_titles == null) {</span>
-<span class="nc bnc" id="L432" title="All 2 branches missed.">            if (other._titles != null) {</span>
-<span class="nc" id="L433">                return false;</span>
+<span class="nc bnc" id="L432" title="All 2 branches missed.">        if (_titles == null) {</span>
+<span class="nc bnc" id="L433" title="All 2 branches missed.">            if (other._titles != null) {</span>
+<span class="nc" id="L434">                return false;</span>
             }
-<span class="nc bnc" id="L435" title="All 2 branches missed.">        } else if (!_titles.equals(other._titles)) {</span>
-<span class="nc" id="L436">            return false;</span>
+<span class="nc bnc" id="L436" title="All 2 branches missed.">        } else if (!_titles.equals(other._titles)) {</span>
+<span class="nc" id="L437">            return false;</span>
         }
-<span class="nc" id="L438">        return true;</span>
+<span class="nc" id="L439">        return true;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
