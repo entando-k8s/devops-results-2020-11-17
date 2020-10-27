@@ -98,111 +98,114 @@ public class DeployCommand&lt;T extends ServiceDeploymentResult, C extends Entan
 <span class="fc bfc" id="L98" title="All 2 branches covered.">        if (shouldCreateServiceAccount()) {</span>
 <span class="fc" id="L99">            serviceAccountCreator.prepareServiceAccount(k8sClient.serviceAccounts(), deployable);</span>
         }
-<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (shouldCreateService(deployable)) {</span>
-<span class="fc" id="L102">            createService(k8sClient);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (EntandoOperatorConfig.isClusterScopedDeployment()) {</span>
+<span class="fc" id="L102">            serviceAccountCreator.createBindingsToClusterRoles(k8sClient.serviceAccounts(), deployable);</span>
         }
-<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (deployable instanceof IngressingDeployable) {</span>
-<span class="pc bpc" id="L105" title="1 of 2 branches missed.">            if (((IngressingDeployable) this.deployable).getIngressingContainers().isEmpty()) {</span>
-<span class="nc" id="L106">                throw new IllegalStateException(</span>
-<span class="nc" id="L107">                        deployable.getClass() + &quot; implements IngressingDeployable but has no IngressingContainers.&quot;);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (shouldCreateService(deployable)) {</span>
+<span class="fc" id="L105">            createService(k8sClient);</span>
+        }
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (deployable instanceof IngressingDeployable) {</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">            if (((IngressingDeployable) this.deployable).getIngressingContainers().isEmpty()) {</span>
+<span class="nc" id="L109">                throw new IllegalStateException(</span>
+<span class="nc" id="L110">                        deployable.getClass() + &quot; implements IngressingDeployable but has no IngressingContainers.&quot;);</span>
             }
-<span class="fc" id="L109">            syncIngress(k8sClient, (IngressingDeployable) this.deployable);</span>
+<span class="fc" id="L112">            syncIngress(k8sClient, (IngressingDeployable) this.deployable);</span>
         }
-<span class="fc bfc" id="L111" title="All 2 branches covered.">        if (keycloakClientCreator.requiresKeycloakClients(deployable)) {</span>
-<span class="fc" id="L112">            keycloakClientCreator.createKeycloakClients(</span>
-<span class="fc" id="L113">                    k8sClient.secrets(),</span>
-<span class="fc" id="L114">                    keycloakClient.orElseThrow(IllegalStateException::new),</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        if (keycloakClientCreator.requiresKeycloakClients(deployable)) {</span>
+<span class="fc" id="L115">            keycloakClientCreator.createKeycloakClients(</span>
+<span class="fc" id="L116">                    k8sClient.secrets(),</span>
+<span class="fc" id="L117">                    keycloakClient.orElseThrow(IllegalStateException::new),</span>
                     deployable,
-<span class="fc" id="L116">                    Optional.ofNullable(getIngress()));</span>
+<span class="fc" id="L119">                    Optional.ofNullable(getIngress()));</span>
         }
-<span class="fc" id="L118">        createDeployment(k8sClient, entandoImageResolver);</span>
-<span class="fc" id="L119">        waitForPod(k8sClient);</span>
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        if (status.hasFailed()) {</span>
-<span class="nc" id="L121">            throw new EntandoControllerException(&quot;Creation of Kubernetes resources has failed&quot;);</span>
+<span class="fc" id="L121">        createDeployment(k8sClient, entandoImageResolver);</span>
+<span class="fc" id="L122">        waitForPod(k8sClient);</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        if (status.hasFailed()) {</span>
+<span class="nc" id="L124">            throw new EntandoControllerException(&quot;Creation of Kubernetes resources has failed&quot;);</span>
         }
-<span class="fc" id="L123">        return (T) deployable.createResult(getDeployment(), getService(), getIngress(), getPod()).withStatus(getStatus());</span>
+<span class="fc" id="L126">        return (T) deployable.createResult(getDeployment(), getService(), getIngress(), getPod()).withStatus(getStatus());</span>
     }
 
     private boolean shouldCreateService(Deployable&lt;T, ?&gt; deployable) {
-<span class="fc" id="L127">        return deployable.getContainers().stream().anyMatch(ServiceBackingContainer.class::isInstance);</span>
+<span class="fc" id="L130">        return deployable.getContainers().stream().anyMatch(ServiceBackingContainer.class::isInstance);</span>
     }
 
     private boolean shouldCreateServiceAccount() {
-<span class="fc bfc" id="L131" title="All 2 branches covered.">        return !DEFAULT.equals(deployable.determineServiceAccountName())</span>
-<span class="pc bpc" id="L132" title="1 of 2 branches missed.">                &amp;&amp; EntandoOperatorConfig.getOperatorSecurityMode() == SecurityMode.LENIENT;</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        return !DEFAULT.equals(deployable.determineServiceAccountName())</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">                &amp;&amp; EntandoOperatorConfig.getOperatorSecurityMode() == SecurityMode.LENIENT;</span>
     }
 
     private void waitForPod(SimpleK8SClient&lt;?&gt; k8sClient) {
-<span class="fc" id="L136">        pod = k8sClient.pods()</span>
-<span class="fc" id="L137">                .waitForPod(entandoCustomResource.getMetadata().getNamespace(), DEPLOYMENT_LABEL_NAME, resolveName(deployable));</span>
-<span class="fc" id="L138">        status.setPodStatus(pod.getStatus());</span>
-<span class="fc" id="L139">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
-<span class="fc" id="L140">    }</span>
+<span class="fc" id="L139">        pod = k8sClient.pods()</span>
+<span class="fc" id="L140">                .waitForPod(entandoCustomResource.getMetadata().getNamespace(), DEPLOYMENT_LABEL_NAME, resolveName(deployable));</span>
+<span class="fc" id="L141">        status.setPodStatus(pod.getStatus());</span>
+<span class="fc" id="L142">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
+<span class="fc" id="L143">    }</span>
 
     private String resolveName(Deployable&lt;T, C&gt; deployable) {
-<span class="fc" id="L143">        return entandoCustomResource.getMetadata().getName() + &quot;-&quot; + deployable.getNameQualifier();</span>
+<span class="fc" id="L146">        return entandoCustomResource.getMetadata().getName() + &quot;-&quot; + deployable.getNameQualifier();</span>
     }
 
     private void createDeployment(SimpleK8SClient&lt;?&gt; k8sClient, EntandoImageResolver entandoImageResolver) {
-<span class="fc" id="L147">        deploymentCreator.createDeployment(entandoImageResolver, k8sClient.deployments(), deployable);</span>
-<span class="fc" id="L148">        status.setDeploymentStatus(deploymentCreator.reloadDeployment(k8sClient.deployments()));</span>
-<span class="fc" id="L149">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
-<span class="fc" id="L150">    }</span>
+<span class="fc" id="L150">        deploymentCreator.createDeployment(entandoImageResolver, k8sClient.deployments(), deployable);</span>
+<span class="fc" id="L151">        status.setDeploymentStatus(deploymentCreator.reloadDeployment(k8sClient.deployments()));</span>
+<span class="fc" id="L152">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
+<span class="fc" id="L153">    }</span>
 
     private void syncIngress(SimpleK8SClient&lt;?&gt; k8sClient, IngressingDeployable&lt;?, ?&gt; ingressingContainer) {
-<span class="pc bpc" id="L153" title="1 of 2 branches missed.">        if (ingressCreator.requiresDelegatingService(serviceCreator.getService(), ingressingContainer)) {</span>
-<span class="nc" id="L154">            Service newDelegatingService = serviceCreator.newDelegatingService(k8sClient.services(), ingressingContainer);</span>
-<span class="nc" id="L155">            ingressCreator.createIngress(k8sClient.ingresses(), ingressingContainer, newDelegatingService);</span>
-<span class="nc" id="L156">        } else {</span>
-<span class="fc" id="L157">            ingressCreator.createIngress(k8sClient.ingresses(), ingressingContainer, serviceCreator.getService());</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        if (ingressCreator.requiresDelegatingService(serviceCreator.getService(), ingressingContainer)) {</span>
+<span class="nc" id="L157">            Service newDelegatingService = serviceCreator.newDelegatingService(k8sClient.services(), ingressingContainer);</span>
+<span class="nc" id="L158">            ingressCreator.createIngress(k8sClient.ingresses(), ingressingContainer, newDelegatingService);</span>
+<span class="nc" id="L159">        } else {</span>
+<span class="fc" id="L160">            ingressCreator.createIngress(k8sClient.ingresses(), ingressingContainer, serviceCreator.getService());</span>
         }
-<span class="fc" id="L159">        ((WebServerStatus) status).setIngressStatus(ingressCreator.reloadIngress(k8sClient.ingresses()));</span>
-<span class="fc" id="L160">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
-<span class="fc" id="L161">    }</span>
+<span class="fc" id="L162">        ((WebServerStatus) status).setIngressStatus(ingressCreator.reloadIngress(k8sClient.ingresses()));</span>
+<span class="fc" id="L163">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
+<span class="fc" id="L164">    }</span>
 
     private void createService(SimpleK8SClient&lt;?&gt; k8sClient) {
-<span class="fc" id="L164">        serviceCreator.createService(k8sClient.services(), deployable);</span>
-<span class="fc" id="L165">        status.setServiceStatus(serviceCreator.reloadPrimaryService(k8sClient.services()));</span>
-<span class="fc" id="L166">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
-<span class="fc" id="L167">    }</span>
+<span class="fc" id="L167">        serviceCreator.createService(k8sClient.services(), deployable);</span>
+<span class="fc" id="L168">        status.setServiceStatus(serviceCreator.reloadPrimaryService(k8sClient.services()));</span>
+<span class="fc" id="L169">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
+<span class="fc" id="L170">    }</span>
 
     private void createPersistentVolumeClaims(SimpleK8SClient&lt;?&gt; k8sClient) {
-<span class="fc" id="L170">        persistentVolumeClaimCreator.createPersistentVolumeClaimsFor(k8sClient.persistentVolumeClaims(), deployable);</span>
-<span class="fc" id="L171">        List&lt;PersistentVolumeClaimStatus&gt; statuses = persistentVolumeClaimCreator</span>
-<span class="fc" id="L172">                .reloadPersistentVolumeClaims(k8sClient.persistentVolumeClaims());</span>
-<span class="fc" id="L173">        status.setPersistentVolumeClaimStatuses(statuses);</span>
-<span class="fc" id="L174">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
-<span class="fc" id="L175">    }</span>
+<span class="fc" id="L173">        persistentVolumeClaimCreator.createPersistentVolumeClaimsFor(k8sClient.persistentVolumeClaims(), deployable);</span>
+<span class="fc" id="L174">        List&lt;PersistentVolumeClaimStatus&gt; statuses = persistentVolumeClaimCreator</span>
+<span class="fc" id="L175">                .reloadPersistentVolumeClaims(k8sClient.persistentVolumeClaims());</span>
+<span class="fc" id="L176">        status.setPersistentVolumeClaimStatuses(statuses);</span>
+<span class="fc" id="L177">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
+<span class="fc" id="L178">    }</span>
 
     private void prepareDbSchemas(SimpleK8SClient&lt;?&gt; k8sClient, EntandoImageResolver entandoImageResolver,
             DbAwareDeployable dbAwareDeployable) {
-<span class="fc" id="L179">        Pod completedPod = databasePreparationJobCreator.runToCompletion(k8sClient, dbAwareDeployable, entandoImageResolver);</span>
-<span class="fc" id="L180">        status.setInitPodStatus(completedPod.getStatus());</span>
-<span class="fc" id="L181">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
-<span class="fc" id="L182">        PodResult podResult = PodResult.of(completedPod);</span>
-<span class="pc bpc" id="L183" title="1 of 2 branches missed.">        if (podResult.hasFailed()) {</span>
-<span class="nc" id="L184">            throw new EntandoControllerException(&quot;Could not init database schemas&quot;);</span>
+<span class="fc" id="L182">        Pod completedPod = databasePreparationJobCreator.runToCompletion(k8sClient, dbAwareDeployable, entandoImageResolver);</span>
+<span class="fc" id="L183">        status.setInitPodStatus(completedPod.getStatus());</span>
+<span class="fc" id="L184">        k8sClient.entandoResources().updateStatus(entandoCustomResource, status);</span>
+<span class="fc" id="L185">        PodResult podResult = PodResult.of(completedPod);</span>
+<span class="pc bpc" id="L186" title="1 of 2 branches missed.">        if (podResult.hasFailed()) {</span>
+<span class="nc" id="L187">            throw new EntandoControllerException(&quot;Could not init database schemas&quot;);</span>
         }
-<span class="fc" id="L186">    }</span>
+<span class="fc" id="L189">    }</span>
 
     public Service getService() {
-<span class="fc" id="L189">        return serviceCreator.getService();</span>
+<span class="fc" id="L192">        return serviceCreator.getService();</span>
     }
 
     public AbstractServerStatus getStatus() {
-<span class="fc" id="L193">        return status;</span>
+<span class="fc" id="L196">        return status;</span>
     }
 
     public Pod getPod() {
-<span class="fc" id="L197">        return pod;</span>
+<span class="fc" id="L200">        return pod;</span>
     }
 
     public Deployment getDeployment() {
-<span class="fc" id="L201">        return deploymentCreator.getDeployment();</span>
+<span class="fc" id="L204">        return deploymentCreator.getDeployment();</span>
     }
 
     public Ingress getIngress() {
-<span class="fc" id="L205">        return ingressCreator.getIngress();</span>
+<span class="fc" id="L208">        return ingressCreator.getIngress();</span>
     }
 
 }
