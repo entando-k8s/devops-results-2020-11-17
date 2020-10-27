@@ -48,9 +48,9 @@ public class PageTemplateProcessor implements ComponentProcessor&lt;PageTemplate
 
 <span class="fc bfc" id="L49" title="All 2 branches covered.">            for (String fileName : pageTemplatesDescriptor) {</span>
 <span class="fc" id="L50">                PageTemplateDescriptor pageTemplateDescriptor = npr.readDescriptorFile(fileName, PageTemplateDescriptor.class);</span>
-<span class="fc bfc" id="L51" title="All 2 branches covered.">                if (pageTemplateDescriptor.getTemplatePath() != null) {</span>
-<span class="fc" id="L52">                    String tp = getRelativePath(fileName, pageTemplateDescriptor.getTemplatePath());</span>
-<span class="fc" id="L53">                    pageTemplateDescriptor.setTemplate(npr.readFileAsString(tp));</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">                if (pageTemplateDescriptor.getTemplatePath() != null) {</span>
+<span class="nc" id="L52">                    String tp = getRelativePath(fileName, pageTemplateDescriptor.getTemplatePath());</span>
+<span class="nc" id="L53">                    pageTemplateDescriptor.setTemplate(npr.readFileAsString(tp));</span>
                 }
 <span class="fc" id="L55">                installables.add(new PageTemplateInstallable(engineService, pageTemplateDescriptor));</span>
 <span class="fc" id="L56">            }</span>
