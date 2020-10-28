@@ -79,7 +79,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.mode
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,JaxbMetadataMapping,1,67,2,2,1,20,2,5,0,5
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,AttachResource,22,71,0,0,7,17,3,4,3,4
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,JaxbMetadataMapping.MetadataFieldMapping,0,17,0,0,0,7,0,5,0,5
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,ImageResource,425,416,15,15,81,100,19,24,9,19
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.resource.model,ImageResource,425,421,15,15,81,100,19,24,9,19
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.common,BaseContentPropertyBulkCommand,0,8,0,0,0,2,0,2,0,2
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.common,BaseContentBulkCommand,114,69,25,5,27,20,19,10,4,10
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.common,ContentBulkCommandContext,0,15,0,0,0,6,0,3,0,3
@@ -99,7 +99,7 @@ Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.resource,MultipleResourc
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.group,JoinGroupBulkCommand,18,45,5,5,4,10,6,2,1,2
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.group,BaseContentGroupBulkCommand,21,134,12,14,7,40,10,13,0,10
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.aps.system.services.content.command.group,RemoveGroupBulkCommand,18,45,5,5,4,10,6,2,1,2
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.dispenser,BaseContentDispenser,59,470,17,31,19,95,17,34,0,27
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.dispenser,BaseContentDispenser,60,469,18,30,19,95,18,33,0,27
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.dispenser,ContentRenderizationInfo,71,84,3,7,23,23,13,9,10,7
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.widget.util,FilterUtils,150,63,5,5,30,13,9,6,6,4
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.content.widget.util,EntitySearchFilterDOM,29,0,0,0,7,0,5,0,5,0
@@ -158,10 +158,10 @@ Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.rs.model,
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.rs.model,ContentJO,75,0,2,0,26,0,14,0,13,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearchEngineDAOFactory,107,243,17,11,19,68,13,24,0,23
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,LastReloadInfo,3,14,0,0,1,6,1,4,1,4
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,IndexerDAO,56,592,16,54,15,115,16,34,1,14
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,IndexerDAO,56,563,16,52,15,114,16,34,1,15
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearchEngineManager,111,500,18,44,27,144,18,50,2,34
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,IndexLoaderThread,21,85,0,4,8,26,0,7,0,5
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearcherDAO,256,799,43,109,46,173,30,63,1,16
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearcherDAO,254,796,42,106,45,171,29,62,1,16
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.action.list,ListAttributeAction,48,109,7,7,11,29,9,11,3,10
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.system,ContentTypeConfigAction,122,42,14,2,34,14,16,8,8,8
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.system,ContentTypesAction,35,0,0,0,13,0,6,0,6,0

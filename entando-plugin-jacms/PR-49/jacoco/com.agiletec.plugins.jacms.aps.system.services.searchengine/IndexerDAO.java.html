@@ -177,23 +177,23 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
                 }
             }
 <span class="fc" id="L179">            String fieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getName();</span>
-<span class="fc bfc" id="L180" title="All 2 branches covered.">            String sortableValue = (valueToIndex.length() &gt; 100) ? valueToIndex.substring(0, 99) : valueToIndex;</span>
-<span class="fc" id="L181">            document.add(new SortedDocValuesField(fieldName + SORTERED_FIELD_SUFFIX, new BytesRef(sortableValue)));</span>
-<span class="fc" id="L182">            document.add(new TextField(fieldName, valueToIndex.toLowerCase(), Field.Store.YES));</span>
-<span class="fc bfc" id="L183" title="All 2 branches covered.">            if (null != number) {</span>
-<span class="fc" id="L184">                document.add(new LongPoint(fieldName, number));</span>
+<span class="fc" id="L180">            this.indexValue(document, fieldName, valueToIndex, number);</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">            if (null == attribute.getRoles()) {</span>
+<span class="fc" id="L182">                return;</span>
             }
-<span class="fc bfc" id="L186" title="All 2 branches covered.">            if (null == attribute.getRoles()) {</span>
-<span class="fc" id="L187">                return;</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">            for (int i = 0; i &lt; attribute.getRoles().length; i++) {</span>
+<span class="fc" id="L185">                String roleFieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getRoles()[i];</span>
+<span class="fc" id="L186">                this.indexValue(document, roleFieldName, valueToIndex, number);</span>
             }
-<span class="fc bfc" id="L189" title="All 2 branches covered.">            for (int i = 0; i &lt; attribute.getRoles().length; i++) {</span>
-<span class="fc" id="L190">                String roleFieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getRoles()[i];</span>
-<span class="fc" id="L191">                document.add(new SortedDocValuesField(roleFieldName + SORTERED_FIELD_SUFFIX, new BytesRef(sortableValue)));</span>
-<span class="fc" id="L192">                document.add(new TextField(roleFieldName, valueToIndex.toLowerCase(), Field.Store.YES));</span>
-<span class="fc bfc" id="L193" title="All 2 branches covered.">                if (null != number) {</span>
-<span class="fc" id="L194">                    document.add(new LongPoint(roleFieldName, number));</span>
-                }
-            }
+        }
+<span class="fc" id="L189">    }</span>
+    
+    private void indexValue(Document document, String fieldName, String valueToIndex, Long number) {
+<span class="fc bfc" id="L192" title="All 2 branches covered.">        String sortableValue = (valueToIndex.length() &gt; 100) ? valueToIndex.substring(0, 99) : valueToIndex;</span>
+<span class="fc" id="L193">        document.add(new SortedDocValuesField(fieldName + SORTERED_FIELD_SUFFIX, new BytesRef(sortableValue)));</span>
+<span class="fc" id="L194">        document.add(new TextField(fieldName, valueToIndex.toLowerCase(), Field.Store.YES));</span>
+<span class="fc bfc" id="L195" title="All 2 branches covered.">        if (null != number) {</span>
+<span class="fc" id="L196">            document.add(new LongPoint(fieldName, number));</span>
         }
 <span class="fc" id="L198">    }</span>
 
