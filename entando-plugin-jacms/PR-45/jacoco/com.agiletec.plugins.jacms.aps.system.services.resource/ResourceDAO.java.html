@@ -55,7 +55,7 @@ import org.springframework.cache.annotation.Cacheable;
 <span class="fc" id="L55">    private final String LOAD_RESOURCE_VO</span>
             = &quot;SELECT restype, descr, maingroup, resourcexml, masterfilename, creationdate, lastmodified, owner, folderpath, correlationcode FROM resources WHERE resid = ? &quot;;
 
-<span class="fc" id="L58">    private final String LOAD_RESOURCE_VO_BY_CODE</span>
+    private final static String LOAD_RESOURCE_VO_BY_CODE
             = &quot;SELECT restype, descr, maingroup, resourcexml, masterfilename, creationdate, lastmodified, owner, folderpath, correlationcode FROM resources WHERE correlationcode = ? &quot;;
 
 <span class="fc" id="L61">    private final String ADD_RESOURCE</span>
