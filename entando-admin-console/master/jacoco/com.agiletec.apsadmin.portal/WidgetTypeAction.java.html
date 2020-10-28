@@ -111,7 +111,7 @@ import javax.servlet.ServletContext;
         try {
 <span class="nc" id="L112">            this.setStrutsAction(ApsAdminSystemConstants.ADD);</span>
 <span class="nc" id="L113">            this.setMainGroup(Group.FREE_GROUP_NAME);</span>
-<span class="nc" id="L114">            this.setReadonlyDefaultConfig(false);</span>
+<span class="nc" id="L114">            this.setReadonlyPageWidgetConfig(false);</span>
 <span class="nc" id="L115">        } catch (Throwable t) {</span>
 <span class="nc" id="L116">            _logger.error(&quot;error in newWidget&quot;, t);</span>
 <span class="nc" id="L117">            return FAILURE;</span>
@@ -142,7 +142,7 @@ import javax.servlet.ServletContext;
             }
 <span class="fc" id="L143">            this.setStrutsAction(NEW_USER_WIDGET);</span>
 <span class="fc" id="L144">            this.setMainGroup(Group.FREE_GROUP_NAME);</span>
-<span class="fc" id="L145">            this.setReadonlyDefaultConfig(false);</span>
+<span class="fc" id="L145">            this.setReadonlyPageWidgetConfig(false);</span>
 <span class="nc" id="L146">        } catch (Throwable t) {</span>
 <span class="nc" id="L147">            _logger.error(&quot;error in newUserWidget&quot;, t);</span>
 <span class="nc" id="L148">            return FAILURE;</span>
@@ -202,15 +202,15 @@ import javax.servlet.ServletContext;
 <span class="fc bfc" id="L202" title="All 2 branches covered.">            String bundleIdToSet = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.getBundleId() : type.getBundleId();</span>
 <span class="fc bfc" id="L203" title="All 2 branches covered.">            String configUiToSet = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.getConfigUi() : type.getConfigUi();</span>
 
-<span class="fc bfc" id="L205" title="All 2 branches covered.">            Boolean readonlyDefaultConf = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.isReadonlyDefaultConfig() : type.</span>
-<span class="fc" id="L206">                    isReadonlyDefaultConfig();</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            Boolean readonlyPageWidgetConf = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.isReadonlyPageWidgetConfig() : type.</span>
+<span class="fc" id="L206">                    isReadonlyPageWidgetConfig();</span>
 
 <span class="fc bfc" id="L208" title="All 2 branches covered.">            if (this.getStrutsAction() == ApsAdminSystemConstants.ADD) {</span>
 <span class="fc" id="L209">                type.setTitles(titles);</span>
 <span class="fc" id="L210">                type.setMainGroup(mainGroupToSet);</span>
 <span class="fc" id="L211">                type.setBundleId(bundleIdToSet);</span>
 <span class="fc" id="L212">                type.setConfigUi(configUiToSet);</span>
-<span class="fc" id="L213">                type.setReadonlyDefaultConfig(readonlyDefaultConf);</span>
+<span class="fc" id="L213">                type.setReadonlyPageWidgetConfig(readonlyPageWidgetConf);</span>
 <span class="fc" id="L214">                this.getWidgetTypeManager().addWidgetType(type);</span>
             } else {
 <span class="fc" id="L216">                ApsProperties configToSet = type.getConfig();</span>
@@ -218,7 +218,7 @@ import javax.servlet.ServletContext;
 <span class="fc" id="L218">                    configToSet = this.extractWidgetTypeConfig(type.getParentType().getTypeParameters());</span>
                 }
 <span class="fc" id="L220">                this.getWidgetTypeManager().updateWidgetType(this.getWidgetTypeCode(), titles, configToSet, mainGroupToSet,</span>
-                        configUiToSet, bundleIdToSet, readonlyDefaultConf);
+                        configUiToSet, bundleIdToSet, readonlyPageWidgetConf);
             }
 <span class="pc bpc" id="L223" title="1 of 4 branches missed.">            if (!type.isLogic() &amp;&amp; !super.isInternalServletWidget(this.getWidgetTypeCode())) {</span>
 <span class="fc" id="L224">                GuiFragment guiFragment = this.extractUniqueGuiFragment(this.getWidgetTypeCode());</span>
@@ -383,7 +383,7 @@ import javax.servlet.ServletContext;
 <span class="fc" id="L383">        titles.setProperty(&quot;en&quot;, this.getEnglishTitle());</span>
 <span class="fc" id="L384">        type.setTitles(titles);</span>
 <span class="fc" id="L385">        type.setLocked(false);</span>
-<span class="fc" id="L386">        type.setReadonlyDefaultConfig(false);</span>
+<span class="fc" id="L386">        type.setReadonlyPageWidgetConfig(false);</span>
 <span class="fc" id="L387">        return type;</span>
     }
 
@@ -428,7 +428,7 @@ import javax.servlet.ServletContext;
 <span class="nc" id="L428">            this.setMainGroup(mainGroup);</span>
 <span class="nc" id="L429">            this.setBundleId(type.getBundleId());</span>
 <span class="nc" id="L430">            this.setConfigUi(type.getConfigUi());</span>
-<span class="nc" id="L431">            this.setReadonlyDefaultConfig(type.isReadonlyDefaultConfig());</span>
+<span class="nc" id="L431">            this.setReadonlyPageWidgetConfig(type.isReadonlyPageWidgetConfig());</span>
 <span class="nc bnc" id="L432" title="All 2 branches missed.">            if (type.isLogic()) {</span>
 <span class="nc" id="L433">                List&lt;String&gt; guiFragmentCodes = this.extractGuiFragmentCodes(this.getWidgetTypeCode());</span>
 <span class="nc bnc" id="L434" title="All 2 branches missed.">                for (int i = 0; i &lt; guiFragmentCodes.size(); i++) {</span>
@@ -773,12 +773,12 @@ import javax.servlet.ServletContext;
 <span class="fc" id="L773">        this._pageActionHelper = pageActionHelper;</span>
 <span class="fc" id="L774">    }</span>
 
-    public boolean isReadonlyDefaultConfig() {
-<span class="fc" id="L777">        return readonlyDefaultConfig;</span>
+    public boolean isReadonlyPageWidgetConfig() {
+<span class="fc" id="L777">        return readonlyPageWidgetConfig;</span>
     }
 
-    public void setReadonlyDefaultConfig(boolean readonlyDefaultConfig) {
-<span class="fc" id="L781">        this.readonlyDefaultConfig = readonlyDefaultConfig;</span>
+    public void setReadonlyPageWidgetConfig(boolean readonlyPageWidgetConfig) {
+<span class="fc" id="L781">        this.readonlyPageWidgetConfig = readonlyPageWidgetConfig;</span>
 <span class="fc" id="L782">    }</span>
 
     private int _strutsAction;
@@ -804,7 +804,7 @@ import javax.servlet.ServletContext;
     private Widget _widgetToCopy;
 
     private boolean _replaceOnPage;
-    private boolean readonlyDefaultConfig;
+    private boolean readonlyPageWidgetConfig;
     private IGuiFragmentManager _guiFragmentManager;
     private ConfigInterface _configManager;
 
