@@ -157,7 +157,14 @@ import java.util.Date;
 	public void setLastModified(Date lastModified) {
 <span class="fc" id="L158">		this._lastModified = lastModified;</span>
 <span class="fc" id="L159">	}</span>
-	
+
+	public String getCorrelationCode() {
+<span class="fc" id="L162">		return _correlationCode;</span>
+	}
+	public void setCorrelationCode(String correlationCode) {
+<span class="fc" id="L165">		this._correlationCode = correlationCode;</span>
+<span class="fc" id="L166">	}</span>
+
 	private String _id;
 	private String _resourceType;
 	private String _descr;
@@ -166,6 +173,7 @@ import java.util.Date;
 	private String _xml;
 	private String _owner;
 	private String _folderPath;
+	private String _correlationCode;
 	
 	private Date _creationDate;
 	private Date _lastModified;

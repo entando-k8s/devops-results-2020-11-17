@@ -17,9 +17,9 @@ public class FileAssetDto extends AssetDto {
 <span class="fc" id="L17">    private String path;</span>
 
 <span class="pc bpc" id="L19" title="6 of 11 branches missed.">    @Builder</span>
-    public FileAssetDto(String id, String name, String description, Date createdAt, Date updatedAt,
+    public FileAssetDto(String id, String correlationCode, String name, String description, Date createdAt, Date updatedAt,
                          String group, @Singular List&lt;String&gt; categories, String size, String path, String owner, String folderPath) {
-<span class="fc" id="L22">        super(id, RESOURCE_TYPE, name, description, createdAt, updatedAt, group, categories, owner, folderPath);</span>
+<span class="fc" id="L22">        super(id, correlationCode, RESOURCE_TYPE, name, description, createdAt, updatedAt, group, categories, owner, folderPath);</span>
 <span class="fc" id="L23">        this.size = size;</span>
 <span class="fc" id="L24">        this.path = path;</span>
 <span class="fc" id="L25">    }</span>
