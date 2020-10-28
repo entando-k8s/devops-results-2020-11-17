@@ -202,7 +202,7 @@ import javax.servlet.ServletContext;
 <span class="fc bfc" id="L202" title="All 2 branches covered.">            String bundleIdToSet = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.getBundleId() : type.getBundleId();</span>
 <span class="fc bfc" id="L203" title="All 2 branches covered.">            String configUiToSet = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.getConfigUi() : type.getConfigUi();</span>
 
-<span class="pc bpc" id="L205" title="1 of 4 branches missed.">            Boolean readonlyPageWidgetConf = (this.hasCurrentUserPermission(Permission.SUPERUSER) &amp;&amp; type.isLocked()) ? this.isReadonlyPageWidgetConfig() : type.</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            Boolean readonlyPageWidgetConf = (this.hasCurrentUserPermission(Permission.SUPERUSER)) ? this.isReadonlyPageWidgetConfig() : type.</span>
 <span class="fc" id="L206">                    isReadonlyPageWidgetConfig();</span>
 
 <span class="fc bfc" id="L208" title="All 2 branches covered.">            if (this.getStrutsAction() == ApsAdminSystemConstants.ADD) {</span>
@@ -774,7 +774,7 @@ import javax.servlet.ServletContext;
 <span class="fc" id="L774">    }</span>
 
     public boolean isReadonlyPageWidgetConfig() {
-<span class="nc" id="L777">        return readonlyPageWidgetConfig;</span>
+<span class="fc" id="L777">        return readonlyPageWidgetConfig;</span>
     }
 
     public void setReadonlyPageWidgetConfig(boolean readonlyPageWidgetConfig) {

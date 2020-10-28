@@ -128,7 +128,7 @@ Entando Core: Administration Console,com.agiletec.apsadmin.portal.specialwidget.
 Entando Core: Administration Console,org.entando.entando.aps.system.init.model.servdb,UserShortcut,0,3,0,0,0,1,0,1,0,1
 Entando Core: Administration Console,com.agiletec.apsadmin.portal,PageTreeMenuAction,484,111,43,11,128,38,67,16,42,14
 Entando Core: Administration Console,com.agiletec.apsadmin.portal,PageSettingsAction,7,0,0,0,2,0,2,0,2,0
-Entando Core: Administration Console,com.agiletec.apsadmin.portal,WidgetTypeAction,567,1052,63,115,143,271,68,95,22,52
+Entando Core: Administration Console,com.agiletec.apsadmin.portal,WidgetTypeAction,561,1055,62,114,142,272,66,96,21,53
 Entando Core: Administration Console,com.agiletec.apsadmin.portal,PageAction,603,1456,63,123,178,397,79,111,23,74
 Entando Core: Administration Console,com.agiletec.apsadmin.portal,PageFinderAction,154,70,12,4,45,23,13,10,7,8
 Entando Core: Administration Console,com.agiletec.apsadmin.portal,AbstractPortalAction,114,310,13,25,32,86,22,33,11,25
