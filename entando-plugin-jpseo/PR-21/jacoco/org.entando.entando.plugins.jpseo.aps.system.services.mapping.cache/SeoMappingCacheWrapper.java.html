@@ -44,11 +44,11 @@ import org.springframework.cache.Cache;
 
     @Override
     public void release() {
-<span class="nc" id="L47">        Cache cache = this.getCache();</span>
-<span class="nc" id="L48">        this.releaseCachedObjects(cache, MAPPING_BY_CODE_CACHE_KEY, MAPPING_BY_CODE_CACHE_KEY_PREFIX);</span>
-<span class="nc" id="L49">        this.releaseCachedObjects(cache, MAPPING_BY_PAGE_CACHE_KEY, MAPPING_BY_PAGE_CACHE_KEY_PREFIX);</span>
-<span class="nc" id="L50">        this.releaseCachedObjects(cache, MAPPING_BY_CONTENT_CACHE_KEY, MAPPING_BY_CONTENT_CACHE_KEY_PREFIX);</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L47">        Cache cache = this.getCache();</span>
+<span class="fc" id="L48">        this.releaseCachedObjects(cache, MAPPING_BY_CODE_CACHE_KEY, MAPPING_BY_CODE_CACHE_KEY_PREFIX);</span>
+<span class="fc" id="L49">        this.releaseCachedObjects(cache, MAPPING_BY_PAGE_CACHE_KEY, MAPPING_BY_PAGE_CACHE_KEY_PREFIX);</span>
+<span class="fc" id="L50">        this.releaseCachedObjects(cache, MAPPING_BY_CONTENT_CACHE_KEY, MAPPING_BY_CONTENT_CACHE_KEY_PREFIX);</span>
+<span class="fc" id="L51">    }</span>
 
 	@Override
 	public void initCache(ISeoMappingDAO seoMappingDAO) throws EntException {
@@ -57,21 +57,21 @@ import org.springframework.cache.Cache;
 <span class="fc" id="L57">			Map&lt;String, FriendlyCodeVO&gt; pageFriendlyCodes = new HashMap&lt;&gt;();</span>
 <span class="fc" id="L58">			Map&lt;String, ContentFriendlyCode&gt; contentFriendlyCodes = new HashMap&lt;&gt;();</span>
 <span class="fc" id="L59">			Iterator&lt;FriendlyCodeVO&gt; codesIter = mapping.values().iterator();</span>
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">			while (codesIter.hasNext()) {</span>
-<span class="nc" id="L61">				FriendlyCodeVO currentCode = codesIter.next();</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">				if (currentCode.getPageCode()!=null) {</span>
-<span class="nc" id="L63">					pageFriendlyCodes.put(currentCode.getPageCode(), currentCode);</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">				} else if (currentCode.getContentId()!=null) {</span>
-<span class="nc" id="L65">					String contentId = currentCode.getContentId();</span>
-<span class="nc" id="L66">					ContentFriendlyCode content = contentFriendlyCodes.get(contentId);</span>
-<span class="nc bnc" id="L67" title="All 2 branches missed.">					if (content==null) {</span>
-<span class="nc" id="L68">						content = new ContentFriendlyCode();</span>
-<span class="nc" id="L69">						content.setContentId(contentId);</span>
-<span class="nc" id="L70">						contentFriendlyCodes.put(contentId, content);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">			while (codesIter.hasNext()) {</span>
+<span class="fc" id="L61">				FriendlyCodeVO currentCode = codesIter.next();</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">				if (currentCode.getPageCode()!=null) {</span>
+<span class="fc" id="L63">					pageFriendlyCodes.put(currentCode.getPageCode(), currentCode);</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">				} else if (currentCode.getContentId()!=null) {</span>
+<span class="fc" id="L65">					String contentId = currentCode.getContentId();</span>
+<span class="fc" id="L66">					ContentFriendlyCode content = contentFriendlyCodes.get(contentId);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">					if (content==null) {</span>
+<span class="fc" id="L68">						content = new ContentFriendlyCode();</span>
+<span class="fc" id="L69">						content.setContentId(contentId);</span>
+<span class="fc" id="L70">						contentFriendlyCodes.put(contentId, content);</span>
 					}
-<span class="nc" id="L72">					content.addFriendlyCode(currentCode.getLangCode(), currentCode.getFriendlyCode());</span>
+<span class="fc" id="L72">					content.addFriendlyCode(currentCode.getLangCode(), currentCode.getFriendlyCode());</span>
 				}
-<span class="nc" id="L74">			}</span>
+<span class="fc" id="L74">			}</span>
 <span class="fc" id="L75">            Cache cache = this.getCache();</span>
 <span class="fc" id="L76">            this.insertAndCleanVoObjectsOnCache(cache, mapping, MAPPING_BY_CODE_CACHE_KEY, MAPPING_BY_CODE_CACHE_KEY_PREFIX);</span>
 <span class="fc" id="L77">            this.insertAndCleanVoObjectsOnCache(cache, pageFriendlyCodes, MAPPING_BY_PAGE_CACHE_KEY, MAPPING_BY_PAGE_CACHE_KEY_PREFIX);</span>
@@ -83,39 +83,39 @@ import org.springframework.cache.Cache;
 <span class="fc" id="L83">	}</span>
     
     protected void releaseCachedObjects(Cache cache, String listKey, String prefixKey) {
-<span class="nc" id="L86">		List&lt;String&gt; codes = (List&lt;String&gt;) this.get(cache, listKey, List.class);</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">		if (null != codes) {</span>
-<span class="nc bnc" id="L88" title="All 2 branches missed.">			for (String code : codes) {</span>
+<span class="fc" id="L86">		List&lt;String&gt; codes = (List&lt;String&gt;) this.get(cache, listKey, List.class);</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">		if (null != codes) {</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">			for (String code : codes) {</span>
 <span class="nc" id="L89">				cache.evict(prefixKey + code);</span>
 <span class="nc" id="L90">			}</span>
-<span class="nc" id="L91">			cache.evict(listKey);</span>
+<span class="fc" id="L91">			cache.evict(listKey);</span>
 		}
-<span class="nc" id="L93">	}</span>
+<span class="fc" id="L93">	}</span>
     
     protected void insertAndCleanVoObjectsOnCache(Cache cache, Map&lt;String, ?&gt; objects, String listKey, String cacheKeyPrefix) {
 <span class="fc" id="L96">        List&lt;String&gt; oldCodes = (List&lt;String&gt;) this.get(cache, listKey, List.class);</span>
-<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        List&lt;String&gt; oldCodesClone = (null != oldCodes) ? new ArrayList&lt;&gt;(oldCodes) : null;</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        List&lt;String&gt; oldCodesClone = (null != oldCodes) ? new ArrayList&lt;&gt;(oldCodes) : null;</span>
 <span class="fc" id="L98">        List&lt;String&gt; codes = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L99">        Iterator&lt;String&gt; iter = objects.keySet().iterator();</span>
-<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        while (iter.hasNext()) {</span>
-<span class="nc" id="L101">            String key = iter.next();</span>
-<span class="nc" id="L102">            cache.put(cacheKeyPrefix + key, objects.get(key));</span>
-<span class="nc bnc" id="L103" title="All 2 branches missed.">            if (null != oldCodesClone) {</span>
-<span class="nc" id="L104">                oldCodesClone.remove(key);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        while (iter.hasNext()) {</span>
+<span class="fc" id="L101">            String key = iter.next();</span>
+<span class="fc" id="L102">            cache.put(cacheKeyPrefix + key, objects.get(key));</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if (null != oldCodesClone) {</span>
+<span class="fc" id="L104">                oldCodesClone.remove(key);</span>
             }
-<span class="nc" id="L106">            codes.add(key);</span>
-<span class="nc" id="L107">        }</span>
+<span class="fc" id="L106">            codes.add(key);</span>
+<span class="fc" id="L107">        }</span>
 <span class="fc" id="L108">        cache.put(listKey, codes);</span>
-<span class="pc bpc" id="L109" title="1 of 2 branches missed.">        if (null != oldCodesClone) {</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">            for (String code : oldCodesClone) {</span>
-<span class="nc" id="L111">                cache.evict(cacheKeyPrefix + code);</span>
-<span class="nc" id="L112">            }</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        if (null != oldCodesClone) {</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">            for (String code : oldCodesClone) {</span>
+<span class="fc" id="L111">                cache.evict(cacheKeyPrefix + code);</span>
+<span class="fc" id="L112">            }</span>
         }
 <span class="fc" id="L114">    }</span>
     
 	@Override
 	public FriendlyCodeVO getMappingByFriendlyCode(String friendlyCode) {
-<span class="nc" id="L118">        return this.get(this.getCache(), MAPPING_BY_CODE_CACHE_KEY_PREFIX + friendlyCode, FriendlyCodeVO.class);</span>
+<span class="fc" id="L118">        return this.get(this.getCache(), MAPPING_BY_CODE_CACHE_KEY_PREFIX + friendlyCode, FriendlyCodeVO.class);</span>
 	}
 
     @Override
@@ -125,7 +125,7 @@ import org.springframework.cache.Cache;
     
     @Override
     public ContentFriendlyCode getMappingByContentId(String contentId) {
-<span class="nc" id="L128">        return this.get(this.getCache(), MAPPING_BY_CONTENT_CACHE_KEY_PREFIX + contentId, ContentFriendlyCode.class);</span>
+<span class="fc" id="L128">        return this.get(this.getCache(), MAPPING_BY_CONTENT_CACHE_KEY_PREFIX + contentId, ContentFriendlyCode.class);</span>
 	}
 
     @Override

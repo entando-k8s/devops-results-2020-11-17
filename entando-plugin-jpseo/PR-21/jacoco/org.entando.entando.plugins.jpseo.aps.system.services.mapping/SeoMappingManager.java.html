@@ -68,95 +68,95 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 
     @Override
     protected void release() {
-<span class="nc" id="L71">        this.getCacheWrapper().release();</span>
-<span class="nc" id="L72">        super.release();</span>
-<span class="nc" id="L73">    }</span>
+<span class="fc" id="L71">        this.getCacheWrapper().release();</span>
+<span class="fc" id="L72">        super.release();</span>
+<span class="fc" id="L73">    }</span>
 
 	@Override
 	public void updateFromPageChanged(PageChangedEvent event) {
-<span class="nc" id="L77">		IPage page = event.getPage();</span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (!PageChangedEvent.EVENT_TYPE_SET_PAGE_OFFLINE.equals(event.getEventType()) &amp;&amp; </span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">                !PageChangedEvent.EVENT_TYPE_SET_PAGE_ONLINE.equals(event.getEventType())) {</span>
-<span class="nc" id="L80">            return;</span>
+<span class="fc" id="L77">		IPage page = event.getPage();</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (!PageChangedEvent.EVENT_TYPE_SET_PAGE_OFFLINE.equals(event.getEventType()) &amp;&amp; </span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                !PageChangedEvent.EVENT_TYPE_SET_PAGE_ONLINE.equals(event.getEventType())) {</span>
+<span class="fc" id="L80">            return;</span>
         }
-<span class="nc bnc" id="L82" title="All 2 branches missed.">		if (!(page.getMetadata() instanceof SeoPageMetadata)) {</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">		if (!(page.getMetadata() instanceof SeoPageMetadata)) {</span>
 <span class="nc" id="L83">            return;</span>
         }
 		try {
-<span class="nc" id="L86">            this.getSeoMappingDAO().deleteMappingForPage(page.getCode());</span>
-<span class="nc" id="L87">            SeoPageMetadata seoMetadata = (SeoPageMetadata) page.getMetadata();</span>
-<span class="nc" id="L88">            String friendlyCode = seoMetadata.getFriendlyCode();</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">            if (!StringUtils.isEmpty(friendlyCode)) {</span>
-<span class="nc" id="L90">                FriendlyCodeVO vo = new FriendlyCodeVO(seoMetadata.getFriendlyCode(), page.getCode());</span>
-<span class="nc" id="L91">                this.getSeoMappingDAO().updateMapping(vo);</span>
+<span class="fc" id="L86">            this.getSeoMappingDAO().deleteMappingForPage(page.getCode());</span>
+<span class="fc" id="L87">            SeoPageMetadata seoMetadata = (SeoPageMetadata) page.getMetadata();</span>
+<span class="fc" id="L88">            String friendlyCode = seoMetadata.getFriendlyCode();</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            if (!StringUtils.isEmpty(friendlyCode)) {</span>
+<span class="fc" id="L90">                FriendlyCodeVO vo = new FriendlyCodeVO(seoMetadata.getFriendlyCode(), page.getCode());</span>
+<span class="fc" id="L91">                this.getSeoMappingDAO().updateMapping(vo);</span>
             }
-<span class="nc" id="L93">			SeoChangedEvent seoEvent = new SeoChangedEvent();</span>
-<span class="nc" id="L94">			seoEvent.setOperationCode(SeoChangedEvent.PAGE_CHANGED_EVENT);</span>
-<span class="nc" id="L95">			this.notifyEvent(seoEvent);</span>
-<span class="nc" id="L96">            this.getCacheWrapper().initCache(this.getSeoMappingDAO());</span>
+<span class="fc" id="L93">			SeoChangedEvent seoEvent = new SeoChangedEvent();</span>
+<span class="fc" id="L94">			seoEvent.setOperationCode(SeoChangedEvent.PAGE_CHANGED_EVENT);</span>
+<span class="fc" id="L95">			this.notifyEvent(seoEvent);</span>
+<span class="fc" id="L96">            this.getCacheWrapper().initCache(this.getSeoMappingDAO());</span>
 <span class="nc" id="L97">		} catch (Throwable t) {</span>
 <span class="nc" id="L98">			logger.error(&quot;Error updating mapping from page changed&quot;, t);</span>
-<span class="nc" id="L99">		}</span>
-<span class="nc" id="L100">	}</span>
+<span class="fc" id="L99">		}</span>
+<span class="fc" id="L100">	}</span>
 	
 	@Override
     public void updateFromPublicContentChanged(PublicContentChangedEvent event) {
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (null == event.getContent()) {</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if (null == event.getContent()) {</span>
 <span class="nc" id="L105">            return;</span>
         }
-<span class="nc" id="L107">        Content content = event.getContent();</span>
+<span class="fc" id="L107">        Content content = event.getContent();</span>
         try {
-<span class="nc" id="L109">            this.getSeoMappingDAO().deleteMappingForContent(content.getId());</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">            if (event.getOperationCode() != PublicContentChangedEvent.REMOVE_OPERATION_CODE) {</span>
-<span class="nc" id="L111">                AttributeInterface attribute = content.getAttributeByRole(JpseoSystemConstants.ATTRIBUTE_ROLE_FRIENDLY_CODE);</span>
-<span class="nc bnc" id="L112" title="All 4 branches missed.">                if (null == attribute || !(attribute instanceof ITextAttribute)) {</span>
-<span class="nc" id="L113">                    attribute = content.getAttributeByRole(JacmsSystemConstants.ATTRIBUTE_ROLE_TITLE);</span>
+<span class="fc" id="L109">            this.getSeoMappingDAO().deleteMappingForContent(content.getId());</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">            if (event.getOperationCode() != PublicContentChangedEvent.REMOVE_OPERATION_CODE) {</span>
+<span class="fc" id="L111">                AttributeInterface attribute = content.getAttributeByRole(JpseoSystemConstants.ATTRIBUTE_ROLE_FRIENDLY_CODE);</span>
+<span class="pc bpc" id="L112" title="3 of 4 branches missed.">                if (null == attribute || !(attribute instanceof ITextAttribute)) {</span>
+<span class="fc" id="L113">                    attribute = content.getAttributeByRole(JacmsSystemConstants.ATTRIBUTE_ROLE_TITLE);</span>
                 }
-<span class="nc bnc" id="L115" title="All 4 branches missed.">                if (null != attribute &amp;&amp; attribute instanceof ITextAttribute) {</span>
-<span class="nc" id="L116">                    ContentFriendlyCode contentFriendlyCode = this.prepareContentFriendlyCode(content.getId(), (ITextAttribute) attribute);</span>
-<span class="nc" id="L117">                    this.getSeoMappingDAO().updateMapping(contentFriendlyCode);</span>
+<span class="pc bpc" id="L115" title="2 of 4 branches missed.">                if (null != attribute &amp;&amp; attribute instanceof ITextAttribute) {</span>
+<span class="fc" id="L116">                    ContentFriendlyCode contentFriendlyCode = this.prepareContentFriendlyCode(content.getId(), (ITextAttribute) attribute);</span>
+<span class="fc" id="L117">                    this.getSeoMappingDAO().updateMapping(contentFriendlyCode);</span>
                 }
             }
-<span class="nc" id="L120">            SeoChangedEvent seoEvent = new SeoChangedEvent();</span>
-<span class="nc" id="L121">            seoEvent.setOperationCode(SeoChangedEvent.CONTENT_CHANGED_EVENT);</span>
-<span class="nc" id="L122">            this.notifyEvent(seoEvent);</span>
-<span class="nc" id="L123">            this.getCacheWrapper().initCache(this.getSeoMappingDAO());</span>
+<span class="fc" id="L120">            SeoChangedEvent seoEvent = new SeoChangedEvent();</span>
+<span class="fc" id="L121">            seoEvent.setOperationCode(SeoChangedEvent.CONTENT_CHANGED_EVENT);</span>
+<span class="fc" id="L122">            this.notifyEvent(seoEvent);</span>
+<span class="fc" id="L123">            this.getCacheWrapper().initCache(this.getSeoMappingDAO());</span>
 <span class="nc" id="L124">        } catch (Throwable t) {</span>
 <span class="nc" id="L125">            logger.error(&quot;Error updating mapping from public content changed&quot;, t);</span>
-<span class="nc" id="L126">        }</span>
-<span class="nc" id="L127">    }</span>
+<span class="fc" id="L126">        }</span>
+<span class="fc" id="L127">    }</span>
 	
 	private ContentFriendlyCode prepareContentFriendlyCode(String contentId, ITextAttribute attribute) throws EntException {
-<span class="nc" id="L130">		ContentFriendlyCode contentFriendlyCode = new ContentFriendlyCode();</span>
-<span class="nc" id="L131">		contentFriendlyCode.setContentId(contentId);</span>
-<span class="nc" id="L132">		String defaultLang = this.getLangManager().getDefaultLang().getCode();</span>
-<span class="nc bnc" id="L133" title="All 2 branches missed.">		if (((AttributeInterface) attribute).isMultilingual()) {</span>
-<span class="nc" id="L134">			String defaultFriendlyCode = this.generateUniqueFriendlyCode(attribute.getTextForLang(defaultLang), defaultLang);</span>
-<span class="nc" id="L135">			contentFriendlyCode.addFriendlyCode(defaultLang, defaultFriendlyCode);</span>
-<span class="nc" id="L136">			Iterator&lt;Lang&gt; langs = this.getLangManager().getLangs().iterator();</span>
-<span class="nc bnc" id="L137" title="All 2 branches missed.">			while (langs.hasNext()) {</span>
-<span class="nc" id="L138">				Lang currentLang = langs.next();</span>
-<span class="nc bnc" id="L139" title="All 2 branches missed.">				if (!currentLang.isDefault()) {</span>
-<span class="nc" id="L140">					String langCode = currentLang.getCode();</span>
-<span class="nc" id="L141">					String friendlyCode = this.generateUniqueFriendlyCode(attribute.getTextForLang(langCode), langCode);</span>
-<span class="nc bnc" id="L142" title="All 4 branches missed.">					if (friendlyCode != null &amp;&amp; !friendlyCode.equals(defaultFriendlyCode)) {</span>
-<span class="nc" id="L143">						contentFriendlyCode.addFriendlyCode(langCode, friendlyCode);</span>
+<span class="fc" id="L130">		ContentFriendlyCode contentFriendlyCode = new ContentFriendlyCode();</span>
+<span class="fc" id="L131">		contentFriendlyCode.setContentId(contentId);</span>
+<span class="fc" id="L132">		String defaultLang = this.getLangManager().getDefaultLang().getCode();</span>
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">		if (((AttributeInterface) attribute).isMultilingual()) {</span>
+<span class="fc" id="L134">			String defaultFriendlyCode = this.generateUniqueFriendlyCode(attribute.getTextForLang(defaultLang), defaultLang);</span>
+<span class="fc" id="L135">			contentFriendlyCode.addFriendlyCode(defaultLang, defaultFriendlyCode);</span>
+<span class="fc" id="L136">			Iterator&lt;Lang&gt; langs = this.getLangManager().getLangs().iterator();</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">			while (langs.hasNext()) {</span>
+<span class="fc" id="L138">				Lang currentLang = langs.next();</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">				if (!currentLang.isDefault()) {</span>
+<span class="fc" id="L140">					String langCode = currentLang.getCode();</span>
+<span class="fc" id="L141">					String friendlyCode = this.generateUniqueFriendlyCode(attribute.getTextForLang(langCode), langCode);</span>
+<span class="pc bpc" id="L142" title="2 of 4 branches missed.">					if (friendlyCode != null &amp;&amp; !friendlyCode.equals(defaultFriendlyCode)) {</span>
+<span class="fc" id="L143">						contentFriendlyCode.addFriendlyCode(langCode, friendlyCode);</span>
 					}
 				}
-<span class="nc" id="L146">			}</span>
-<span class="nc" id="L147">		} else {</span>
+<span class="fc" id="L146">			}</span>
+<span class="fc" id="L147">		} else {</span>
 <span class="nc" id="L148">			String friendlyCode = this.generateUniqueFriendlyCode(attribute.getText(), null);</span>
 <span class="nc" id="L149">            contentFriendlyCode.addFriendlyCode(defaultLang, friendlyCode);</span>
 		}
-<span class="nc" id="L151">        List&lt;String&gt; langs = new ArrayList&lt;&gt;(contentFriendlyCode.getFriendlyCodes().keySet());</span>
-<span class="nc bnc" id="L152" title="All 2 branches missed.">        for (int i = 0; i &lt; langs.size(); i++) {</span>
-<span class="nc" id="L153">            String langCode = langs.get(i);</span>
-<span class="nc" id="L154">            String codesForLang = contentFriendlyCode.getFriendlyCodes().get(langCode);</span>
-<span class="nc" id="L155">            FieldSearchFilter filterCode = new FieldSearchFilter(&quot;friendlycode&quot;, codesForLang, false);</span>
-<span class="nc" id="L156">            FieldSearchFilter filterLang = new FieldSearchFilter(&quot;langcode&quot;, langCode, false);</span>
-<span class="nc" id="L157">            FieldSearchFilter[] filters = {filterCode, filterLang};</span>
-<span class="nc" id="L158">            List&lt;String&gt; codes = this.searchFriendlyCode(filters);</span>
-<span class="nc bnc" id="L159" title="All 4 branches missed.">            if (null != codes &amp;&amp; !codes.isEmpty()) {</span>
+<span class="fc" id="L151">        List&lt;String&gt; langs = new ArrayList&lt;&gt;(contentFriendlyCode.getFriendlyCodes().keySet());</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">        for (int i = 0; i &lt; langs.size(); i++) {</span>
+<span class="fc" id="L153">            String langCode = langs.get(i);</span>
+<span class="fc" id="L154">            String codesForLang = contentFriendlyCode.getFriendlyCodes().get(langCode);</span>
+<span class="fc" id="L155">            FieldSearchFilter filterCode = new FieldSearchFilter(&quot;friendlycode&quot;, codesForLang, false);</span>
+<span class="fc" id="L156">            FieldSearchFilter filterLang = new FieldSearchFilter(&quot;langcode&quot;, langCode, false);</span>
+<span class="fc" id="L157">            FieldSearchFilter[] filters = {filterCode, filterLang};</span>
+<span class="fc" id="L158">            List&lt;String&gt; codes = this.searchFriendlyCode(filters);</span>
+<span class="pc bpc" id="L159" title="2 of 4 branches missed.">            if (null != codes &amp;&amp; !codes.isEmpty()) {</span>
 <span class="nc bnc" id="L160" title="All 2 branches missed.">                for (int j = 0; j &lt; codes.size(); j++) {</span>
 <span class="nc" id="L161">                    FriendlyCodeVO codeVo = this.getCacheWrapper().getMappingByFriendlyCode(codes.get(j));</span>
 <span class="nc bnc" id="L162" title="All 6 branches missed.">                    if (null != codeVo &amp;&amp; (null == codeVo.getContentId() || !contentId.equals(codeVo.getContentId()))) {</span>
@@ -167,40 +167,40 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
                 }
             }
         }
-<span class="nc" id="L170">		return contentFriendlyCode;</span>
+<span class="fc" id="L170">		return contentFriendlyCode;</span>
 	}
     
     private String generateUniqueFriendlyCode(String originalText, String langCode) {
-<span class="nc" id="L174">        String friendlyCode = FriendlyCodeGenerator.generateFriendlyCode(originalText);</span>
-<span class="nc bnc" id="L175" title="All 2 branches missed.">        if (StringUtils.isBlank(originalText)) {</span>
+<span class="fc" id="L174">        String friendlyCode = FriendlyCodeGenerator.generateFriendlyCode(originalText);</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">        if (StringUtils.isBlank(originalText)) {</span>
 <span class="nc" id="L176">            return null;</span>
         }
-<span class="nc" id="L178">        FriendlyCodeVO existing = this.getReference(friendlyCode);</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">        if (null != existing) {</span>
-<span class="nc" id="L180">            int index = 1;</span>
-<span class="nc" id="L181">            String original = friendlyCode;</span>
+<span class="fc" id="L178">        FriendlyCodeVO existing = this.getReference(friendlyCode);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">        if (null != existing) {</span>
+<span class="fc" id="L180">            int index = 1;</span>
+<span class="fc" id="L181">            String original = friendlyCode;</span>
             do {
-<span class="nc bnc" id="L183" title="All 2 branches missed.">                friendlyCode = original + (null != langCode ? &quot;_&quot;+langCode : &quot;&quot;) + &quot;_&quot; + index++;</span>
-<span class="nc bnc" id="L184" title="All 2 branches missed.">            } while (null != this.getReference(friendlyCode));</span>
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">                friendlyCode = original + (null != langCode ? &quot;_&quot;+langCode : &quot;&quot;) + &quot;_&quot; + index++;</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">            } while (null != this.getReference(friendlyCode));</span>
         }
-<span class="nc" id="L186">        return friendlyCode;</span>
+<span class="fc" id="L186">        return friendlyCode;</span>
     }
 	
 	@Override
 	public List&lt;String&gt; searchFriendlyCode(FieldSearchFilter[] filters) throws EntException {
-<span class="nc" id="L191">		List&lt;String&gt; codes = null;</span>
+<span class="fc" id="L191">		List&lt;String&gt; codes = null;</span>
 		try {
-<span class="nc" id="L193">			codes = this.getSeoMappingDAO().searchFriendlyCode(filters);</span>
+<span class="fc" id="L193">			codes = this.getSeoMappingDAO().searchFriendlyCode(filters);</span>
 <span class="nc" id="L194">		} catch (Throwable t) {</span>
 <span class="nc" id="L195">			logger.error(&quot;Error searching Friendly Codes&quot;, t);</span>
 <span class="nc" id="L196">			throw new EntException(&quot;Error searching Friendly Codes&quot;, t);</span>
-<span class="nc" id="L197">		}</span>
-<span class="nc" id="L198">		return codes;</span>
+<span class="fc" id="L197">		}</span>
+<span class="fc" id="L198">		return codes;</span>
 	}
 	
 	@Override
 	public FriendlyCodeVO getReference(String friendlyCode) {
-<span class="nc" id="L203">		return this.getCacheWrapper().getMappingByFriendlyCode(friendlyCode);</span>
+<span class="fc" id="L203">		return this.getCacheWrapper().getMappingByFriendlyCode(friendlyCode);</span>
 	}
 	
 	@Override
@@ -214,15 +214,15 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 	
 	@Override
 	public String getContentReference(String contentId, String langCode) {
-<span class="nc" id="L217">		String friendlyCode = null;</span>
-<span class="nc" id="L218">		ContentFriendlyCode content = this.getCacheWrapper().getMappingByContentId(contentId);</span>
-<span class="nc bnc" id="L219" title="All 2 branches missed.">		if (content != null) {</span>
-<span class="nc" id="L220">			friendlyCode = content.getFriendlyCode(langCode);</span>
-<span class="nc bnc" id="L221" title="All 2 branches missed.">			if (friendlyCode == null) {</span>
-<span class="nc" id="L222">				friendlyCode = content.getFriendlyCode(this.getLangManager().getDefaultLang().getCode());</span>
+<span class="fc" id="L217">		String friendlyCode = null;</span>
+<span class="fc" id="L218">		ContentFriendlyCode content = this.getCacheWrapper().getMappingByContentId(contentId);</span>
+<span class="fc bfc" id="L219" title="All 2 branches covered.">		if (content != null) {</span>
+<span class="fc" id="L220">			friendlyCode = content.getFriendlyCode(langCode);</span>
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">			if (friendlyCode == null) {</span>
+<span class="fc" id="L222">				friendlyCode = content.getFriendlyCode(this.getLangManager().getDefaultLang().getCode());</span>
 			}
 		}
-<span class="nc" id="L225">		return friendlyCode;</span>
+<span class="fc" id="L225">		return friendlyCode;</span>
 	}
 	
 	protected ISeoMappingDAO getSeoMappingDAO() {
@@ -233,7 +233,7 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 <span class="fc" id="L233">	}</span>
 	
 	protected ILangManager getLangManager() {
-<span class="nc" id="L236">		return langManager;</span>
+<span class="fc" id="L236">		return langManager;</span>
 	}
 	public void setLangManager(ILangManager langManager) {
 <span class="fc" id="L239">		this.langManager = langManager;</span>
