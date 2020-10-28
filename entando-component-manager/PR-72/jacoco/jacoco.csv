@@ -115,6 +115,7 @@ Entando Component Manager,org.entando.kubernetes.model.bundle.descriptor,WidgetD
 Entando Component Manager,org.entando.kubernetes.model.bundle.descriptor,ComponentSpecDescriptor,0,8,0,0,0,4,0,2,0,2
 Entando Component Manager,org.entando.kubernetes.model.bundle.descriptor,OgnlValidation,0,3,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.model.bundle.descriptor,DockerImage,8,57,3,3,2,13,3,3,0,3
+Entando Component Manager,org.entando.kubernetes.model.bundle.descriptor,PluginDescriptor,11,0,2,0,3,0,2,0,1,0
 Entando Component Manager,org.entando.kubernetes.model.bundle.descriptor,Role,0,3,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.controller.digitalexchange.job,EntandoBundleJobResourceController,0,69,0,0,0,13,0,5,0,5
 Entando Component Manager,org.entando.kubernetes.controller.digitalexchange.job,EntandoBundleOperationResourceController,34,127,3,1,8,25,5,10,3,10
