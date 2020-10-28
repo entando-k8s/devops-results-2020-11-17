@@ -19,28 +19,29 @@ import java.util.Arrays;
 <span class="fc" id="L19">    WIDGET(&quot;widget&quot;, 7),</span>
 <span class="fc" id="L20">    CONTENT_TYPE(&quot;contentType&quot;, 8),</span>
 <span class="fc" id="L21">    CONTENT_TEMPLATE(&quot;contentTemplate&quot;, 9),</span>
-<span class="fc" id="L22">    FRAGMENT(&quot;fragment&quot;, 10),</span>
-<span class="fc" id="L23">    PAGE_TEMPLATE(&quot;pageTemplate&quot;, 11),</span>
-<span class="fc" id="L24">    PAGE(&quot;page&quot;, 12);</span>
+<span class="fc" id="L22">    CONTENT(&quot;content&quot;, 10),</span>
+<span class="fc" id="L23">    FRAGMENT(&quot;fragment&quot;, 11),</span>
+<span class="fc" id="L24">    PAGE_TEMPLATE(&quot;pageTemplate&quot;, 12),</span>
+<span class="fc" id="L25">    PAGE(&quot;page&quot;, 13);</span>
 
     private String typeName;
     private int installPriority;
 
-<span class="fc" id="L29">    ComponentType(String typeName, int installPriority) {</span>
-<span class="fc" id="L30">        this.typeName = typeName;</span>
-<span class="fc" id="L31">        this.installPriority = installPriority;</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L30">    ComponentType(String typeName, int installPriority) {</span>
+<span class="fc" id="L31">        this.typeName = typeName;</span>
+<span class="fc" id="L32">        this.installPriority = installPriority;</span>
+<span class="fc" id="L33">    }</span>
 
     public String getTypeName() {
-<span class="fc" id="L35">        return this.typeName;</span>
+<span class="fc" id="L36">        return this.typeName;</span>
     }
 
     public int getInstallPriority() {
-<span class="fc" id="L39">        return this.installPriority;</span>
+<span class="fc" id="L40">        return this.installPriority;</span>
     }
 
     public static boolean isValidType(String type) {
-<span class="fc" id="L43">        return Arrays.stream(values()).anyMatch(e -&gt; e.getTypeName().equalsIgnoreCase(type));</span>
+<span class="fc" id="L44">        return Arrays.stream(values()).anyMatch(e -&gt; e.getTypeName().equalsIgnoreCase(type));</span>
     }
 
 }
