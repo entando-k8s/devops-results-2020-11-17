@@ -59,21 +59,29 @@ public class PluginDescriptor implements Descriptor {
      * List of roles to be assigned to the plugin.
      */
     private List&lt;String&gt; roles;
+    /**
+     * List of permissions to be assigned to the plugin.
+     */
+    private List&lt;PluginPermission&gt; permissions;
+    /**
+     * The ingress path to assign to the current plugin. If not specified it will be composed by the image name
+     */
+    private String ingressPath;
 
 
     public DockerImage getDockerImage() {
-<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (dockerImage == null) {</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">            if (!isVersion1()) {</span>
-<span class="fc" id="L67">                this.dockerImage = DockerImage.fromString(this.image);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (dockerImage == null) {</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if (!isVersion1()) {</span>
+<span class="fc" id="L75">                this.dockerImage = DockerImage.fromString(this.image);</span>
             } else {
-<span class="fc" id="L69">                this.dockerImage = DockerImage.fromString(this.spec.getImage());</span>
+<span class="fc" id="L77">                this.dockerImage = DockerImage.fromString(this.spec.getImage());</span>
             }
         }
-<span class="fc" id="L72">        return this.dockerImage;</span>
+<span class="fc" id="L80">        return this.dockerImage;</span>
     }
 
     public boolean isVersion1() {
-<span class="fc" id="L76">        return StringUtils.isEmpty(image);</span>
+<span class="fc" id="L84">        return StringUtils.isEmpty(image);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
