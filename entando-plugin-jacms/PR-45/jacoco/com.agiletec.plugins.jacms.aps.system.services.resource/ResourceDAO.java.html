@@ -55,8 +55,8 @@ import org.springframework.cache.annotation.Cacheable;
 <span class="fc" id="L55">    private final String LOAD_RESOURCE_VO</span>
             = &quot;SELECT restype, descr, maingroup, resourcexml, masterfilename, creationdate, lastmodified, owner, folderpath, correlationcode FROM resources WHERE resid = ? &quot;;
 
-    private final static String LOAD_RESOURCE_VO_BY_CODE
-            = &quot;SELECT restype, descr, maingroup, resourcexml, masterfilename, creationdate, lastmodified, owner, folderpath, correlationcode FROM resources WHERE correlationcode = ? &quot;;
+    private static final String LOAD_RESOURCE_VO_BY_CODE
+            = &quot;SELECT resid, restype, descr, maingroup, resourcexml, masterfilename, creationdate, lastmodified, owner, folderpath, correlationcode FROM resources WHERE correlationcode = ? &quot;;
 
 <span class="fc" id="L61">    private final String ADD_RESOURCE</span>
             = &quot;INSERT INTO resources (resid, restype, descr, maingroup, resourcexml, masterfilename, creationdate, lastmodified, owner, folderpath, correlationcode) &quot;
@@ -437,7 +437,7 @@ import org.springframework.cache.annotation.Cacheable;
 
     @Override
     @Cacheable(value = ICacheInfoManager.DEFAULT_CACHE_NAME, key = &quot;'jacms_resource_'.concat(#id)&quot;, condition = &quot;null != #id and null != #result&quot;)
-    public ResourceRecordVO loadResourceVoByCode(String id) {
+    public ResourceRecordVO loadResourceVoByCorrelationCode(String code) {
 <span class="fc" id="L441">        Connection conn = null;</span>
 <span class="fc" id="L442">        ResourceRecordVO resourceVo = null;</span>
 <span class="fc" id="L443">        PreparedStatement stat = null;</span>
@@ -445,25 +445,25 @@ import org.springframework.cache.annotation.Cacheable;
         try {
 <span class="fc" id="L446">            conn = this.getConnection();</span>
 <span class="fc" id="L447">            stat = conn.prepareStatement(LOAD_RESOURCE_VO_BY_CODE);</span>
-<span class="fc" id="L448">            stat.setString(1, id);</span>
+<span class="fc" id="L448">            stat.setString(1, code);</span>
 <span class="fc" id="L449">            res = stat.executeQuery();</span>
 <span class="fc bfc" id="L450" title="All 2 branches covered.">            if (res.next()) {</span>
 <span class="fc" id="L451">                resourceVo = new ResourceRecordVO();</span>
-<span class="fc" id="L452">                resourceVo.setId(id);</span>
-<span class="fc" id="L453">                resourceVo.setResourceType(res.getString(1));</span>
-<span class="fc" id="L454">                resourceVo.setDescr(res.getString(2));</span>
-<span class="fc" id="L455">                resourceVo.setMainGroup(res.getString(3));</span>
-<span class="fc" id="L456">                resourceVo.setXml(res.getString(4));</span>
-<span class="fc" id="L457">                resourceVo.setMasterFileName(res.getString(5));</span>
-<span class="fc" id="L458">                resourceVo.setCreationDate(res.getTimestamp(6));</span>
-<span class="fc" id="L459">                resourceVo.setLastModified(res.getTimestamp(7));</span>
-<span class="fc" id="L460">                resourceVo.setOwner(res.getString(8));</span>
-<span class="fc" id="L461">                resourceVo.setFolderPath(res.getString(9));</span>
-<span class="fc" id="L462">                resourceVo.setCorrelationCode(res.getString(10));</span>
+<span class="fc" id="L452">                resourceVo.setId(res.getString(1));</span>
+<span class="fc" id="L453">                resourceVo.setResourceType(res.getString(2));</span>
+<span class="fc" id="L454">                resourceVo.setDescr(res.getString(3));</span>
+<span class="fc" id="L455">                resourceVo.setMainGroup(res.getString(4));</span>
+<span class="fc" id="L456">                resourceVo.setXml(res.getString(5));</span>
+<span class="fc" id="L457">                resourceVo.setMasterFileName(res.getString(6));</span>
+<span class="fc" id="L458">                resourceVo.setCreationDate(res.getTimestamp(7));</span>
+<span class="fc" id="L459">                resourceVo.setLastModified(res.getTimestamp(8));</span>
+<span class="fc" id="L460">                resourceVo.setOwner(res.getString(9));</span>
+<span class="fc" id="L461">                resourceVo.setFolderPath(res.getString(10));</span>
+<span class="fc" id="L462">                resourceVo.setCorrelationCode(res.getString(11));</span>
             }
 <span class="nc" id="L464">        } catch (Exception t) {</span>
-<span class="nc" id="L465">            logger.error(&quot;Error loading resource {}&quot;, id, t);</span>
-<span class="nc" id="L466">            throw new EntRuntimeException(&quot;Error loading resource&quot; + id, t);</span>
+<span class="nc" id="L465">            logger.error(&quot;Error loading resource {}&quot;, code, t);</span>
+<span class="nc" id="L466">            throw new EntRuntimeException(&quot;Error loading resource&quot; + code, t);</span>
         } finally {
 <span class="fc" id="L468">            closeDaoResources(res, stat, conn);</span>
         }

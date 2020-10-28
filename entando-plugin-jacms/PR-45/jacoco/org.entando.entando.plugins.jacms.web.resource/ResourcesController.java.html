@@ -190,7 +190,7 @@ public class ResourcesController {
 <span class="fc" id="L190">        logger.debug(&quot;REST request - edit image resource with id {}&quot;, resourceIdOrCC);</span>
 
 <span class="fc" id="L192">        String correlationCode = resourceIdOrCC.getValidValue(ID_NAME_OF_CORRELATION_CODE).orElse(null);</span>
-<span class="pc bpc" id="L193" title="1 of 2 branches missed.">        String resourceId = correlationCode == null ? resourceIdOrCC.value : null;</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">        String resourceId = correlationCode == null ? resourceIdOrCC.value : null;</span>
 
 <span class="fc" id="L195">        UpdateResourceRequest resourceRequest = new ObjectMapper().readValue(request, UpdateResourceRequest.class);</span>
 
