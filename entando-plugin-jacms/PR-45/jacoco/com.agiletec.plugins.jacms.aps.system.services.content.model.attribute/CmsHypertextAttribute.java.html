@@ -45,10 +45,10 @@ import org.entando.entando.ent.exception.EntRuntimeException;
 
     @Override
     public Object getAttributePrototype() {
-<span class="nc" id="L48">        CmsHypertextAttribute prototype = (CmsHypertextAttribute) super.getAttributePrototype();</span>
-<span class="nc" id="L49">        prototype.setContentManager(this.getContentManager());</span>
-<span class="nc" id="L50">        prototype.setPageManager(this.getPageManager());</span>
-<span class="nc" id="L51">        return prototype;</span>
+<span class="fc" id="L48">        CmsHypertextAttribute prototype = (CmsHypertextAttribute) super.getAttributePrototype();</span>
+<span class="fc" id="L49">        prototype.setContentManager(this.getContentManager());</span>
+<span class="fc" id="L50">        prototype.setPageManager(this.getPageManager());</span>
+<span class="fc" id="L51">        return prototype;</span>
     }
 
     /**
@@ -81,10 +81,10 @@ import org.entando.entando.ent.exception.EntRuntimeException;
      * immagine.
      */
     public String getTextBeforeImage(int percent) {
-<span class="nc" id="L84">        String text = super.getText();</span>
-<span class="nc" id="L85">        int cutPoint = HypertextAttributeUtil.getIndexCutPoint(text, percent);</span>
-<span class="nc" id="L86">        String textBefore = text.substring(0, cutPoint);</span>
-<span class="nc" id="L87">        return textBefore;</span>
+<span class="fc" id="L84">        String text = super.getText();</span>
+<span class="fc" id="L85">        int cutPoint = HypertextAttributeUtil.getIndexCutPoint(text, percent);</span>
+<span class="fc" id="L86">        String textBefore = text.substring(0, cutPoint);</span>
+<span class="fc" id="L87">        return textBefore;</span>
     }
 
     /**
@@ -99,10 +99,10 @@ import org.entando.entando.ent.exception.EntRuntimeException;
      * @return La porzione di testo totale successiva ad una eventuale immagine.
      */
     public String getTextAfterImage(int percent) {
-<span class="nc" id="L102">        String text = super.getText();</span>
-<span class="nc" id="L103">        int cutPoint = HypertextAttributeUtil.getIndexCutPoint(text, percent);</span>
-<span class="nc" id="L104">        String textAfter = text.substring(cutPoint);</span>
-<span class="nc" id="L105">        return textAfter;</span>
+<span class="fc" id="L102">        String text = super.getText();</span>
+<span class="fc" id="L103">        int cutPoint = HypertextAttributeUtil.getIndexCutPoint(text, percent);</span>
+<span class="fc" id="L104">        String textAfter = text.substring(cutPoint);</span>
+<span class="fc" id="L105">        return textAfter;</span>
     }
 
     /**
@@ -132,11 +132,11 @@ import org.entando.entando.ent.exception.EntRuntimeException;
 
     @Override
     public List&lt;CmsAttributeReference&gt; getReferences(List&lt;Lang&gt; systemLangs) {
-<span class="nc" id="L135">        List&lt;CmsAttributeReference&gt; refs = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">        for (Lang lang : systemLangs) {</span>
-<span class="nc" id="L137">            String text = this.getTextMap().get(lang.getCode());</span>
-<span class="nc" id="L138">            List&lt;SymbolicLink&gt; links = HypertextAttributeUtil.getSymbolicLinksOnText(text);</span>
-<span class="nc bnc" id="L139" title="All 4 branches missed.">            if (null != links &amp;&amp; !links.isEmpty()) {</span>
+<span class="fc" id="L135">        List&lt;CmsAttributeReference&gt; refs = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        for (Lang lang : systemLangs) {</span>
+<span class="fc" id="L137">            String text = this.getTextMap().get(lang.getCode());</span>
+<span class="fc" id="L138">            List&lt;SymbolicLink&gt; links = HypertextAttributeUtil.getSymbolicLinksOnText(text);</span>
+<span class="pc bpc" id="L139" title="2 of 4 branches missed.">            if (null != links &amp;&amp; !links.isEmpty()) {</span>
 <span class="nc bnc" id="L140" title="All 2 branches missed.">                for (SymbolicLink symbLink : links) {</span>
 <span class="nc bnc" id="L141" title="All 2 branches missed.">                    if (symbLink.getDestType() != SymbolicLink.URL_TYPE) {</span>
 <span class="nc" id="L142">                        CmsAttributeReference ref = new CmsAttributeReference(symbLink.getPageDest(),</span>
@@ -145,24 +145,24 @@ import org.entando.entando.ent.exception.EntRuntimeException;
                     }
 <span class="nc" id="L146">                }</span>
             }
-<span class="nc" id="L148">        }</span>
-<span class="nc" id="L149">        return refs;</span>
+<span class="fc" id="L148">        }</span>
+<span class="fc" id="L149">        return refs;</span>
     }
 
     @Override
     public List&lt;AttributeFieldError&gt; validate(AttributeTracer tracer, ILangManager langManager) {
-<span class="nc" id="L154">        List&lt;AttributeFieldError&gt; errors = super.validate(tracer, langManager);</span>
+<span class="fc" id="L154">        List&lt;AttributeFieldError&gt; errors = super.validate(tracer, langManager);</span>
         try {
-<span class="nc" id="L156">            List&lt;Lang&gt; langs = langManager.getLangs();</span>
-<span class="nc bnc" id="L157" title="All 2 branches missed.">            for (Lang lang : langs) {</span>
-<span class="nc" id="L158">                AttributeTracer textTracer = (AttributeTracer) tracer.clone();</span>
-<span class="nc" id="L159">                textTracer.setLang(lang);</span>
-<span class="nc" id="L160">                String text = this.getTextMap().get(lang.getCode());</span>
-<span class="nc bnc" id="L161" title="All 2 branches missed.">                if (null == text) {</span>
-<span class="nc" id="L162">                    continue;</span>
+<span class="fc" id="L156">            List&lt;Lang&gt; langs = langManager.getLangs();</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">            for (Lang lang : langs) {</span>
+<span class="fc" id="L158">                AttributeTracer textTracer = (AttributeTracer) tracer.clone();</span>
+<span class="fc" id="L159">                textTracer.setLang(lang);</span>
+<span class="fc" id="L160">                String text = this.getTextMap().get(lang.getCode());</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">                if (null == text) {</span>
+<span class="fc" id="L162">                    continue;</span>
                 }
-<span class="nc" id="L164">                List&lt;SymbolicLink&gt; links = HypertextAttributeUtil.getSymbolicLinksOnText(text);</span>
-<span class="nc bnc" id="L165" title="All 4 branches missed.">                if (null != links &amp;&amp; !links.isEmpty()) {</span>
+<span class="fc" id="L164">                List&lt;SymbolicLink&gt; links = HypertextAttributeUtil.getSymbolicLinksOnText(text);</span>
+<span class="pc bpc" id="L165" title="2 of 4 branches missed.">                if (null != links &amp;&amp; !links.isEmpty()) {</span>
 <span class="nc" id="L166">                    SymbolicLinkValidator sler = new SymbolicLinkValidator(this.getContentManager(), this.getPageManager(), this.getResourceManager());</span>
 <span class="nc bnc" id="L167" title="All 2 branches missed.">                    for (SymbolicLink symbLink : links) {</span>
 <span class="nc" id="L168">                        AttributeFieldError attributeError = sler.scan(symbLink, (Content) this.getParentEntity());</span>
@@ -177,41 +177,41 @@ import org.entando.entando.ent.exception.EntRuntimeException;
                         }
 <span class="nc" id="L178">                    }</span>
                 }
-<span class="nc" id="L180">            }</span>
+<span class="fc" id="L180">            }</span>
 <span class="nc" id="L181">        } catch (Throwable t) {</span>
 <span class="nc" id="L182">            logger.error(&quot;Error validating Attribute '{}'&quot;, this.getName(), t);</span>
 <span class="nc" id="L183">            throw new RuntimeException(&quot;Error validating Attribute '&quot; + this.getName() + &quot;'&quot;, t);</span>
-<span class="nc" id="L184">        }</span>
-<span class="nc" id="L185">        return errors;</span>
+<span class="fc" id="L184">        }</span>
+<span class="fc" id="L185">        return errors;</span>
     }
 
     protected IContentManager getContentManager() {
-<span class="nc" id="L189">        return contentManager;</span>
+<span class="fc" id="L189">        return contentManager;</span>
     }
 
     public void setContentManager(IContentManager contentManager) {
-<span class="nc" id="L193">        this.contentManager = contentManager;</span>
-<span class="nc" id="L194">    }</span>
+<span class="fc" id="L193">        this.contentManager = contentManager;</span>
+<span class="fc" id="L194">    }</span>
 
     protected IPageManager getPageManager() {
-<span class="nc" id="L197">        return pageManager;</span>
+<span class="fc" id="L197">        return pageManager;</span>
     }
 
     public void setPageManager(IPageManager pageManager) {
-<span class="nc" id="L201">        this.pageManager = pageManager;</span>
-<span class="nc" id="L202">    }</span>
+<span class="fc" id="L201">        this.pageManager = pageManager;</span>
+<span class="fc" id="L202">    }</span>
 
     public IResourceManager getResourceManager() {
 <span class="nc" id="L205">        return resourceManager;</span>
     }
 
     public void setResourceManager(IResourceManager resourceManager) {
-<span class="nc" id="L209">        this.resourceManager = resourceManager;</span>
-<span class="nc" id="L210">    }</span>
+<span class="fc" id="L209">        this.resourceManager = resourceManager;</span>
+<span class="fc" id="L210">    }</span>
 
     @Override
     public boolean isSearchableOptionSupported() {
-<span class="nc" id="L214">        return false;</span>
+<span class="fc" id="L214">        return false;</span>
     }
 
     private transient IContentManager contentManager;

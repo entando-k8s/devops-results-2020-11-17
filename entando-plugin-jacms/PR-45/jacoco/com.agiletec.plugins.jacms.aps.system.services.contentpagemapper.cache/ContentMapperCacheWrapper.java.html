@@ -33,8 +33,8 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
     
     @Override
     public void release() {
-<span class="nc" id="L36">        this.getCache().evict(CONTENT_MAPPER_CACHE_KEY);</span>
-<span class="nc" id="L37">    }</span>
+<span class="fc" id="L36">        this.getCache().evict(CONTENT_MAPPER_CACHE_KEY);</span>
+<span class="fc" id="L37">    }</span>
 
 	@Override
 	public void initCache(IPageManager pageManager) throws EntException {
@@ -58,16 +58,16 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 <span class="pc bpc" id="L58" title="2 of 4 branches missed.">			if (null != widgets &amp;&amp; mainFrame != -1) {</span>
 <span class="fc" id="L59">				widget = widgets[mainFrame];</span>
 			}
-<span class="pc bpc" id="L61" title="1 of 2 branches missed.">			ApsProperties config = (null != widget) ? widget.getConfig() : null;</span>
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">			String contentId = (null != config) ? config.getProperty(&quot;contentId&quot;) : null;</span>
-<span class="pc bpc" id="L63" title="1 of 2 branches missed.">			if (null != contentId) {</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">			ApsProperties config = (null != widget) ? widget.getConfig() : null;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">			String contentId = (null != config) ? config.getProperty(&quot;contentId&quot;) : null;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">			if (null != contentId) {</span>
 <span class="fc" id="L64">				contentPageMapper.add(contentId, page.getCode());</span>
 			}
 <span class="fc" id="L66">			String[] childCodes = page.getChildrenCodes();</span>
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">			for (String childCode : childCodes) {</span>
-<span class="nc" id="L68">				IPage child = pageManager.getOnlinePage(childCode);</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">				if (null != child) {</span>
-<span class="nc" id="L70">					this.searchPublishedDataObjects(contentPageMapper, child, pageManager);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">			for (String childCode : childCodes) {</span>
+<span class="fc" id="L68">				IPage child = pageManager.getOnlinePage(childCode);</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">				if (null != child) {</span>
+<span class="fc" id="L70">					this.searchPublishedDataObjects(contentPageMapper, child, pageManager);</span>
 				}
 			}
 		}

@@ -46,9 +46,9 @@ import com.agiletec.plugins.jacms.aps.system.services.contentpagemapper.cache.IC
     
     @Override
     protected void release() {
-<span class="nc" id="L49">        ((AbstractCacheWrapper) this.getCacheWrapper()).release();</span>
-<span class="nc" id="L50">        super.release();</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L49">        ((AbstractCacheWrapper) this.getCacheWrapper()).release();</span>
+<span class="fc" id="L50">        super.release();</span>
+<span class="fc" id="L51">    }</span>
 
 	/**
 	 * Effettua il caricamento della mappa contenuti pubblicati / pagine
@@ -69,11 +69,11 @@ import com.agiletec.plugins.jacms.aps.system.services.contentpagemapper.cache.IC
 	public void updateFromPageChanged(PageChangedEvent event) {
 		try {
 <span class="fc" id="L71">			this.reloadContentPageMapper();</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">			String pagecode = (null != event.getPage()) ? event.getPage().getCode() : &quot;*undefined*&quot;;</span>
-<span class="nc" id="L73">			_logger.debug(&quot;Notified page change event for page '{}'&quot;, pagecode);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">			String pagecode = (null != event.getPage()) ? event.getPage().getCode() : &quot;*undefined*&quot;;</span>
+<span class="fc" id="L73">			_logger.debug(&quot;Notified page change event for page '{}'&quot;, pagecode);</span>
 <span class="fc" id="L74">		} catch (Throwable t) {</span>
 <span class="fc" id="L75">			_logger.error(&quot;Error notifying event&quot;, t);</span>
-<span class="nc" id="L76">		}</span>
+<span class="fc" id="L76">		}</span>
 <span class="fc" id="L77">	}</span>
 
 	protected IPageManager getPageManager() {
