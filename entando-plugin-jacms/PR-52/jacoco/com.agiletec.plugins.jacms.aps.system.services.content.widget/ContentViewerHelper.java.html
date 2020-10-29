@@ -89,7 +89,7 @@ import org.apache.commons.lang3.StringUtils;
 <span class="fc bfc" id="L89" title="All 2 branches covered.">            ApsProperties widgetConfig = (null != widget) ? widget.getConfig() : null;</span>
 <span class="fc" id="L90">            contentId = this.extractContentId(contentId, widgetConfig, reqCtx);</span>
 <span class="fc" id="L91">            modelId = this.extractModelId(contentId, modelId, widgetConfig, reqCtx);</span>
-<span class="pc bpc" id="L92" title="2 of 4 branches missed.">            if (contentId != null &amp;&amp; modelId != null) {</span>
+<span class="pc bpc" id="L92" title="1 of 4 branches missed.">            if (contentId != null &amp;&amp; modelId != null) {</span>
 <span class="fc" id="L93">                long longModelId = new Long(modelId).longValue();</span>
 <span class="fc" id="L94">                this.setStylesheet(longModelId, reqCtx);</span>
 <span class="fc" id="L95">                renderizationInfo = this.getContentDispenser().getRenderizationInfo(contentId, longModelId, langCode, reqCtx, true);</span>
@@ -100,7 +100,7 @@ import org.apache.commons.lang3.StringUtils;
 <span class="fc" id="L100">                this.getContentDispenser().resolveLinks(renderizationInfo, reqCtx);</span>
 <span class="fc" id="L101">                this.manageAttributeValues(renderizationInfo, publishExtraTitle, reqCtx);</span>
 <span class="fc" id="L102">            } else {</span>
-<span class="nc" id="L103">                logger.warn(&quot;Parametri visualizzazione contenuto incompleti: &quot; + &quot;contenuto={} modello={}&quot;, contentId, modelId);</span>
+<span class="fc" id="L103">                logger.warn(&quot;Parametri visualizzazione contenuto incompleti: &quot; + &quot;contenuto={} modello={}&quot;, contentId, modelId);</span>
             }
 <span class="fc" id="L105">        } catch (Throwable t) {</span>
 <span class="fc" id="L106">            logger.error(&quot;Error extracting renderization info&quot;, t);</span>
@@ -131,21 +131,21 @@ import org.apache.commons.lang3.StringUtils;
     }
 
     protected void manageAttributeValues(ContentRenderizationInfo renderInfo, boolean publishExtraTitle, RequestContext reqCtx) {
-<span class="pc bpc" id="L134" title="1 of 2 branches missed.">        if (!publishExtraTitle) {</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        if (!publishExtraTitle) {</span>
 <span class="fc" id="L135">            return;</span>
         }
-<span class="nc" id="L137">        IPage page = (IPage) reqCtx.getExtraParam(SystemConstants.EXTRAPAR_CURRENT_PAGE);</span>
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        if (!page.isUseExtraTitles()) {</span>
-<span class="nc" id="L139">            return;</span>
+<span class="fc" id="L137">        IPage page = (IPage) reqCtx.getExtraParam(SystemConstants.EXTRAPAR_CURRENT_PAGE);</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        if (!page.isUseExtraTitles()) {</span>
+<span class="fc" id="L139">            return;</span>
         }
-<span class="nc" id="L141">        Integer currentFrame = (Integer) reqCtx.getExtraParam(SystemConstants.EXTRAPAR_CURRENT_FRAME);</span>
-<span class="nc bnc" id="L142" title="All 4 branches missed.">        if (currentFrame == page.getMetadata().getModel().getMainFrame() &amp;&amp; null != renderInfo) {</span>
-<span class="nc" id="L143">            Object extraTitle = renderInfo.getAttributeValues().get(JacmsSystemConstants.ATTRIBUTE_ROLE_TITLE);</span>
-<span class="nc bnc" id="L144" title="All 2 branches missed.">            if (null != extraTitle) {</span>
-<span class="nc" id="L145">                reqCtx.addExtraParam(SystemConstants.EXTRAPAR_EXTRA_PAGE_TITLES, extraTitle);</span>
+<span class="fc" id="L141">        Integer currentFrame = (Integer) reqCtx.getExtraParam(SystemConstants.EXTRAPAR_CURRENT_FRAME);</span>
+<span class="pc bpc" id="L142" title="1 of 4 branches missed.">        if (currentFrame == page.getMetadata().getModel().getMainFrame() &amp;&amp; null != renderInfo) {</span>
+<span class="fc" id="L143">            Object extraTitle = renderInfo.getAttributeValues().get(JacmsSystemConstants.ATTRIBUTE_ROLE_TITLE);</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">            if (null != extraTitle) {</span>
+<span class="fc" id="L145">                reqCtx.addExtraParam(SystemConstants.EXTRAPAR_EXTRA_PAGE_TITLES, extraTitle);</span>
             }
         }
-<span class="nc" id="L148">    }</span>
+<span class="fc" id="L148">    }</span>
 
     /**
      * Metodo che determina con che ordine viene ricercato l'identificativo del
@@ -161,7 +161,7 @@ import org.apache.commons.lang3.StringUtils;
      */
     protected String extractContentId(String contentId, ApsProperties widgetConfig, RequestContext reqCtx) {
 <span class="fc bfc" id="L163" title="All 2 branches covered.">        if (null == contentId) {</span>
-<span class="pc bpc" id="L164" title="1 of 2 branches missed.">            if (null != widgetConfig) {</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">            if (null != widgetConfig) {</span>
 <span class="fc" id="L165">                contentId = (String) widgetConfig.get(&quot;contentId&quot;);</span>
             }
 <span class="fc bfc" id="L167" title="All 2 branches covered.">            if (null == contentId) {</span>
@@ -202,7 +202,7 @@ import org.apache.commons.lang3.StringUtils;
 <span class="fc bfc" id="L202" title="All 2 branches covered.">        if (null == modelId) {</span>
 <span class="fc" id="L203">            modelId = reqCtx.getRequest().getParameter(&quot;modelId&quot;);</span>
         }
-<span class="pc bpc" id="L205" title="1 of 4 branches missed.">        if (null == modelId &amp;&amp; null != contentId) {</span>
+<span class="fc bfc" id="L205" title="All 4 branches covered.">        if (null == modelId &amp;&amp; null != contentId) {</span>
 <span class="fc" id="L206">            modelId = this.getContentManager().getDefaultModel(contentId);</span>
         }
 <span class="fc" id="L208">        return modelId;</span>
@@ -218,7 +218,7 @@ import org.apache.commons.lang3.StringUtils;
 
     private String extractConfiguredModelId(String contentId, String modelId, ApsProperties widgetConfig) {
 <span class="fc" id="L220">        modelId = this.checkModelId(contentId, modelId);</span>
-<span class="pc bpc" id="L221" title="1 of 4 branches missed.">        if (null == modelId &amp;&amp; null != widgetConfig) {</span>
+<span class="fc bfc" id="L221" title="All 4 branches covered.">        if (null == modelId &amp;&amp; null != widgetConfig) {</span>
 <span class="fc" id="L222">            String modelIdParamValue = (String) widgetConfig.get(&quot;modelId&quot;);</span>
 <span class="fc" id="L223">            modelId = this.checkModelId(contentId, modelIdParamValue);</span>
         }
