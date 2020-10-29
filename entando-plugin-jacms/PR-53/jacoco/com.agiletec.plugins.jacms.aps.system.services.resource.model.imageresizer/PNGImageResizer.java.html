@@ -96,70 +96,78 @@ import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResour
 <span class="nc" id="L96">		boolean hasAlpha = this.hasAlpha(image);</span>
 		// Create a buffered image with a format that's compatible with the
 		// screen
-<span class="nc" id="L99">		BufferedImage bimage = null;</span>
-<span class="nc" id="L100">		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</span>
 		try {
 			// Determine the type of transparency of the new buffered image
-<span class="nc" id="L103">			int transparency = Transparency.OPAQUE;</span>
-<span class="nc bnc" id="L104" title="All 2 branches missed.">			if (hasAlpha) {</span>
-<span class="nc" id="L105">				transparency = Transparency.BITMASK;</span>
+<span class="nc" id="L101">			int transparency = Transparency.OPAQUE;</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">			if (hasAlpha) {</span>
+<span class="nc" id="L103">				transparency = Transparency.BITMASK;</span>
 			}
 			// Create the buffered image
-<span class="nc" id="L108">			GraphicsDevice gs = ge.getDefaultScreenDevice();</span>
-<span class="nc" id="L109">			GraphicsConfiguration gc = gs.getDefaultConfiguration();</span>
-<span class="nc" id="L110">			bimage = gc.createCompatibleImage(image.getWidth(null), image.getHeight(null), transparency);</span>
-<span class="nc" id="L111">			Graphics graphics = bimage.createGraphics();</span>
-<span class="nc" id="L112">			graphics.drawImage(image, 0, 0, null);</span>
-<span class="nc" id="L113">			graphics.dispose();</span>
+<span class="nc" id="L106">            BufferedImage bimage = getGraphicsConfiguration().createCompatibleImage(image.getWidth(null),</span>
+<span class="nc" id="L107">                    image.getHeight(null), transparency);</span>
+<span class="nc" id="L108">			Graphics graphics = bimage.createGraphics();</span>
+<span class="nc" id="L109">			graphics.drawImage(image, 0, 0, null);</span>
+<span class="nc" id="L110">			graphics.dispose();</span>
 
-<span class="nc" id="L115">			return bimage;</span>
-<span class="nc" id="L116">		} catch (HeadlessException e) {</span>
-<span class="nc" id="L117">			_logger.warn(&quot;The system does not have a screen. Trying best effort approach.&quot;);</span>
-
-<span class="nc" id="L119">			int type = BufferedImage.TYPE_INT_RGB;</span>
-<span class="nc bnc" id="L120" title="All 2 branches missed.">			if (hasAlpha) {</span>
-<span class="nc" id="L121">				type = BufferedImage.TYPE_INT_ARGB;</span>
-			}
-
-<span class="nc" id="L124">			BufferedImage source = new BufferedImage(</span>
-<span class="nc" id="L125">					imageIcon.getIconWidth(),</span>
-<span class="nc" id="L126">					imageIcon.getIconHeight(),</span>
-					type);
-
-<span class="nc" id="L129">			Graphics graphics = source.createGraphics();</span>
-<span class="nc" id="L130">			imageIcon.paintIcon(null, graphics, 0, 0);</span>
-<span class="nc" id="L131">			graphics.dispose();</span>
-
-<span class="nc" id="L133">			BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), source.getType());</span>
-<span class="nc" id="L134">			Graphics2D graphics2D = bufferedImage.createGraphics();</span>
-<span class="nc" id="L135">			graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);</span>
-<span class="nc" id="L136">			float sx = (float) dimensioneX / source.getWidth();</span>
-<span class="nc" id="L137">			float sy = (float) dimensioneY / source.getHeight();</span>
-<span class="nc" id="L138">			graphics2D.scale(sx, sy);</span>
-<span class="nc" id="L139">			graphics2D.drawImage(source, 0, 0, null);</span>
-<span class="nc" id="L140">			graphics2D.dispose();</span>
-
-<span class="nc" id="L142">			return bufferedImage;</span>
-		}
+<span class="nc" id="L112">			return bimage;</span>
+<span class="nc" id="L113">		} catch (HeadlessException e) {</span>
+<span class="nc" id="L114">			_logger.warn(&quot;The system does not have a screen. Trying best effort approach.&quot;);</span>
+<span class="nc" id="L115">            return toBufferedImageWhenScreenIsNotPresent(imageIcon, dimensioneX, dimensioneY, image, hasAlpha);</span>
+        }
 	}
-	
-	protected boolean hasAlpha(Image image) throws EntException {
+
+    protected BufferedImage toBufferedImageWhenScreenIsNotPresent(ImageIcon imageIcon, float dimensioneX,
+            float dimensioneY, Image image, boolean hasAlpha) {
+
+<span class="nc" id="L122">        int type = BufferedImage.TYPE_INT_RGB;</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        if (hasAlpha) {</span>
+<span class="nc" id="L124">            type = BufferedImage.TYPE_INT_ARGB;</span>
+        }
+
+<span class="nc" id="L127">        BufferedImage source = new BufferedImage(</span>
+<span class="nc" id="L128">                imageIcon.getIconWidth(),</span>
+<span class="nc" id="L129">                imageIcon.getIconHeight(),</span>
+                type);
+
+<span class="nc" id="L132">        Graphics graphics = source.createGraphics();</span>
+<span class="nc" id="L133">        imageIcon.paintIcon(null, graphics, 0, 0);</span>
+<span class="nc" id="L134">        graphics.dispose();</span>
+
+<span class="nc" id="L136">        BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), source.getType());</span>
+<span class="nc" id="L137">        Graphics2D graphics2D = bufferedImage.createGraphics();</span>
+<span class="nc" id="L138">        graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);</span>
+<span class="nc" id="L139">        float sx = dimensioneX / source.getWidth();</span>
+<span class="nc" id="L140">        float sy = dimensioneY / source.getHeight();</span>
+<span class="nc" id="L141">        graphics2D.scale(sx, sy);</span>
+<span class="nc" id="L142">        graphics2D.drawImage(source, 0, 0, null);</span>
+<span class="nc" id="L143">        graphics2D.dispose();</span>
+
+<span class="nc" id="L145">        return bufferedImage;</span>
+    }
+
+    private GraphicsConfiguration getGraphicsConfiguration() throws HeadlessException {
+<span class="nc" id="L149">        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</span>
+<span class="nc" id="L150">        GraphicsDevice gs = ge.getDefaultScreenDevice();</span>
+<span class="nc" id="L151">        return gs.getDefaultConfiguration();</span>
+    }
+
+    protected boolean hasAlpha(Image image) throws EntException {
         // If buffered image, the color model is readily available
-<span class="nc bnc" id="L148" title="All 2 branches missed.">        if (image instanceof BufferedImage) {</span>
-<span class="nc" id="L149">            BufferedImage bimage = (BufferedImage)image;</span>
-<span class="nc" id="L150">            return bimage.getColorModel().hasAlpha();</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">        if (image instanceof BufferedImage) {</span>
+<span class="nc" id="L157">            BufferedImage bimage = (BufferedImage)image;</span>
+<span class="nc" id="L158">            return bimage.getColorModel().hasAlpha();</span>
         }
         // Use a pixel grabber to retrieve the image's color model;
         // grabbing a single pixel is usually sufficient
-<span class="nc" id="L154">        PixelGrabber pg = new PixelGrabber(image, 0, 0, 1, 1, false);</span>
+<span class="nc" id="L162">        PixelGrabber pg = new PixelGrabber(image, 0, 0, 1, 1, false);</span>
         try {
-<span class="nc" id="L156">            pg.grabPixels();</span>
-<span class="nc" id="L157">        } catch (InterruptedException e) {</span>
-<span class="nc" id="L158">        	throw new EntException(&quot;Error grabbing a single pixel&quot;, e);</span>
-<span class="nc" id="L159">        }</span>
+<span class="nc" id="L164">            pg.grabPixels();</span>
+<span class="nc" id="L165">        } catch (InterruptedException e) {</span>
+<span class="nc" id="L166">        	throw new EntException(&quot;Error grabbing a single pixel&quot;, e);</span>
+<span class="nc" id="L167">        }</span>
         // Get the image's color model
-<span class="nc" id="L161">        ColorModel cm = pg.getColorModel();</span>
-<span class="nc" id="L162">        return cm.hasAlpha();</span>
+<span class="nc" id="L169">        ColorModel cm = pg.getColorModel();</span>
+<span class="nc" id="L170">        return cm.hasAlpha();</span>
 	}
 	
 }
