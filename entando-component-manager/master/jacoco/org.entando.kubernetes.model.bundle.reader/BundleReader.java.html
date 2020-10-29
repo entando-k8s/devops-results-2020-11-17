@@ -113,13 +113,16 @@ public class BundleReader {
         }
     }
 
-
     private void verifyFileExistance(String fileName) {
-<span class="fc" id="L118">        log.debug(&quot;Reading file {}&quot;, fileName);</span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (!bundleBasePath.resolve(fileName).toFile().exists()) {</span>
-<span class="fc" id="L120">            throw new InvalidBundleException(String.format(&quot;File with name %s not found in the bundle&quot;, fileName));</span>
+<span class="fc" id="L117">        log.debug(&quot;Reading file {}&quot;, fileName);</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (!bundleBasePath.resolve(fileName).toFile().exists()) {</span>
+<span class="fc" id="L119">            throw new InvalidBundleException(String.format(&quot;File with name %s not found in the bundle&quot;, fileName));</span>
         }
-<span class="fc" id="L122">    }</span>
+<span class="fc" id="L121">    }</span>
+
+    public File getAssetFile(final String code, final String fileName) {
+<span class="fc" id="L124">        return bundleBasePath.resolve(&quot;assets/&quot; + code + &quot;/&quot; + fileName).toFile();</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
