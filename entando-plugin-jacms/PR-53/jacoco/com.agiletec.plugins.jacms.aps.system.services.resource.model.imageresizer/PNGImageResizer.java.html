@@ -86,9 +86,9 @@ import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResour
 	}
 	
 	protected BufferedImage toBufferedImage(ImageIcon imageIcon, int dimensioneX, int dimensioneY) throws EntException {
-<span class="nc" id="L89">		Image image = imageIcon.getImage();</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">		if (image instanceof BufferedImage) {</span>
-<span class="nc" id="L91">			return (BufferedImage) image;</span>
+<span class="fc" id="L89">		Image image = imageIcon.getImage();</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">		if (image instanceof BufferedImage) {</span>
+<span class="fc" id="L91">			return (BufferedImage) image;</span>
 		}
 		// This code ensures that all the pixels in the image are loaded
 <span class="nc" id="L94">		image = new ImageIcon(image).getImage();</span>
@@ -120,8 +120,8 @@ import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResour
             float dimensioneY, Image image, boolean hasAlpha) {
 
 <span class="fc" id="L122">        int type = BufferedImage.TYPE_INT_RGB;</span>
-<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        if (hasAlpha) {</span>
-<span class="nc" id="L124">            type = BufferedImage.TYPE_INT_ARGB;</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if (hasAlpha) {</span>
+<span class="fc" id="L124">            type = BufferedImage.TYPE_INT_ARGB;</span>
         }
 
 <span class="fc" id="L127">        BufferedImage source = new BufferedImage(</span>
