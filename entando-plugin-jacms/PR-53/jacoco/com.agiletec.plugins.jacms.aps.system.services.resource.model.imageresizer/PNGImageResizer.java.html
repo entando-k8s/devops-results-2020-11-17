@@ -87,20 +87,20 @@ import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResour
 	
 	protected BufferedImage toBufferedImage(ImageIcon imageIcon, int dimensioneX, int dimensioneY) throws EntException {
 <span class="fc" id="L89">		Image image = imageIcon.getImage();</span>
-<span class="pc bpc" id="L90" title="1 of 2 branches missed.">		if (image instanceof BufferedImage) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (image instanceof BufferedImage) {</span>
 <span class="fc" id="L91">			return (BufferedImage) image;</span>
 		}
 		// This code ensures that all the pixels in the image are loaded
-<span class="nc" id="L94">		image = new ImageIcon(image).getImage();</span>
+<span class="fc" id="L94">		image = new ImageIcon(image).getImage();</span>
 		// Determine if the image has transparent pixels.
-<span class="nc" id="L96">		boolean hasAlpha = this.hasAlpha(image);</span>
+<span class="fc" id="L96">		boolean hasAlpha = this.hasAlpha(image);</span>
 		// Create a buffered image with a format that's compatible with the
 		// screen
 		try {
 			// Determine the type of transparency of the new buffered image
-<span class="nc" id="L101">			int transparency = Transparency.OPAQUE;</span>
-<span class="nc bnc" id="L102" title="All 2 branches missed.">			if (hasAlpha) {</span>
-<span class="nc" id="L103">				transparency = Transparency.BITMASK;</span>
+<span class="fc" id="L101">			int transparency = Transparency.OPAQUE;</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">			if (hasAlpha) {</span>
+<span class="fc" id="L103">				transparency = Transparency.BITMASK;</span>
 			}
 			// Create the buffered image
 <span class="nc" id="L106">            BufferedImage bimage = getGraphicsConfiguration().createCompatibleImage(image.getWidth(null),</span>
@@ -110,9 +110,9 @@ import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResour
 <span class="nc" id="L110">			graphics.dispose();</span>
 
 <span class="nc" id="L112">			return bimage;</span>
-<span class="nc" id="L113">		} catch (HeadlessException e) {</span>
-<span class="nc" id="L114">			_logger.warn(&quot;The system does not have a screen. Trying best effort approach.&quot;);</span>
-<span class="nc" id="L115">            return toBufferedImageWhenScreenIsNotPresent(imageIcon, dimensioneX, dimensioneY, image, hasAlpha);</span>
+<span class="fc" id="L113">		} catch (HeadlessException e) {</span>
+<span class="fc" id="L114">			_logger.warn(&quot;The system does not have a screen. Trying best effort approach.&quot;);</span>
+<span class="fc" id="L115">            return toBufferedImageWhenScreenIsNotPresent(imageIcon, dimensioneX, dimensioneY, image, hasAlpha);</span>
         }
 	}
 
@@ -145,29 +145,29 @@ import com.agiletec.plugins.jacms.aps.system.services.resource.model.ImageResour
 <span class="fc" id="L145">        return bufferedImage;</span>
     }
 
-    private GraphicsConfiguration getGraphicsConfiguration() throws HeadlessException {
-<span class="nc" id="L149">        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</span>
+    private GraphicsConfiguration getGraphicsConfiguration() {
+<span class="fc" id="L149">        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</span>
 <span class="nc" id="L150">        GraphicsDevice gs = ge.getDefaultScreenDevice();</span>
 <span class="nc" id="L151">        return gs.getDefaultConfiguration();</span>
     }
 
     protected boolean hasAlpha(Image image) throws EntException {
         // If buffered image, the color model is readily available
-<span class="nc bnc" id="L156" title="All 2 branches missed.">        if (image instanceof BufferedImage) {</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        if (image instanceof BufferedImage) {</span>
 <span class="nc" id="L157">            BufferedImage bimage = (BufferedImage)image;</span>
 <span class="nc" id="L158">            return bimage.getColorModel().hasAlpha();</span>
         }
         // Use a pixel grabber to retrieve the image's color model;
         // grabbing a single pixel is usually sufficient
-<span class="nc" id="L162">        PixelGrabber pg = new PixelGrabber(image, 0, 0, 1, 1, false);</span>
+<span class="fc" id="L162">        PixelGrabber pg = new PixelGrabber(image, 0, 0, 1, 1, false);</span>
         try {
-<span class="nc" id="L164">            pg.grabPixels();</span>
+<span class="fc" id="L164">            pg.grabPixels();</span>
 <span class="nc" id="L165">        } catch (InterruptedException e) {</span>
 <span class="nc" id="L166">        	throw new EntException(&quot;Error grabbing a single pixel&quot;, e);</span>
-<span class="nc" id="L167">        }</span>
+<span class="fc" id="L167">        }</span>
         // Get the image's color model
-<span class="nc" id="L169">        ColorModel cm = pg.getColorModel();</span>
-<span class="nc" id="L170">        return cm.hasAlpha();</span>
+<span class="fc" id="L169">        ColorModel cm = pg.getColorModel();</span>
+<span class="fc" id="L170">        return cm.hasAlpha();</span>
 	}
 	
 }
