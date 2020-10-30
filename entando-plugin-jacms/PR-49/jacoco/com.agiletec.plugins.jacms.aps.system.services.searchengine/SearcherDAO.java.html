@@ -187,18 +187,18 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc bfc" id="L187" title="All 2 branches covered.">            for (int i = 0; i &lt; categories.length; i++) {</span>
 <span class="fc" id="L188">                SearchEngineFilter categoryFilter = categories[i];</span>
 <span class="fc" id="L189">                List&lt;String&gt; allowedValues = categoryFilter.getAllowedValues();</span>
-<span class="pc bpc" id="L190" title="3 of 4 branches missed.">                if (null != allowedValues &amp;&amp; allowedValues.size() &gt; 0) {</span>
-<span class="nc" id="L191">                    BooleanQuery.Builder singleCategoriesQuery = new BooleanQuery.Builder();</span>
-<span class="nc bnc" id="L192" title="All 2 branches missed.">                    for (int j = 0; j &lt; allowedValues.size(); j++) {</span>
-<span class="nc" id="L193">                        String singleCategory = allowedValues.get(j);</span>
-<span class="nc" id="L194">                        ITreeNode treeNode = this.getTreeNodeManager().getNode(singleCategory);</span>
-<span class="nc bnc" id="L195" title="All 2 branches missed.">                        if (null != treeNode) {</span>
-<span class="nc" id="L196">                            String path = treeNode.getPath(IIndexerDAO.CONTENT_CATEGORY_SEPARATOR, false, this.getTreeNodeManager());</span>
-<span class="nc" id="L197">                            TermQuery categoryQuery = new TermQuery(new Term(IIndexerDAO.CONTENT_CATEGORY_FIELD_NAME, path));</span>
-<span class="nc" id="L198">                            singleCategoriesQuery.add(categoryQuery, BooleanClause.Occur.SHOULD);</span>
+<span class="pc bpc" id="L190" title="1 of 4 branches missed.">                if (null != allowedValues &amp;&amp; allowedValues.size() &gt; 0) {</span>
+<span class="fc" id="L191">                    BooleanQuery.Builder singleCategoriesQuery = new BooleanQuery.Builder();</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">                    for (int j = 0; j &lt; allowedValues.size(); j++) {</span>
+<span class="fc" id="L193">                        String singleCategory = allowedValues.get(j);</span>
+<span class="fc" id="L194">                        ITreeNode treeNode = this.getTreeNodeManager().getNode(singleCategory);</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">                        if (null != treeNode) {</span>
+<span class="fc" id="L196">                            String path = treeNode.getPath(IIndexerDAO.CONTENT_CATEGORY_SEPARATOR, false, this.getTreeNodeManager());</span>
+<span class="fc" id="L197">                            TermQuery categoryQuery = new TermQuery(new Term(IIndexerDAO.CONTENT_CATEGORY_FIELD_NAME, path));</span>
+<span class="fc" id="L198">                            singleCategoriesQuery.add(categoryQuery, BooleanClause.Occur.SHOULD);</span>
                         }
                     }
-<span class="nc" id="L201">                    categoriesQuery.add(singleCategoriesQuery.build(), BooleanClause.Occur.MUST);</span>
+<span class="fc" id="L201">                    categoriesQuery.add(singleCategoriesQuery.build(), BooleanClause.Occur.MUST);</span>
 <span class="pc bpc" id="L202" title="1 of 2 branches missed.">                } else if (null != categoryFilter.getValue()) {</span>
 <span class="fc" id="L203">                    ITreeNode treeNode = this.getTreeNodeManager().getNode(categoryFilter.getValue().toString());</span>
 <span class="pc bpc" id="L204" title="1 of 2 branches missed.">                    if (null != treeNode) {</span>
@@ -229,20 +229,20 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
                 //NOTE: search for lower case....
 <span class="fc" id="L230">                String singleValue = allowedValues.get(j).toString();</span>
 <span class="fc" id="L231">                String[] values = singleValue.split(&quot;\\s+&quot;);</span>
-<span class="pc bpc" id="L232" title="1 of 2 branches missed.">                if (!option.equals(SearchEngineFilter.TextSearchOption.EXACT)) {</span>
-<span class="nc" id="L233">                    BooleanQuery.Builder singleOptionFieldQuery = new BooleanQuery.Builder();</span>
-<span class="nc" id="L234">                    BooleanClause.Occur bc = BooleanClause.Occur.SHOULD;</span>
-<span class="nc bnc" id="L235" title="All 2 branches missed.">                    if (option.equals(SearchEngineFilter.TextSearchOption.ALL_WORDS)) {</span>
-<span class="nc" id="L236">                        bc = BooleanClause.Occur.MUST;</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">                if (!option.equals(SearchEngineFilter.TextSearchOption.EXACT)) {</span>
+<span class="fc" id="L233">                    BooleanQuery.Builder singleOptionFieldQuery = new BooleanQuery.Builder();</span>
+<span class="fc" id="L234">                    BooleanClause.Occur bc = BooleanClause.Occur.SHOULD;</span>
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">                    if (option.equals(SearchEngineFilter.TextSearchOption.ALL_WORDS)) {</span>
+<span class="fc" id="L236">                        bc = BooleanClause.Occur.MUST;</span>
 <span class="nc bnc" id="L237" title="All 2 branches missed.">                    } else if (option.equals(SearchEngineFilter.TextSearchOption.ANY_WORD)) {</span>
 <span class="nc" id="L238">                        bc = BooleanClause.Occur.MUST_NOT;</span>
                     }
-<span class="nc bnc" id="L240" title="All 2 branches missed.">                    for (int i = 0; i &lt; values.length; i++) {</span>
-<span class="nc" id="L241">                        Query queryTerm = this.getTermQueryForTextSearch(key, values[i], filter.isLikeOption());</span>
-<span class="nc" id="L242">                        singleOptionFieldQuery.add(queryTerm, bc);</span>
+<span class="fc bfc" id="L240" title="All 2 branches covered.">                    for (int i = 0; i &lt; values.length; i++) {</span>
+<span class="fc" id="L241">                        Query queryTerm = this.getTermQueryForTextSearch(key, values[i], filter.isLikeOption());</span>
+<span class="fc" id="L242">                        singleOptionFieldQuery.add(queryTerm, bc);</span>
                     }
-<span class="nc" id="L244">                    fieldQuery.add(singleOptionFieldQuery.build(), BooleanClause.Occur.SHOULD);</span>
-<span class="nc" id="L245">                } else {</span>
+<span class="fc" id="L244">                    fieldQuery.add(singleOptionFieldQuery.build(), BooleanClause.Occur.SHOULD);</span>
+<span class="fc" id="L245">                } else {</span>
 <span class="fc" id="L246">                    PhraseQuery.Builder phraseQuery = new PhraseQuery.Builder();</span>
 <span class="fc bfc" id="L247" title="All 2 branches covered.">                    for (int i = 0; i &lt; values.length; i++) {</span>
 <span class="fc" id="L248">                        phraseQuery.add(new Term(key, values[i].toLowerCase()), i);</span>
