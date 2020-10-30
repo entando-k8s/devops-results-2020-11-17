@@ -47,8 +47,8 @@ import com.agiletec.plugins.jacms.aps.system.services.content.model.Content;
 <span class="fc bfc" id="L47" title="All 2 branches covered.">    		for (ContentUtilizer contentUtilizer : contentUtilizers) {</span>
 <span class="pc bpc" id="L48" title="1 of 2 branches missed.">    			if (contentUtilizer != null) {</span>
 <span class="fc" id="L49">    				List&lt;?&gt; utilizers = contentUtilizer.getContentUtilizers(content.getId());</span>
-<span class="pc bpc" id="L50" title="1 of 4 branches missed.">    				if (utilizers != null &amp;&amp; !utilizers.isEmpty()) {</span>
-<span class="fc" id="L51">    					references.put(contentUtilizer.getName()+&quot;Utilizers&quot;, utilizers);</span>
+<span class="pc bpc" id="L50" title="2 of 4 branches missed.">    				if (utilizers != null &amp;&amp; !utilizers.isEmpty()) {</span>
+<span class="nc" id="L51">    					references.put(contentUtilizer.getName()+&quot;Utilizers&quot;, utilizers);</span>
     				}
     			}
 <span class="fc" id="L54">    		}</span>

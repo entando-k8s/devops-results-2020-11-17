@@ -327,16 +327,16 @@ import org.apache.commons.lang3.ArrayUtils;
 <span class="fc" id="L327">                    continue;</span>
                 }
 <span class="fc" id="L329">                this.getContentActionHelper().scanEntity(contentToPublish, this);</span>
-<span class="fc bfc" id="L330" title="All 2 branches covered.">                if (this.getFieldErrors().size() &gt; 0) {</span>
+<span class="pc bpc" id="L330" title="1 of 2 branches missed.">                if (this.getFieldErrors().size() &gt; 0) {</span>
 <span class="fc" id="L331">                    this.addActionError(this.getText(&quot;error.content.publishingContentWithErrors&quot;, msgArg));</span>
 <span class="fc" id="L332">                    continue;</span>
                 }
-<span class="fc" id="L334">                this.getContentManager().insertOnLineContent(contentToPublish);</span>
-<span class="fc" id="L335">                logger.info(&quot;Published content {} by user {}&quot;, contentToPublish.getId(),</span>
-<span class="fc" id="L336">                        this.getCurrentUser().getUsername());</span>
-<span class="fc" id="L337">                publishedContents.add(contentToPublish);</span>
-<span class="fc" id="L338">                this.addActivityStreamInfo(contentToPublish, (ApsAdminSystemConstants.ADD + 10), true);</span>
-<span class="fc" id="L339">            }</span>
+<span class="nc" id="L334">                this.getContentManager().insertOnLineContent(contentToPublish);</span>
+<span class="nc" id="L335">                logger.info(&quot;Published content {} by user {}&quot;, contentToPublish.getId(),</span>
+<span class="nc" id="L336">                        this.getCurrentUser().getUsername());</span>
+<span class="nc" id="L337">                publishedContents.add(contentToPublish);</span>
+<span class="nc" id="L338">                this.addActivityStreamInfo(contentToPublish, (ApsAdminSystemConstants.ADD + 10), true);</span>
+<span class="nc" id="L339">            }</span>
             // RIVISITARE LABEL e LOGICA DI COSTRUZIONE LABEL
 <span class="fc" id="L341">            this.addConfirmMessage(&quot;message.content.publishedContents&quot;, publishedContents);</span>
 <span class="nc" id="L342">        } catch (Throwable t) {</span>

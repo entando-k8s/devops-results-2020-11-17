@@ -677,78 +677,80 @@ import org.springframework.validation.BindingResult;
 <span class="fc" id="L677">                AbstractResourceAttribute resAttr = (AbstractResourceAttribute) attr;</span>
 
 <span class="fc bfc" id="L679" title="All 2 branches covered.">                for(ResourceInterface res : resAttr.getResources().values()) {</span>
+<span class="fc bfc" id="L680" title="All 2 branches covered.">                    String idOrCode = res.getId() == null ? res.getCorrelationCode() : res.getId();</span>
                     AssetDto resource;
                     try {
-<span class="fc" id="L682">                        resource = resourcesService.getAsset(res.getId());</span>
-<span class="fc" id="L683">                    } catch (ResourceNotFoundException e) {</span>
-<span class="fc" id="L684">                        logger.error(&quot;Resource not found: &quot; + res.getId());</span>
-<span class="fc" id="L685">                        bindingResult.reject(EntityValidator.ERRCODE_ATTRIBUTE_INVALID,</span>
-<span class="fc" id="L686">                                &quot;Resource not found - &quot; + res.getId());</span>
-<span class="fc" id="L687">                        return;</span>
-<span class="fc" id="L688">                    }</span>
+<span class="fc" id="L683">                        resource = resourcesService.getAsset(res.getId(), res.getCorrelationCode());</span>
+<span class="fc" id="L684">                        res.setId(resource.getId());</span>
+<span class="fc" id="L685">                    } catch (ResourceNotFoundException e) {</span>
+<span class="fc" id="L686">                        logger.error(&quot;Resource not found: &quot; + idOrCode);</span>
+<span class="fc" id="L687">                        bindingResult.reject(EntityValidator.ERRCODE_ATTRIBUTE_INVALID,</span>
+                                &quot;Resource not found - &quot; + idOrCode);
+<span class="fc" id="L689">                        return;</span>
+<span class="fc" id="L690">                    }</span>
 
-<span class="fc" id="L690">                    String resourceMainGroup = resource.getGroup();</span>
+<span class="fc" id="L692">                    String resourceMainGroup = resource.getGroup();</span>
 
-<span class="fc bfc" id="L692" title="All 2 branches covered.">                    if (!resourceMainGroup.equals(Group.FREE_GROUP_NAME)</span>
-<span class="pc bpc" id="L693" title="1 of 2 branches missed.">                            &amp;&amp; !resourceMainGroup.equals(currentEntity.getMainGroup())</span>
-<span class="pc bpc" id="L694" title="1 of 2 branches missed.">                            &amp;&amp; !currentEntity.getGroups().contains(resourceMainGroup)) {</span>
-<span class="fc" id="L695">                        bindingResult.reject(EntityValidator.ERRCODE_ATTRIBUTE_INVALID,</span>
+<span class="fc bfc" id="L694" title="All 2 branches covered.">                    if (!resourceMainGroup.equals(Group.FREE_GROUP_NAME)</span>
+<span class="pc bpc" id="L695" title="1 of 2 branches missed.">                            &amp;&amp; !resourceMainGroup.equals(currentEntity.getMainGroup())</span>
+<span class="pc bpc" id="L696" title="1 of 2 branches missed.">                            &amp;&amp; !currentEntity.getGroups().contains(resourceMainGroup)) {</span>
+<span class="fc" id="L697">                        bindingResult.reject(EntityValidator.ERRCODE_ATTRIBUTE_INVALID,</span>
                                 &quot;Invalid resource group - &quot; + resourceMainGroup);
                     }
-<span class="fc" id="L698">                }</span>
+<span class="fc" id="L700">                }</span>
             }
-<span class="fc" id="L700">        }</span>
-<span class="fc" id="L701">    }</span>
+<span class="fc" id="L702">        }</span>
+<span class="fc" id="L703">    }</span>
 
     private Map&lt;String, Boolean&gt; getReferencesInfo(String contentId) {
-<span class="fc" id="L704">        Map&lt;String, Boolean&gt; references = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L705">        Map&lt;String, ContentServiceUtilizer&gt; beans = this.applicationContext.getBeansOfType(ContentServiceUtilizer.class);</span>
-<span class="fc" id="L706">        beans.values().stream().forEach(service -&gt; {</span>
-<span class="fc" id="L707">            List&lt;?&gt; utilizers = service.getContentUtilizer(contentId);</span>
-<span class="pc bpc" id="L708" title="1 of 4 branches missed.">            references.put(service.getManagerName(), (utilizers != null &amp;&amp; !utilizers.isEmpty()));</span>
-<span class="fc" id="L709">        });</span>
-<span class="fc" id="L710">        return references;</span>
+<span class="fc" id="L706">        Map&lt;String, Boolean&gt; references = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L707">        Map&lt;String, ContentServiceUtilizer&gt; beans = this.applicationContext.getBeansOfType(ContentServiceUtilizer.class);</span>
+<span class="fc" id="L708">        beans.values().stream().forEach(service -&gt; {</span>
+<span class="fc" id="L709">            List&lt;?&gt; utilizers = service.getContentUtilizer(contentId);</span>
+<span class="pc bpc" id="L710" title="1 of 4 branches missed.">            references.put(service.getManagerName(), (utilizers != null &amp;&amp; !utilizers.isEmpty()));</span>
+<span class="fc" id="L711">        });</span>
+<span class="fc" id="L712">        return references;</span>
     }
 
     protected void checkContentAuthorization(UserDetails userDetails, String contentId, boolean publicVersion, boolean edit, BindingResult mainBindingResult) {
         try {
-<span class="fc bfc" id="L715" title="All 2 branches covered.">            PublicContentAuthorizationInfo pcai = (publicVersion) ? this.getContentAuthorizationHelper().getAuthorizationInfo(contentId) : null;</span>
-<span class="fc bfc" id="L716" title="All 4 branches covered.">            if (publicVersion &amp;&amp; null == pcai) {</span>
-<span class="fc" id="L717">                throw new ResourceNotFoundException(ERRCODE_CONTENT_NOT_FOUND, &quot;content&quot;, contentId);</span>
+<span class="fc bfc" id="L717" title="All 2 branches covered.">            PublicContentAuthorizationInfo pcai = (publicVersion) ? this.getContentAuthorizationHelper().getAuthorizationInfo(contentId) : null;</span>
+<span class="fc bfc" id="L718" title="All 4 branches covered.">            if (publicVersion &amp;&amp; null == pcai) {</span>
+<span class="fc" id="L719">                throw new ResourceNotFoundException(ERRCODE_CONTENT_NOT_FOUND, &quot;content&quot;, contentId);</span>
             }
-<span class="fc" id="L719">            List&lt;String&gt; userGroupCodes = new ArrayList&lt;&gt;();</span>
-<span class="pc bpc" id="L720" title="1 of 2 branches missed.">            List&lt;Group&gt; groups = (null != userDetails) ? this.getAuthorizationManager().getUserGroups(userDetails) : new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L721">            userGroupCodes.addAll(groups.stream().map(Group::getName).collect(Collectors.toList()));</span>
-<span class="fc" id="L722">            userGroupCodes.add(Group.FREE_GROUP_NAME);</span>
-<span class="pc bpc" id="L723" title="3 of 8 branches missed.">            if (!(publicVersion &amp;&amp; !edit &amp;&amp; null != pcai &amp;&amp; pcai.isUserAllowed(userGroupCodes))</span>
-<span class="pc bpc" id="L724" title="1 of 2 branches missed.">                    &amp;&amp; !this.getContentAuthorizationHelper().isAuthToEdit(userDetails, contentId, publicVersion)) {</span>
-<span class="nc bnc" id="L725" title="All 2 branches missed.">                BindingResult bindingResult = (null == mainBindingResult) ? new BeanPropertyBindingResult(contentId, &quot;content&quot;) : mainBindingResult;</span>
-<span class="nc" id="L726">                bindingResult.reject(ContentController.ERRCODE_UNAUTHORIZED_CONTENT, new String[]{contentId}, &quot;plugins.jacms.content.unauthorized.access&quot;);</span>
-<span class="nc" id="L727">                throw new ResourcePermissionsException(bindingResult);</span>
+<span class="fc" id="L721">            List&lt;String&gt; userGroupCodes = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L722" title="1 of 2 branches missed.">            List&lt;Group&gt; groups = (null != userDetails) ? this.getAuthorizationManager().getUserGroups(userDetails) : new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L723">            userGroupCodes.addAll(groups.stream().map(Group::getName).collect(Collectors.toList()));</span>
+<span class="fc" id="L724">            userGroupCodes.add(Group.FREE_GROUP_NAME);</span>
+<span class="pc bpc" id="L725" title="3 of 8 branches missed.">            if (!(publicVersion &amp;&amp; !edit &amp;&amp; null != pcai &amp;&amp; pcai.isUserAllowed(userGroupCodes))</span>
+<span class="pc bpc" id="L726" title="1 of 2 branches missed.">                    &amp;&amp; !this.getContentAuthorizationHelper().isAuthToEdit(userDetails, contentId, publicVersion)) {</span>
+<span class="nc bnc" id="L727" title="All 2 branches missed.">                BindingResult bindingResult = (null == mainBindingResult) ? new BeanPropertyBindingResult(contentId, &quot;content&quot;) : mainBindingResult;</span>
+<span class="nc" id="L728">                bindingResult.reject(ContentController.ERRCODE_UNAUTHORIZED_CONTENT, new String[]{contentId}, &quot;plugins.jacms.content.unauthorized.access&quot;);</span>
+<span class="nc" id="L729">                throw new ResourcePermissionsException(bindingResult);</span>
             }
-<span class="fc" id="L729">        } catch (ResourceNotFoundException | ResourcePermissionsException ex) {</span>
-<span class="fc" id="L730">            throw ex;</span>
-<span class="nc" id="L731">        } catch (Exception ex) {</span>
-<span class="nc" id="L732">            logger.error(&quot;error checking auth for content {}&quot;, contentId, ex);</span>
-<span class="nc" id="L733">            throw new RestServerError(&quot;error checking auth for content&quot;, ex);</span>
-<span class="fc" id="L734">        }</span>
-<span class="fc" id="L735">    }</span>
+<span class="fc" id="L731">        } catch (ResourceNotFoundException | ResourcePermissionsException ex) {</span>
+<span class="fc" id="L732">            throw ex;</span>
+<span class="nc" id="L733">        } catch (Exception ex) {</span>
+<span class="nc" id="L734">            logger.error(&quot;error checking auth for content {}&quot;, contentId, ex);</span>
+<span class="nc" id="L735">            throw new RestServerError(&quot;error checking auth for content&quot;, ex);</span>
+<span class="fc" id="L736">        }</span>
+<span class="fc" id="L737">    }</span>
 
     protected void checkContentExists(String code) {
         try {
-<span class="fc bfc" id="L739" title="All 2 branches covered.">            if (null == getContentManager().loadContent(code, false)) {</span>
-<span class="fc" id="L740">                logger.error(&quot;Content not found: &quot; + code);</span>
-<span class="fc" id="L741">                throw new ResourceNotFoundException(ERRCODE_CONTENT_NOT_FOUND, &quot;content&quot;, code);</span>
+<span class="fc bfc" id="L741" title="All 2 branches covered.">            if (null == getContentManager().loadContent(code, false)) {</span>
+<span class="fc" id="L742">                logger.error(&quot;Content not found: &quot; + code);</span>
+<span class="fc" id="L743">                throw new ResourceNotFoundException(ERRCODE_CONTENT_NOT_FOUND, &quot;content&quot;, code);</span>
             }
-<span class="nc" id="L743">        } catch (EntException ex) {</span>
-<span class="nc" id="L744">            throw new RestServerError(&quot;plugins.jacms.content.contentManager.error.read&quot;, null);</span>
-<span class="fc" id="L745">        }</span>
-<span class="fc" id="L746">    }</span>
+<span class="nc" id="L745">        } catch (EntException ex) {</span>
+<span class="nc" id="L746">            throw new RestServerError(&quot;plugins.jacms.content.contentManager.error.read&quot;, null);</span>
+<span class="fc" id="L747">        }</span>
+<span class="fc" id="L748">    }</span>
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-<span class="fc" id="L750">        this.applicationContext = applicationContext;</span>
-<span class="fc" id="L751">    }</span>
+<span class="fc" id="L752">        this.applicationContext = applicationContext;</span>
+<span class="fc" id="L753">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

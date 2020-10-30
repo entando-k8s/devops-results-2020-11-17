@@ -17,10 +17,10 @@ public class ImageAssetDto extends AssetDto {
 <span class="fc" id="L17">    private Map&lt;String, String&gt; metadata;</span>
 
 <span class="pc bpc" id="L19" title="13 of 22 branches missed.">    @Builder</span>
-    public ImageAssetDto(String id, String name, String description, Date createdAt, Date updatedAt,
+    public ImageAssetDto(String id, String correlationCode, String name, String description, Date createdAt, Date updatedAt,
              @Singular List&lt;ImageMetadataDto&gt; versions, String group, @Singular List&lt;String&gt; categories,
             Map&lt;String,String&gt; metadata, String owner, String folderPath) {
-<span class="fc" id="L23">        super(id, RESOURCE_TYPE, name, description, createdAt, updatedAt, group, categories, owner, folderPath);</span>
+<span class="fc" id="L23">        super(id, correlationCode, RESOURCE_TYPE, name, description, createdAt, updatedAt, group, categories, owner, folderPath);</span>
 <span class="fc" id="L24">        this.versions = versions;</span>
 <span class="fc" id="L25">        this.metadata = metadata;</span>
 <span class="fc" id="L26">    }</span>

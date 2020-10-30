@@ -255,18 +255,18 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc bfc" id="L255" title="All 4 branches covered.">        } else if (null != filter.getStart() || null != filter.getEnd()) {</span>
 <span class="fc" id="L256">            fieldQuery = new BooleanQuery.Builder();</span>
 <span class="fc" id="L257">            Query query = null;</span>
-<span class="pc bpc" id="L258" title="1 of 4 branches missed.">            if (filter.getStart() instanceof Date || filter.getEnd() instanceof Date) {</span>
+<span class="fc bfc" id="L258" title="All 4 branches covered.">            if (filter.getStart() instanceof Date || filter.getEnd() instanceof Date) {</span>
 <span class="fc bfc" id="L259" title="All 2 branches covered.">                Long lowerValue = (null != filter.getStart()) ? ((Date) filter.getStart()).getTime() : Long.MIN_VALUE;</span>
 <span class="fc bfc" id="L260" title="All 2 branches covered.">                Long upperValue = (null != filter.getEnd()) ? ((Date) filter.getEnd()).getTime() : Long.MAX_VALUE;</span>
 <span class="fc" id="L261">                query = LongPoint.newRangeQuery(key, lowerValue, upperValue);</span>
-<span class="pc bnc" id="L262" title="All 4 branches missed.">            } else if (filter.getStart() instanceof Number || filter.getEnd() instanceof Number) {</span>
+<span class="pc bpc" id="L262" title="2 of 4 branches missed.">            } else if (filter.getStart() instanceof Number || filter.getEnd() instanceof Number) {</span>
 <span class="nc bnc" id="L263" title="All 2 branches missed.">                Long lowerValue = (null != filter.getStart()) ? ((Number) filter.getStart()).longValue() : Long.MIN_VALUE;</span>
 <span class="nc bnc" id="L264" title="All 2 branches missed.">                Long upperValue = (null != filter.getEnd()) ? ((Number) filter.getEnd()).longValue() : Long.MAX_VALUE;</span>
 <span class="nc" id="L265">                query = LongPoint.newRangeQuery(key, lowerValue, upperValue);</span>
 <span class="nc" id="L266">            } else {</span>
-<span class="nc bnc" id="L267" title="All 2 branches missed.">                String start = (null != filter.getStart()) ? filter.getStart().toString().toLowerCase() : null;</span>
-<span class="nc bnc" id="L268" title="All 2 branches missed.">                String end = (null != filter.getEnd()) ? filter.getEnd().toString().toLowerCase() : null;</span>
-<span class="nc" id="L269">                query = new TermRangeQuery(key, new BytesRef(start), new BytesRef(end), true, true);</span>
+<span class="pc bpc" id="L267" title="1 of 2 branches missed.">                String start = (null != filter.getStart()) ? filter.getStart().toString().toLowerCase() : null;</span>
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">                String end = (null != filter.getEnd()) ? filter.getEnd().toString().toLowerCase() : null;</span>
+<span class="fc" id="L269">                query = new TermRangeQuery(key, new BytesRef(start), new BytesRef(end), true, true);</span>
             }
 <span class="fc" id="L271">            fieldQuery.add(query, BooleanClause.Occur.MUST);</span>
 <span class="fc bfc" id="L272" title="All 2 branches covered.">        } else if (null != value) {</span>
