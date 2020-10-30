@@ -123,7 +123,7 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 <span class="fc" id="L123">            String masterImageFileName = getNewInstanceFileName(bean.getFileName(), 0, null);</span>
 <span class="fc" id="L124">            String subPath = this.getDiskSubFolder() + masterImageFileName;</span>
 <span class="fc" id="L125">            this.getStorageManager().deleteFile(subPath, this.isProtectedResource());</span>
-<span class="fc" id="L126">            File tempMasterFile = this.saveTempFile(&quot;temp_&quot; + masterImageFileName, bean.getInputStream());</span>
+<span class="fc" id="L126">            File tempMasterFile = this.saveTempFile(masterImageFileName, bean.getInputStream());</span>
 
 <span class="fc bfc" id="L128" title="All 2 branches covered.">            if(bean instanceof BaseResourceDataBean) {</span>
 <span class="fc" id="L129">                ((BaseResourceDataBean)bean).setFile(tempMasterFile);</span>
