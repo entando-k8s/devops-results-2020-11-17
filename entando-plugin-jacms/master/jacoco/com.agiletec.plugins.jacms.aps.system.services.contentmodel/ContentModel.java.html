@@ -146,12 +146,12 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 	 */
 	public static boolean isValidModelId(String modelId) {
 		try {
-<span class="nc bnc" id="L149" title="All 4 branches missed.">			return modelId != null &amp;&amp; Long.parseLong(modelId) &gt; 0;</span>
-<span class="nc" id="L150">		} catch (NumberFormatException ignored) {</span>
+<span class="pc bpc" id="L149" title="2 of 4 branches missed.">			return modelId != null &amp;&amp; Long.parseLong(modelId) &gt; 0;</span>
+<span class="fc" id="L150">		} catch (NumberFormatException ignored) {</span>
 			// IGNORE
 		}
-<span class="nc" id="L153">		logger.warn(&quot;Detected invalid model_id: \&quot;{}\&quot;&quot;, modelId);</span>
-<span class="nc" id="L154">		return false;</span>
+<span class="fc" id="L153">		logger.warn(&quot;Detected invalid model_id: \&quot;{}\&quot;&quot;, modelId);</span>
+<span class="fc" id="L154">		return false;</span>
 	}
 
 	/**
@@ -161,10 +161,10 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 	 * that so may be an actual model_id or a special value
 	 */
 	public static boolean isValidModelIdParam(String modelId) {
-<span class="nc bnc" id="L164" title="All 2 branches missed.">		return modelId == null ||</span>
-<span class="nc bnc" id="L165" title="All 2 branches missed.">				modelId.equals(MODEL_ID_DEFAULT) ||</span>
-<span class="nc bnc" id="L166" title="All 2 branches missed.">				modelId.equals(MODEL_ID_LIST) ||</span>
-<span class="nc bnc" id="L167" title="All 2 branches missed.">				isValidModelId(modelId);</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">		return modelId == null ||</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">				modelId.equals(MODEL_ID_DEFAULT) ||</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">				modelId.equals(MODEL_ID_LIST) ||</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">				isValidModelId(modelId);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
