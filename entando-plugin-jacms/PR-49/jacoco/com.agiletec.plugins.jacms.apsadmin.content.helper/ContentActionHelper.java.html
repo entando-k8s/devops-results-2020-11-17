@@ -107,8 +107,8 @@ import com.opensymphony.xwork2.ActionSupport;
 <span class="fc" id="L107">                String description = content.getDescription();</span>
 <span class="fc bfc" id="L108" title="All 4 branches covered.">                if (null == description || description.trim().length() == 0) {</span>
 <span class="fc" id="L109">                    ITextAttribute titleAttribute = (ITextAttribute) content.getAttributeByRole(JacmsSystemConstants.ATTRIBUTE_ROLE_TITLE);</span>
-<span class="pc bpc" id="L110" title="2 of 4 branches missed.">                    if (null != titleAttribute &amp;&amp; StringUtils.isNotEmpty(titleAttribute.getText())) {</span>
-<span class="nc" id="L111">                        content.setDescription(titleAttribute.getText());</span>
+<span class="pc bpc" id="L110" title="1 of 4 branches missed.">                    if (null != titleAttribute &amp;&amp; StringUtils.isNotEmpty(titleAttribute.getText())) {</span>
+<span class="fc" id="L111">                        content.setDescription(titleAttribute.getText());</span>
                     }
                 }
             }
