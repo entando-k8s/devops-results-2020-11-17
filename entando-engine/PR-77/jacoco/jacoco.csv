@@ -5,7 +5,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetTy
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetTypeDOM,57,251,15,13,11,69,13,15,1,13
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetTypeListProcessor,26,84,4,7,4,13,7,17,3,12
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetService,172,775,18,52,39,173,17,53,1,34
-Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetType,384,425,110,52,81,114,72,48,3,36
+Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetType,197,612,79,83,50,145,66,54,2,37
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype,WidgetTypeDAO,143,487,6,36,31,129,7,25,1,10
 Entando Core: Engine,org.entando.entando.web.language,LanguageController,4,94,0,2,2,19,1,8,1,7
 Entando Core: Engine,org.entando.entando.web.common.model,RestNamedId,0,125,1,21,0,21,1,17,0,7
