@@ -25,7 +25,7 @@ Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.tags,SeoMetatagTag,276
 Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.tags,SeoMetatagCatalogTag,73,0,0,0,18,0,6,0,6,0
 Entando Plugin: SEO,org.entando.entando.plugins.jpseo.web.page.validator,SeoPageValidator,26,49,10,10,6,11,8,5,0,3
 Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.system.init.portdb,FriendlyCode,0,3,0,0,0,1,0,1,0,1
-Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.system.services.mapping,SeoMappingManager,109,384,26,32,22,97,21,26,1,17
+Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.system.services.mapping,SeoMappingManager,109,412,26,34,22,102,21,27,1,17
 Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.system.services.mapping,SeoMappingDAO,50,239,0,4,14,65,0,14,0,12
 Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.system.services.mapping,FriendlyCodeVO,12,40,0,0,5,18,1,10,1,10
 Entando Plugin: SEO,org.entando.entando.plugins.jpseo.aps.system.services.mapping,ContentFriendlyCode,0,31,0,0,0,9,0,6,0,6
