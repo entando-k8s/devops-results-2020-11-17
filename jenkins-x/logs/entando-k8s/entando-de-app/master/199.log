@@ -1,0 +1,23 @@
+
+Showing logs for build [32mentando-k8s-entando-de-app-mast-fbx6x-199[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-nhdz7[0m
+{"level":"warn","ts":1604404000.3079762,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604404000.325644,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mentando-k8s-entando-de-app-mast-fbx6x-199[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-6lx4b[0m
+{"level":"warn","ts":1604404003.2181444,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1604404003.248519,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mentando-k8s-entando-de-app-mast-fbx6x-199[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mentando-k8s-entando-de-app-mast-fbx6x-199[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-k8s-entando-de-app-mast-8k6bq[0m
+{"level":"warn","ts":1604404074.5988936,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604404077.478178,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando-k8s/entando-de-app.git @ v6.2.16 in path /workspace/source"}
+
+Showing logs for build [32mentando-k8s-entando-de-app-mast-fbx6x-199[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:a3c846fc6be6d0319fafebdad95470559c2362bc
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mentando-k8s-entando-de-app-mast-fbx6x-199[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+error: error loading TeamSettings to determine if in GitHub app mode: failed to create the ** client: Get https://172.30.0.1:443/api/v1/namespaces/**: dial tcp 172.30.0.1:443: connect: connection refused
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-setup-jx-git-credentials'. The execution of the pipeline has stopped.[0m
