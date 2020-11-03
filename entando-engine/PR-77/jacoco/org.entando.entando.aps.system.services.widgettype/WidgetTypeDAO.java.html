@@ -225,6 +225,9 @@ import java.util.Map;
         }
 <span class="fc" id="L226">    }</span>
 
+    /**
+     * @deprecated
+     */
     @Deprecated
     @Override
     public void updateWidgetType(String widgetTypeCode, ApsProperties titles, ApsProperties defaultConfig, String mainGroup,
@@ -232,61 +235,61 @@ import java.util.Map;
         String widgetCategory;
 
         try {
-<span class="nc" id="L235">            widgetCategory = getWidgetType(widgetTypeCode).getWidgetCategory();</span>
-<span class="nc" id="L236">        } catch (EntException | RuntimeException e) {</span>
-<span class="nc" id="L237">            throw new EntRuntimeException(&quot;Error updating widget type&quot;, e);</span>
-<span class="nc" id="L238">        }</span>
+<span class="nc" id="L238">            widgetCategory = getWidgetType(widgetTypeCode).getWidgetCategory();</span>
+<span class="nc" id="L239">        } catch (EntException | RuntimeException e) {</span>
+<span class="nc" id="L240">            throw new EntRuntimeException(&quot;Error updating widget type&quot;, e);</span>
+<span class="nc" id="L241">        }</span>
 
-<span class="nc" id="L240">        updateWidgetType(widgetTypeCode, titles, defaultConfig, mainGroup,</span>
+<span class="nc" id="L243">        updateWidgetType(widgetTypeCode, titles, defaultConfig, mainGroup,</span>
                 configUi,  bundleId, readonlyPageWidgetConfig , widgetCategory);
-<span class="nc" id="L242">    }</span>
+<span class="nc" id="L245">    }</span>
 
     @Override
     public void updateWidgetType(String widgetTypeCode, ApsProperties titles, ApsProperties defaultConfig, String mainGroup,
                                  String configUi, String bundleId, Boolean readonlyPageWidgetConfig, String widgetCategory) {
-<span class="fc" id="L247">        Connection conn = null;</span>
-<span class="fc" id="L248">        PreparedStatement stat = null;</span>
+<span class="fc" id="L250">        Connection conn = null;</span>
+<span class="fc" id="L251">        PreparedStatement stat = null;</span>
         try {
-<span class="fc" id="L250">            conn = this.getConnection();</span>
-<span class="fc" id="L251">            conn.setAutoCommit(false);</span>
-<span class="fc" id="L252">            stat = conn.prepareStatement(UPDATE_WIDGET_TYPE);</span>
-<span class="fc" id="L253">            stat.setString(1, titles.toXml());</span>
-<span class="fc bfc" id="L254" title="All 4 branches covered.">            if (null == defaultConfig || defaultConfig.isEmpty()) {</span>
-<span class="fc" id="L255">                stat.setNull(2, Types.VARCHAR);</span>
+<span class="fc" id="L253">            conn = this.getConnection();</span>
+<span class="fc" id="L254">            conn.setAutoCommit(false);</span>
+<span class="fc" id="L255">            stat = conn.prepareStatement(UPDATE_WIDGET_TYPE);</span>
+<span class="fc" id="L256">            stat.setString(1, titles.toXml());</span>
+<span class="fc bfc" id="L257" title="All 4 branches covered.">            if (null == defaultConfig || defaultConfig.isEmpty()) {</span>
+<span class="fc" id="L258">                stat.setNull(2, Types.VARCHAR);</span>
             } else {
-<span class="fc" id="L257">                stat.setString(2, defaultConfig.toXml());</span>
+<span class="fc" id="L260">                stat.setString(2, defaultConfig.toXml());</span>
             }
-<span class="fc" id="L259">            stat.setString(3, mainGroup);</span>
-<span class="fc" id="L260">            stat.setString(4, configUi);</span>
-<span class="fc" id="L261">            stat.setString(5, bundleId);</span>
+<span class="fc" id="L262">            stat.setString(3, mainGroup);</span>
+<span class="fc" id="L263">            stat.setString(4, configUi);</span>
+<span class="fc" id="L264">            stat.setString(5, bundleId);</span>
 
-<span class="fc bfc" id="L263" title="All 2 branches covered.">            if (Boolean.TRUE.equals(readonlyPageWidgetConfig)) {</span>
-<span class="fc" id="L264">                stat.setInt(6, 1);</span>
+<span class="fc bfc" id="L266" title="All 2 branches covered.">            if (Boolean.TRUE.equals(readonlyPageWidgetConfig)) {</span>
+<span class="fc" id="L267">                stat.setInt(6, 1);</span>
             } else {
-<span class="fc" id="L266">                stat.setInt(6, 0);</span>
+<span class="fc" id="L269">                stat.setInt(6, 0);</span>
             }
 
-<span class="fc" id="L269">            stat.setString(7, widgetCategory);</span>
-<span class="fc" id="L270">            stat.setString(8, widgetTypeCode);</span>
+<span class="fc" id="L272">            stat.setString(7, widgetCategory);</span>
+<span class="fc" id="L273">            stat.setString(8, widgetTypeCode);</span>
 
-<span class="fc" id="L272">            stat.executeUpdate();</span>
-<span class="fc" id="L273">            conn.commit();</span>
-<span class="nc" id="L274">        } catch (Throwable t) {</span>
-<span class="nc" id="L275">            this.executeRollback(conn);</span>
-<span class="nc" id="L276">            logger.error(&quot;Error updating widget type {}&quot;, widgetTypeCode, t);</span>
-<span class="nc" id="L277">            throw new RuntimeException(&quot;Error updating widget type&quot;, t);</span>
+<span class="fc" id="L275">            stat.executeUpdate();</span>
+<span class="fc" id="L276">            conn.commit();</span>
+<span class="nc" id="L277">        } catch (Throwable t) {</span>
+<span class="nc" id="L278">            this.executeRollback(conn);</span>
+<span class="nc" id="L279">            logger.error(&quot;Error updating widget type {}&quot;, widgetTypeCode, t);</span>
+<span class="nc" id="L280">            throw new RuntimeException(&quot;Error updating widget type&quot;, t);</span>
         } finally {
-<span class="fc" id="L279">            closeDaoResources(null, stat, conn);</span>
+<span class="fc" id="L282">            closeDaoResources(null, stat, conn);</span>
         }
-<span class="fc" id="L281">    }</span>
+<span class="fc" id="L284">    }</span>
 
     protected ILangManager getLangManager() {
-<span class="fc" id="L284">        return langManager;</span>
+<span class="fc" id="L287">        return langManager;</span>
     }
 
     public void setLangManager(ILangManager langManager) {
-<span class="fc" id="L288">        this.langManager = langManager;</span>
-<span class="fc" id="L289">    }</span>
+<span class="fc" id="L291">        this.langManager = langManager;</span>
+<span class="fc" id="L292">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
