@@ -52,9 +52,9 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc bfc" id="L52" title="All 2 branches covered.">			if (res.next()) {</span>
 <span class="fc" id="L53">				response = new UserPreferences();</span>
 <span class="fc" id="L54">				response.setUsername(username);</span>
-<span class="fc" id="L55">				response.setWizard(res.getBoolean(1));</span>
-<span class="fc" id="L56">				response.setLoadOnPageSelect(res.getBoolean(2));</span>
-<span class="fc" id="L57">				response.setTranslationWarning(res.getBoolean(3));</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">				response.setWizard(1 == res.getInt(1));</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">				response.setLoadOnPageSelect(1 == res.getInt(2));</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">				response.setTranslationWarning(1 == res.getInt(3));</span>
 			}
 <span class="nc" id="L59">		} catch (SQLException e) {</span>
 <span class="nc" id="L60">			_logger.error(&quot;Error loading user preferences for user {}&quot;, username,  e);</span>
@@ -74,9 +74,9 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc" id="L74">			conn.setAutoCommit(false);</span>
 <span class="fc" id="L75">			stat = conn.prepareStatement(ADD_USER_PREFERENCES);</span>
 <span class="fc" id="L76">			stat.setString(1, userPreferences.getUsername());</span>
-<span class="fc" id="L77">			stat.setBoolean(2, userPreferences.isWizard());</span>
-<span class="fc" id="L78">			stat.setBoolean(3, userPreferences.isLoadOnPageSelect());</span>
-<span class="fc" id="L79">			stat.setBoolean(4, userPreferences.isTranslationWarning());</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">			stat.setInt(2, userPreferences.isWizard() ? 1 : 0);</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">			stat.setInt(3, userPreferences.isLoadOnPageSelect() ? 1 : 0);</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">			stat.setInt(4, userPreferences.isTranslationWarning() ? 1 : 0);</span>
 <span class="fc" id="L80">			stat.executeUpdate();</span>
 <span class="fc" id="L81">			conn.commit();</span>
 <span class="nc" id="L82">		} catch (SQLException e) {</span>
