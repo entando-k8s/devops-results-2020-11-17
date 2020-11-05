@@ -1,0 +1,56 @@
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-c4tqg[0m
+{"level":"warn","ts":1604581657.1625693,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604581657.1733823,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-gdmb9[0m
+{"level":"warn","ts":1604581660.0035174,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1604581660.021182,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-entando-core-bom-master-666z9[0m
+{"level":"warn","ts":1604581789.3826234,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604581790.6738434,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/entando-core-bom.git @ v6.2.130 in path /workspace/source"}
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:5d19d08d46d93ebc77703df413d811802a5d1f07
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-build-mvn-deploy[0m
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms10m -Xmx8000m
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.entando:entando-core-bom >--------------------
+[INFO] Building Entando Core BOM 6.2.130
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ entando-core-bom ---
+[INFO] Installing /workspace/source/pom.xml to /home/jenkins/.mvnrepository/org/entando/entando-core-bom/6.2.130/entando-core-bom-6.2.130.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.8.2:deploy (default-deploy) @ entando-core-bom ---
+[INFO] Using alternate deployment repository local-nexus::default::http://nexus/repository/maven-releases/
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.748 s
+[INFO] Finished at: 2020-11-05T13:09:58Z
+[INFO] ------------------------------------------------------------------------
+
+Showing logs for build [32mentando-entando-core-bom-master-slkm4-142[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-changelog[0m
+Converted /workspace/source to an unshallow repository
+Generating change log from git ref 17fed3eef645711d8beab5a6b07d290f661fa0e1 => 3fb2878d3a75fb4660d2ec0b7b63c09a3b755774
+Associating user jenkins-x-bot in users.jenkins.io with email jenkins-x@googlegroups.com to git GitProvider user with login jenkins-x-bot-0 as emails match
+Adding label jenkins.io/git-github-userid=jenkins-x-bot-0 to user jenkins-x-bot in users.jenkins.io
+Associating user jenkins-x-bot in users.jenkins.io with email jenkins-x@googlegroups.com to git GitProvider user with login jenkins-x-bot-0 as emails match
+Adding label jenkins.io/git-github-userid=jenkins-x-bot-0 to user jenkins-x-bot in users.jenkins.io
+Finding issues in commit messages using git format
+WARNING: No release found for entando/entando-core-bom and tag v6.2.130 so creating a new release
+Updated the release information at https://github.com/entando/entando-core-bom/releases/tag/v6.2.130
+generated: /workspace/source/templates/release.yaml
+Created Release entando-core-bom-6-2-130 resource in namespace **
+Updating PipelineActivity entando-entando-core-bom-master-142 with version 6.2.130
+Updated PipelineActivities entando-entando-core-bom-master-142 with release notes URL: https://github.com/entando/entando-core-bom/releases/tag/v6.2.130
