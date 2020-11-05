@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2019 - 2020 Entando Inc.</copyright>
     <item>
-      <title>File: 13,
+      <title>File: 3,
              Errors: 0,
-             Warnings: 71,
+             Warnings: 3,
              Infos: 0
       </title>
             <link>http://www.entando.com//checkstyle.html</link>
@@ -52,105 +52,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.reportable.EntandoK8SServiceReportableProcessor.java">org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.reportable.AnalysisReportFunction.java">org/entando/kubernetes/model/bundle/reportable/AnalysisReportFunction.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
                   1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.service.digitalexchange.job.EntandoBundleInstallService.java">org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  5
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.utils.EntandoCoreMockServer.java">org/entando/kubernetes/utils/EntandoCoreMockServer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.reportable.EntandoEngineReportableProcessor.java">org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.controller.mockmvc.InstallFlowTest.java">org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  36
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.processor.FragmentProcessor.java">org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
                 </td>
                 <td>
                   0
@@ -172,20 +74,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.stubhelper.AnalysisReportStubHelper.java">org/entando/kubernetes/stubhelper/AnalysisReportStubHelper.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.assertionhelper.AnalysisReportAssertionHelper.java">org/entando/kubernetes/assertionhelper/AnalysisReportAssertionHelper.java</a>
                 </td>
                 <td>
@@ -193,34 +81,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.processor.ComponentProcessor.java">org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.reportable.EntandoCMSReportableProcessor.java">org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
                 </td>
                 <td>
                   0
