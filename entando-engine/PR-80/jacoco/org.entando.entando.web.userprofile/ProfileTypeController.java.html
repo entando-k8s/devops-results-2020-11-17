@@ -134,7 +134,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}&quot;, method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; deleteUserProfileType(@PathVariable String profileTypeCode) {
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; deleteUserProfileType(@PathVariable String profileTypeCode) {
 <span class="fc" id="L138">        logger.debug(&quot;Deleting profile type -&gt; {}&quot;, profileTypeCode);</span>
 <span class="fc" id="L139">        this.getUserProfileTypeService().deleteUserProfileType(profileTypeCode);</span>
 <span class="fc" id="L140">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
@@ -145,7 +145,7 @@ import java.util.*;
     // ********************* ATTRIBUTE TYPES *********************
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypeAttributes&quot;, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;PagedRestResponse&lt;String&gt;&gt; getUserProfileAttributeTypes(RestListRequest requestList) {
+    public ResponseEntity&lt;PagedRestResponse&lt;String&gt;&gt; getUserProfileAttributeTypes(RestListRequest requestList) throws JsonProcessingException {
 <span class="fc" id="L149">        this.getProfileTypeValidator().validateRestListRequest(requestList, AttributeTypeDto.class);</span>
 <span class="fc" id="L150">        PagedMetadata&lt;String&gt; result = this.getUserProfileTypeService().getAttributeTypes(requestList);</span>
 <span class="fc" id="L151">        logger.debug(&quot;Main Response -&gt; {}&quot;, result);</span>
@@ -155,7 +155,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypeAttributes/{attributeTypeCode}&quot;, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;AttributeTypeDto&gt;&gt; getUserProfileAttributeType(@PathVariable String attributeTypeCode) {
+    public ResponseEntity&lt;SimpleRestResponse&lt;AttributeTypeDto&gt;&gt; getUserProfileAttributeType(@PathVariable String attributeTypeCode) throws JsonProcessingException {
 <span class="fc" id="L159">        logger.debug(&quot;Extracting attribute type -&gt; {}&quot;, attributeTypeCode);</span>
 <span class="fc" id="L160">        AttributeTypeDto attribute = this.getUserProfileTypeService().getAttributeType(attributeTypeCode);</span>
 <span class="fc" id="L161">        logger.debug(&quot;Main Response -&gt; {}&quot;, attribute);</span>
@@ -173,7 +173,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute/{attributeCode}&quot;, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&lt;String, String&gt;&gt;&gt; getUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
+    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&gt;&gt; getUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) throws JsonProcessingException {
 <span class="fc" id="L177">        logger.debug(&quot;Requested profile type {} - attribute {}&quot;, profileTypeCode, attributeCode);</span>
 <span class="fc" id="L178">        EntityTypeAttributeFullDto dto = this.getUserProfileTypeService().getUserProfileAttribute(profileTypeCode, attributeCode);</span>
 <span class="fc" id="L179">        logger.debug(&quot;Main Response -&gt; {}&quot;, dto);</span>
@@ -184,8 +184,8 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&lt;String, String&gt;&gt;&gt; addUserProfileAttribute(@PathVariable String profileTypeCode,
-            @Valid @RequestBody EntityTypeAttributeFullDto bodyRequest, BindingResult bindingResult) {
+    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&gt;&gt; addUserProfileAttribute(@PathVariable String profileTypeCode, @Valid @RequestBody EntityTypeAttributeFullDto bodyRequest,
+            BindingResult bindingResult) throws JsonProcessingException {
 <span class="fc" id="L189">        logger.debug(&quot;Profile type {} - Adding attribute {}&quot;, profileTypeCode, bodyRequest);</span>
 <span class="fc bfc" id="L190" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
 <span class="fc" id="L191">            throw new ValidationGenericException(bindingResult);</span>
@@ -203,7 +203,7 @@ import java.util.*;
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute/{attributeCode}&quot;, method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&gt;&gt; updateUserProfileAttribute(@PathVariable String profileTypeCode,
-            @PathVariable String attributeCode, @Valid @RequestBody EntityTypeAttributeFullDto bodyRequest, BindingResult bindingResult) {
+            @PathVariable String attributeCode, @Valid @RequestBody EntityTypeAttributeFullDto bodyRequest, BindingResult bindingResult) throws JsonProcessingException {
 <span class="fc" id="L207">        logger.debug(&quot;Profile type {} - Updating attribute {}&quot;, profileTypeCode, bodyRequest);</span>
 <span class="pc bpc" id="L208" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
 <span class="nc" id="L209">            throw new ValidationGenericException(bindingResult);</span>
@@ -223,46 +223,49 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute/{attributeCode}&quot;, method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; deleteUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
-<span class="fc" id="L227">        logger.debug(&quot;Deleting attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
-<span class="fc" id="L228">        this.getUserProfileTypeService().deleteUserProfileAttribute(profileTypeCode, attributeCode);</span>
-<span class="fc" id="L229">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L230">        result.put(&quot;profileTypeCode&quot;, profileTypeCode);</span>
-<span class="fc" id="L231">        result.put(&quot;attributeCode&quot;, attributeCode);</span>
-<span class="fc" id="L232">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; deleteUserProfileAttribute(
+            @PathVariable String profileTypeCode,
+            @PathVariable String attributeCode) {
+<span class="fc" id="L229">        logger.debug(&quot;Deleting attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
+<span class="fc" id="L230">        this.getUserProfileTypeService().deleteUserProfileAttribute(profileTypeCode, attributeCode);</span>
+<span class="fc" id="L231">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L232">        result.put(&quot;profileTypeCode&quot;, profileTypeCode);</span>
+<span class="fc" id="L233">        result.put(&quot;attributeCode&quot;, attributeCode);</span>
+<span class="fc" id="L234">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
     }
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/refresh/{profileTypeCode}&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; reloadReferences(@PathVariable String profileTypeCode) {
-<span class="fc" id="L238">        logger.debug(&quot;reload references of profile type {}&quot;, profileTypeCode);</span>
-<span class="fc" id="L239">        this.getUserProfileTypeService().reloadProfileTypeReferences(profileTypeCode);</span>
-<span class="fc" id="L240">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L241">        result.put(&quot;status&quot;, &quot;success&quot;);</span>
-<span class="fc" id="L242">        result.put(&quot;profileTypeCode&quot;, profileTypeCode);</span>
-<span class="fc" id="L243">        logger.debug(&quot;started reload references of profile type {}&quot;, profileTypeCode);</span>
-<span class="fc" id="L244">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; reloadReferences(@PathVariable String profileTypeCode) throws Throwable {
+<span class="fc" id="L240">        logger.debug(&quot;reload references of profile type {}&quot;, profileTypeCode);</span>
+<span class="fc" id="L241">        this.getUserProfileTypeService().reloadProfileTypeReferences(profileTypeCode);</span>
+<span class="fc" id="L242">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L243">        result.put(&quot;status&quot;, &quot;success&quot;);</span>
+<span class="fc" id="L244">        result.put(&quot;profileTypeCode&quot;, profileTypeCode);</span>
+<span class="fc" id="L245">        logger.debug(&quot;started reload references of profile type {}&quot;, profileTypeCode);</span>
+<span class="fc" id="L246">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
     }
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypesStatus&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, Object&gt;&gt;&gt; reloadReferences(@Valid @RequestBody ProfileTypeRefreshRequest bodyRequest, BindingResult bindingResult) {
-<span class="fc" id="L250">        logger.debug(&quot;reload references of profile types {}&quot;, bodyRequest.getProfileTypeCodes());</span>
-<span class="fc" id="L251">        Map&lt;String, Integer&gt; status = this.getUserProfileTypeService().reloadProfileTypesReferences(bodyRequest.getProfileTypeCodes());</span>
-<span class="fc" id="L252">        Map&lt;String, Object&gt; result = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L253">        result.put(&quot;result&quot;, &quot;success&quot;);</span>
-<span class="fc" id="L254">        result.put(&quot;profileTypeCodes&quot;, status);</span>
-<span class="fc" id="L255">        logger.debug(&quot;started reload references of profile types {}&quot;, bodyRequest.getProfileTypeCodes());</span>
-<span class="fc" id="L256">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; reloadReferences(@Valid @RequestBody ProfileTypeRefreshRequest bodyRequest,
+            BindingResult bindingResult) throws Throwable {
+<span class="fc" id="L253">        logger.debug(&quot;reload references of profile types {}&quot;, bodyRequest.getProfileTypeCodes());</span>
+<span class="fc" id="L254">        Map&lt;String, Integer&gt; status = this.getUserProfileTypeService().reloadProfileTypesReferences(bodyRequest.getProfileTypeCodes());</span>
+<span class="fc" id="L255">        Map&lt;String, Object&gt; result = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L256">        result.put(&quot;result&quot;, &quot;success&quot;);</span>
+<span class="fc" id="L257">        result.put(&quot;profileTypeCodes&quot;, status);</span>
+<span class="fc" id="L258">        logger.debug(&quot;started reload references of profile types {}&quot;, bodyRequest.getProfileTypeCodes());</span>
+<span class="fc" id="L259">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
     }
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypesStatus&quot;, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;EntityTypesStatusDto&gt;&gt; extractStatus() {
-<span class="fc" id="L262">        logger.debug(&quot;Extract profile types status&quot;);</span>
-<span class="fc" id="L263">        EntityTypesStatusDto status = this.getUserProfileTypeService().getProfileTypesRefreshStatus();</span>
-<span class="fc" id="L264">        logger.debug(&quot;Extracted profile types status {}&quot;, status);</span>
-<span class="fc" id="L265">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(status), HttpStatus.OK);</span>
+    public ResponseEntity&lt;SimpleRestResponse&lt;EntityTypesStatusDto&gt;&gt; extractStatus() throws Throwable {
+<span class="fc" id="L265">        logger.debug(&quot;Extract profile types status&quot;);</span>
+<span class="fc" id="L266">        EntityTypesStatusDto status = this.getUserProfileTypeService().getProfileTypesRefreshStatus();</span>
+<span class="fc" id="L267">        logger.debug(&quot;Extracted profile types status {}&quot;, status);</span>
+<span class="fc" id="L268">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(status), HttpStatus.OK);</span>
     }
 
     @RestAccessControl(permission = Permission.SUPERUSER)
@@ -271,26 +274,32 @@ import java.util.*;
             @PathVariable String profileTypeCode,
             @PathVariable String attributeCode) {
         //-
-<span class="nc" id="L274">        logger.debug(&quot;Move UP attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
-<span class="nc" id="L275">        return this.moveUserProfileAttribute(profileTypeCode, attributeCode, true);</span>
+<span class="nc" id="L277">        logger.debug(&quot;Move UP attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
+<span class="nc" id="L278">        return this.moveUserProfileAttribute(profileTypeCode, attributeCode, true);</span>
     }
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute/{attributeCode}/moveDown&quot;, method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; moveUserProfileAttributeDown(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
-<span class="nc" id="L281">        logger.debug(&quot;Move DOWN attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
-<span class="nc" id="L282">        return this.moveUserProfileAttribute(profileTypeCode, attributeCode, false);</span>
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; moveUserProfileAttributeDown(
+            @PathVariable String profileTypeCode,
+            @PathVariable String attributeCode) {
+        //-
+<span class="nc" id="L287">        logger.debug(&quot;Move DOWN attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
+<span class="nc" id="L288">        return this.moveUserProfileAttribute(profileTypeCode, attributeCode, false);</span>
     }
 
-    private ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; moveUserProfileAttribute(String profileTypeCode, String attributeCode, boolean moveUp) {
-<span class="nc" id="L286">        this.getUserProfileTypeService().moveUserProfileAttribute(profileTypeCode, attributeCode, moveUp);</span>
-<span class="nc" id="L287">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L288">        result.put(&quot;profileTypeCode&quot;, profileTypeCode);</span>
-<span class="nc" id="L289">        result.put(&quot;attributeCode&quot;, attributeCode);</span>
-<span class="nc bnc" id="L290" title="All 2 branches missed.">        String movement = (moveUp) ? &quot;UP&quot; : &quot;DOWN&quot;;</span>
-<span class="nc" id="L291">        result.put(&quot;movement&quot;, movement);</span>
-<span class="nc" id="L292">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
+    private ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; moveUserProfileAttribute(
+            String profileTypeCode,
+            String attributeCode,
+            boolean moveUp) {
+        //-
+<span class="nc" id="L296">        this.getUserProfileTypeService().moveUserProfileAttribute(profileTypeCode, attributeCode, moveUp);</span>
+<span class="nc" id="L297">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L298">        result.put(&quot;profileTypeCode&quot;, profileTypeCode);</span>
+<span class="nc" id="L299">        result.put(&quot;attributeCode&quot;, attributeCode);</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">        String movement = (moveUp) ? &quot;UP&quot; : &quot;DOWN&quot;;</span>
+<span class="nc" id="L301">        result.put(&quot;movement&quot;, movement);</span>
+<span class="nc" id="L302">        return new ResponseEntity&lt;&gt;(new SimpleRestResponse&lt;&gt;(result), HttpStatus.OK);</span>
     }
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

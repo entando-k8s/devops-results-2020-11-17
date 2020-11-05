@@ -96,9 +96,9 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc" id="L96">			conn = this.getConnection();</span>
 <span class="fc" id="L97">			conn.setAutoCommit(false);</span>
 <span class="fc" id="L98">			stat = conn.prepareStatement(UPDATE_USER_PREFERENCES);</span>
-<span class="fc" id="L99">			stat.setBoolean(1, userPreferences.isWizard());</span>
-<span class="fc" id="L100">			stat.setBoolean(2, userPreferences.isLoadOnPageSelect());</span>
-<span class="fc" id="L101">			stat.setBoolean(3, userPreferences.isTranslationWarning());</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">			stat.setInt(1, userPreferences.isWizard() ? 1 : 0);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">			stat.setInt(2, userPreferences.isLoadOnPageSelect() ? 1 : 0);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">			stat.setInt(3, userPreferences.isTranslationWarning() ? 1 : 0);</span>
 <span class="fc" id="L102">			stat.setString(4, userPreferences.getUsername());</span>
 <span class="fc" id="L103">			stat.executeUpdate();</span>
 <span class="fc" id="L104">			conn.commit();</span>
