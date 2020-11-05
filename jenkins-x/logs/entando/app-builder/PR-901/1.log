@@ -1,0 +1,50 @@
+
+Showing logs for build [32mmeta-entando-app-builder-pr-901-ztnjz-1[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-bdbzl[0m
+{"level":"warn","ts":1604573868.8259497,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604573868.8346183,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-901-ztnjz-1[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-lcj6d[0m
+{"level":"warn","ts":1604573877.6634705,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1604573877.6846921,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-901-ztnjz-1[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmeta-entando-app-builder-pr-901-ztnjz-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-entando-app-builder-pr-901-xfq5h[0m
+{"level":"warn","ts":1604574006.4907289,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604574011.047596,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/app-builder.git @ 0cf344b24878fa1a9e42ff35d88dcf8a53033c35 in path /workspace/source"}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-901-ztnjz-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:0cf344b24878fa1a9e42ff35d88dcf8a53033c35,901:e4c56c40c3d1372441508b3e6bacdfb701596bbd
+DEBUG: ran git fetch --unshallow origin e4c56c40c3d1372441508b3e6bacdfb701596bbd: 0cf344b24878fa1a9e42ff35d88dcf8a53033c35: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard 0cf344b24878fa1a9e42ff35d88dcf8a53033c35 in 
+DEBUG: ran clean --force -d . in 
+error: error during merge: merging e4c56c40c3d1372441508b3e6bacdfb701596bbd into master: git output: CONFLICT (rename/rename): Rename "src/ui/pages/config/ContentWidgetElementIcon.js"->"src/ui/pages/config/WidgetIcon.js" in branch "HEAD" rename "src/ui/pages/config/ContentWidgetElementIcon.js"->"src/ui/widgets/common/WidgetIcon.js" in "e4c56c40c3d1372441508b3e6bacdfb701596bbd"
+Auto-merging src/ui/pages/config/WidgetIcon.js and src/ui/widgets/common/WidgetIcon.js, both renamed from src/ui/pages/config/ContentWidgetElementIcon.js
+Auto-merging src/ui/pages/config/WidgetFrame.js
+CONFLICT (content): Merge conflict in src/ui/pages/config/WidgetFrame.js
+Auto-merging src/ui/pages/config/ContentWidgetElement.js
+CONFLICT (content): Merge conflict in src/ui/pages/config/ContentWidgetElement.js
+Auto-merging src/locales/pt.js
+Auto-merging src/locales/it.js
+Auto-merging src/locales/en.js
+Auto-merging sass/pages/config/WidgetFrame.scss
+Auto-merging sass/pages/config/ContentWidgetElement.scss
+CONFLICT (content): Merge conflict in sass/pages/config/ContentWidgetElement.scss
+Auto-merging sass/index.scss
+Automatic merge failed; fix conflicts and then commit the result.: failed to run 'git merge e4c56c40c3d1372441508b3e6bacdfb701596bbd' command in directory '', output: 'CONFLICT (rename/rename): Rename "src/ui/pages/config/ContentWidgetElementIcon.js"->"src/ui/pages/config/WidgetIcon.js" in branch "HEAD" rename "src/ui/pages/config/ContentWidgetElementIcon.js"->"src/ui/widgets/common/WidgetIcon.js" in "e4c56c40c3d1372441508b3e6bacdfb701596bbd"
+Auto-merging src/ui/pages/config/WidgetIcon.js and src/ui/widgets/common/WidgetIcon.js, both renamed from src/ui/pages/config/ContentWidgetElementIcon.js
+Auto-merging src/ui/pages/config/WidgetFrame.js
+CONFLICT (content): Merge conflict in src/ui/pages/config/WidgetFrame.js
+Auto-merging src/ui/pages/config/ContentWidgetElement.js
+CONFLICT (content): Merge conflict in src/ui/pages/config/ContentWidgetElement.js
+Auto-merging src/locales/pt.js
+Auto-merging src/locales/it.js
+Auto-merging src/locales/en.js
+Auto-merging sass/pages/config/WidgetFrame.scss
+Auto-merging sass/pages/config/ContentWidgetElement.scss
+CONFLICT (content): Merge conflict in sass/pages/config/ContentWidgetElement.scss
+Auto-merging sass/index.scss
+Automatic merge failed; fix conflicts and then commit the result.'
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-git-merge'. The execution of the pipeline has stopped.[0m
