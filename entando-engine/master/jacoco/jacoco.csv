@@ -738,7 +738,7 @@ Entando Core: Engine,com.agiletec.aps.system.services.lang,Lang,0,34,0,0,0,12,0,
 Entando Core: Engine,com.agiletec.aps.system.services.lang,LangDOM,12,216,2,10,3,58,2,12,0,8
 Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesManager,0,27,0,0,0,10,0,6,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferences,29,31,0,0,1,13,1,9,1,9
-Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesDAO,67,204,3,11,15,54,3,10,0,6
+Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesDAO,67,216,3,17,15,54,3,13,0,6
 Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,UserPreferencesService,39,104,0,10,9,28,0,10,0,5
 Entando Core: Engine,org.entando.entando.aps.system.services.oauth2.model,ApiConsumer,0,176,1,3,0,55,1,24,0,23
 Entando Core: Engine,org.entando.entando.aps.system.services.oauth2.model,OAuth2AccessTokenImpl,0,25,0,0,0,11,0,7,0,7
