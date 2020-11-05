@@ -34,7 +34,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.pagesettings.model,
 Entando Core: Engine,org.entando.entando.aps.system.services.pagesettings.model,PageSettingsDtoBuilder,0,82,0,0,0,8,0,5,0,5
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileTypeService,7,96,0,0,2,20,1,17,1,17
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileManagerAspect,20,107,2,16,6,38,2,15,0,8
-Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileManager,74,136,3,5,18,48,3,20,1,18
+Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileManager,62,148,3,5,15,51,3,20,1,18
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileDAO,2,139,0,6,1,40,1,15,1,12
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileSearcherDAO,25,64,5,5,4,19,4,11,0,10
 Entando Core: Engine,org.entando.entando.aps.system.services.userprofile,UserProfileService,24,41,0,0,6,9,0,7,0,7
@@ -95,7 +95,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectsearcheng
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectsearchengine,IndexLoaderThread,21,86,0,4,8,26,0,7,0,5
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectsearchengine,LastReloadInfo,3,14,0,0,1,6,1,4,1,4
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectsearchengine,SearchEngineManager,136,383,22,36,35,108,22,36,3,25
-Entando Core: Engine,org.entando.entando.aps.system.services.guifragment,GuiFragmentService,184,256,14,10,44,60,15,17,4,16
+Entando Core: Engine,org.entando.entando.aps.system.services.guifragment,GuiFragmentService,171,256,14,10,41,60,15,17,4,16
 Entando Core: Engine,org.entando.entando.aps.system.services.guifragment,GuiFragmentDAO,157,347,6,14,35,103,5,22,0,17
 Entando Core: Engine,org.entando.entando.aps.system.services.guifragment,GuiFragment,7,87,0,2,3,31,2,16,2,15
 Entando Core: Engine,org.entando.entando.aps.system.services.guifragment,GuiFragmentManager,163,390,7,19,32,104,7,26,1,19
@@ -307,7 +307,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,JAXBSto
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,LocalStorageManagerInterface,651,11,74,0,132,4,45,3,8,3
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,JAXBBasicFileAttributeView,71,0,2,0,27,0,13,0,12,0
 Entando Core: Engine,org.entando.entando.aps.system.services.storage.api,BasicFileAttributeViewApiResponseResult,7,0,0,0,2,0,2,0,2,0
-Entando Core: Engine,com.agiletec.aps.system.common.entity,ApsEntityManager,337,808,28,54,81,219,29,68,6,50
+Entando Core: Engine,com.agiletec.aps.system.common.entity,ApsEntityManager,312,833,28,54,76,224,29,68,6,50
 Entando Core: Engine,com.agiletec.aps.system.common.entity,ReloadingReferencesThread,24,29,3,1,8,11,2,4,0,4
 Entando Core: Engine,com.agiletec.aps.system.common.entity,AbstractEntitySearcherDAO,122,1258,29,153,36,250,25,94,1,27
 Entando Core: Engine,com.agiletec.aps.system.common.entity,AbstractEntityDAO,124,484,1,21,34,135,1,30,0,20
@@ -430,7 +430,7 @@ Entando Core: Engine,org.entando.entando.ent.util,EntLogging.SanitizedLogger,0,4
 Entando Core: Engine,org.entando.entando.ent.util,EntLogging.EntLogger.SanitizationLevel,0,34,0,0,0,4,0,1,0,1
 Entando Core: Engine,com.agiletec.aps.system.services.pagemodel.cache,PageModelManagerCacheWrapper,11,66,0,0,3,19,0,11,0,11
 Entando Core: Engine,org.entando.entando.aps.system.services.label,LabelDtoBuilder,15,52,0,0,3,10,3,7,3,7
-Entando Core: Engine,org.entando.entando.aps.system.services.label,LabelService,138,449,8,34,28,98,8,36,1,22
+Entando Core: Engine,org.entando.entando.aps.system.services.label,LabelService,125,449,8,34,25,98,8,36,1,22
 Entando Core: Engine,org.entando.entando.aps.system.services.label,LabelRequestListProcessor,23,23,2,1,2,6,5,5,3,5
 Entando Core: Engine,org.entando.entando.aps.system.services.api.model,LinkedListApiResponseResult.new ListResponse() {...},7,0,0,0,1,0,1,0,1,0
 Entando Core: Engine,org.entando.entando.aps.system.services.api.model,LinkedListItem,17,0,0,0,7,0,5,0,5,0
@@ -829,5 +829,5 @@ Entando Core: Engine,org.entando.entando.aps.system.services.entity,AbstractEnti
 Entando Core: Engine,org.entando.entando.aps.system.services.entity,AttributeTypeRequestListProcessor,2,34,1,1,1,7,1,7,0,7
 Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageStatusEnum,24,0,0,0,3,0,1,0,1,0
 Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageDto,35,51,3,0,11,18,5,9,3,9
-Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageService,88,266,2,16,13,50,3,22,2,14
+Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageService,74,266,2,16,11,50,3,22,2,14
 Entando Core: Engine,org.entando.entando.aps.system.services.language,LanguageDtoBuilder,0,31,0,0,0,5,0,5,0,5

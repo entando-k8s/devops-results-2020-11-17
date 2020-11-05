@@ -13,38 +13,40 @@
  */
 package org.entando.entando.aps.system.services.analysis.component_existence;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface IComponentExistenceAnalysis {
 
-<span class="fc" id="L20">    class ComponentExistenceAnalysisResult {</span>
+<span class="fc" id="L22">    class ComponentExistenceAnalysisResult {</span>
         public Map&lt;Object, ComponentStatusMap&gt; getMap() {
-<span class="fc" id="L22">            return map;</span>
+<span class="fc" id="L24">            return map;</span>
         }
 
-<span class="fc" id="L25">        Map&lt;Object, ComponentStatusMap&gt; map = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L27">        Map&lt;Object, ComponentStatusMap&gt; map = new HashMap&lt;&gt;();</span>
     }
 
-<span class="fc" id="L28">    class ComponentStatusMap {</span>
+<span class="fc" id="L30">    class ComponentStatusMap {</span>
         public Map&lt;String, Status&gt; getMap() {
-<span class="fc" id="L30">            return map;</span>
+<span class="fc" id="L32">            return map;</span>
         }
 
-<span class="fc" id="L33">        Map&lt;String, Status&gt; map = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L35">        Map&lt;String, Status&gt; map = new HashMap&lt;&gt;();</span>
     }
 
-<span class="fc" id="L36">    enum Status {</span>
-<span class="fc" id="L37">        NEW, DIFF, EQUAL</span>
+<span class="fc" id="L38">    enum Status {</span>
+<span class="fc" id="L39">        NEW, DIFF, EQUAL</span>
     }
 
     class ServiceParams {
         public final Object service;
         public final List&lt;String&gt; idCodesList;
 
-<span class="fc" id="L44">        public ServiceParams(Object service, List&lt;String&gt; idCodesList) {</span>
-<span class="fc" id="L45">            this.service = service;</span>
-<span class="fc" id="L46">            this.idCodesList = idCodesList;</span>
-<span class="fc" id="L47">        }</span>
+<span class="fc" id="L46">        public ServiceParams(Object service, List&lt;String&gt; idCodesList) {</span>
+<span class="fc" id="L47">            this.service = service;</span>
+<span class="fc" id="L48">            this.idCodesList = idCodesList;</span>
+<span class="fc" id="L49">        }</span>
     }
 
     ComponentExistenceAnalysisResult run(ComponentExistenceAnalysisResult result, List&lt;ServiceParams&gt; servicesParams);
