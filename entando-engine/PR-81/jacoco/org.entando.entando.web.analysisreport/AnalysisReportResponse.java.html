@@ -27,20 +27,14 @@ public class AnalysisReportResponse {
 <span class="nc" id="L27">    }</span>
 
 <span class="nc" id="L29">    public enum Status {</span>
-<span class="nc" id="L30">        NEW(&quot;NEW&quot;),</span>
-<span class="nc" id="L31">        DIFF(&quot;DIFF&quot;),</span>
-<span class="nc" id="L32">        EQUAL(&quot;EQUAL&quot;);</span>
-
-        public final String value;
-
-<span class="nc" id="L36">        Status(String value) {</span>
-<span class="nc" id="L37">            this.value = value;</span>
-<span class="nc" id="L38">        }</span>
+<span class="nc" id="L30">        NEW, DIFF, EQUAL</span>
     }
 
-<span class="nc" id="L41">    public enum ObjectType {</span>
-<span class="nc" id="L42">        widgets, fragments, pages, pageTemplates,           //NOSONAR</span>
-<span class="nc" id="L43">        categories, groups, labels, languages, resources,   //NOSONAR</span>
+<span class="nc" id="L33">    public enum ObjectType {</span>
+<span class="nc" id="L34">        widgets, fragments, pages, pageModels, //NOSONAR</span>
+<span class="nc" id="L35">        categories, groups, labels, languages, resources,   //NOSONAR</span>
+        // ALIASES
+<span class="nc" id="L37">        pageTemplates //NOSONAR</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

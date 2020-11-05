@@ -58,50 +58,49 @@ public interface IAnalysisReportController {
             ComponentExistenceAnalysisResult analysisResult,
             Set&lt;String&gt; objectTypes) {
         //-
-        // ObjectType -&gt; { Code -&gt; Status }
-<span class="nc" id="L62">        Map&lt;String, Map&lt;String, String&gt;&gt; report = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L61">        Map&lt;String, Map&lt;String, String&gt;&gt; report = new HashMap&lt;&gt;();</span>
 
-<span class="nc" id="L64">        HashMap&lt;Object, String&gt; serviceToObjectType = new HashMap&lt;&gt;();</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        for (String objectType : objectTypes) {</span>
-<span class="nc" id="L66">            Object service = mapComponentTypeToService(objectType);</span>
-<span class="nc" id="L67">            serviceToObjectType.put(</span>
+<span class="nc" id="L63">        HashMap&lt;Object, String&gt; serviceToObjectType = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        for (String objectType : objectTypes) {</span>
+<span class="nc" id="L65">            Object service = mapComponentTypeToService(objectType);</span>
+<span class="nc" id="L66">            serviceToObjectType.put(</span>
                     service, objectType
             );
-<span class="nc" id="L70">        }</span>
+<span class="nc" id="L69">        }</span>
 
-<span class="nc bnc" id="L72" title="All 2 branches missed.">        for (Object service : analysisResult.getMap().keySet()) {</span>
-<span class="nc" id="L73">            IComponentExistenceAnalysis.ComponentStatusMap componentsStatus = analysisResult.getMap().get(service);</span>
-<span class="nc" id="L74">            String objectType = serviceToObjectType.get(service);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        for (Object service : analysisResult.getMap().keySet()) {</span>
+<span class="nc" id="L72">            IComponentExistenceAnalysis.ComponentStatusMap componentsStatus = analysisResult.getMap().get(service);</span>
+<span class="nc" id="L73">            String objectType = serviceToObjectType.get(service);</span>
 
-<span class="nc" id="L76">            Map&lt;String, String&gt; dtoComponentStatus = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L75">            Map&lt;String, String&gt; dtoComponentStatus = new HashMap&lt;&gt;();</span>
 
-<span class="nc bnc" id="L78" title="All 2 branches missed.">            for (String idCode : componentsStatus.getMap().keySet()) {</span>
-<span class="nc" id="L79">                IComponentExistenceAnalysis.Status status = componentsStatus.getMap().get(idCode);</span>
-<span class="nc" id="L80">                String dtoStatus = getDtoStatus(status).value;</span>
-<span class="nc" id="L81">                dtoComponentStatus.put(idCode, dtoStatus);</span>
-<span class="nc" id="L82">            }</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">            for (String idCode : componentsStatus.getMap().keySet()) {</span>
+<span class="nc" id="L78">                IComponentExistenceAnalysis.Status status = componentsStatus.getMap().get(idCode);</span>
+<span class="nc" id="L79">                String dtoStatus = getDtoStatus(status).toString();</span>
+<span class="nc" id="L80">                dtoComponentStatus.put(idCode, dtoStatus);</span>
+<span class="nc" id="L81">            }</span>
 
-<span class="nc" id="L84">            report.put(objectType, dtoComponentStatus);</span>
-<span class="nc" id="L85">        }</span>
-<span class="nc" id="L86">        return report;</span>
+<span class="nc" id="L83">            report.put(objectType, dtoComponentStatus);</span>
+<span class="nc" id="L84">        }</span>
+<span class="nc" id="L85">        return report;</span>
     }
 
     default Status getDtoStatus(IComponentExistenceAnalysis.Status status) {
         Status result;
-<span class="nc bnc" id="L91" title="All 4 branches missed.">        switch (status) {</span>
+<span class="nc bnc" id="L90" title="All 4 branches missed.">        switch (status) {</span>
             case NEW:
-<span class="nc" id="L93">                result = Status.NEW;</span>
-<span class="nc" id="L94">                break;</span>
+<span class="nc" id="L92">                result = Status.NEW;</span>
+<span class="nc" id="L93">                break;</span>
             case DIFF:
-<span class="nc" id="L96">                result = Status.DIFF;</span>
-<span class="nc" id="L97">                break;</span>
-            case SAME:
-<span class="nc" id="L99">                result = Status.EQUAL;</span>
-<span class="nc" id="L100">                break;</span>
+<span class="nc" id="L95">                result = Status.DIFF;</span>
+<span class="nc" id="L96">                break;</span>
+            case EQUAL:
+<span class="nc" id="L98">                result = Status.EQUAL;</span>
+<span class="nc" id="L99">                break;</span>
             default:
-<span class="nc" id="L102">                throw new IllegalStateException(&quot;Unexpected value: &quot; + status);</span>
+<span class="nc" id="L101">                throw new IllegalStateException(&quot;Unexpected value: &quot; + status);</span>
         }
-<span class="nc" id="L104">        return result;</span>
+<span class="nc" id="L103">        return result;</span>
     }
 
     Object mapComponentTypeToService(String objectType);

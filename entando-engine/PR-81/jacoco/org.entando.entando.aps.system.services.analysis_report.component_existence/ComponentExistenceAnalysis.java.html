@@ -54,31 +54,33 @@ import java.util.List;
 <span class="nc" id="L54">            } catch (EntException ex) {</span>
 <span class="nc" id="L55">                throw new EntRuntimeException(&quot;Error detected while inspecting path&quot; + idCode, ex);</span>
             }
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        } else if (service == null) {</span>
+<span class="nc" id="L58">            throw new EntRuntimeException(&quot;Null service type detected&quot;);</span>
         } else {
-<span class="nc" id="L58">            throw new EntRuntimeException(&quot;Illegal service type detected: \&quot;&quot; + service.getClass().getSimpleName() + &quot;\&quot;&quot;);</span>
+<span class="nc" id="L60">            throw new EntRuntimeException(&quot;Illegal service type detected: \&quot;&quot; + service.getClass().getSimpleName() + &quot;\&quot;&quot;);</span>
         }
     }
 
     @Override
     public ComponentExistenceAnalysisResult run(ComponentExistenceAnalysisResult result, List&lt;ServiceParams&gt; servicesParams) {
         //-
-<span class="fc bfc" id="L65" title="All 2 branches covered.">        for (ServiceParams serviceParams : servicesParams) {</span>
-<span class="fc" id="L66">            Object service = serviceParams.service;</span>
-<span class="fc" id="L67">            List&lt;String&gt; idCodesToCheck = serviceParams.idCodesList;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        for (ServiceParams serviceParams : servicesParams) {</span>
+<span class="fc" id="L68">            Object service = serviceParams.service;</span>
+<span class="fc" id="L69">            List&lt;String&gt; idCodesToCheck = serviceParams.idCodesList;</span>
 
-<span class="fc" id="L69">            ComponentStatusMap componentStatusMap = result.map.getOrDefault(service, new ComponentStatusMap());</span>
+<span class="fc" id="L71">            ComponentStatusMap componentStatusMap = result.map.getOrDefault(service, new ComponentStatusMap());</span>
 
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (String idCodeToCheck : idCodesToCheck) {</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">                if (doesComponentExistsOnService(service, idCodeToCheck)) {</span>
-<span class="fc" id="L73">                    componentStatusMap.map.put(idCodeToCheck, Status.DIFF);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            for (String idCodeToCheck : idCodesToCheck) {</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                if (doesComponentExistsOnService(service, idCodeToCheck)) {</span>
+<span class="fc" id="L75">                    componentStatusMap.map.put(idCodeToCheck, Status.DIFF);</span>
                 } else {
-<span class="fc" id="L75">                    componentStatusMap.map.put(idCodeToCheck, Status.NEW);</span>
+<span class="fc" id="L77">                    componentStatusMap.map.put(idCodeToCheck, Status.NEW);</span>
                 }
-<span class="fc" id="L77">            }</span>
+<span class="fc" id="L79">            }</span>
 
-<span class="fc" id="L79">            result.map.put(service, componentStatusMap);</span>
-<span class="fc" id="L80">        }</span>
-<span class="fc" id="L81">        return result;</span>
+<span class="fc" id="L81">            result.map.put(service, componentStatusMap);</span>
+<span class="fc" id="L82">        }</span>
+<span class="fc" id="L83">        return result;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

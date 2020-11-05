@@ -47,7 +47,7 @@ import java.util.*;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = &quot;/analysisReport&quot;)
+@RequestMapping(value = &quot;/analysis&quot;)
 <span class="fc" id="L51">public class AnalysisReportController implements IAnalysisReportController {</span>
 <span class="fc" id="L52">    private final EntLogger logger = EntLogFactory.getSanitizedLogger(this.getClass());</span>
 
@@ -55,7 +55,7 @@ import java.util.function.Function;
      * COMPONENT EXISTENCE ANALYSIS REPORT
      */
     @RestAccessControl(permission = Permission.SUPERUSER)
-    @PostMapping(value = &quot;/component/diff&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = &quot;/components/diff&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
 
     public ResponseEntity&lt;SimpleRestResponse&lt;AnalysisReportResponse&gt;&gt; runComponentExistenceAnalysisReport(
             @RequestBody Map&lt;String, List&lt;String&gt;&gt; idCodesByObjectType) {
@@ -69,29 +69,34 @@ import java.util.function.Function;
 
     @Override
     public Object mapComponentTypeToService(String objectType) {
-<span class="nc bnc" id="L72" title="All 10 branches missed.">        switch (AnalysisReportResponse.ObjectType.valueOf(objectType)) {</span>
-            case widgets:
-<span class="nc" id="L74">                return widgetService;</span>
-            case fragments:
-<span class="nc" id="L76">                return guiFragmentService;</span>
-            case pages:
-<span class="nc" id="L78">                return pageService;</span>
-            case pageTemplates:
-<span class="nc" id="L80">                return pageModelService;</span>
-            case categories:
-<span class="nc" id="L82">                return categoryService;</span>
-            case groups:
-<span class="nc" id="L84">                return groupService;</span>
-            case labels:
-<span class="nc" id="L86">                return labelService;</span>
-            case languages:
-<span class="nc" id="L88">                return languageService;</span>
-            case resources:
-<span class="nc" id="L90">                return fileBrowserService;</span>
-            default:
-<span class="nc" id="L92">                MapBindingResult bindingResult = new MapBindingResult(new HashMap&lt;&gt;(), &quot;analysisReport.Component.Diff&quot;);</span>
-<span class="nc" id="L93">                bindingResult.rejectValue(&quot;objectType&quot;, &quot;1&quot;, new String[]{objectType}, &quot;generic.notValid&quot;);</span>
-<span class="nc" id="L94">                throw new ValidationGenericException(bindingResult);</span>
+        try {
+<span class="nc bnc" id="L73" title="All 10 branches missed.">            switch (AnalysisReportResponse.ObjectType.valueOf(objectType)) {</span>
+                case widgets:
+<span class="nc" id="L75">                    return widgetService;</span>
+                case fragments:
+<span class="nc" id="L77">                    return guiFragmentService;</span>
+                case pages:
+<span class="nc" id="L79">                    return pageService;</span>
+                case pageTemplates:
+                case pageModels:
+<span class="nc" id="L82">                    return pageModelService;</span>
+                case categories:
+<span class="nc" id="L84">                    return categoryService;</span>
+                case groups:
+<span class="nc" id="L86">                    return groupService;</span>
+                case labels:
+<span class="nc" id="L88">                    return labelService;</span>
+                case languages:
+<span class="nc" id="L90">                    return languageService;</span>
+                case resources:
+<span class="nc" id="L92">                    return fileBrowserService;</span>
+                default:
+<span class="nc" id="L94">                    throw new IllegalStateException(&quot;Unexpected value: &quot; + objectType);</span>
+            }
+<span class="nc" id="L96">        } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L97">            MapBindingResult bindingResult = new MapBindingResult(new HashMap&lt;&gt;(), &quot;analysisReport.Component.Diff&quot;);</span>
+<span class="nc" id="L98">            bindingResult.rejectValue(&quot;objectType&quot;, &quot;1&quot;, new String[]{objectType}, &quot;generic.notValid&quot;);</span>
+<span class="nc" id="L99">            throw new ValidationGenericException(bindingResult);</span>
         }
     }
 

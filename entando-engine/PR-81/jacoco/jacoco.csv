@@ -122,7 +122,7 @@ Entando Core: Engine,org.entando.entando.web.category,CategoryController,0,224,0
 Entando Core: Engine,com.agiletec.aps.system.services.lang.events,LangsChangedEvent,0,10,0,0,0,4,0,3,0,3
 Entando Core: Engine,org.entando.entando.aps.system.services.analysis_report.component_existence,IComponentExistenceAnalysis.Status,0,34,0,0,0,2,0,1,0,1
 Entando Core: Engine,org.entando.entando.aps.system.services.analysis_report.component_existence,IComponentExistenceAnalysis.ComponentStatusMap,3,8,0,0,1,2,1,1,1,1
-Entando Core: Engine,org.entando.entando.aps.system.services.analysis_report.component_existence,ComponentExistenceAnalysis,30,151,1,27,3,32,1,16,0,3
+Entando Core: Engine,org.entando.entando.aps.system.services.analysis_report.component_existence,ComponentExistenceAnalysis,37,151,3,27,5,32,2,16,0,3
 Entando Core: Engine,org.entando.entando.aps.system.services.analysis_report.component_existence,IComponentExistenceAnalysis.ComponentExistenceAnalysisResult,3,8,0,0,1,2,1,1,1,1
 Entando Core: Engine,org.entando.entando.aps.system.services.analysis_report.component_existence,IComponentExistenceAnalysis.ServiceParams,0,9,0,0,0,4,0,1,0,1
 Entando Core: Engine,org.entando.entando.aps.system.services.widgettype.model,WidgetDto.GuiFragmentRef,12,15,0,0,6,4,3,4,3,4
@@ -195,9 +195,9 @@ Entando Core: Engine,org.entando.entando.web.dataobjectmodel.validator,DataObjec
 Entando Core: Engine,org.entando.entando.web.guifragment,GuiFragmentController,122,130,7,3,20,30,8,10,3,10
 Entando Core: Engine,org.entando.entando.web.guifragment,GuiFragmentSettingsController,3,90,0,2,2,22,0,6,0,5
 Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportResponse,6,0,0,0,3,0,1,0,1,0
-Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportResponse.Status,45,0,0,0,7,0,2,0,2,0
-Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportController,72,8,10,0,16,2,11,1,2,1
-Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportResponse.ObjectType,94,0,0,0,3,0,1,0,1,0
+Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportResponse.Status,34,0,0,0,2,0,1,0,1,0
+Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportController,85,8,10,0,18,2,11,1,2,1
+Entando Core: Engine,org.entando.entando.web.analysisreport,AnalysisReportResponse.ObjectType,104,0,0,0,4,0,1,0,1,0
 Entando Core: Engine,org.entando.entando.web.analysisreport,IAnalysisReportController,185,0,12,0,40,0,11,0,4,0
 Entando Core: Engine,org.entando.entando.web.language.validator,LanguageValidator,5,3,0,0,2,1,2,1,2,1
 Entando Core: Engine,org.entando.entando.aps.system.services.dataobjectmodel.cache,DataObjectModelCacheWrapper,12,106,0,2,3,25,0,12,0,11
