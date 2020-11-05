@@ -20,7 +20,6 @@ import static java.util.Optional.ofNullable;
 
 import io.fabric8.kubernetes.api.model.EnvVar;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public abstract class KeycloakAwareSpec extends EntandoIngressingDeploymentSpec {
@@ -28,8 +27,8 @@ public abstract class KeycloakAwareSpec extends EntandoIngressingDeploymentSpec 
     protected KeycloakToUse keycloakToUse;
 
     public KeycloakAwareSpec() {
-<span class="nc" id="L31">        super();</span>
-<span class="nc" id="L32">    }</span>
+<span class="nc" id="L30">        super();</span>
+<span class="nc" id="L31">    }</span>
 
     public KeycloakAwareSpec(
             String ingressHostName,
@@ -37,16 +36,15 @@ public abstract class KeycloakAwareSpec extends EntandoIngressingDeploymentSpec 
             Integer replicas,
             DbmsVendor dbms,
             String serviceAccountToUse,
-            Map&lt;String, String&gt; parameters,
             List&lt;EnvVar&gt; environmentVariables,
             EntandoResourceRequirements resourceRequirements,
             KeycloakToUse keycloakToUse) {
-<span class="fc" id="L44">        super(ingressHostName, tlsSecretName, replicas, dbms, serviceAccountToUse, parameters, environmentVariables, resourceRequirements);</span>
-<span class="fc" id="L45">        this.keycloakToUse = keycloakToUse;</span>
-<span class="fc" id="L46">    }</span>
+<span class="fc" id="L42">        super(ingressHostName, tlsSecretName, replicas, dbms, serviceAccountToUse, environmentVariables, resourceRequirements);</span>
+<span class="fc" id="L43">        this.keycloakToUse = keycloakToUse;</span>
+<span class="fc" id="L44">    }</span>
 
     public Optional&lt;KeycloakToUse&gt; getKeycloakToUse() {
-<span class="fc" id="L49">        return ofNullable(keycloakToUse);</span>
+<span class="fc" id="L47">        return ofNullable(keycloakToUse);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

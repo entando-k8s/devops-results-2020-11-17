@@ -83,7 +83,7 @@ public class EntandoAppSpecFluent&lt;N extends EntandoAppSpecFluent&gt; extends 
 <span class="fc" id="L83">        return new EntandoAppSpec(this.standardServerImage, this.customServerImage, this.dbms, this.ingressHostName, this.ingressPath,</span>
 <span class="fc" id="L84">                this.replicas, this.tlsSecretName, this.keycloakToUse,</span>
                 this.clusterInfrastructureToUse,
-<span class="fc" id="L86">                this.backupGitSpec.build(), this.serviceAccountToUse, new HashMap&lt;&gt;(), this.environmentVariables, this.resourceRequirements,</span>
+<span class="fc" id="L86">                this.backupGitSpec.build(), this.serviceAccountToUse, this.environmentVariables, this.resourceRequirements,</span>
                 this.ecrGitSshSecretName);
     }
 

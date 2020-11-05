@@ -50,32 +50,34 @@ public abstract class EntandoDeploymentSpecBuilder&lt;N extends EntandoDeploymen
     }
 
     public N withEnvironmentVariables(List&lt;EnvVar&gt; environmentVariables) {
-<span class="fc" id="L53">        this.environmentVariables.clear();</span>
-<span class="fc" id="L54">        this.environmentVariables.addAll(environmentVariables);</span>
-<span class="fc" id="L55">        return thisAsN();</span>
+<span class="fc" id="L53">        this.environmentVariables = new ArrayList&lt;&gt;(environmentVariables);</span>
+<span class="fc" id="L54">        return thisAsN();</span>
     }
 
-    public N addNewParameter(String name, String value) {
-<span class="fc" id="L59">        this.environmentVariables.add(new EnvVar(name, value, null));</span>
-<span class="fc" id="L60">        return thisAsN();</span>
+    public N addToEnvironmentVariables(String name, String value) {
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if (this.environmentVariables == null) {</span>
+<span class="nc" id="L59">            this.environmentVariables = new ArrayList&lt;&gt;();</span>
+        }
+<span class="fc" id="L61">        this.environmentVariables.add(new EnvVar(name, value, null));</span>
+<span class="fc" id="L62">        return thisAsN();</span>
     }
 
     public EntandoResourceRequirementsNested editResourceRequirements() {
-<span class="fc" id="L64">        return new EntandoResourceRequirementsNested(thisAsN(), resourceRequirements);</span>
+<span class="fc" id="L66">        return new EntandoResourceRequirementsNested(thisAsN(), resourceRequirements);</span>
     }
 
     public EntandoResourceRequirementsNested withNewResourceRequirements() {
-<span class="fc" id="L68">        return new EntandoResourceRequirementsNested(thisAsN());</span>
+<span class="fc" id="L70">        return new EntandoResourceRequirementsNested(thisAsN());</span>
     }
 
     public N withResourceRequirements(EntandoResourceRequirements resourceRequirements) {
-<span class="fc" id="L72">        this.resourceRequirements = resourceRequirements;</span>
-<span class="fc" id="L73">        return thisAsN();</span>
+<span class="fc" id="L74">        this.resourceRequirements = resourceRequirements;</span>
+<span class="fc" id="L75">        return thisAsN();</span>
     }
 
     @SuppressWarnings(&quot;unchecked&quot;)
     protected N thisAsN() {
-<span class="fc" id="L78">        return (N) this;</span>
+<span class="fc" id="L80">        return (N) this;</span>
     }
 
     public class EntandoResourceRequirementsNested extends
@@ -83,22 +85,22 @@ public abstract class EntandoDeploymentSpecBuilder&lt;N extends EntandoDeploymen
 
         private N parent;
 
-<span class="fc" id="L86">        public EntandoResourceRequirementsNested(N parent, EntandoResourceRequirements resourceRequirements) {</span>
-<span class="fc" id="L87">            super(resourceRequirements);</span>
-<span class="fc" id="L88">            this.parent = parent;</span>
-<span class="fc" id="L89">        }</span>
+<span class="fc" id="L88">        public EntandoResourceRequirementsNested(N parent, EntandoResourceRequirements resourceRequirements) {</span>
+<span class="fc" id="L89">            super(resourceRequirements);</span>
+<span class="fc" id="L90">            this.parent = parent;</span>
+<span class="fc" id="L91">        }</span>
 
-<span class="fc" id="L91">        public EntandoResourceRequirementsNested(N parent) {</span>
-<span class="fc" id="L92">            this.parent = parent;</span>
-<span class="fc" id="L93">        }</span>
+<span class="fc" id="L93">        public EntandoResourceRequirementsNested(N parent) {</span>
+<span class="fc" id="L94">            this.parent = parent;</span>
+<span class="fc" id="L95">        }</span>
 
         public N done() {
-<span class="fc" id="L96">            this.parent.withResourceRequirements(build());</span>
-<span class="fc" id="L97">            return this.parent;</span>
+<span class="fc" id="L98">            this.parent.withResourceRequirements(build());</span>
+<span class="fc" id="L99">            return this.parent;</span>
         }
 
         public N endResourceRequirements() {
-<span class="fc" id="L101">            return done();</span>
+<span class="fc" id="L103">            return done();</span>
         }
     }
 }

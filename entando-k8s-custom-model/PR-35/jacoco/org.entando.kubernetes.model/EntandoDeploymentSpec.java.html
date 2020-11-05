@@ -26,10 +26,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import io.fabric8.kubernetes.api.model.EnvVar;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @JsonInclude(Include.NON_NULL)
@@ -40,48 +38,38 @@ import java.util.Optional;
 
 public abstract class EntandoDeploymentSpec implements Serializable {
 
-<span class="fc" id="L43">    private Integer replicas = 1;</span>
-    protected DbmsVendor dbms;
+<span class="pc" id="L41">    private Integer replicas = 1;</span>
     private String serviceAccountToUse;
-<span class="fc" id="L46">    private Map&lt;String, String&gt; parameters = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L47">    private List&lt;EnvVar&gt; environmentVariables = new ArrayList&lt;&gt;();</span>
+    private List&lt;EnvVar&gt; environmentVariables;
     private EntandoResourceRequirements resourceRequirements;
 
-<span class="fc" id="L50">    protected EntandoDeploymentSpec() {</span>
-<span class="fc" id="L51">    }</span>
+<span class="nc" id="L46">    protected EntandoDeploymentSpec() {</span>
+<span class="nc" id="L47">    }</span>
 
     protected EntandoDeploymentSpec(Integer replicas,
-            DbmsVendor dbms,
             String serviceAccountToUse,
-            Map&lt;String, String&gt; parameters,
             List&lt;EnvVar&gt; environmentVariables,
-<span class="fc" id="L58">            EntandoResourceRequirements resourceRequirements) {</span>
-<span class="fc" id="L59">        this.replicas = replicas;</span>
-<span class="fc" id="L60">        this.dbms = dbms;</span>
-<span class="fc" id="L61">        this.serviceAccountToUse = serviceAccountToUse;</span>
-<span class="fc" id="L62">        this.parameters = parameters;</span>
-<span class="fc" id="L63">        this.environmentVariables = environmentVariables;</span>
-<span class="fc" id="L64">        this.resourceRequirements = resourceRequirements;</span>
-<span class="fc" id="L65">    }</span>
-
-    public Map&lt;String, String&gt; getParameters() {
-<span class="nc" id="L68">        return parameters;</span>
-    }
+<span class="fc" id="L52">            EntandoResourceRequirements resourceRequirements) {</span>
+<span class="fc" id="L53">        this.replicas = replicas;</span>
+<span class="fc" id="L54">        this.serviceAccountToUse = serviceAccountToUse;</span>
+<span class="fc" id="L55">        this.environmentVariables = environmentVariables;</span>
+<span class="fc" id="L56">        this.resourceRequirements = resourceRequirements;</span>
+<span class="fc" id="L57">    }</span>
 
     public Optional&lt;Integer&gt; getReplicas() {
-<span class="fc" id="L72">        return ofNullable(replicas);</span>
+<span class="fc" id="L60">        return ofNullable(replicas);</span>
     }
 
     public List&lt;EnvVar&gt; getEnvironmentVariables() {
-<span class="fc" id="L76">        return environmentVariables;</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        return environmentVariables == null ? Collections.emptyList() : environmentVariables;</span>
     }
 
     public Optional&lt;String&gt; getServiceAccountToUse() {
-<span class="fc" id="L80">        return ofNullable(serviceAccountToUse);</span>
+<span class="fc" id="L68">        return ofNullable(serviceAccountToUse);</span>
     }
 
     public Optional&lt;EntandoResourceRequirements&gt; getResourceRequirements() {
-<span class="fc" id="L84">        return Optional.ofNullable(resourceRequirements);</span>
+<span class="fc" id="L72">        return Optional.ofNullable(resourceRequirements);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
