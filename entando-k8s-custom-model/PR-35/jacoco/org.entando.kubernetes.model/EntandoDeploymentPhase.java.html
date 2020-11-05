@@ -24,7 +24,7 @@ import java.util.Locale;
 
 <span class="fc" id="L25">@RegisterForReflection</span>
 public enum EntandoDeploymentPhase {
-<span class="fc" id="L27">    REQUESTED, STARTED, SUCCESSFUL, FAILED;</span>
+<span class="fc" id="L27">    REQUESTED, STARTED, SUCCESSFUL, FAILED, IGNORED;</span>
 
     @JsonCreator
     public static EntandoDeploymentPhase forValue(String value) {
