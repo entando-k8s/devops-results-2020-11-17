@@ -153,7 +153,7 @@ import java.util.Properties;
 <span class="fc" id="L153">			WidgetType widgetType = jaxbWidgetType.getModifiedWidgetType(this.getWidgetTypeManager());</span>
 <span class="fc" id="L154">			this.checkAndSaveFragment(widgetType, jaxbWidgetType, false, response, addedFragments, updatedFragments);</span>
 <span class="fc" id="L155">			this.getWidgetTypeManager().updateWidgetType(widgetType.getCode(), widgetType.getTitles(), widgetType.getConfig(), widgetType</span>
-<span class="fc" id="L156">					.getMainGroup(), widgetType.getConfigUi(), widgetType.getBundleId(), widgetType.isReadonlyPageWidgetConfig());</span>
+<span class="fc" id="L156">					.getMainGroup(), widgetType.getConfigUi(), widgetType.getBundleId(), widgetType.isReadonlyPageWidgetConfig(), widgetType.getWidgetCategory());</span>
 <span class="fc" id="L157">			response.setResult(IResponseBuilder.SUCCESS, null);</span>
 <span class="nc" id="L158">		} catch (ApiException ae) {</span>
 <span class="nc" id="L159">			this.revertPreviousObject(widgetTypeToUpdate, addedFragments, updatedFragments);</span>
@@ -170,189 +170,190 @@ import java.util.Properties;
 			throws Throwable {
 <span class="pc bpc" id="L171" title="1 of 2 branches missed.">		if (null != widgetTypeToUpdate) {</span>
 <span class="nc" id="L172">			this.getWidgetTypeManager().updateWidgetType(widgetTypeToUpdate.getCode(), widgetTypeToUpdate.getTitles(), widgetTypeToUpdate</span>
-<span class="nc" id="L173">					.getConfig(), widgetTypeToUpdate.getMainGroup(), widgetTypeToUpdate.getConfigUi(), widgetTypeToUpdate.getBundleId(),widgetTypeToUpdate.isReadonlyPageWidgetConfig());</span>
+<span class="nc" id="L173">					.getConfig(), widgetTypeToUpdate.getMainGroup(), widgetTypeToUpdate.getConfigUi(), widgetTypeToUpdate.getBundleId(),</span>
+<span class="nc" id="L174">                    widgetTypeToUpdate.isReadonlyPageWidgetConfig(), widgetTypeToUpdate.getWidgetCategory());</span>
 		}
-<span class="pc bpc" id="L175" title="1 of 2 branches missed.">		for (int i = 0; i &lt; addedFragments.size(); i++) {</span>
-<span class="nc" id="L176">			GuiFragment guiFragment = addedFragments.get(i);</span>
-<span class="nc" id="L177">			this.getGuiFragmentManager().deleteGuiFragment(guiFragment.getCode());</span>
+<span class="pc bpc" id="L176" title="1 of 2 branches missed.">		for (int i = 0; i &lt; addedFragments.size(); i++) {</span>
+<span class="nc" id="L177">			GuiFragment guiFragment = addedFragments.get(i);</span>
+<span class="nc" id="L178">			this.getGuiFragmentManager().deleteGuiFragment(guiFragment.getCode());</span>
 		}
-<span class="pc bpc" id="L179" title="1 of 2 branches missed.">		for (int i = 0; i &lt; updatedFragments.size(); i++) {</span>
-<span class="nc" id="L180">			GuiFragment guiFragment = updatedFragments.get(i);</span>
-<span class="nc" id="L181">			this.getGuiFragmentManager().updateGuiFragment(guiFragment);</span>
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">		for (int i = 0; i &lt; updatedFragments.size(); i++) {</span>
+<span class="nc" id="L181">			GuiFragment guiFragment = updatedFragments.get(i);</span>
+<span class="nc" id="L182">			this.getGuiFragmentManager().updateGuiFragment(guiFragment);</span>
 		}
-<span class="fc" id="L183">	}</span>
+<span class="fc" id="L184">	}</span>
 
 	protected void checkAndSaveFragment(WidgetType type, JAXBWidgetType jaxbWidgetType, boolean isAdd, StringApiResponse response,
 			List&lt;GuiFragment&gt; addedFragments, List&lt;GuiFragment&gt; updatedFragment) throws Throwable {
 		try {
-<span class="pc bpc" id="L188" title="2 of 4 branches missed.">			if (!type.isLogic() &amp;&amp; !this.isInternalServletWidget(type.getCode())) {</span>
-<span class="fc" id="L189">				GuiFragment guiFragment = this.getGuiFragmentManager().getUniqueGuiFragmentByWidgetType(type.getCode());</span>
-<span class="pc bpc" id="L190" title="1 of 2 branches missed.">				if (StringUtils.isNotBlank(jaxbWidgetType.getGui())) {</span>
-<span class="fc bfc" id="L191" title="All 2 branches covered.">					if (null == guiFragment) {</span>
-<span class="fc" id="L192">						guiFragment = new GuiFragment();</span>
-<span class="fc" id="L193">						String code = this.extractUniqueGuiFragmentCode(type.getCode());</span>
-<span class="fc" id="L194">						guiFragment.setCode(code);</span>
-<span class="fc" id="L195">						guiFragment.setPluginCode(type.getPluginCode());</span>
-<span class="fc" id="L196">						guiFragment.setGui(jaxbWidgetType.getGui());</span>
-<span class="fc" id="L197">						guiFragment.setWidgetTypeCode(type.getCode());</span>
-<span class="fc" id="L198">						addedFragments.add(guiFragment);</span>
-<span class="fc" id="L199">						this.getGuiFragmentManager().addGuiFragment(guiFragment);</span>
-<span class="pc bpc" id="L200" title="1 of 2 branches missed.">					} else if (!isAdd) {</span>
-<span class="fc" id="L201">						GuiFragment clone = guiFragment.clone();</span>
-<span class="fc" id="L202">						updatedFragment.add(guiFragment);</span>
-<span class="fc" id="L203">						clone.setGui(jaxbWidgetType.getGui());</span>
-<span class="fc" id="L204">						this.getGuiFragmentManager().updateGuiFragment(clone);</span>
-<span class="fc" id="L205">					}</span>
+<span class="pc bpc" id="L189" title="2 of 4 branches missed.">			if (!type.isLogic() &amp;&amp; !this.isInternalServletWidget(type.getCode())) {</span>
+<span class="fc" id="L190">				GuiFragment guiFragment = this.getGuiFragmentManager().getUniqueGuiFragmentByWidgetType(type.getCode());</span>
+<span class="pc bpc" id="L191" title="1 of 2 branches missed.">				if (StringUtils.isNotBlank(jaxbWidgetType.getGui())) {</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">					if (null == guiFragment) {</span>
+<span class="fc" id="L193">						guiFragment = new GuiFragment();</span>
+<span class="fc" id="L194">						String code = this.extractUniqueGuiFragmentCode(type.getCode());</span>
+<span class="fc" id="L195">						guiFragment.setCode(code);</span>
+<span class="fc" id="L196">						guiFragment.setPluginCode(type.getPluginCode());</span>
+<span class="fc" id="L197">						guiFragment.setGui(jaxbWidgetType.getGui());</span>
+<span class="fc" id="L198">						guiFragment.setWidgetTypeCode(type.getCode());</span>
+<span class="fc" id="L199">						addedFragments.add(guiFragment);</span>
+<span class="fc" id="L200">						this.getGuiFragmentManager().addGuiFragment(guiFragment);</span>
+<span class="pc bpc" id="L201" title="1 of 2 branches missed.">					} else if (!isAdd) {</span>
+<span class="fc" id="L202">						GuiFragment clone = guiFragment.clone();</span>
+<span class="fc" id="L203">						updatedFragment.add(guiFragment);</span>
+<span class="fc" id="L204">						clone.setGui(jaxbWidgetType.getGui());</span>
+<span class="fc" id="L205">						this.getGuiFragmentManager().updateGuiFragment(clone);</span>
+<span class="fc" id="L206">					}</span>
 				} else {
-<span class="nc bnc" id="L207" title="All 4 branches missed.">					if (null != guiFragment &amp;&amp; !isAdd) {</span>
-<span class="nc bnc" id="L208" title="All 2 branches missed.">						if (StringUtils.isNotBlank(guiFragment.getDefaultGui())) {</span>
-<span class="nc" id="L209">							GuiFragment clone = guiFragment.clone();</span>
-<span class="nc" id="L210">							updatedFragment.add(guiFragment);</span>
-<span class="nc" id="L211">							clone.setGui(null);</span>
-<span class="nc" id="L212">							this.getGuiFragmentManager().updateGuiFragment(clone);</span>
+<span class="nc bnc" id="L208" title="All 4 branches missed.">					if (null != guiFragment &amp;&amp; !isAdd) {</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">						if (StringUtils.isNotBlank(guiFragment.getDefaultGui())) {</span>
+<span class="nc" id="L210">							GuiFragment clone = guiFragment.clone();</span>
+<span class="nc" id="L211">							updatedFragment.add(guiFragment);</span>
+<span class="nc" id="L212">							clone.setGui(null);</span>
+<span class="nc" id="L213">							this.getGuiFragmentManager().updateGuiFragment(clone);</span>
 						} else {
 							// nothing to do...
 							// this.getGuiFragmentManager().deleteGuiFragment(guiFragment.getCode());
 						}
 					}
 				}
-<span class="pc bnc" id="L219" title="All 4 branches missed.">			} else if (type.isLogic() &amp;&amp; !isAdd) {</span>
-<span class="nc" id="L220">				boolean isInternalServlet = this.isInternalServletWidget(type.getParentType().getCode());</span>
-<span class="nc bnc" id="L221" title="All 6 branches missed.">				if (!isInternalServlet &amp;&amp; (null != jaxbWidgetType.getFragments() &amp;&amp; jaxbWidgetType.getFragments().size() &gt; 0)) {</span>
-<span class="nc bnc" id="L222" title="All 2 branches missed.">					if (null != response) {</span>
-<span class="nc" id="L223">						ApiError error = new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
+<span class="pc bnc" id="L220" title="All 4 branches missed.">			} else if (type.isLogic() &amp;&amp; !isAdd) {</span>
+<span class="nc" id="L221">				boolean isInternalServlet = this.isInternalServletWidget(type.getParentType().getCode());</span>
+<span class="nc bnc" id="L222" title="All 6 branches missed.">				if (!isInternalServlet &amp;&amp; (null != jaxbWidgetType.getFragments() &amp;&amp; jaxbWidgetType.getFragments().size() &gt; 0)) {</span>
+<span class="nc bnc" id="L223" title="All 2 branches missed.">					if (null != response) {</span>
+<span class="nc" id="L224">						ApiError error = new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
 								&quot;Fragments mustn't be updated on a 'not internal servlet' logic widget type&quot;);
-<span class="nc" id="L225">						response.addError(error);</span>
-<span class="nc" id="L226">					}</span>
+<span class="nc" id="L226">						response.addError(error);</span>
+<span class="nc" id="L227">					}</span>
 					// throw new
 					// ApiException(IApiErrorCodes.API_VALIDATION_ERROR,
 					// &quot;Fragments mustn't be updated on a 'not internal servlet'
 					// logic widget type&quot;, Response.Status.CONFLICT);
 				} else {
-<span class="nc" id="L232">					List&lt;JAXBGuiFragment&gt; fragments = jaxbWidgetType.getFragments();</span>
-<span class="nc bnc" id="L233" title="All 4 branches missed.">					if (null != fragments &amp;&amp; fragments.size() &gt; 0) {</span>
-<span class="nc bnc" id="L234" title="All 2 branches missed.">						for (int i = 0; i &lt; fragments.size(); i++) {</span>
-<span class="nc" id="L235">							JAXBGuiFragment jaxbGuiFragment = fragments.get(i);</span>
-<span class="nc" id="L236">							GuiFragment fragment = jaxbGuiFragment.getGuiFragment();</span>
-<span class="nc" id="L237">							GuiFragment existingFragment = this.getGuiFragmentManager().getGuiFragment(fragment.getCode());</span>
-<span class="nc bnc" id="L238" title="All 2 branches missed.">							if (null != existingFragment) {</span>
-<span class="nc bnc" id="L239" title="All 4 branches missed.">								if (StringUtils.isBlank(existingFragment.getDefaultGui()) &amp;&amp; StringUtils.isBlank(jaxbWidgetType.getGui())) {</span>
-<span class="nc" id="L240">									ApiError error = new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
-<span class="nc" id="L241">											&quot;one between A and B must be valued on fragment '&quot; + existingFragment.getCode() + &quot;'&quot;);</span>
-<span class="nc" id="L242">									response.addError(error);</span>
-<span class="nc" id="L243">									continue;</span>
+<span class="nc" id="L233">					List&lt;JAXBGuiFragment&gt; fragments = jaxbWidgetType.getFragments();</span>
+<span class="nc bnc" id="L234" title="All 4 branches missed.">					if (null != fragments &amp;&amp; fragments.size() &gt; 0) {</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">						for (int i = 0; i &lt; fragments.size(); i++) {</span>
+<span class="nc" id="L236">							JAXBGuiFragment jaxbGuiFragment = fragments.get(i);</span>
+<span class="nc" id="L237">							GuiFragment fragment = jaxbGuiFragment.getGuiFragment();</span>
+<span class="nc" id="L238">							GuiFragment existingFragment = this.getGuiFragmentManager().getGuiFragment(fragment.getCode());</span>
+<span class="nc bnc" id="L239" title="All 2 branches missed.">							if (null != existingFragment) {</span>
+<span class="nc bnc" id="L240" title="All 4 branches missed.">								if (StringUtils.isBlank(existingFragment.getDefaultGui()) &amp;&amp; StringUtils.isBlank(jaxbWidgetType.getGui())) {</span>
+<span class="nc" id="L241">									ApiError error = new ApiError(IApiErrorCodes.API_VALIDATION_ERROR,</span>
+<span class="nc" id="L242">											&quot;one between A and B must be valued on fragment '&quot; + existingFragment.getCode() + &quot;'&quot;);</span>
+<span class="nc" id="L243">									response.addError(error);</span>
+<span class="nc" id="L244">									continue;</span>
 								}
-<span class="nc" id="L245">								GuiFragment clone = existingFragment.clone();</span>
-<span class="nc" id="L246">								updatedFragment.add(existingFragment);</span>
-<span class="nc" id="L247">								clone.setGui(jaxbGuiFragment.getGui());</span>
-<span class="nc" id="L248">							} else {</span>
-<span class="nc" id="L249">								ApiError error = new ApiError(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Fragment '&quot; + fragment.getCode()</span>
+<span class="nc" id="L246">								GuiFragment clone = existingFragment.clone();</span>
+<span class="nc" id="L247">								updatedFragment.add(existingFragment);</span>
+<span class="nc" id="L248">								clone.setGui(jaxbGuiFragment.getGui());</span>
+<span class="nc" id="L249">							} else {</span>
+<span class="nc" id="L250">								ApiError error = new ApiError(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Fragment '&quot; + fragment.getCode()</span>
 										+ &quot;' does not exists&quot;);
-<span class="nc" id="L251">								response.addError(error);</span>
+<span class="nc" id="L252">								response.addError(error);</span>
 							}
 						}
 					}
 				}
 			}
-<span class="nc" id="L257">		} catch (Throwable t) {</span>
-<span class="nc" id="L258">			_logger.error(&quot;error checking and saving fragment&quot;, t);</span>
-<span class="nc" id="L259">			throw new EntException(&quot;error checking and saving fragment&quot;, t);</span>
-<span class="fc" id="L260">		}</span>
-<span class="fc" id="L261">	}</span>
+<span class="nc" id="L258">		} catch (Throwable t) {</span>
+<span class="nc" id="L259">			_logger.error(&quot;error checking and saving fragment&quot;, t);</span>
+<span class="nc" id="L260">			throw new EntException(&quot;error checking and saving fragment&quot;, t);</span>
+<span class="fc" id="L261">		}</span>
+<span class="fc" id="L262">	}</span>
 
 	// duplicated code
 	protected String extractUniqueGuiFragmentCode(String widgetTypeCode) throws EntException {
-<span class="fc" id="L265">		String uniqueCode = widgetTypeCode;</span>
-<span class="pc bpc" id="L266" title="1 of 2 branches missed.">		if (null != this.getGuiFragmentManager().getGuiFragment(uniqueCode)) {</span>
-<span class="nc" id="L267">			int index = 0;</span>
-<span class="nc" id="L268">			String currentCode = null;</span>
+<span class="fc" id="L266">		String uniqueCode = widgetTypeCode;</span>
+<span class="pc bpc" id="L267" title="1 of 2 branches missed.">		if (null != this.getGuiFragmentManager().getGuiFragment(uniqueCode)) {</span>
+<span class="nc" id="L268">			int index = 0;</span>
+<span class="nc" id="L269">			String currentCode = null;</span>
 			do {
-<span class="nc" id="L270">				index++;</span>
-<span class="nc" id="L271">				currentCode = uniqueCode + &quot;_&quot; + index;</span>
-<span class="nc bnc" id="L272" title="All 2 branches missed.">			} while (null != this.getGuiFragmentManager().getGuiFragment(currentCode));</span>
-<span class="nc" id="L273">			uniqueCode = currentCode;</span>
+<span class="nc" id="L271">				index++;</span>
+<span class="nc" id="L272">				currentCode = uniqueCode + &quot;_&quot; + index;</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">			} while (null != this.getGuiFragmentManager().getGuiFragment(currentCode));</span>
+<span class="nc" id="L274">			uniqueCode = currentCode;</span>
 		}
-<span class="fc" id="L275">		return uniqueCode;</span>
+<span class="fc" id="L276">		return uniqueCode;</span>
 	}
 
 	public void deleteWidgetType(Properties properties) throws ApiException, Throwable {
-<span class="fc" id="L279">		String code = properties.getProperty(&quot;code&quot;);</span>
+<span class="fc" id="L280">		String code = properties.getProperty(&quot;code&quot;);</span>
 		try {
-<span class="fc" id="L281">			WidgetType widgetType = this.getWidgetTypeManager().getWidgetType(code);</span>
-<span class="pc bpc" id="L282" title="1 of 2 branches missed.">			if (null == widgetType) {</span>
-<span class="nc" id="L283">				throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Widget Type with code &quot; + code + &quot; does not exists&quot;,</span>
+<span class="fc" id="L282">			WidgetType widgetType = this.getWidgetTypeManager().getWidgetType(code);</span>
+<span class="pc bpc" id="L283" title="1 of 2 branches missed.">			if (null == widgetType) {</span>
+<span class="nc" id="L284">				throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Widget Type with code &quot; + code + &quot; does not exists&quot;,</span>
 						Response.Status.CONFLICT);
 			}
-<span class="fc bfc" id="L286" title="All 2 branches covered.">			if (widgetType.isLocked()) {</span>
-<span class="fc" id="L287">				throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Widget Type '&quot; + code + &quot;' is locked&quot;,</span>
+<span class="fc bfc" id="L287" title="All 2 branches covered.">			if (widgetType.isLocked()) {</span>
+<span class="fc" id="L288">				throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Widget Type '&quot; + code + &quot;' is locked&quot;,</span>
 						Response.Status.CONFLICT);
 			}
-<span class="fc" id="L290">			List&lt;IPage&gt; referencedPages = this.getPageManager().getDraftWidgetUtilizers(code);</span>
-<span class="pc bpc" id="L291" title="1 of 4 branches missed.">			if (null != referencedPages &amp;&amp; !referencedPages.isEmpty()) {</span>
-<span class="fc" id="L292">				throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Widget Type '&quot; + code + &quot;' is published into some pages&quot;,</span>
+<span class="fc" id="L291">			List&lt;IPage&gt; referencedPages = this.getPageManager().getDraftWidgetUtilizers(code);</span>
+<span class="pc bpc" id="L292" title="1 of 4 branches missed.">			if (null != referencedPages &amp;&amp; !referencedPages.isEmpty()) {</span>
+<span class="fc" id="L293">				throw new ApiException(IApiErrorCodes.API_VALIDATION_ERROR, &quot;Widget Type '&quot; + code + &quot;' is published into some pages&quot;,</span>
 						Response.Status.CONFLICT);
 			}
-<span class="fc" id="L295">			this.getWidgetTypeManager().deleteWidgetType(code);</span>
-<span class="fc" id="L296">		} catch (ApiException ae) {</span>
-<span class="fc" id="L297">			throw ae;</span>
-<span class="nc" id="L298">		} catch (Throwable t) {</span>
-<span class="nc" id="L299">			_logger.error(&quot;Error deleting widget type throw api&quot;, t);</span>
-<span class="nc" id="L300">			throw t;</span>
-<span class="fc" id="L301">		}</span>
-<span class="fc" id="L302">	}</span>
+<span class="fc" id="L296">			this.getWidgetTypeManager().deleteWidgetType(code);</span>
+<span class="fc" id="L297">		} catch (ApiException ae) {</span>
+<span class="fc" id="L298">			throw ae;</span>
+<span class="nc" id="L299">		} catch (Throwable t) {</span>
+<span class="nc" id="L300">			_logger.error(&quot;Error deleting widget type throw api&quot;, t);</span>
+<span class="nc" id="L301">			throw t;</span>
+<span class="fc" id="L302">		}</span>
+<span class="fc" id="L303">	}</span>
 
 	@Override
 	public String getApiResourceUrl(Object object, String applicationBaseUrl, String langCode, MediaType mediaType) {
-<span class="nc bnc" id="L306" title="All 6 branches missed.">		if (!(object instanceof WidgetType) || null == applicationBaseUrl || null == langCode) {</span>
-<span class="nc" id="L307">			return null;</span>
+<span class="nc bnc" id="L307" title="All 6 branches missed.">		if (!(object instanceof WidgetType) || null == applicationBaseUrl || null == langCode) {</span>
+<span class="nc" id="L308">			return null;</span>
 		}
-<span class="nc" id="L309">		WidgetType widgetType = (WidgetType) object;</span>
-<span class="nc" id="L310">		StringBuilder stringBuilder = new StringBuilder(applicationBaseUrl);</span>
-<span class="nc" id="L311">		stringBuilder.append(&quot;api/rs/&quot;).append(langCode).append(&quot;/core/widgetType&quot;);// ?code=&quot;).append(widgetType.getCode());</span>
-<span class="nc bnc" id="L312" title="All 4 branches missed.">		if (null == mediaType || mediaType.equals(MediaType.APPLICATION_XML_TYPE)) {</span>
-<span class="nc" id="L313">			stringBuilder.append(&quot;.xml&quot;);</span>
+<span class="nc" id="L310">		WidgetType widgetType = (WidgetType) object;</span>
+<span class="nc" id="L311">		StringBuilder stringBuilder = new StringBuilder(applicationBaseUrl);</span>
+<span class="nc" id="L312">		stringBuilder.append(&quot;api/rs/&quot;).append(langCode).append(&quot;/core/widgetType&quot;);// ?code=&quot;).append(widgetType.getCode());</span>
+<span class="nc bnc" id="L313" title="All 4 branches missed.">		if (null == mediaType || mediaType.equals(MediaType.APPLICATION_XML_TYPE)) {</span>
+<span class="nc" id="L314">			stringBuilder.append(&quot;.xml&quot;);</span>
 		} else {
-<span class="nc" id="L315">			stringBuilder.append(&quot;.json&quot;);</span>
+<span class="nc" id="L316">			stringBuilder.append(&quot;.json&quot;);</span>
 		}
-<span class="nc" id="L317">		stringBuilder.append(&quot;?code=&quot;).append(widgetType.getCode());</span>
-<span class="nc" id="L318">		return stringBuilder.toString();</span>
+<span class="nc" id="L318">		stringBuilder.append(&quot;?code=&quot;).append(widgetType.getCode());</span>
+<span class="nc" id="L319">		return stringBuilder.toString();</span>
 	}
 
 	public boolean isInternalServletWidget(String widgetTypeCode) {
-<span class="fc" id="L322">		return this.getInternalServletWidgetCode().equals(widgetTypeCode);</span>
+<span class="fc" id="L323">		return this.getInternalServletWidgetCode().equals(widgetTypeCode);</span>
 	}
 
 	protected String getInternalServletWidgetCode() {
-<span class="fc" id="L326">		return _internalServletWidgetCode;</span>
+<span class="fc" id="L327">		return _internalServletWidgetCode;</span>
 	}
 
 	public void setInternalServletWidgetCode(String internalServletWidgetCode) {
-<span class="fc" id="L330">		this._internalServletWidgetCode = internalServletWidgetCode;</span>
-<span class="fc" id="L331">	}</span>
+<span class="fc" id="L331">		this._internalServletWidgetCode = internalServletWidgetCode;</span>
+<span class="fc" id="L332">	}</span>
 
 	protected IPageManager getPageManager() {
-<span class="fc" id="L334">		return _pageManager;</span>
+<span class="fc" id="L335">		return _pageManager;</span>
 	}
 
 	public void setPageManager(IPageManager pageManager) {
-<span class="fc" id="L338">		this._pageManager = pageManager;</span>
-<span class="fc" id="L339">	}</span>
+<span class="fc" id="L339">		this._pageManager = pageManager;</span>
+<span class="fc" id="L340">	}</span>
 
 	protected IWidgetTypeManager getWidgetTypeManager() {
-<span class="fc" id="L342">		return _widgetTypeManager;</span>
+<span class="fc" id="L343">		return _widgetTypeManager;</span>
 	}
 
 	public void setWidgetTypeManager(IWidgetTypeManager widgetTypeManager) {
-<span class="fc" id="L346">		this._widgetTypeManager = widgetTypeManager;</span>
-<span class="fc" id="L347">	}</span>
+<span class="fc" id="L347">		this._widgetTypeManager = widgetTypeManager;</span>
+<span class="fc" id="L348">	}</span>
 
 	protected IGuiFragmentManager getGuiFragmentManager() {
-<span class="fc" id="L350">		return _guiFragmentManager;</span>
+<span class="fc" id="L351">		return _guiFragmentManager;</span>
 	}
 
 	public void setGuiFragmentManager(IGuiFragmentManager guiFragmentManager) {
-<span class="fc" id="L354">		this._guiFragmentManager = guiFragmentManager;</span>
-<span class="fc" id="L355">	}</span>
+<span class="fc" id="L355">		this._guiFragmentManager = guiFragmentManager;</span>
+<span class="fc" id="L356">	}</span>
 
 	private String _internalServletWidgetCode;
 

@@ -53,7 +53,7 @@ import org.springframework.validation.BeanPropertyBindingResult;
         try {
 <span class="fc" id="L54">            List&lt;Lang&gt; sysLangs = this.getLangManager().getAssignableLangs();</span>
 <span class="fc" id="L55">            List&lt;LanguageDto&gt; langs = this.getLanguageDtoBuilder().convert(sysLangs);</span>
-
+            
 <span class="fc" id="L57">            langs = new LanguageRequestListProcessor(requestList, langs)</span>
 <span class="fc" id="L58">                    .filterAndSort().toList();</span>
 

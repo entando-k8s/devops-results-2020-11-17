@@ -19,7 +19,7 @@ public interface IComponentExistenceAnalysis {
 
 <span class="fc" id="L20">    class ComponentExistenceAnalysisResult {</span>
         public Map&lt;Object, ComponentStatusMap&gt; getMap() {
-<span class="nc" id="L22">            return map;</span>
+<span class="fc" id="L22">            return map;</span>
         }
 
 <span class="fc" id="L25">        Map&lt;Object, ComponentStatusMap&gt; map = new HashMap&lt;&gt;();</span>
@@ -27,7 +27,7 @@ public interface IComponentExistenceAnalysis {
 
 <span class="fc" id="L28">    class ComponentStatusMap {</span>
         public Map&lt;String, Status&gt; getMap() {
-<span class="nc" id="L30">            return map;</span>
+<span class="fc" id="L30">            return map;</span>
         }
 
 <span class="fc" id="L33">        Map&lt;String, Status&gt; map = new HashMap&lt;&gt;();</span>
@@ -38,8 +38,8 @@ public interface IComponentExistenceAnalysis {
     }
 
     class ServiceParams {
-        final public Object service;
-        final public List&lt;String&gt; idCodesList;
+        public final Object service;
+        public final List&lt;String&gt; idCodesList;
 
 <span class="fc" id="L44">        public ServiceParams(Object service, List&lt;String&gt; idCodesList) {</span>
 <span class="fc" id="L45">            this.service = service;</span>
