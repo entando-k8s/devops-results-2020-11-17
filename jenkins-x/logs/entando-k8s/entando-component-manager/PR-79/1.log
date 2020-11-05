@@ -1,0 +1,758 @@
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-flbkp[0m
+{"level":"warn","ts":1604570367.8960187,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604570367.9251528,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-qk2ff[0m
+{"level":"warn","ts":1604570369.3656929,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1604570369.379046,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-k8s-entando-component-m-7rw9b[0m
+{"level":"warn","ts":1604570525.0444052,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604570527.1265817,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando-k8s/entando-component-manager.git @ master in path /workspace/source"}
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:f7c5631df92fc2b291d451e080cd94145fe45154,79:8d45c66597a608a4c7cc642b59f98d30da20e9a3
+DEBUG: ran git fetch --unshallow origin 8d45c66597a608a4c7cc642b59f98d30da20e9a3: f7c5631df92fc2b291d451e080cd94145fe45154: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard f7c5631df92fc2b291d451e080cd94145fe45154 in 
+DEBUG: ran clean --force -d . in 
+DEBUG: ran git merge 8d45c66597a608a4c7cc642b59f98d30da20e9a3 in 
+Merged SHA 8d45c66597a608a4c7cc642b59f98d30da20e9a3 with commit message 'ENG-1318 test refinement' into base branch master
+Merged SHA 131a63ec62f46e99964f2098594dda96cb382161 with commit message 'ENG-1318 bundle validation endpoint' into base branch master
+Merged SHA 7e7aa6b1f7178ed5a78b12abc28fea0beeb5e802 with commit message 'ENG-1318 test init' into base branch master
+Merged SHA 1e49745392f8e64a3284997b3642dcb79bc6e471 with commit message 'ENG-1318 should work - waiting for entando-engine to confirm it' into base branch master
+Merged SHA 2f96c082502b6983cd14df44ea1e22590a117fb7 with commit message 'ENG-1327 first version of conflict management strategy' into base branch master
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-set-version[0m
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< org.entando:entando-component-manager >----------------
+[INFO] Building Entando Component Manager 6.2.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:2.8.1:set (default-cli) @ entando-component-manager ---
+[INFO] Local aggregation ****: /workspace/source
+[INFO] Processing change of org.entando:entando-component-manager:6.2.0-SNAPSHOT -> 0.0.0-SNAPSHOT-PR-79-1
+[INFO] Processing org.entando:entando-component-manager
+[INFO]     Updating project org.entando:entando-component-manager
+[INFO]         from version 6.2.0-SNAPSHOT to 0.0.0-SNAPSHOT-PR-79-1
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.301 s
+[INFO] Finished at: 2020-11-05T10:02:27Z
+[INFO] ------------------------------------------------------------------------
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-fix-git-for-sonar[0m
+Switched to a new branch 'PR-79'
+M	pom.xml
+Deleted branch master (was 8d45c66).
+From https://github.com/entando-k8s/entando-component-manager
+ * [new branch]      master     -> master
+ * [new tag]         list       -> list
+ * [new tag]         v6.0.32    -> v6.0.32
+ * [new tag]         v6.0.32.1  -> v6.0.32.1
+
+Showing logs for build [32mentando-k8s-entando-component-m-npsfs-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-mvn-verify-pr[0m
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 11  1864    0     0  100   217      0    247 --:--:-- --:--:-- --:--:--   249100  1864  100  1647  100   217   1880    247 --:--:-- --:--:-- --:--:--  1890
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-component-manager/statuses/8d45c66597a608a4c7cc642b59f98d30da20e9a3",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11263943511,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI2Mzk0MzUxMQ==",
+  "state": "pending",
+  "description": "Pre-deployment tests pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-component-manager/PR-79/surefire-report.html",
+  "context": "Pre-deployment tests",
+  "created_at": "2020-11-05T10:02:30Z",
+  "updated_at": "2020-11-05T10:02:30Z",
+  "creator": {
+    "login": "entando-**",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/entando-**",
+    "followers_url": "https://api.github.com/users/entando-**/followers",
+    "following_url": "https://api.github.com/users/entando-**/following{/other_user}",
+    "gists_url": "https://api.github.com/users/entando-**/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/entando-**/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/entando-**/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/entando-**/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1814  100  1622  100   192   2324    275 --:--:-- --:--:-- --:--:--  2337
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-component-manager/statuses/8d45c66597a608a4c7cc642b59f98d30da20e9a3",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11263943677,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI2Mzk0MzY3Nw==",
+  "state": "pending",
+  "description": "Checkstyle pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-component-manager/PR-79/checkstyle.html",
+  "context": "Checkstyle",
+  "created_at": "2020-11-05T10:02:31Z",
+  "updated_at": "2020-11-05T10:02:31Z",
+  "creator": {
+    "login": "entando-**",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/entando-**",
+    "followers_url": "https://api.github.com/users/entando-**/followers",
+    "following_url": "https://api.github.com/users/entando-**/following{/other_user}",
+    "gists_url": "https://api.github.com/users/entando-**/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/entando-**/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/entando-**/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/entando-**/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-component-manager/statuses/8d45c66597a608a4c7cc642b59f98d30da20e9a3",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11263943834,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI2Mzk0MzgzNA==",
+  "state": "pending",
+  "description": "OWASP CVE pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-component-manager/PR-79/dependency-check-report.html",
+  "context": "OWASP CVE",
+  "created_at": "2020-11-05T10:02:32Z",
+  "updated_at": "2020-11-05T10:02:32Z",
+  "creator": {
+    "login": "entando-**",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/entando-**",
+    "followers_url": "https://api.github.com/users/entando-**/followers",
+    "following_url": "https://api.github.com/users/entando-**/following{/other_user}",
+    "gists_url": "https://api.github.com/users/entando-**/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/entando-**/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/entando-**/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/entando-**/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1836  100  1633  100   203   2723    338 --:--:-- --:--:-- --:--:--  2744
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< org.entando:entando-component-manager >----------------
+[INFO] Building Entando Component Manager 0.0.0-SNAPSHOT-PR-79-1
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:3.1.1:check (validate) @ entando-component-manager ---
+[INFO] Starting audit...
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:35: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:69: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:70: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:4: Empty line should be followed by <p> tag on the next line. [JavadocParagraph]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:7: 'package' should be separated from previous statement. [EmptyLineSeparator]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:4: Empty line should be followed by <p> tag on the next line. [JavadocParagraph]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:7: 'package' should be separated from previous statement. [EmptyLineSeparator]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:4: Empty line should be followed by <p> tag on the next line. [JavadocParagraph]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:7: 'package' should be separated from previous statement. [EmptyLineSeparator]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/AnalysisReportFunction.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:62: 'for' has incorrect indentation level 16, expected level should be 12. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:63: 'for' child has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:64: 'if' has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:65: 'if' child has incorrect indentation level 24, expected level should be 20. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:66: 'if' child has incorrect indentation level 24, expected level should be 20. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:67: 'if rcurly' has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:68: 'for' child has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:69: 'for rcurly' has incorrect indentation level 16, expected level should be 12. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/DirectoryProcessor.java:128: Comment has incorrect indentation level 0, expected is 12, indentation should be the same level as line 129. [CommentsIndentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:33: Summary javadoc is missing. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:38: Summary javadoc is missing. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:96: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:215: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:218: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:219: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:220: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:248: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:65: Wrong lexicographical order for 'org.entando.kubernetes.DatabaseCleaner' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:66: Wrong lexicographical order for 'org.entando.kubernetes.EntandoKubernetesJavaApplication' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:67: Wrong lexicographical order for 'org.entando.kubernetes.assertionhelper.ContentAssertionHelper' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:68: Wrong lexicographical order for 'org.entando.kubernetes.client.K8SServiceClientTestDouble' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:69: Wrong lexicographical order for 'org.entando.kubernetes.client.core.EntandoCoreClient' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:70: Wrong lexicographical order for 'org.entando.kubernetes.client.k8ssvc.K8SServiceClient' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:71: Wrong lexicographical order for 'org.entando.kubernetes.config.TestAppConfiguration' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:72: Wrong lexicographical order for 'org.entando.kubernetes.config.TestKubernetesConfig' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:73: Wrong lexicographical order for 'org.entando.kubernetes.config.TestSecurityConfiguration' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:74: Wrong lexicographical order for 'org.entando.kubernetes.model.EntandoDeploymentPhase' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:75: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.ComponentType' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:76: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.AssetDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:77: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.CategoryDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:78: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.FileDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:79: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.FragmentDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:80: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.GroupDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:81: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.LabelDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:82: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.LanguageDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:83: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.PageDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:84: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.PageTemplateDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:85: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.WidgetDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:86: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.content.ContentAttribute' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:87: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.content.ContentDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:88: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.downloader.BundleDownloader' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:89: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.downloader.BundleDownloaderFactory' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:90: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.installable.Installable' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:91: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.processor.ComponentProcessor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:92: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:93: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:94: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleJobEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:95: Wrong lexicographical order for 'org.entando.kubernetes.model.job.JobStatus' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:96: Wrong lexicographical order for 'org.entando.kubernetes.model.job.JobType' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:97: Wrong lexicographical order for 'org.entando.kubernetes.model.link.EntandoAppPluginLink' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:98: Wrong lexicographical order for 'org.entando.kubernetes.repository.EntandoBundleComponentJobRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:99: Wrong lexicographical order for 'org.entando.kubernetes.repository.EntandoBundleJobRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:100: Wrong lexicographical order for 'org.entando.kubernetes.repository.InstalledEntandoBundleRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/assertionhelper/AnalysisReportAssertionHelper.java:58: Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 59. [CommentsIndentation]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:150: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:161: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:172: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/stubhelper/AnalysisReportStubHelper.java:21:49: GenericWhitespace '>' should followed by whitespace. [GenericWhitespace]
+Audit done.
+[WARNING] src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:[35] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:[69] (javadoc) NonEmptyAtclauseDescription: At-clause should have a non-empty description.
+[WARNING] src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:[70] (javadoc) NonEmptyAtclauseDescription: At-clause should have a non-empty description.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:[1] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:[4] (javadoc) JavadocParagraph: Empty line should be followed by <p> tag on the next line.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:[7] (whitespace) EmptyLineSeparator: 'package' should be separated from previous statement.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:[1] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:[4] (javadoc) JavadocParagraph: Empty line should be followed by <p> tag on the next line.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:[7] (whitespace) EmptyLineSeparator: 'package' should be separated from previous statement.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:[1] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:[4] (javadoc) JavadocParagraph: Empty line should be followed by <p> tag on the next line.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:[7] (whitespace) EmptyLineSeparator: 'package' should be separated from previous statement.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/reportable/AnalysisReportFunction.java:[1] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[62] (indentation) Indentation: 'for' has incorrect indentation level 16, expected level should be 12.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[63] (indentation) Indentation: 'for' child has incorrect indentation level 20, expected level should be 16.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[64] (indentation) Indentation: 'if' has incorrect indentation level 20, expected level should be 16.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[65] (indentation) Indentation: 'if' child has incorrect indentation level 24, expected level should be 20.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[66] (indentation) Indentation: 'if' child has incorrect indentation level 24, expected level should be 20.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[67] (indentation) Indentation: 'if rcurly' has incorrect indentation level 20, expected level should be 16.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[68] (indentation) Indentation: 'for' child has incorrect indentation level 20, expected level should be 16.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[69] (indentation) Indentation: 'for rcurly' has incorrect indentation level 16, expected level should be 12.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/DirectoryProcessor.java:[128] (indentation) CommentsIndentation: Comment has incorrect indentation level 0, expected is 12, indentation should be the same level as line 129.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:[33] (javadoc) SummaryJavadoc: Summary javadoc is missing.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:[38] (javadoc) SummaryJavadoc: Summary javadoc is missing.
+[WARNING] src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:[96] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[215] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[218] (javadoc) NonEmptyAtclauseDescription: At-clause should have a non-empty description.
+[WARNING] src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[219] (javadoc) NonEmptyAtclauseDescription: At-clause should have a non-empty description.
+[WARNING] src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[220] (javadoc) NonEmptyAtclauseDescription: At-clause should have a non-empty description.
+[WARNING] src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[248] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[65] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.DatabaseCleaner' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[66] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.EntandoKubernetesJavaApplication' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[67] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.assertionhelper.ContentAssertionHelper' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[68] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.client.K8SServiceClientTestDouble' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[69] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.client.core.EntandoCoreClient' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[70] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.client.k8ssvc.K8SServiceClient' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[71] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.config.TestAppConfiguration' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[72] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.config.TestKubernetesConfig' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[73] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.config.TestSecurityConfiguration' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[74] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.EntandoDeploymentPhase' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[75] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.ComponentType' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[76] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.AssetDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[77] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.CategoryDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[78] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.FileDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[79] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.FragmentDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[80] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.GroupDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[81] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.LabelDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[82] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.LanguageDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[83] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.PageDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[84] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.PageTemplateDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[85] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.WidgetDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[86] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.content.ContentAttribute' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[87] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.content.ContentDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[88] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.downloader.BundleDownloader' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[89] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.downloader.BundleDownloaderFactory' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[90] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.installable.Installable' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[91] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.processor.ComponentProcessor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[92] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[93] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[94] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleJobEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[95] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.job.JobStatus' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[96] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.job.JobType' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[97] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.model.link.EntandoAppPluginLink' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[98] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.repository.EntandoBundleComponentJobRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[99] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.repository.EntandoBundleJobRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:[100] (imports) CustomImportOrder: Wrong lexicographical order for 'org.entando.kubernetes.repository.InstalledEntandoBundleRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'.
+[WARNING] src/test/java/org/entando/kubernetes/assertionhelper/AnalysisReportAssertionHelper.java:[58] (indentation) CommentsIndentation: Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 59.
+[WARNING] src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:[150] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:[161] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:[172] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src/test/java/org/entando/kubernetes/stubhelper/AnalysisReportStubHelper.java:[21,49] (whitespace) GenericWhitespace: GenericWhitespace '>' should followed by whitespace.
+[WARNING] checkstyle:check violations detected but failOnViolation set to *****
+[INFO] You have 71 Checkstyle violations.
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:3.1.1:checkstyle (validate) @ entando-component-manager ---
+[INFO] Starting audit...
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:35: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:69: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java:70: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:4: Empty line should be followed by <p> tag on the next line. [JavadocParagraph]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:7: 'package' should be separated from previous statement. [EmptyLineSeparator]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:4: Empty line should be followed by <p> tag on the next line. [JavadocParagraph]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:7: 'package' should be separated from previous statement. [EmptyLineSeparator]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:4: Empty line should be followed by <p> tag on the next line. [JavadocParagraph]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:7: 'package' should be separated from previous statement. [EmptyLineSeparator]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/AnalysisReportFunction.java:1: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:62: 'for' has incorrect indentation level 16, expected level should be 12. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:63: 'for' child has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:64: 'if' has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:65: 'if' child has incorrect indentation level 24, expected level should be 20. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:66: 'if' child has incorrect indentation level 24, expected level should be 20. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:67: 'if rcurly' has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:68: 'for' child has incorrect indentation level 20, expected level should be 16. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:69: 'for rcurly' has incorrect indentation level 16, expected level should be 12. [Indentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/DirectoryProcessor.java:128: Comment has incorrect indentation level 0, expected is 12, indentation should be the same level as line 129. [CommentsIndentation]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:33: Summary javadoc is missing. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:38: Summary javadoc is missing. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ComponentProcessor.java:96: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:215: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:218: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:219: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:220: At-clause should have a non-empty description. [NonEmptyAtclauseDescription]
+[WARN] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:248: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:65: Wrong lexicographical order for 'org.entando.kubernetes.DatabaseCleaner' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:66: Wrong lexicographical order for 'org.entando.kubernetes.EntandoKubernetesJavaApplication' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:67: Wrong lexicographical order for 'org.entando.kubernetes.assertionhelper.ContentAssertionHelper' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:68: Wrong lexicographical order for 'org.entando.kubernetes.client.K8SServiceClientTestDouble' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:69: Wrong lexicographical order for 'org.entando.kubernetes.client.core.EntandoCoreClient' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:70: Wrong lexicographical order for 'org.entando.kubernetes.client.k8ssvc.K8SServiceClient' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:71: Wrong lexicographical order for 'org.entando.kubernetes.config.TestAppConfiguration' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:72: Wrong lexicographical order for 'org.entando.kubernetes.config.TestKubernetesConfig' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:73: Wrong lexicographical order for 'org.entando.kubernetes.config.TestSecurityConfiguration' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:74: Wrong lexicographical order for 'org.entando.kubernetes.model.EntandoDeploymentPhase' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:75: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.ComponentType' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:76: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.AssetDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:77: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.CategoryDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:78: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.FileDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:79: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.FragmentDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:80: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.GroupDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:81: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.LabelDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:82: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.LanguageDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:83: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.PageDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:84: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.PageTemplateDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:85: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.WidgetDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:86: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.content.ContentAttribute' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:87: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.descriptor.content.ContentDescriptor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:88: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.downloader.BundleDownloader' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:89: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.downloader.BundleDownloaderFactory' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:90: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.installable.Installable' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:91: Wrong lexicographical order for 'org.entando.kubernetes.model.bundle.processor.ComponentProcessor' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:92: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:93: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:94: Wrong lexicographical order for 'org.entando.kubernetes.model.job.EntandoBundleJobEntity' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:95: Wrong lexicographical order for 'org.entando.kubernetes.model.job.JobStatus' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:96: Wrong lexicographical order for 'org.entando.kubernetes.model.job.JobType' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:97: Wrong lexicographical order for 'org.entando.kubernetes.model.link.EntandoAppPluginLink' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:98: Wrong lexicographical order for 'org.entando.kubernetes.repository.EntandoBundleComponentJobRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:99: Wrong lexicographical order for 'org.entando.kubernetes.repository.EntandoBundleJobRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/controller/mockmvc/InstallFlowTest.java:100: Wrong lexicographical order for 'org.entando.kubernetes.repository.InstalledEntandoBundleRepository' import. Should be before 'org.entando.kubernetes.stubhelper.BundleStubHelper'. [CustomImportOrder]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/assertionhelper/AnalysisReportAssertionHelper.java:58: Comment has incorrect indentation level 0, expected is 4, indentation should be the same level as line 59. [CommentsIndentation]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:150: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:161: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/utils/EntandoCoreMockServer.java:172: First sentence of Javadoc is missing an ending period. [SummaryJavadoc]
+[WARN] /workspace/source/src/test/java/org/entando/kubernetes/stubhelper/AnalysisReportStubHelper.java:21:49: GenericWhitespace '>' should followed by whitespace. [GenericWhitespace]
+Audit done.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:prepare-agent (prepare-agent) @ entando-component-manager ---
+[INFO] argLine set to -javaagent:/home/jenkins/.mvnrepository/org/jacoco/org.jacoco.agent/0.8.5/org.jacoco.agent-0.8.5-runtime.jar=destfile=/workspace/source/target/jacoco.e**c
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ entando-component-manager ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 7 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ entando-component-manager ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 210 source files to /workspace/source/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:[9,59] cannot find symbol
+  symbol: class ReportableComponentProcessor
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[29,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[58,33] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: class org.entando.kubernetes.service.digitalexchange.job.EntandoBundleInstallService
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[49,1] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: class org.entando.kubernetes.service.digitalexchange.job.EntandoBundleInstallService
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/client/core/DefaultEntandoCoreClient.java:[9,45] cannot find symbol
+  symbol:   class AnalysisReportClientRequestBuilder
+  location: package org.entando.kubernetes.client.request
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/LanguageProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/AssetProcessor.java:[24,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:[9,56] cannot find symbol
+  symbol: class ReportableComponentProcessor
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/GroupProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/PluginProcessor.java:[22,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:[9,63] cannot find symbol
+  symbol: class ReportableComponentProcessor
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ContentTemplateProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/PageProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/PageTemplateProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/LabelProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ContentTypeProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/config/AppConfiguration.java:[18,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/config/AppConfiguration.java:[63,17] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: class org.entando.kubernetes.config.AppConfiguration
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/CategoryProcessor.java:[23,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/WidgetProcessor.java:[24,54] cannot find symbol
+  symbol:   class ReportableComponentProcessor
+  location: package org.entando.kubernetes.model.bundle.reportable
+[INFO] 21 errors 
+[INFO] -------------------------------------------------------------
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Skipping Entando Component Manager
+[INFO] This project has been banned from the build due to previous failures.
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  59.107 s
+[INFO] Finished at: 2020-11-05T10:03:34Z
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "***" could not be activated because it does not exist.
+[ERROR] Failed to e**cute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project entando-component-manager: Compilation failure: Compilation failure: 
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/FragmentProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoEngineReportableProcessor.java:[9,59] cannot find symbol
+[ERROR]   symbol: class ReportableComponentProcessor
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[29,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[58,33] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: class org.entando.kubernetes.service.digitalexchange.job.EntandoBundleInstallService
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/service/digitalexchange/job/EntandoBundleInstallService.java:[49,1] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: class org.entando.kubernetes.service.digitalexchange.job.EntandoBundleInstallService
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/client/core/DefaultEntandoCoreClient.java:[9,45] cannot find symbol
+[ERROR]   symbol:   class AnalysisReportClientRequestBuilder
+[ERROR]   location: package org.entando.kubernetes.client.request
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/LanguageProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/AssetProcessor.java:[24,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoCMSReportableProcessor.java:[9,56] cannot find symbol
+[ERROR]   symbol: class ReportableComponentProcessor
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/GroupProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/PluginProcessor.java:[22,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/reportable/EntandoK8SServiceReportableProcessor.java:[9,63] cannot find symbol
+[ERROR]   symbol: class ReportableComponentProcessor
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ContentTemplateProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/PageProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/PageTemplateProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/LabelProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/ContentTypeProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/config/AppConfiguration.java:[18,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/config/AppConfiguration.java:[63,17] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: class org.entando.kubernetes.config.AppConfiguration
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/CategoryProcessor.java:[23,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] /workspace/source/src/main/java/org/entando/kubernetes/model/bundle/processor/WidgetProcessor.java:[24,54] cannot find symbol
+[ERROR]   symbol:   class ReportableComponentProcessor
+[ERROR]   location: package org.entando.kubernetes.model.bundle.reportable
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< org.entando:entando-component-manager >----------------
+[INFO] Building Entando Component Manager 0.0.0-SNAPSHOT-PR-79-1
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-site-plugin:3.9.0:site (default-site) @ entando-component-manager ---
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:3.0.0
+[WARNING] dependency-info report is declared twice in default reportSet
+[WARNING] distribution-management report is declared twice in default reportSet
+[WARNING] index report is declared twice in default reportSet
+[WARNING] ci-management report is declared twice in default reportSet
+[WARNING] issue-management report is declared twice in default reportSet
+[WARNING] licenses report is declared twice in default reportSet
+[WARNING] plugins report is declared twice in default reportSet
+[WARNING] scm report is declared twice in default reportSet
+[WARNING] summary report is declared twice in default reportSet
+[INFO] 9 reports configured for maven-project-info-reports-plugin:3.0.0: dependency-info, distribution-management, index, ci-management, issue-management, licenses, plugins, scm, summary
+[INFO] Rendering site with default locale English (en)
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Relativizing decoration links with respect to localized project URL: http://www.entando.com/
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.3 skin.
+[INFO] Generating "Dependency Information" report --- maven-project-info-reports-plugin:3.0.0:dependency-info
+[INFO] Generating "About" report         --- maven-project-info-reports-plugin:3.0.0:index
+[INFO] Generating "Issue Management" report --- maven-project-info-reports-plugin:3.0.0:issue-management
+[INFO] Generating "Licenses" report      --- maven-project-info-reports-plugin:3.0.0:licenses
+[INFO] Generating "Plugins" report       --- maven-project-info-reports-plugin:3.0.0:plugins
+[INFO] Generating "Source Code Management" report --- maven-project-info-reports-plugin:3.0.0:scm
+[INFO] Generating "Summary" report       --- maven-project-info-reports-plugin:3.0.0:summary
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.338 s
+[INFO] Finished at: 2020-11-05T10:04:05Z
+[INFO] ------------------------------------------------------------------------
+shallow cloning https://github.com/entando-k8s/devops-results.git branch gh-pages
+ran git init in /tmp/jenkins-x-collect979582257
+ran git add remote origin https://github.com/entando-k8s/devops-results.git in /tmp/jenkins-x-collect979582257
+ran git fetch origin --depth=1 gh-pages in dir /tmp/jenkins-x-collect979582257
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/checkstyle.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/checkstyle.rss
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/maven-base.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/maven-theme.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/print.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/site.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/dependency-info.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/collapsed.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/expanded.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/external.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_error_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_info_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_success_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_warning_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/logos/build-by-maven-black.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/logos/build-by-maven-white.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/logos/maven-feather.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/newwindow.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/rss.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/index.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/issue-management.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/licenses.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/plugins.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/project-info.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/scm.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/summary.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/checkstyle.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/checkstyle.rss
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/maven-base.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/maven-theme.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/print.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/css/site.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/dependency-info.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/collapsed.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/expanded.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/external.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_error_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_info_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_success_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/icon_warning_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/logos/build-by-maven-black.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/logos/build-by-maven-white.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/logos/maven-feather.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/newwindow.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/images/rss.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/index.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/issue-management.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/licenses.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/plugins.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/project-info.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/scm.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-component-manager/PR-79/summary.html
+error: etcdserver: request is too large
+No pre-deployment test results found for entando-component-manager-PR-79.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1904  100  1667  100   237   2571    365 --:--:-- --:--:-- --:--:--  2588
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-component-manager/statuses/8d45c66597a608a4c7cc642b59f98d30da20e9a3",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11263967843,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI2Mzk2Nzg0Mw==",
+  "state": "pending",
+  "description": "No pre-deployment test results produced by build!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-component-manager/PR-79/surefire-report.html",
+  "context": "Pre-deployment tests",
+  "created_at": "2020-11-05T10:04:44Z",
+  "updated_at": "2020-11-05T10:04:44Z",
+  "creator": {
+    "login": "entando-**",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/entando-**",
+    "followers_url": "https://api.github.com/users/entando-**/followers",
+    "following_url": "https://api.github.com/users/entando-**/following{/other_user}",
+    "gists_url": "https://api.github.com/users/entando-**/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/entando-**/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/entando-**/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/entando-**/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+Checkstyle rules were violated for entando-component-manager-PR-79.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-component-manager/statuses/8d45c66597a608a4c7cc642b59f98d30da20e9a3",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11263967954,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI2Mzk2Nzk1NA==",
+  "state": "failure",
+  "description": "Checkstyle failure!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-component-manager/PR-79/checkstyle.html",
+  "context": "Checkstyle",
+  "created_at": "2020-11-05T10:04:44Z",
+  "updated_at": "2020-11-05T10:04:44Z",
+  "creator": {
+    "login": "entando-**",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/entando-**",
+    "followers_url": "https://api.github.com/users/entando-**/followers",
+    "following_url": "https://api.github.com/users/entando-**/following{/other_user}",
+    "gists_url": "https://api.github.com/users/entando-**/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/entando-**/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/entando-**/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1814  100  1622  100   192   2329    275 --:--:-- --:--:-- --:--:--  2327
+No OWASP dependency check found for entando-component-manager-PR-79.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 12  1904    0     0  100   237      0    340 --:--:-- --:--:-- --:--:--   343100  1904  100  1667  100   237   2396    340 --:--:-- --:--:-- --:--:--  2415
+The following checks failed for entando-component-manager-PR-79:
+No pre-deployment test results produced by build
+Checkstyle
+No OWASP dependency check results produced by build
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-component-manager/statuses/8d45c66597a608a4c7cc642b59f98d30da20e9a3",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11263968061,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI2Mzk2ODA2MQ==",
+  "state": "pending",
+  "description": "No OWASP dependency check results produced by build!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-component-manager/PR-79/dependency-check-report.html",
+  "context": "OWASP CVE",
+  "created_at": "2020-11-05T10:04:45Z",
+  "updated_at": "2020-11-05T10:04:45Z",
+  "creator": {
+    "login": "entando-**",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/entando-**/followers",
+    "following_url": "https://api.github.com/users/entando-**/following{/other_user}",
+    "gists_url": "https://api.github.com/users/entando-**/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/entando-**/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/entando-**/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-mvn-verify-pr'. The execution of the pipeline has stopped.[0m
