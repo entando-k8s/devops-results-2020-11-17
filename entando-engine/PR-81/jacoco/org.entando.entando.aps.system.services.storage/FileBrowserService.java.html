@@ -192,41 +192,45 @@ import org.springframework.validation.BeanPropertyBindingResult;
 <span class="fc" id="L192">        }</span>
 <span class="fc" id="L193">    }</span>
 
-    @Override
     public boolean exists(String currentPath, Boolean protectedFolder) throws EntException {
-<span class="nc" id="L197">        return this.getStorageManager().exists(currentPath, protectedFolder);</span>
+<span class="nc" id="L196">        return this.getStorageManager().exists(currentPath, protectedFolder);</span>
+    }
+
+    @Override
+    public boolean exists(String code) throws EntException {
+<span class="nc" id="L201">        return this.getStorageManager().exists(code, false);</span>
     }
 
     protected void checkResource(String currentPath, String objectName, Boolean protectedFolder) {
-<span class="fc bfc" id="L201" title="All 4 branches covered.">        if (null == protectedFolder &amp;&amp; !StringUtils.isEmpty(currentPath)) {</span>
-<span class="fc" id="L202">            BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(objectName, objectName);</span>
-<span class="fc" id="L203">            bindingResult.reject(FileBrowserValidator.ERRCODE_REQUIRED_FOLDER_TYPE, &quot;fileBrowser.browser.protectedFolder.required&quot;);</span>
-<span class="fc" id="L204">            throw new ValidationGenericException(bindingResult);</span>
+<span class="fc bfc" id="L205" title="All 4 branches covered.">        if (null == protectedFolder &amp;&amp; !StringUtils.isEmpty(currentPath)) {</span>
+<span class="fc" id="L206">            BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(objectName, objectName);</span>
+<span class="fc" id="L207">            bindingResult.reject(FileBrowserValidator.ERRCODE_REQUIRED_FOLDER_TYPE, &quot;fileBrowser.browser.protectedFolder.required&quot;);</span>
+<span class="fc" id="L208">            throw new ValidationGenericException(bindingResult);</span>
         }
-<span class="fc bfc" id="L206" title="All 2 branches covered.">        if (null == protectedFolder) {</span>
-<span class="fc" id="L207">            return;</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">        if (null == protectedFolder) {</span>
+<span class="fc" id="L211">            return;</span>
         }
         try {
-<span class="fc" id="L210">            boolean exists = this.getStorageManager().exists(currentPath, protectedFolder);</span>
-<span class="fc bfc" id="L211" title="All 2 branches covered.">            if (!exists) {</span>
-<span class="fc" id="L212">                logger.warn(&quot;no resource found for path {} - type {}&quot;, currentPath, protectedFolder);</span>
-<span class="fc" id="L213">                throw new ResourceNotFoundException(FileBrowserValidator.ERRCODE_RESOURCE_DOES_NOT_EXIST, objectName, currentPath);</span>
+<span class="fc" id="L214">            boolean exists = this.getStorageManager().exists(currentPath, protectedFolder);</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">            if (!exists) {</span>
+<span class="fc" id="L216">                logger.warn(&quot;no resource found for path {} - type {}&quot;, currentPath, protectedFolder);</span>
+<span class="fc" id="L217">                throw new ResourceNotFoundException(FileBrowserValidator.ERRCODE_RESOURCE_DOES_NOT_EXIST, objectName, currentPath);</span>
             }
-<span class="fc" id="L215">        } catch (ResourceNotFoundException e) {</span>
-<span class="fc" id="L216">            throw e;</span>
-<span class="nc" id="L217">        } catch (Exception e) {</span>
-<span class="nc" id="L218">            logger.error(&quot;Error checking resource {} , protected {} &quot;, currentPath, protectedFolder, e);</span>
-<span class="nc" id="L219">            throw new RestServerError(&quot;error checking resource&quot;, e);</span>
-<span class="fc" id="L220">        }</span>
-<span class="fc" id="L221">    }</span>
+<span class="fc" id="L219">        } catch (ResourceNotFoundException e) {</span>
+<span class="fc" id="L220">            throw e;</span>
+<span class="nc" id="L221">        } catch (Exception e) {</span>
+<span class="nc" id="L222">            logger.error(&quot;Error checking resource {} , protected {} &quot;, currentPath, protectedFolder, e);</span>
+<span class="nc" id="L223">            throw new RestServerError(&quot;error checking resource&quot;, e);</span>
+<span class="fc" id="L224">        }</span>
+<span class="fc" id="L225">    }</span>
 
     public IStorageManager getStorageManager() {
-<span class="fc" id="L224">        return storageManager;</span>
+<span class="fc" id="L228">        return storageManager;</span>
     }
 
     public void setStorageManager(IStorageManager storageManager) {
-<span class="fc" id="L228">        this.storageManager = storageManager;</span>
-<span class="fc" id="L229">    }</span>
+<span class="fc" id="L232">        this.storageManager = storageManager;</span>
+<span class="fc" id="L233">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

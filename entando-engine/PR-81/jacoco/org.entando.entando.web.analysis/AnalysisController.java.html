@@ -14,6 +14,7 @@
 package org.entando.entando.web.analysis;
 
 import com.agiletec.aps.system.services.role.Permission;
+import org.entando.entando.aps.system.services.IComponentExistsService;
 import org.entando.entando.aps.system.services.analysis.component_existence.ComponentExistenceAnalysis;
 import org.entando.entando.aps.system.services.category.ICategoryService;
 import org.entando.entando.aps.system.services.group.IGroupService;
@@ -45,8 +46,8 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(value = &quot;/analysis&quot;)
-<span class="fc" id="L48">public class AnalysisController implements IAnalysisController {</span>
-<span class="fc" id="L49">    private final EntLogger logger = EntLogFactory.getSanitizedLogger(this.getClass());</span>
+<span class="fc" id="L49">public class AnalysisController implements IAnalysisController {</span>
+<span class="fc" id="L50">    private final EntLogger logger = EntLogFactory.getSanitizedLogger(this.getClass());</span>
 
     /**
      * COMPONENT EXISTENCE ANALYSIS REPORT
@@ -57,24 +58,23 @@ import java.util.Set;
     public ResponseEntity&lt;SimpleRestResponse&lt;AnalysisResponse&gt;&gt; runComponentExistenceAnalysis(
             @RequestBody Map&lt;String, List&lt;String&gt;&gt; idCodesByObjectType) {
         //-
-<span class="fc" id="L60">        Set&lt;String&gt; objectTypes = idCodesByObjectType.keySet();</span>
-<span class="fc" id="L61">        logger.debug(&quot;Running runAnalysis on types {}&quot;, objectTypes);</span>
-<span class="fc" id="L62">        return runComponentExistenceAnalysisDefaultImpl(</span>
+<span class="fc" id="L61">        Set&lt;String&gt; objectTypes = idCodesByObjectType.keySet();</span>
+<span class="fc" id="L62">        logger.debug(&quot;Running runAnalysis on types {}&quot;, objectTypes);</span>
+<span class="fc" id="L63">        return runComponentExistenceAnalysisDefaultImpl(</span>
                 new ComponentExistenceAnalysis(),
                 idCodesByObjectType);
     }
 
     @Override
-    public Object mapComponentTypeToService(String objectType) {
+    public IComponentExistsService mapComponentTypeToService(String objectType) {
         try {
-<span class="pc bpc" id="L70" title="1 of 10 branches missed.">            switch (AnalysisResponse.ObjectType.valueOf(objectType)) {</span>
+<span class="pc bpc" id="L71" title="1 of 10 branches missed.">            switch (AnalysisResponse.ObjectType.valueOf(objectType)) {</span>
                 case widgets:
-<span class="fc" id="L72">                    return widgetService;</span>
+<span class="fc" id="L73">                    return widgetService;</span>
                 case fragments:
-<span class="fc" id="L74">                    return guiFragmentService;</span>
+<span class="fc" id="L75">                    return guiFragmentService;</span>
                 case pages:
-<span class="fc" id="L76">                    return pageService;</span>
-                case pageTemplates:
+<span class="fc" id="L77">                    return pageService;</span>
                 case pageModels:
 <span class="fc" id="L79">                    return pageModelService;</span>
                 case categories:

@@ -13,73 +13,76 @@
  */
 package org.entando.entando.aps.system.services.analysis.component_existence;
 
-import org.entando.entando.aps.system.services.category.ICategoryService;
-import org.entando.entando.aps.system.services.group.IGroupService;
-import org.entando.entando.aps.system.services.guifragment.IGuiFragmentService;
-import org.entando.entando.aps.system.services.label.ILabelService;
-import org.entando.entando.aps.system.services.language.ILanguageService;
-import org.entando.entando.aps.system.services.page.IPageService;
-import org.entando.entando.aps.system.services.page.PageService;
-import org.entando.entando.aps.system.services.pagemodel.IPageModelService;
-import org.entando.entando.aps.system.services.storage.IFileBrowserService;
-import org.entando.entando.aps.system.services.widgettype.IWidgetService;
+import org.entando.entando.aps.system.services.IComponentExistsService;
 import org.entando.entando.ent.exception.EntRuntimeException;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-<span class="fc" id="L30">public class ComponentExistenceAnalysis implements IComponentExistenceAnalysis {</span>
+<span class="fc" id="L23">public class ComponentExistenceAnalysis {</span>
 
-    private boolean doesComponentExistsOnService(Object service, String idCode) {
-        try {
-<span class="fc bfc" id="L34" title="All 2 branches covered.">            if (service instanceof IWidgetService) {</span>
-<span class="fc" id="L35">                return ((IWidgetService) service).exists(idCode);</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">            } else if (service instanceof IGuiFragmentService) {</span>
-<span class="fc" id="L37">                return ((IGuiFragmentService) service).exist(idCode);</span>
-<span class="fc bfc" id="L38" title="All 2 branches covered.">            } else if (service instanceof PageService) {</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">                return ((IPageService) service).exists(idCode, IPageService.STATUS_DRAFT) ||</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">                        ((IPageService) service).exists(idCode, IPageService.STATUS_ONLINE);</span>
-<span class="fc bfc" id="L41" title="All 2 branches covered.">            } else if (service instanceof IPageModelService) {</span>
-<span class="fc" id="L42">                return ((IPageModelService) service).exists(idCode);</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">            } else if (service instanceof ICategoryService) {</span>
-<span class="fc" id="L44">                return ((ICategoryService) service).exists(idCode);</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">            } else if (service instanceof IGroupService) {</span>
-<span class="fc" id="L46">                return ((IGroupService) service).exists(idCode);</span>
-<span class="fc bfc" id="L47" title="All 2 branches covered.">            } else if (service instanceof ILabelService) {</span>
-<span class="fc" id="L48">                return ((ILabelService) service).exists(idCode);</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">            } else if (service instanceof ILanguageService) {</span>
-<span class="fc" id="L50">                return ((ILanguageService) service).exists(idCode);</span>
-<span class="pc bpc" id="L51" title="1 of 2 branches missed.">            } else if (service instanceof IFileBrowserService) {</span>
-<span class="fc" id="L52">                return ((IFileBrowserService) service).exists(idCode, false);</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">            } else if (service == null) {</span>
-<span class="nc" id="L54">                throw new EntRuntimeException(&quot;Null service type detected&quot;);</span>
-            } else {
-<span class="nc" id="L56">                throw new EntRuntimeException(&quot;Illegal service type detected: \&quot;&quot; + service.getClass().getSimpleName() + &quot;\&quot;&quot;);</span>
-            }
-<span class="fc" id="L58">        } catch (Exception ex) {</span>
-<span class="fc" id="L59">            throw new EntRuntimeException(&quot;Error detected checking component existence&quot; + idCode, ex);</span>
+<span class="fc" id="L25">    public static class ComponentExistenceAnalysisResult {</span>
+        public Map&lt;Object, ComponentStatusMap&gt; getMap() {
+<span class="fc" id="L27">            return map;</span>
         }
+
+<span class="fc" id="L30">        Map&lt;Object, ComponentStatusMap&gt; map = new HashMap&lt;&gt;();</span>
     }
 
-    @Override
+<span class="fc" id="L33">    public static class ComponentStatusMap {</span>
+        public Map&lt;String, Status&gt; getMap() {
+<span class="fc" id="L35">            return map;</span>
+        }
+
+<span class="fc" id="L38">        Map&lt;String, Status&gt; map = new HashMap&lt;&gt;();</span>
+    }
+
+<span class="fc" id="L41">    public enum Status {</span>
+<span class="fc" id="L42">        NEW, DIFF, EQUAL</span>
+    }
+
+    public static class ServiceParams {
+        public final IComponentExistsService service;
+        public final List&lt;String&gt; idCodesList;
+
+<span class="fc" id="L49">        public ServiceParams(IComponentExistsService service, List&lt;String&gt; idCodesList) {</span>
+<span class="fc" id="L50">            this.service = service;</span>
+<span class="fc" id="L51">            this.idCodesList = idCodesList;</span>
+<span class="fc" id="L52">        }</span>
+    }
+
     public ComponentExistenceAnalysisResult run(ComponentExistenceAnalysisResult result, List&lt;ServiceParams&gt; servicesParams) {
         //-
-<span class="fc bfc" id="L66" title="All 2 branches covered.">        for (ServiceParams serviceParams : servicesParams) {</span>
-<span class="fc" id="L67">            Object service = serviceParams.service;</span>
-<span class="fc" id="L68">            List&lt;String&gt; idCodesToCheck = serviceParams.idCodesList;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for (ServiceParams serviceParams : servicesParams) {</span>
+<span class="fc" id="L58">            IComponentExistsService service = serviceParams.service;</span>
+<span class="fc" id="L59">            List&lt;String&gt; idCodesToCheck = serviceParams.idCodesList;</span>
 
-<span class="fc" id="L70">            ComponentStatusMap componentStatusMap = result.map.getOrDefault(service, new ComponentStatusMap());</span>
+<span class="fc" id="L61">            ComponentStatusMap componentStatusMap = result.map.getOrDefault(service, new ComponentStatusMap());</span>
 
-<span class="fc bfc" id="L72" title="All 2 branches covered.">            for (String idCodeToCheck : idCodesToCheck) {</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">                if (doesComponentExistsOnService(service, idCodeToCheck)) {</span>
-<span class="fc" id="L74">                    componentStatusMap.map.put(idCodeToCheck, Status.DIFF);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            for (String idCodeToCheck : idCodesToCheck) {</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">                if (doesComponentExistsOnService(service, idCodeToCheck)) {</span>
+<span class="fc" id="L65">                    componentStatusMap.map.put(idCodeToCheck, Status.DIFF);</span>
                 } else {
-<span class="fc" id="L76">                    componentStatusMap.map.put(idCodeToCheck, Status.NEW);</span>
+<span class="fc" id="L67">                    componentStatusMap.map.put(idCodeToCheck, Status.NEW);</span>
                 }
-<span class="fc" id="L78">            }</span>
+<span class="fc" id="L69">            }</span>
 
-<span class="fc" id="L80">            result.map.put(service, componentStatusMap);</span>
-<span class="fc" id="L81">        }</span>
-<span class="fc" id="L82">        return result;</span>
+<span class="fc" id="L71">            result.map.put(service, componentStatusMap);</span>
+<span class="fc" id="L72">        }</span>
+<span class="fc" id="L73">        return result;</span>
+    }
+
+    protected boolean doesComponentExistsOnService(IComponentExistsService service, String idCode) {
+        //-
+        try {
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">            if (service == null) {</span>
+<span class="nc" id="L80">                throw new EntRuntimeException(&quot;Null service type detected&quot;);</span>
+            }
+<span class="fc" id="L82">            return service.exists(idCode);</span>
+<span class="fc" id="L83">        } catch (Exception ex) {</span>
+<span class="fc" id="L84">            throw new EntRuntimeException(&quot;Error detected checking component existence&quot; + idCode, ex);</span>
+        }
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
