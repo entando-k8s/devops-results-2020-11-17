@@ -118,9 +118,9 @@ import org.xml.sax.SAXException;
 
     @Override
     public Map&lt;String, String&gt; getAttributeDisablingCodes() {
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if (null != this.attributeDisablingCodes) {</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (null != this.attributeDisablingCodes) {</span>
             //codes already loaded
-<span class="nc" id="L123">            return this.attributeDisablingCodes;</span>
+<span class="fc" id="L123">            return this.attributeDisablingCodes;</span>
         }
         //codes not loaded yet
 <span class="fc" id="L126">        AttributeDisablingCodesLoader loader = new AttributeDisablingCodesLoader();</span>
