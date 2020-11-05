@@ -134,7 +134,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}&quot;, method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; deleteUserProfileType(@PathVariable String profileTypeCode) {
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; deleteUserProfileType(@PathVariable String profileTypeCode) {
 <span class="fc" id="L138">        logger.debug(&quot;Deleting profile type -&gt; {}&quot;, profileTypeCode);</span>
 <span class="fc" id="L139">        this.getUserProfileTypeService().deleteUserProfileType(profileTypeCode);</span>
 <span class="fc" id="L140">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
@@ -173,7 +173,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute/{attributeCode}&quot;, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&gt;&gt; getUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
+    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&lt;String, String&gt;&gt;&gt; getUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
 <span class="fc" id="L177">        logger.debug(&quot;Requested profile type {} - attribute {}&quot;, profileTypeCode, attributeCode);</span>
 <span class="fc" id="L178">        EntityTypeAttributeFullDto dto = this.getUserProfileTypeService().getUserProfileAttribute(profileTypeCode, attributeCode);</span>
 <span class="fc" id="L179">        logger.debug(&quot;Main Response -&gt; {}&quot;, dto);</span>
@@ -184,7 +184,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&gt;&gt; addUserProfileAttribute(@PathVariable String profileTypeCode,
+    public ResponseEntity&lt;RestResponse&lt;EntityTypeAttributeFullDto, Map&lt;String, String&gt;&gt;&gt; addUserProfileAttribute(@PathVariable String profileTypeCode,
             @Valid @RequestBody EntityTypeAttributeFullDto bodyRequest, BindingResult bindingResult) {
 <span class="fc" id="L189">        logger.debug(&quot;Profile type {} - Adding attribute {}&quot;, profileTypeCode, bodyRequest);</span>
 <span class="fc bfc" id="L190" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
@@ -223,7 +223,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/{profileTypeCode}/attribute/{attributeCode}&quot;, method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; deleteUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; deleteUserProfileAttribute(@PathVariable String profileTypeCode, @PathVariable String attributeCode) {
 <span class="fc" id="L227">        logger.debug(&quot;Deleting attribute {} from profile type {}&quot;, attributeCode, profileTypeCode);</span>
 <span class="fc" id="L228">        this.getUserProfileTypeService().deleteUserProfileAttribute(profileTypeCode, attributeCode);</span>
 <span class="fc" id="L229">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
@@ -234,7 +234,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypes/refresh/{profileTypeCode}&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; reloadReferences(@PathVariable String profileTypeCode) {
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, String&gt;&gt;&gt; reloadReferences(@PathVariable String profileTypeCode) {
 <span class="fc" id="L238">        logger.debug(&quot;reload references of profile type {}&quot;, profileTypeCode);</span>
 <span class="fc" id="L239">        this.getUserProfileTypeService().reloadProfileTypeReferences(profileTypeCode);</span>
 <span class="fc" id="L240">        Map&lt;String, String&gt; result = new HashMap&lt;&gt;();</span>
@@ -246,7 +246,7 @@ import java.util.*;
 
     @RestAccessControl(permission = Permission.SUPERUSER)
     @RequestMapping(value = &quot;/profileTypesStatus&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity&lt;SimpleRestResponse&lt;Map&gt;&gt; reloadReferences(@Valid @RequestBody ProfileTypeRefreshRequest bodyRequest, BindingResult bindingResult) {
+    public ResponseEntity&lt;SimpleRestResponse&lt;Map&lt;String, Object&gt;&gt;&gt; reloadReferences(@Valid @RequestBody ProfileTypeRefreshRequest bodyRequest, BindingResult bindingResult) {
 <span class="fc" id="L250">        logger.debug(&quot;reload references of profile types {}&quot;, bodyRequest.getProfileTypeCodes());</span>
 <span class="fc" id="L251">        Map&lt;String, Integer&gt; status = this.getUserProfileTypeService().reloadProfileTypesReferences(bodyRequest.getProfileTypeCodes());</span>
 <span class="fc" id="L252">        Map&lt;String, Object&gt; result = new HashMap&lt;&gt;();</span>
