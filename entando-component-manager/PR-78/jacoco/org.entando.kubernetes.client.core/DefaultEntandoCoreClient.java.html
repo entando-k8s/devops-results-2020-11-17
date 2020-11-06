@@ -430,7 +430,7 @@ public class DefaultEntandoCoreClient implements EntandoCoreClient {
 <span class="fc" id="L430">                        new ParameterizedTypeReference&lt;&gt;() {</span>
                         });
 
-<span class="pc bpc" id="L433" title="1 of 2 branches missed.">        if (!reportResponseEntity.getStatusCode().is2xxSuccessful()) {</span>
+<span class="pc bpc" id="L433" title="1 of 2 branches missed.">        if (! reportResponseEntity.getStatusCode().is2xxSuccessful()) {</span>
 <span class="nc" id="L434">            throw new ReportAnalysisException(String.format(</span>
                     &quot;An error occurred fetching the %s report analysis&quot;, reportableRemoteHandler));
         } else {
