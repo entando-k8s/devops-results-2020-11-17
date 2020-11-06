@@ -68,7 +68,7 @@ Entando Kubernetes Custom Model,org.entando.kubernetes.model.infrastructure,Enta
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.infrastructure,EntandoClusterInfrastructureList,0,3,0,0,0,1,0,1,0,1
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.infrastructure,EntandoClusterInfrastructureSpecFluent,0,39,0,0,0,9,0,4,0,4
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.infrastructure,EntandoClusterInfrastructureFluent,0,48,0,0,0,11,0,6,0,6
-Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkSpecFluent,0,50,0,0,0,15,0,5,0,5
+Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkSpecFluent,0,56,0,0,0,15,0,5,0,5
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkFluent.NestedEntandoAppPluginLinkSpecFluent,0,22,0,0,0,8,0,4,0,4
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkFluent,0,48,0,0,0,11,0,6,0,6
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkBuilder,0,21,0,0,0,5,0,3,0,3
@@ -76,7 +76,7 @@ Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,DoneableEntand
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkList,0,3,0,0,0,1,0,1,0,1
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkSpecBuilder,0,7,0,0,0,4,0,2,0,2
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkOperationFactory,0,12,0,0,0,2,0,2,0,2
-Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkSpec,3,27,0,0,2,10,1,5,1,5
+Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLinkSpec,3,29,0,0,2,10,1,5,1,5
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.link,EntandoAppPluginLink,0,25,0,0,0,9,0,5,0,5
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.plugin,EntandoPluginSpecFluent,12,220,0,0,3,42,1,14,1,14
 Entando Kubernetes Custom Model,org.entando.kubernetes.model.plugin,EntandoPlugin,0,25,0,0,0,9,0,5,0,5

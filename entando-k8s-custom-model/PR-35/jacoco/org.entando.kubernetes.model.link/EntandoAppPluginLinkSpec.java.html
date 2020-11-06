@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
+import java.util.Optional;
 
 @JsonSerialize
 @JsonDeserialize
@@ -42,36 +43,36 @@ public class EntandoAppPluginLinkSpec implements Serializable {
     private String entandoPluginNamespace;
     private String entandoPluginName;
 
-<span class="nc" id="L45">    public EntandoAppPluginLinkSpec() {</span>
+<span class="nc" id="L46">    public EntandoAppPluginLinkSpec() {</span>
         //Required for JSON deserialization
-<span class="nc" id="L47">    }</span>
+<span class="nc" id="L48">    }</span>
 
     @JsonCreator
     public EntandoAppPluginLinkSpec(
             @JsonProperty(&quot;entandoAppNamespace&quot;) String entandoAppNamespace,
             @JsonProperty(&quot;entandoAppName&quot;) String entandoAppName,
             @JsonProperty(&quot;entandoPluginNamespace&quot;) String entandoPluginNamespace,
-<span class="fc" id="L54">            @JsonProperty(&quot;entandoPluginName&quot;) String entandoPluginName) {</span>
-<span class="fc" id="L55">        this.entandoAppNamespace = entandoAppNamespace;</span>
-<span class="fc" id="L56">        this.entandoAppName = entandoAppName;</span>
-<span class="fc" id="L57">        this.entandoPluginNamespace = entandoPluginNamespace;</span>
-<span class="fc" id="L58">        this.entandoPluginName = entandoPluginName;</span>
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L55">            @JsonProperty(&quot;entandoPluginName&quot;) String entandoPluginName) {</span>
+<span class="fc" id="L56">        this.entandoAppNamespace = entandoAppNamespace;</span>
+<span class="fc" id="L57">        this.entandoAppName = entandoAppName;</span>
+<span class="fc" id="L58">        this.entandoPluginNamespace = entandoPluginNamespace;</span>
+<span class="fc" id="L59">        this.entandoPluginName = entandoPluginName;</span>
+<span class="fc" id="L60">    }</span>
 
     public String getEntandoAppName() {
-<span class="fc" id="L62">        return entandoAppName;</span>
+<span class="fc" id="L63">        return entandoAppName;</span>
     }
 
-    public String getEntandoAppNamespace() {
-<span class="fc" id="L66">        return entandoAppNamespace;</span>
+    public Optional&lt;String&gt; getEntandoAppNamespace() {
+<span class="fc" id="L67">        return Optional.ofNullable(entandoAppNamespace);</span>
     }
 
     public String getEntandoPluginName() {
-<span class="fc" id="L70">        return entandoPluginName;</span>
+<span class="fc" id="L71">        return entandoPluginName;</span>
     }
 
-    public String getEntandoPluginNamespace() {
-<span class="fc" id="L74">        return entandoPluginNamespace;</span>
+    public Optional&lt;String&gt; getEntandoPluginNamespace() {
+<span class="fc" id="L75">        return Optional.ofNullable(entandoPluginNamespace);</span>
     }
 
 }
