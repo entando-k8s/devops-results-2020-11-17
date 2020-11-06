@@ -29,11 +29,10 @@ import io.fabric8.kubernetes.api.model.EnvVar;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import org.entando.kubernetes.model.DbmsVendor;
-import org.entando.kubernetes.model.EntandoDeploymentSpec;
 import org.entando.kubernetes.model.EntandoResourceRequirements;
-import org.entando.kubernetes.model.RequiresKeycloak;
+import org.entando.kubernetes.model.KeycloakAwareSpec;
+import org.entando.kubernetes.model.KeycloakToUse;
 
 @JsonInclude(Include.NON_NULL)
 @JsonSerialize
@@ -42,14 +41,13 @@ import org.entando.kubernetes.model.RequiresKeycloak;
         setterVisibility = Visibility.NONE)
 @RegisterForReflection
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EntandoClusterInfrastructureSpec extends EntandoDeploymentSpec implements RequiresKeycloak {
+public class EntandoClusterInfrastructureSpec extends KeycloakAwareSpec {
 
-    private String keycloakSecretToUse;
     private boolean isDefault;
 
     public EntandoClusterInfrastructureSpec() {
-<span class="nc" id="L51">        super();</span>
-<span class="nc" id="L52">    }</span>
+<span class="nc" id="L49">        super();</span>
+<span class="nc" id="L50">    }</span>
 
     @JsonCreator
     public EntandoClusterInfrastructureSpec(
@@ -57,24 +55,19 @@ public class EntandoClusterInfrastructureSpec extends EntandoDeploymentSpec impl
             @JsonProperty(&quot;ingressHostName&quot;) String ingressHostName,
             @JsonProperty(&quot;tlsSecretName&quot;) String tlsSecretName,
             @JsonProperty(&quot;replicas&quot;) Integer replicas,
-            @JsonProperty(&quot;keycloakSecretToUse&quot;) String keycloakSecretToUse,
+            @JsonProperty(&quot;keycloakToUse&quot;) KeycloakToUse keycloakToUse,
             @JsonProperty(&quot;isDefault&quot;) Boolean isDefault,
             @JsonProperty(&quot;serviceAccountToUse&quot;) String serviceAccountToUse,
-            @JsonProperty(&quot;parameters&quot;) Map&lt;String, String&gt; parameters,
             @JsonProperty(&quot;environmentVariables&quot;) List&lt;EnvVar&gt; environmentVariables,
             @JsonProperty(&quot;resourceRequirements&quot;) EntandoResourceRequirements resourceRequirements) {
-<span class="fc" id="L66">        super(ingressHostName, tlsSecretName, replicas, dbms, serviceAccountToUse, parameters, environmentVariables, resourceRequirements);</span>
-<span class="fc" id="L67">        this.keycloakSecretToUse = keycloakSecretToUse;</span>
-<span class="fc" id="L68">        this.isDefault = Boolean.TRUE.equals(isDefault);</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L63">        super(ingressHostName, tlsSecretName, replicas, dbms, serviceAccountToUse, environmentVariables, resourceRequirements,</span>
+                keycloakToUse);
+<span class="fc" id="L65">        this.isDefault = Boolean.TRUE.equals(isDefault);</span>
+<span class="fc" id="L66">    }</span>
 
     public boolean isDefault() {
-<span class="fc" id="L72">        return isDefault;</span>
+<span class="fc" id="L69">        return isDefault;</span>
     }
 
-    @Override
-    public Optional&lt;String&gt; getKeycloakSecretToUse() {
-<span class="fc" id="L77">        return Optional.ofNullable(keycloakSecretToUse);</span>
-    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -24,9 +24,9 @@ public class EntandoAppPluginLinkSpecFluent&lt;N extends EntandoAppPluginLinkSpe
     private String entandoPluginNamespace;
 
 <span class="fc" id="L26">    public EntandoAppPluginLinkSpecFluent(EntandoAppPluginLinkSpec spec) {</span>
-<span class="fc" id="L27">        this.entandoAppNamespace = spec.getEntandoAppNamespace();</span>
+<span class="fc" id="L27">        this.entandoAppNamespace = spec.getEntandoAppNamespace().orElse(null);</span>
 <span class="fc" id="L28">        this.entandoAppName = spec.getEntandoAppName();</span>
-<span class="fc" id="L29">        this.entandoPluginNamespace = spec.getEntandoPluginNamespace();</span>
+<span class="fc" id="L29">        this.entandoPluginNamespace = spec.getEntandoPluginNamespace().orElse(null);</span>
 <span class="fc" id="L30">        this.entandoPluginName = spec.getEntandoPluginName();</span>
 
 <span class="fc" id="L32">    }</span>

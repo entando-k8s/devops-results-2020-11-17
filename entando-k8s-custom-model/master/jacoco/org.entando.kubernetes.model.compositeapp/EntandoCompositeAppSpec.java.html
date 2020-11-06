@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import org.entando.kubernetes.model.EntandoBaseCustomResource;
 
@@ -40,15 +41,15 @@ public class EntandoCompositeAppSpec implements Serializable {
     private List&lt;EntandoBaseCustomResource&gt; components;
 
     public EntandoCompositeAppSpec() {
-<span class="fc" id="L43">        super();</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L44">        super();</span>
+<span class="fc" id="L45">    }</span>
 
-<span class="fc" id="L46">    public EntandoCompositeAppSpec(List&lt;EntandoBaseCustomResource&gt; components) {</span>
-<span class="fc" id="L47">        this.components = components;</span>
-<span class="fc" id="L48">    }</span>
+<span class="fc" id="L47">    public EntandoCompositeAppSpec(List&lt;EntandoBaseCustomResource&gt; components) {</span>
+<span class="fc" id="L48">        this.components = components;</span>
+<span class="fc" id="L49">    }</span>
 
     public List&lt;EntandoBaseCustomResource&gt; getComponents() {
-<span class="fc" id="L51">        return components;</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        return this.components == null ? Collections.emptyList() : this.components;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

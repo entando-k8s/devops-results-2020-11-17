@@ -17,7 +17,6 @@
 package org.entando.kubernetes.model;
 
 import static java.util.Optional.ofNullable;
-import static org.entando.kubernetes.model.Coalescence.coalesce;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -27,10 +26,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import io.fabric8.kubernetes.api.model.EnvVar;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @JsonInclude(Include.NON_NULL)
@@ -38,66 +35,41 @@ import java.util.Optional;
         setterVisibility = Visibility.NONE)
 @RegisterForReflection
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class EntandoDeploymentSpec implements HasIngress, Serializable {
 
-<span class="pc" id="L43">    private Integer replicas = 1;</span>
-    private DbmsVendor dbms;
-    private String ingressHostName;
-    private String tlsSecretName;
+public abstract class EntandoDeploymentSpec implements Serializable {
+
+<span class="pc" id="L41">    private Integer replicas = 1;</span>
     private String serviceAccountToUse;
-<span class="pc" id="L48">    private Map&lt;String, String&gt; parameters = new HashMap&lt;&gt;();</span>
-<span class="pc" id="L49">    private List&lt;EnvVar&gt; environmentVariables = new ArrayList&lt;&gt;();</span>
+    private List&lt;EnvVar&gt; environmentVariables;
     private EntandoResourceRequirements resourceRequirements;
 
-<span class="nc" id="L52">    protected EntandoDeploymentSpec() {</span>
-<span class="nc" id="L53">    }</span>
+<span class="nc" id="L46">    protected EntandoDeploymentSpec() {</span>
+<span class="nc" id="L47">    }</span>
 
-    @SuppressWarnings(&quot;unchecked&quot;)
-    protected EntandoDeploymentSpec(String ingressHostName, String tlsSecretName, Integer replicas, DbmsVendor dbms,
-            String serviceAccountToUse, Map&lt;String, String&gt; parameters, List&lt;EnvVar&gt; environmentVariables,
-<span class="fc" id="L58">            EntandoResourceRequirements resourceRequirements) {</span>
-<span class="fc" id="L59">        this.ingressHostName = ingressHostName;</span>
-<span class="fc" id="L60">        this.tlsSecretName = tlsSecretName;</span>
-<span class="fc" id="L61">        this.replicas = replicas;</span>
-<span class="fc" id="L62">        this.dbms = dbms;</span>
-<span class="fc" id="L63">        this.serviceAccountToUse = serviceAccountToUse;</span>
-<span class="fc" id="L64">        this.parameters = parameters;</span>
-<span class="fc" id="L65">        this.environmentVariables = coalesce(environmentVariables, this.environmentVariables);</span>
-<span class="fc" id="L66">        this.resourceRequirements = resourceRequirements;</span>
-<span class="fc" id="L67">    }</span>
-
-    public Map&lt;String, String&gt; getParameters() {
-<span class="nc" id="L70">        return parameters;</span>
-    }
-
-    @Override
-    public Optional&lt;String&gt; getIngressHostName() {
-<span class="fc" id="L75">        return Optional.ofNullable(ingressHostName);</span>
-    }
-
-    @Override
-    public Optional&lt;String&gt; getTlsSecretName() {
-<span class="fc" id="L80">        return Optional.ofNullable(tlsSecretName);</span>
-    }
+    protected EntandoDeploymentSpec(Integer replicas,
+            String serviceAccountToUse,
+            List&lt;EnvVar&gt; environmentVariables,
+<span class="fc" id="L52">            EntandoResourceRequirements resourceRequirements) {</span>
+<span class="fc" id="L53">        this.replicas = replicas;</span>
+<span class="fc" id="L54">        this.serviceAccountToUse = serviceAccountToUse;</span>
+<span class="fc" id="L55">        this.environmentVariables = environmentVariables;</span>
+<span class="fc" id="L56">        this.resourceRequirements = resourceRequirements;</span>
+<span class="fc" id="L57">    }</span>
 
     public Optional&lt;Integer&gt; getReplicas() {
-<span class="fc" id="L84">        return ofNullable(replicas);</span>
-    }
-
-    public Optional&lt;DbmsVendor&gt; getDbms() {
-<span class="fc" id="L88">        return ofNullable(dbms);</span>
+<span class="fc" id="L60">        return ofNullable(replicas);</span>
     }
 
     public List&lt;EnvVar&gt; getEnvironmentVariables() {
-<span class="fc" id="L92">        return environmentVariables;</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        return environmentVariables == null ? Collections.emptyList() : environmentVariables;</span>
     }
 
     public Optional&lt;String&gt; getServiceAccountToUse() {
-<span class="fc" id="L96">        return ofNullable(serviceAccountToUse);</span>
+<span class="fc" id="L68">        return ofNullable(serviceAccountToUse);</span>
     }
 
     public Optional&lt;EntandoResourceRequirements&gt; getResourceRequirements() {
-<span class="fc" id="L100">        return Optional.ofNullable(resourceRequirements);</span>
+<span class="fc" id="L72">        return Optional.ofNullable(resourceRequirements);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

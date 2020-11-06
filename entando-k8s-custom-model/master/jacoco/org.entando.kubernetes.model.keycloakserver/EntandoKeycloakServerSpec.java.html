@@ -28,10 +28,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.fabric8.kubernetes.api.model.EnvVar;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import org.entando.kubernetes.model.DbmsVendor;
-import org.entando.kubernetes.model.EntandoDeploymentSpec;
+import org.entando.kubernetes.model.EntandoIngressingDeploymentSpec;
 import org.entando.kubernetes.model.EntandoResourceRequirements;
 
 @JsonInclude(Include.NON_NULL)
@@ -41,14 +40,14 @@ import org.entando.kubernetes.model.EntandoResourceRequirements;
         setterVisibility = Visibility.NONE)
 @RegisterForReflection
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EntandoKeycloakServerSpec extends EntandoDeploymentSpec {
+public class EntandoKeycloakServerSpec extends EntandoIngressingDeploymentSpec {
 
     private String imageName;
     private boolean isDefault;
 
     public EntandoKeycloakServerSpec() {
-<span class="nc" id="L50">        super();</span>
-<span class="nc" id="L51">    }</span>
+<span class="nc" id="L49">        super();</span>
+<span class="nc" id="L50">    }</span>
 
     @JsonCreator
     public EntandoKeycloakServerSpec(
@@ -59,20 +58,19 @@ public class EntandoKeycloakServerSpec extends EntandoDeploymentSpec {
             @JsonProperty(&quot;replicas&quot;) Integer replicas,
             @JsonProperty(&quot;isDefault&quot;) Boolean isDefault,
             @JsonProperty(&quot;serviceAccountToUse&quot;) String serviceAccountToUse,
-            @JsonProperty(&quot;parameters&quot;) Map&lt;String, String&gt; parameters,
             @JsonProperty(&quot;environmentVariables&quot;) List&lt;EnvVar&gt; environmentVariables,
             @JsonProperty(&quot;resourceRequirements&quot;) EntandoResourceRequirements resourceRequirements) {
-<span class="fc" id="L65">        super(ingressHostName, tlsSecretName, replicas, dbms, serviceAccountToUse, parameters, environmentVariables, resourceRequirements);</span>
-<span class="fc" id="L66">        this.imageName = imageName;</span>
-<span class="fc" id="L67">        this.isDefault = Boolean.TRUE.equals(isDefault);</span>
-<span class="fc" id="L68">    }</span>
+<span class="fc" id="L63">        super(ingressHostName, tlsSecretName, replicas, dbms, serviceAccountToUse, environmentVariables, resourceRequirements);</span>
+<span class="fc" id="L64">        this.imageName = imageName;</span>
+<span class="fc" id="L65">        this.isDefault = Boolean.TRUE.equals(isDefault);</span>
+<span class="fc" id="L66">    }</span>
 
     public Optional&lt;String&gt; getImageName() {
-<span class="fc" id="L71">        return Optional.ofNullable(imageName);</span>
+<span class="fc" id="L69">        return Optional.ofNullable(imageName);</span>
     }
 
     public boolean isDefault() {
-<span class="fc" id="L75">        return isDefault;</span>
+<span class="fc" id="L73">        return isDefault;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
