@@ -47,18 +47,20 @@ public class PageInstallable extends Installable&lt;PageDescriptor&gt; {
     public CompletableFuture&lt;Void&gt; uninstall() {
 <span class="fc" id="L48">        return CompletableFuture.runAsync(() -&gt; {</span>
 <span class="fc" id="L49">            log.info(&quot;Removing Page {}&quot;, getName());</span>
-<span class="fc" id="L50">            engineService.deletePage(getName());</span>
-<span class="fc" id="L51">        });</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if(shouldCreate()) {</span>
+<span class="fc" id="L51">                engineService.deletePage(getName());</span>
+            }
+<span class="fc" id="L53">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L56">        return ComponentType.PAGE;</span>
+<span class="fc" id="L58">        return ComponentType.PAGE;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L61">        return representation.getCode();</span>
+<span class="fc" id="L63">        return representation.getCode();</span>
     }
 
 }

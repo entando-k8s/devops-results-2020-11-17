@@ -34,18 +34,20 @@ public class LanguageInstallable extends Installable&lt;LanguageDescriptor&gt; {
     public CompletableFuture&lt;Void&gt; uninstall() {
 <span class="fc" id="L35">        return CompletableFuture.runAsync(() -&gt; {</span>
 <span class="fc" id="L36">            log.info(&quot;Disabling Language {}&quot;, getName());</span>
-<span class="fc" id="L37">            engineService.disableLanguage(getName());</span>
-<span class="fc" id="L38">        });</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L38">                engineService.disableLanguage(getName());</span>
+            }
+<span class="fc" id="L40">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L43">        return ComponentType.LANGUAGE;</span>
+<span class="fc" id="L45">        return ComponentType.LANGUAGE;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L48">        return representation.getCode();</span>
+<span class="fc" id="L50">        return representation.getCode();</span>
     }
 
 }
