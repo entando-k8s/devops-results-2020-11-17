@@ -3,44 +3,49 @@
 import java.util.concurrent.CompletableFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.entando.kubernetes.client.core.EntandoCoreClient;
+import org.entando.kubernetes.controller.digitalexchange.job.model.InstallRequest.InstallAction;
 import org.entando.kubernetes.model.bundle.ComponentType;
 import org.entando.kubernetes.model.bundle.descriptor.DirectoryDescriptor;
 
-<span class="fc" id="L9">@Slf4j</span>
+<span class="fc" id="L10">@Slf4j</span>
 public class DirectoryInstallable extends Installable&lt;DirectoryDescriptor&gt; {
 
     private final EntandoCoreClient engineService;
 
-    public DirectoryInstallable(EntandoCoreClient engineService, DirectoryDescriptor directory) {
-<span class="fc" id="L15">        super(directory);</span>
-<span class="fc" id="L16">        this.engineService = engineService;</span>
-<span class="fc" id="L17">    }</span>
+    public DirectoryInstallable(EntandoCoreClient engineService, DirectoryDescriptor directory, InstallAction action) {
+<span class="fc" id="L16">        super(directory, action);</span>
+<span class="fc" id="L17">        this.engineService = engineService;</span>
+<span class="fc" id="L18">    }</span>
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="fc" id="L21">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L22">            log.info(&quot;Creating directory {}&quot;, getName());</span>
-<span class="fc" id="L23">            engineService.createFolder(representation.getName());</span>
-<span class="fc" id="L24">        });</span>
+<span class="fc" id="L22">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L23">            log.info(&quot;Creating directory {}&quot;, getName());</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">            if (!shouldCreate()) {</span>
+<span class="nc" id="L25">                return; //Do nothing</span>
+            }
+
+<span class="fc" id="L28">            engineService.createFolder(representation.getName());</span>
+<span class="fc" id="L29">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L29">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc bfc" id="L30" title="All 2 branches covered.">            if (this.representation.isRoot()) {</span>
-<span class="fc" id="L31">                engineService.deleteFolder(this.representation.getName());</span>
+<span class="fc" id="L34">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (this.representation.isRoot()) {</span>
+<span class="fc" id="L36">                engineService.deleteFolder(this.representation.getName());</span>
             }
-<span class="fc" id="L33">        });</span>
+<span class="fc" id="L38">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L38">        return ComponentType.DIRECTORY;</span>
+<span class="fc" id="L43">        return ComponentType.DIRECTORY;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L43">        return representation.getName();</span>
+<span class="fc" id="L48">        return representation.getName();</span>
     }
 
 

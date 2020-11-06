@@ -2,17 +2,22 @@
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.entando.kubernetes.controller.digitalexchange.job.model.InstallRequest.InstallAction;
+import org.entando.kubernetes.model.bundle.ComponentType;
+import org.springframework.util.CollectionUtils;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnalysisReport {
+
     @Default private Map&lt;String, Status&gt; widgets = new HashMap&lt;&gt;();
     @Default private Map&lt;String, Status&gt; fragments = new HashMap&lt;&gt;();
     @Default private Map&lt;String, Status&gt; pages = new HashMap&lt;&gt;();
@@ -28,9 +33,93 @@ public class AnalysisReport {
     @Default private Map&lt;String, Status&gt; labels = new HashMap&lt;&gt;();
     @Default private Map&lt;String, Status&gt; languages = new HashMap&lt;&gt;();
 
-<span class="nc" id="L31">    public enum Status {</span>
-<span class="nc" id="L32">        NOT_FOUND,</span>
-<span class="nc" id="L33">        CONFLICT</span>
+    public Map&lt;String, Status&gt; getReportByType(ComponentType type) {
+<span class="fc bfc" id="L37" title="All 15 branches covered.">        switch (type) {</span>
+            case WIDGET:
+<span class="fc" id="L39">                return widgets;</span>
+            case FRAGMENT:
+<span class="fc" id="L41">                return fragments;</span>
+            case PAGE:
+<span class="fc" id="L43">                return pages;</span>
+            case PAGE_TEMPLATE:
+<span class="fc" id="L45">                return pageTemplates;</span>
+            case CONTENT:
+<span class="fc" id="L47">                return contents;</span>
+            case CONTENT_TEMPLATE:
+<span class="fc" id="L49">                return contentTemplates;</span>
+            case CONTENT_TYPE:
+<span class="fc" id="L51">                return contentTypes;</span>
+            case ASSET:
+<span class="fc" id="L53">                return assets;</span>
+            case RESOURCE:
+<span class="fc" id="L55">                return resources;</span>
+            case PLUGIN:
+<span class="fc" id="L57">                return plugins;</span>
+            case CATEGORY:
+<span class="fc" id="L59">                return categories;</span>
+            case GROUP:
+<span class="fc" id="L61">                return groups;</span>
+            case LABEL:
+<span class="fc" id="L63">                return labels;</span>
+            case LANGUAGE:
+<span class="fc" id="L65">                return languages;</span>
+            default:
+<span class="fc" id="L67">                return new HashMap&lt;&gt;();</span>
+        }
+    }
+
+
+    /**
+     * merge the current AnalysisReport and the received one.
+     *
+     * @param other the AnalysisReport to merge with the current one
+     * @return a new AnalysisReport resulting by the merge
+     */
+    public AnalysisReport merge(AnalysisReport other) {
+
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (null == other) {</span>
+<span class="nc" id="L81">            return this;</span>
+        }
+
+<span class="fc" id="L84">        return AnalysisReport.builder()</span>
+<span class="fc" id="L85">                .widgets(this.getNotNullAnalysisReportComponent(AnalysisReport::getWidgets, other))</span>
+<span class="fc" id="L86">                .fragments(this.getNotNullAnalysisReportComponent(AnalysisReport::getFragments, other))</span>
+<span class="fc" id="L87">                .pages(this.getNotNullAnalysisReportComponent(AnalysisReport::getPages, other))</span>
+<span class="fc" id="L88">                .pageTemplates(this.getNotNullAnalysisReportComponent(AnalysisReport::getPageTemplates, other))</span>
+<span class="fc" id="L89">                .contents(this.getNotNullAnalysisReportComponent(AnalysisReport::getContents, other))</span>
+<span class="fc" id="L90">                .contentTemplates(this.getNotNullAnalysisReportComponent(AnalysisReport::getContentTemplates, other))</span>
+<span class="fc" id="L91">                .contentTypes(this.getNotNullAnalysisReportComponent(AnalysisReport::getContentTypes, other))</span>
+<span class="fc" id="L92">                .assets(this.getNotNullAnalysisReportComponent(AnalysisReport::getAssets, other))</span>
+<span class="fc" id="L93">                .resources(this.getNotNullAnalysisReportComponent(AnalysisReport::getResources, other))</span>
+<span class="fc" id="L94">                .plugins(this.getNotNullAnalysisReportComponent(AnalysisReport::getPlugins, other))</span>
+<span class="fc" id="L95">                .categories(this.getNotNullAnalysisReportComponent(AnalysisReport::getCategories, other))</span>
+<span class="fc" id="L96">                .groups(this.getNotNullAnalysisReportComponent(AnalysisReport::getGroups, other))</span>
+<span class="fc" id="L97">                .labels(this.getNotNullAnalysisReportComponent(AnalysisReport::getLabels, other))</span>
+<span class="fc" id="L98">                .languages(this.getNotNullAnalysisReportComponent(AnalysisReport::getLanguages, other))</span>
+<span class="fc" id="L99">                .build();</span>
+    }
+
+    /**
+     * apply the received function to the current AnalysisReport. if the result is not null, return it. otherwise apply
+     * the function to the other AnalysisReport received and return its result
+     *
+     * @param getAnalysisReportComponentFn a function that get an AnalysisReport and returns the desired Map object
+     * @param other                        the other AnalysisReport
+     * @return the result of the received function on the current object if the result is not null, otherwise the result
+     *              of the received function on the other object
+     */
+    private Map&lt;String, Status&gt; getNotNullAnalysisReportComponent(
+            Function&lt;AnalysisReport, Map&lt;String, Status&gt;&gt; getAnalysisReportComponentFn, AnalysisReport other) {
+
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        return ! CollectionUtils.isEmpty(getAnalysisReportComponentFn.apply(this))</span>
+<span class="fc" id="L115">                ? getAnalysisReportComponentFn.apply(this)</span>
+<span class="fc" id="L116">                : getAnalysisReportComponentFn.apply(other);</span>
+    }
+
+<span class="fc" id="L119">    public enum Status {</span>
+<span class="fc" id="L120">        NEW,</span>
+<span class="fc" id="L121">        DIFF,</span>
+<span class="fc" id="L122">        EQUAL;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

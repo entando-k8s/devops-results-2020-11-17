@@ -17,42 +17,40 @@ public class ContentInstallable extends Installable&lt;ContentDescriptor&gt; {
 <span class="fc" id="L17">        this.engineService = service;</span>
 <span class="fc" id="L18">    }</span>
 
-    public ContentInstallable(EntandoCoreClient service, ContentDescriptor contentDescriptor) {
-<span class="fc" id="L21">        this(service, contentDescriptor, InstallAction.CREATE);</span>
-<span class="fc" id="L22">    }</span>
-
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="fc" id="L26">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L27">            log.info(&quot;Registering Content {}&quot;, getName());</span>
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L29">                return; //Do nothing</span>
+<span class="fc" id="L22">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L23">            log.info(&quot;Registering Content {}&quot;, getName());</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L25">                return; //Do nothing</span>
             }
 
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L33">                engineService.createContent(representation);</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L29">                engineService.createContent(representation);</span>
             } else {
-<span class="nc" id="L35">                engineService.updateContent(representation);</span>
+<span class="nc" id="L31">                engineService.updateContent(representation);</span>
             }
-<span class="fc" id="L37">        });</span>
+<span class="fc" id="L33">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L42">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L43">            log.info(&quot;Removing Content {}&quot;, getName());</span>
-<span class="fc" id="L44">            engineService.deleteContent(getName());</span>
-<span class="fc" id="L45">        });</span>
+<span class="fc" id="L38">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L39">            log.info(&quot;Removing Content {}&quot;, getName());</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L41">                engineService.deleteContent(getName());</span>
+            }
+<span class="fc" id="L43">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L50">        return ComponentType.CONTENT;</span>
+<span class="fc" id="L48">        return ComponentType.CONTENT;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L55">        return representation.getId();</span>
+<span class="fc" id="L53">        return representation.getId();</span>
     }
 
 

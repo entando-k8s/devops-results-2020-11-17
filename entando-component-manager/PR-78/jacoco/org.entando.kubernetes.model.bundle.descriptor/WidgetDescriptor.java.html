@@ -31,5 +31,10 @@ public class WidgetDescriptor implements Descriptor {
         private List&lt;String&gt; resources;
     }
 
+    @Override
+    public ComponentKey getComponentKey() {
+<span class="fc" id="L36">        return new ComponentKey(code);</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -22,9 +22,9 @@ public class InstallRequest {
     private final InstallActionsByComponentType actions = new InstallActionsByComponentType();
 
 <span class="fc" id="L24">    public enum InstallAction {</span>
-<span class="fc" id="L25">        CREATE,</span>
-<span class="fc" id="L26">        SKIP,</span>
-<span class="fc" id="L27">        OVERRIDE</span>
+<span class="fc" id="L25">        CREATE,  //Always try to create the object</span>
+<span class="fc" id="L26">        SKIP,    //Skip object if conflict</span>
+<span class="fc" id="L27">        OVERRIDE //Update object if conflict</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
