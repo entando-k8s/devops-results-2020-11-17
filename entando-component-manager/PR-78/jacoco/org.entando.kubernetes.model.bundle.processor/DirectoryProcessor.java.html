@@ -132,14 +132,11 @@ public class DirectoryProcessor extends BaseComponentProcessor&lt;DirectoryDescr
 <span class="fc" id="L132">                idList.add(folder);</span>
 <span class="fc" id="L133">            }</span>
 
-            // FIXME switch comments when entando-de-app will support directories
-            // return new Reportable(componentProcessor.getSupportedComponentType(), idList,
-            // this.getReportableRemoteHandler());
-<span class="fc" id="L138">            return new Reportable(componentProcessor.getSupportedComponentType(), null,</span>
-<span class="fc" id="L139">                    this.getReportableRemoteHandler());</span>
+<span class="fc" id="L135">            return new Reportable(componentProcessor.getSupportedComponentType(), idList,</span>
+<span class="fc" id="L136">                    this.getReportableRemoteHandler());</span>
 
-<span class="nc" id="L141">        } catch (IOException e) {</span>
-<span class="nc" id="L142">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
+<span class="nc" id="L138">        } catch (IOException e) {</span>
+<span class="nc" id="L139">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
     }
 }

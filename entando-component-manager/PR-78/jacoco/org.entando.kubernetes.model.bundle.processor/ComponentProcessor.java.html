@@ -116,15 +116,21 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
 <span class="fc" id="L116">                .orElse(new ArrayList&lt;&gt;());</span>
     }
 
-    default List&lt;String&gt; readDescriptorKeys(BundleReader bundleReader, String fileName) throws IOException {
+    default List&lt;String&gt; readDescriptorKeys(BundleReader bundleReader, String fileName) {
 
-<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (this.doesComponentDscriptorContainMoreThanOneSingleEntity()) {</span>
-<span class="fc" id="L122">            return bundleReader.readListOfDescriptorFile(fileName, this.getDescriptorClass())</span>
-<span class="fc" id="L123">                    .stream().map(descriptor -&gt; descriptor.getComponentKey().getKey())</span>
-<span class="fc" id="L124">                    .collect(Collectors.toList());</span>
-        } else {
-<span class="fc" id="L126">            return Arrays.asList(bundleReader.readDescriptorFile(fileName, this.getDescriptorClass())</span>
-<span class="fc" id="L127">                    .getComponentKey().getKey());</span>
+        try {
+<span class="fc bfc" id="L122" title="All 2 branches covered.">            if (this.doesComponentDscriptorContainMoreThanOneSingleEntity()) {</span>
+<span class="fc" id="L123">                return bundleReader.readListOfDescriptorFile(fileName, this.getDescriptorClass())</span>
+<span class="fc" id="L124">                        .stream().map(descriptor -&gt; descriptor.getComponentKey().getKey())</span>
+<span class="fc" id="L125">                        .collect(Collectors.toList());</span>
+            } else {
+<span class="fc" id="L127">                return Arrays.asList(bundleReader.readDescriptorFile(fileName, this.getDescriptorClass())</span>
+<span class="fc" id="L128">                        .getComponentKey().getKey());</span>
+            }
+<span class="nc" id="L130">        } catch (IOException e) {</span>
+<span class="nc" id="L131">            throw new EntandoComponentManagerException(String.format(</span>
+                    &quot;Error parsing content type %s from descriptor %s&quot;,
+<span class="nc" id="L133">                    this.getSupportedComponentType(), fileName), e);</span>
         }
     }
 }
