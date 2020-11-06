@@ -20,7 +20,6 @@ import org.entando.kubernetes.model.bundle.installable.Installable;
 import org.entando.kubernetes.model.bundle.installable.LanguageInstallable;
 import org.entando.kubernetes.model.bundle.reader.BundleReader;
 import org.entando.kubernetes.model.bundle.reportable.EntandoEngineReportableProcessor;
-import org.entando.kubernetes.model.bundle.reportable.ReportableComponentProcessor;
 import org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -28,10 +27,11 @@ import org.springframework.util.StringUtils;
 /**
  * Processor to create Languages.
  */
-<span class="fc" id="L31">@Slf4j</span>
+<span class="fc" id="L30">@Slf4j</span>
 @Service
 @RequiredArgsConstructor
-public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescriptor&gt; implements EntandoEngineReportableProcessor {
+public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescriptor&gt; implements
+        EntandoEngineReportableProcessor {
 
     private final EntandoCoreClient engineService;
 
@@ -92,15 +92,16 @@ public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescrip
     public List&lt;Installable&lt;LanguageDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L93">        return components.stream()</span>
 <span class="pc bpc" id="L94" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.LANGUAGE)</span>
-<span class="fc" id="L95">                .map(c -&gt; new LanguageInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="fc" id="L96">                .collect(Collectors.toList());</span>
+<span class="fc" id="L95">                .map(c -&gt; new LanguageInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
+<span class="fc" id="L96">                        c.getAction()))</span>
+<span class="fc" id="L97">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public LanguageDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="fc" id="L101">        return LanguageDescriptor.builder()</span>
-<span class="fc" id="L102">                .code(component.getComponentId())</span>
-<span class="fc" id="L103">                .build();</span>
+<span class="fc" id="L102">        return LanguageDescriptor.builder()</span>
+<span class="fc" id="L103">                .code(component.getComponentId())</span>
+<span class="fc" id="L104">                .build();</span>
     }
 
 }

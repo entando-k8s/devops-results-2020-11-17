@@ -51,7 +51,7 @@ public class PluginInstallable extends Installable&lt;PluginDescriptor&gt; {
     @Override
     public String getName() {
 
-<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (! StringUtils.isEmpty(this.representation.getDeploymentBaseName())) {</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (!StringUtils.isEmpty(this.representation.getDeploymentBaseName())) {</span>
 <span class="fc" id="L55">            return this.representation.getDeploymentBaseName();</span>
         } else {
             // TODO when we'll introduce a validation step, remove this try catch and move the check

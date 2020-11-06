@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.processor.DirectoryProcessor.java">org/entando/kubernetes/model/bundle/processor/DirectoryProcessor.java</a>
+                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.controller.digitalexchange.job.model.AnalysisReport.java">org/entando/kubernetes/controller/digitalexchange/job/model/AnalysisReport.java</a>
                 </td>
                 <td>
                   0

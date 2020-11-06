@@ -20,17 +20,17 @@ import org.entando.kubernetes.model.bundle.installable.Installable;
 import org.entando.kubernetes.model.bundle.installable.LabelInstallable;
 import org.entando.kubernetes.model.bundle.reader.BundleReader;
 import org.entando.kubernetes.model.bundle.reportable.EntandoEngineReportableProcessor;
-import org.entando.kubernetes.model.bundle.reportable.ReportableComponentProcessor;
 import org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity;
 import org.springframework.stereotype.Service;
 
 /**
  * Processor to create Labels.
  */
-<span class="fc" id="L30">@Slf4j</span>
+<span class="fc" id="L29">@Slf4j</span>
 @Service
 @RequiredArgsConstructor
-public class LabelProcessor extends BaseComponentProcessor&lt;LabelDescriptor&gt; implements EntandoEngineReportableProcessor {
+public class LabelProcessor extends BaseComponentProcessor&lt;LabelDescriptor&gt; implements
+        EntandoEngineReportableProcessor {
 
     private final EntandoCoreClient engineService;
 
@@ -69,32 +69,33 @@ public class LabelProcessor extends BaseComponentProcessor&lt;LabelDescriptor&gt
 <span class="fc" id="L69">            final List&lt;Installable&lt;LabelDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
 
 <span class="fc bfc" id="L71" title="All 2 branches covered.">            for (String ldf : descriptorList) {</span>
-<span class="fc" id="L72">                List&lt;LabelDescriptor&gt; labelDescriptorList = bundleReader.readListOfDescriptorFile(ldf, LabelDescriptor.class);</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">                for (LabelDescriptor ld : labelDescriptorList) {</span>
-<span class="fc" id="L74">                    InstallAction action = extractInstallAction(ld.getKey(), actions, conflictStrategy, report);</span>
-<span class="fc" id="L75">                    installables.add(new LabelInstallable(engineService, ld, action));</span>
-<span class="fc" id="L76">                }</span>
-<span class="fc" id="L77">            }</span>
+<span class="fc" id="L72">                List&lt;LabelDescriptor&gt; labelDescriptorList = bundleReader</span>
+<span class="fc" id="L73">                        .readListOfDescriptorFile(ldf, LabelDescriptor.class);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                for (LabelDescriptor ld : labelDescriptorList) {</span>
+<span class="fc" id="L75">                    InstallAction action = extractInstallAction(ld.getKey(), actions, conflictStrategy, report);</span>
+<span class="fc" id="L76">                    installables.add(new LabelInstallable(engineService, ld, action));</span>
+<span class="fc" id="L77">                }</span>
+<span class="fc" id="L78">            }</span>
 
-<span class="fc" id="L79">            return installables;</span>
-<span class="nc" id="L80">        } catch (IOException e) {</span>
-<span class="nc" id="L81">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
+<span class="fc" id="L80">            return installables;</span>
+<span class="nc" id="L81">        } catch (IOException e) {</span>
+<span class="nc" id="L82">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
     }
 
     @Override
     public List&lt;Installable&lt;LabelDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="fc" id="L87">        return components.stream()</span>
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.LABEL)</span>
-<span class="fc" id="L89">                .map(c -&gt; new LabelInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="fc" id="L90">                .collect(Collectors.toList());</span>
+<span class="fc" id="L88">        return components.stream()</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.LABEL)</span>
+<span class="fc" id="L90">                .map(c -&gt; new LabelInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
+<span class="fc" id="L91">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public LabelDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="fc" id="L95">        return LabelDescriptor.builder()</span>
-<span class="fc" id="L96">                .key(component.getComponentId())</span>
-<span class="fc" id="L97">                .build();</span>
+<span class="fc" id="L96">        return LabelDescriptor.builder()</span>
+<span class="fc" id="L97">                .key(component.getComponentId())</span>
+<span class="fc" id="L98">                .build();</span>
     }
 
 }
