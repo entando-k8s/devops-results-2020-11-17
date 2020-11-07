@@ -168,7 +168,7 @@ public abstract class AbstractDbAwareController&lt;T extends EntandoBaseCustomRe
 <span class="fc bfc" id="L168" title="All 2 branches covered.">        if (externalDatabase.isPresent()) {</span>
 <span class="fc" id="L169">            return externalDatabase.get();</span>
 <span class="pc bpc" id="L170" title="1 of 4 branches missed.">        } else if (!(dbmsVendor == DbmsVendor.NONE || dbmsVendor == DbmsVendor.EMBEDDED)) {</span>
-<span class="fc" id="L171">            final DatabaseDeployable&lt;S&gt; databaseDeployable = new DatabaseDeployable&lt;S&gt;(DbmsDockerVendorStrategy.forVendor(dbmsVendor),</span>
+<span class="fc" id="L171">            final DatabaseDeployable&lt;S&gt; databaseDeployable = new DatabaseDeployable&lt;&gt;(DbmsDockerVendorStrategy.forVendor(dbmsVendor),</span>
                     (EntandoBaseCustomResource&lt;S&gt;) entandoCustomResource, nameQualifier, null);
 <span class="fc" id="L173">            final DeployCommand&lt;DatabaseDeploymentResult, S&gt; dbCommand = new DeployCommand&lt;&gt;(databaseDeployable);</span>
 <span class="fc" id="L174">            DatabaseDeploymentResult result = dbCommand.execute(k8sClient, empty());</span>
