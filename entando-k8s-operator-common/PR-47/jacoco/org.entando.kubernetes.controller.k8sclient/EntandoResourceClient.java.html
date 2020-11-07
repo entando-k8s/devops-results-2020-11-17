@@ -31,6 +31,7 @@ import org.entando.kubernetes.model.EntandoBaseCustomResource;
 import org.entando.kubernetes.model.EntandoCustomResource;
 import org.entando.kubernetes.model.EntandoDeploymentPhase;
 import org.entando.kubernetes.model.KeycloakAwareSpec;
+import org.entando.kubernetes.model.KeycloakToUse;
 import org.entando.kubernetes.model.ResourceReference;
 import org.entando.kubernetes.model.app.EntandoApp;
 import org.entando.kubernetes.model.infrastructure.EntandoClusterInfrastructure;
@@ -65,75 +66,77 @@ public interface EntandoResourceClient {
     ExposedService loadExposedService(EntandoCustomResource resource);
 
     default EntandoApp loadEntandoApp(String namespace, String name) {
-<span class="nc" id="L68">        return load(EntandoApp.class, namespace, name);</span>
+<span class="nc" id="L69">        return load(EntandoApp.class, namespace, name);</span>
     }
 
     default EntandoPlugin loadEntandoPlugin(String namespace, String name) {
-<span class="nc" id="L72">        return load(EntandoPlugin.class, namespace, name);</span>
+<span class="nc" id="L73">        return load(EntandoPlugin.class, namespace, name);</span>
     }
 
     DoneableConfigMap loadDefaultConfigMap();
 
     default &lt;T extends KeycloakAwareSpec&gt; Optional&lt;ResourceReference&gt; determineKeycloakToUse(EntandoBaseCustomResource&lt;T&gt; resource) {
-<span class="fc" id="L78">        ResourceReference resourceReference = null;</span>
-<span class="fc bfc" id="L79" title="All 2 branches covered.">        if (resource.getSpec().getKeycloakToUse().isPresent()) {</span>
-<span class="fc" id="L80">            resourceReference = new ResourceReference(</span>
-<span class="fc" id="L81">                    resource.getSpec().getKeycloakToUse().get().getNamespace().orElse(null),</span>
-<span class="fc" id="L82">                    resource.getSpec().getKeycloakToUse().get().getName());</span>
+<span class="fc" id="L79">        ResourceReference resourceReference = null;</span>
+<span class="fc" id="L80">        Optional&lt;KeycloakToUse&gt; keycloakToUse = resource.getSpec().getKeycloakToUse();</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (keycloakToUse.isPresent()) {</span>
+<span class="fc" id="L82">            resourceReference = new ResourceReference(</span>
+<span class="fc" id="L83">                    keycloakToUse.get().getNamespace().orElse(null),</span>
+<span class="fc" id="L84">                    keycloakToUse.get().getName());</span>
         } else {
-<span class="fc" id="L84">            Optional&lt;EntandoKeycloakServer&gt; keycloak = findKeycloakInNamespace(resource);</span>
-<span class="pc bpc" id="L85" title="1 of 2 branches missed.">            if (keycloak.isPresent()) {</span>
-<span class="nc" id="L86">                resourceReference = new ResourceReference(</span>
-<span class="nc" id="L87">                        keycloak.get().getMetadata().getNamespace(),</span>
-<span class="nc" id="L88">                        keycloak.get().getMetadata().getName());</span>
+<span class="fc" id="L86">            Optional&lt;EntandoKeycloakServer&gt; keycloak = findKeycloakInNamespace(resource);</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">            if (keycloak.isPresent()) {</span>
+<span class="fc" id="L88">                resourceReference = new ResourceReference(</span>
+<span class="fc" id="L89">                        keycloak.get().getMetadata().getNamespace(),</span>
+<span class="fc" id="L90">                        keycloak.get().getMetadata().getName());</span>
             } else {
-<span class="fc" id="L90">                DoneableConfigMap configMapResource = loadDefaultConfigMap();</span>
-<span class="fc" id="L91">                resourceReference = new ResourceReference(</span>
-<span class="fc" id="L92">                        configMapResource.getData().get(KeycloakName.DEFAULT_KEYCLOAK_NAMESPACE_KEY),</span>
-<span class="fc" id="L93">                        configMapResource.getData().get(KeycloakName.DEFAULT_KEYCLOAK_NAME_KEY));</span>
+<span class="fc" id="L92">                DoneableConfigMap configMapResource = loadDefaultConfigMap();</span>
+<span class="fc" id="L93">                resourceReference = new ResourceReference(</span>
+<span class="fc" id="L94">                        configMapResource.getData().get(KeycloakName.DEFAULT_KEYCLOAK_NAMESPACE_KEY),</span>
+<span class="fc" id="L95">                        configMapResource.getData().get(KeycloakName.DEFAULT_KEYCLOAK_NAME_KEY));</span>
 
             }
         }
-<span class="fc" id="L97">        return refineResourceReference(resourceReference, resource.getMetadata());</span>
+<span class="fc" id="L99">        return refineResourceReference(resourceReference, resource.getMetadata());</span>
     }
 
     default &lt;T extends ClusterInfrastructureAwareSpec&gt; Optional&lt;ResourceReference&gt; determineClusterInfrastructureToUse(
             EntandoBaseCustomResource&lt;T&gt; resource) {
-<span class="nc" id="L102">        ResourceReference resourceReference = null;</span>
-<span class="nc bnc" id="L103" title="All 2 branches missed.">        if (resource.getSpec().getClusterInfrastructureToUse().isPresent()) {</span>
+<span class="fc" id="L104">        ResourceReference resourceReference = null;</span>
+<span class="fc" id="L105">        Optional&lt;ResourceReference&gt; clusterInfrastructureToUse = resource.getSpec().getClusterInfrastructureToUse();</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        if (clusterInfrastructureToUse.isPresent()) {</span>
             //Not ideal. GetName should not return null.
-<span class="nc" id="L105">            resourceReference = new ResourceReference(</span>
-<span class="nc" id="L106">                    resource.getSpec().getClusterInfrastructureToUse().get().getNamespace().orElse(null),</span>
-<span class="nc" id="L107">                    resource.getSpec().getClusterInfrastructureToUse().get().getName());</span>
+<span class="fc" id="L108">            resourceReference = new ResourceReference(</span>
+<span class="fc" id="L109">                    clusterInfrastructureToUse.get().getNamespace().orElse(null),</span>
+<span class="fc" id="L110">                    clusterInfrastructureToUse.get().getName());</span>
         } else {
-<span class="nc" id="L109">            Optional&lt;EntandoClusterInfrastructure&gt; clusterInfrastructure = findClusterInfrastructureInNamespace(resource);</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">            if (clusterInfrastructure.isPresent()) {</span>
-<span class="nc" id="L111">                resourceReference = new ResourceReference(</span>
-<span class="nc" id="L112">                        clusterInfrastructure.get().getMetadata().getNamespace(),</span>
-<span class="nc" id="L113">                        clusterInfrastructure.get().getMetadata().getName());</span>
+<span class="fc" id="L112">            Optional&lt;EntandoClusterInfrastructure&gt; clusterInfrastructure = findClusterInfrastructureInNamespace(resource);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">            if (clusterInfrastructure.isPresent()) {</span>
+<span class="fc" id="L114">                resourceReference = new ResourceReference(</span>
+<span class="fc" id="L115">                        clusterInfrastructure.get().getMetadata().getNamespace(),</span>
+<span class="fc" id="L116">                        clusterInfrastructure.get().getMetadata().getName());</span>
             } else {
-<span class="nc" id="L115">                DoneableConfigMap configMapResource = loadDefaultConfigMap();</span>
-<span class="nc" id="L116">                resourceReference = new ResourceReference(</span>
-<span class="nc" id="L117">                        configMapResource.getData().get(InfrastructureConfig.DEFAULT_CLUSTER_INFRASTRUCTURE_NAME_KEY),</span>
-<span class="nc" id="L118">                        configMapResource.getData().get(InfrastructureConfig.DEFAULT_CLUSTER_INFRASTRUCTURE_NAMESPACE_KEY));</span>
+<span class="fc" id="L118">                DoneableConfigMap configMapResource = loadDefaultConfigMap();</span>
+<span class="fc" id="L119">                resourceReference = new ResourceReference(</span>
+<span class="fc" id="L120">                        configMapResource.getData().get(InfrastructureConfig.DEFAULT_CLUSTER_INFRASTRUCTURE_NAMESPACE_KEY),</span>
+<span class="fc" id="L121">                        configMapResource.getData().get(InfrastructureConfig.DEFAULT_CLUSTER_INFRASTRUCTURE_NAME_KEY));</span>
 
             }
         }
-<span class="nc" id="L122">        return refineResourceReference(resourceReference, resource.getMetadata());</span>
+<span class="fc" id="L125">        return refineResourceReference(resourceReference, resource.getMetadata());</span>
     }
 
     &lt;T extends ClusterInfrastructureAwareSpec&gt; Optional&lt;EntandoClusterInfrastructure&gt; findClusterInfrastructureInNamespace(
             EntandoBaseCustomResource&lt;T&gt; resource);
 
     default Optional&lt;ResourceReference&gt; refineResourceReference(ResourceReference resourceReference, ObjectMeta metadata) {
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">        if (resourceReference.getName() == null) {</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        if (resourceReference.getName() == null) {</span>
             //no valid resource reference in any config anywhere. Return empty
-<span class="fc" id="L131">            return Optional.empty();</span>
+<span class="fc" id="L134">            return Optional.empty();</span>
         } else {
             //Default an empty namespace to the resource's own namespace
-<span class="nc" id="L134">            return Optional.of(new ResourceReference(</span>
-<span class="nc" id="L135">                    resourceReference.getNamespace().orElse(metadata.getNamespace()),</span>
-<span class="nc" id="L136">                    resourceReference.getName()));</span>
+<span class="fc" id="L137">            return Optional.of(new ResourceReference(</span>
+<span class="fc" id="L138">                    resourceReference.getNamespace().orElse(metadata.getNamespace()),</span>
+<span class="fc" id="L139">                    resourceReference.getName()));</span>
         }
     }
 
