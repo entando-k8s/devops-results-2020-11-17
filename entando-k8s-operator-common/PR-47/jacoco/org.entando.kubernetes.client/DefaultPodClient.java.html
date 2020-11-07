@@ -70,7 +70,7 @@ public class DefaultPodClient implements PodClient {
     @Override
     public Pod runToCompletion(Pod pod) {
 <span class="fc" id="L72">        Pod running = this.client.pods().inNamespace(pod.getMetadata().getNamespace()).create(pod);</span>
-<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        return waitFor(running, got -&gt; PodResult.of(got).getState() == State.COMPLETED,</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        return waitFor(running, got -&gt; PodResult.of(got).getState() == State.COMPLETED,</span>
 <span class="fc" id="L74">                EntandoOperatorConfig.getPodCompletionTimeoutSeconds());</span>
     }
 
@@ -89,7 +89,7 @@ public class DefaultPodClient implements PodClient {
     @Override
     public Pod waitForPod(String namespace, String labelName, String labelValue) {
 <span class="fc" id="L91">        Watchable&lt;Watch, Watcher&lt;Pod&gt;&gt; watchable = client.pods().inNamespace(namespace).withLabel(labelName, labelValue);</span>
-<span class="pc bpc" id="L92" title="2 of 4 branches missed.">        return watchPod(got -&gt; PodResult.of(got).getState() == State.READY || PodResult.of(got).getState() == State.COMPLETED,</span>
+<span class="fc bfc" id="L92" title="All 4 branches covered.">        return watchPod(got -&gt; PodResult.of(got).getState() == State.READY || PodResult.of(got).getState() == State.COMPLETED,</span>
 <span class="fc" id="L93">                EntandoOperatorConfig.getPodReadinessTimeoutSeconds(),</span>
                 watchable);
     }

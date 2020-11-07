@@ -71,13 +71,13 @@ import org.entando.kubernetes.model.keycloakserver.EntandoKeycloakServer;
 
     public static String ofTheRealm(KeycloakAwareSpec keycloakAwareSpec) {
 <span class="fc" id="L73">        return keycloakAwareSpec.getKeycloakToUse()</span>
-<span class="pc" id="L74">                .map(keycloakToUse -&gt; keycloakToUse.getRealm().orElse(KubeUtils.ENTANDO_DEFAULT_KEYCLOAK_REALM))</span>
+<span class="fc" id="L74">                .map(keycloakToUse -&gt; keycloakToUse.getRealm().orElse(KubeUtils.ENTANDO_DEFAULT_KEYCLOAK_REALM))</span>
 <span class="fc" id="L75">                .orElse(KubeUtils.ENTANDO_DEFAULT_KEYCLOAK_REALM);</span>
     }
 
     public static String ofThePublicClient(KeycloakAwareSpec keycloakAwareSpec) {
 <span class="fc" id="L79">        return keycloakAwareSpec.getKeycloakToUse()</span>
-<span class="pc" id="L80">                .map(keycloakToUse -&gt; keycloakToUse.getPublicClientId().orElse(KubeUtils.PUBLIC_CLIENT_ID))</span>
+<span class="fc" id="L80">                .map(keycloakToUse -&gt; keycloakToUse.getPublicClientId().orElse(KubeUtils.PUBLIC_CLIENT_ID))</span>
 <span class="fc" id="L81">                .orElse(KubeUtils.PUBLIC_CLIENT_ID);</span>
     }
 }
