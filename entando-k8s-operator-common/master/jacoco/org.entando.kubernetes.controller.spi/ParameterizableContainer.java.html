@@ -18,7 +18,7 @@ package org.entando.kubernetes.controller.spi;
 
 import io.fabric8.kubernetes.api.model.EnvVar;
 import java.util.List;
-import org.entando.kubernetes.model.EntandoDeploymentSpec;
+import org.entando.kubernetes.model.EntandoIngressingDeploymentSpec;
 
 public interface ParameterizableContainer extends DeployableContainer {
 
@@ -26,7 +26,7 @@ public interface ParameterizableContainer extends DeployableContainer {
 <span class="fc" id="L26">        return getCustomResourceSpec().getEnvironmentVariables();</span>
     }
 
-    EntandoDeploymentSpec getCustomResourceSpec();
+    EntandoIngressingDeploymentSpec getCustomResourceSpec();
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

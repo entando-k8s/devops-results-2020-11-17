@@ -20,7 +20,7 @@ import io.fabric8.kubernetes.api.model.EnvVar;
 import java.util.List;
 import org.entando.kubernetes.controller.KeycloakConnectionConfig;
 import org.entando.kubernetes.controller.KubeUtils;
-import org.entando.kubernetes.controller.creators.KeycloakClientCreator;
+import org.entando.kubernetes.controller.common.KeycloakName;
 import org.entando.kubernetes.controller.database.DatabaseSchemaCreationResult;
 
 public interface SpringBootDeployableContainer extends DbAware, KeycloakAware, IngressingContainer, TlsAware {
@@ -58,13 +58,13 @@ public interface SpringBootDeployableContainer extends DbAware, KeycloakAware, I
 <span class="fc" id="L58">        KeycloakAware.super.addKeycloakVariables(vars);//Temporarily for backward compatibility</span>
 <span class="fc" id="L59">        KeycloakConnectionConfig keycloakDeployment = getKeycloakConnectionConfig();</span>
 <span class="fc" id="L60">        vars.add(new EnvVar(SpringProperty.SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI.name(),</span>
-<span class="fc" id="L61">                keycloakDeployment.getExternalBaseUrl() + &quot;/realms/entando&quot;,</span>
+<span class="fc" id="L61">                keycloakDeployment.getExternalBaseUrl() + &quot;/realms/&quot; + determineRealm(),</span>
                 null));
-<span class="fc" id="L63">        String keycloakSecretName = KeycloakClientCreator.keycloakClientSecret(getKeycloakClientConfig());</span>
+<span class="fc" id="L63">        String keycloakSecretName = KeycloakName.forTheClientSecret(getKeycloakClientConfig());</span>
 <span class="fc" id="L64">        vars.add(new EnvVar(SpringProperty.SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET.name(), null,</span>
-<span class="fc" id="L65">                KubeUtils.secretKeyRef(keycloakSecretName, KeycloakClientCreator.CLIENT_SECRET_KEY)));</span>
+<span class="fc" id="L65">                KubeUtils.secretKeyRef(keycloakSecretName, KeycloakName.CLIENT_SECRET_KEY)));</span>
 <span class="fc" id="L66">        vars.add(new EnvVar(SpringProperty.SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID.name(), null,</span>
-<span class="fc" id="L67">                KubeUtils.secretKeyRef(keycloakSecretName, KeycloakClientCreator.CLIENT_ID_KEY)));</span>
+<span class="fc" id="L67">                KubeUtils.secretKeyRef(keycloakSecretName, KeycloakName.CLIENT_ID_KEY)));</span>
 <span class="fc" id="L68">    }</span>
 
 <span class="fc" id="L70">    enum SpringProperty {</span>

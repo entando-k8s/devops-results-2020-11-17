@@ -16,44 +16,55 @@
 
 package org.entando.kubernetes.controller.common;
 
-import static java.util.Optional.ofNullable;
+import static java.lang.String.format;
 
-import io.fabric8.kubernetes.api.model.Secret;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import io.fabric8.kubernetes.api.model.ConfigMap;
+import org.entando.kubernetes.model.ResourceReference;
+import org.entando.kubernetes.model.infrastructure.EntandoClusterInfrastructure;
 
 public class InfrastructureConfig {
 
-    private final Secret infrastructureSecret;
+    public static final String DEFAULT_CLUSTER_INFRASTRUCTURE_NAMESPACE_KEY = &quot;default-cluster-infrastructure-namespace&quot;;
+    public static final String DEFAULT_CLUSTER_INFRASTRUCTURE_NAME_KEY = &quot;default-cluster-infrastructure&quot;;
+    public static final String ENTANDO_K8S_SERVICE_INTERNAL_URL_KEY = &quot;entandoK8SServiceInternalUrl&quot;;
+    public static final String ENTANDO_K8S_SERVICE_EXTERNAL_URL_KEY = &quot;entandoK8SServiceExternalUrl&quot;;
+    public static final String ENTANDO_K8S_SERVICE_CLIENT_ID_KEY = &quot;entandoK8SServiceClientId&quot;;
+    private final ConfigMap infrastructureConfigMap;
 
-<span class="nc" id="L29">    public InfrastructureConfig(Secret infrastructureSecret) {</span>
-<span class="nc" id="L30">        this.infrastructureSecret = infrastructureSecret;</span>
-<span class="nc" id="L31">    }</span>
+<span class="fc" id="L34">    public InfrastructureConfig(ConfigMap infrastructureConfigMap) {</span>
+<span class="fc" id="L35">        this.infrastructureConfigMap = infrastructureConfigMap;</span>
+<span class="fc" id="L36">    }</span>
 
-    public static String decodeSecretValue(Secret secret, String key) {
-<span class="nc" id="L34">        String value = ofNullable(secret.getData()).map(data -&gt; data.get(key)).orElse(null);</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (value == null) {</span>
-            //If not yet reloaded
-<span class="nc" id="L37">            return ofNullable(secret.getStringData()).map(data -&gt; data.get(key)).orElse(null);</span>
-        } else {
-<span class="nc" id="L39">            return new String(Base64.getDecoder().decode(value), StandardCharsets.UTF_8);</span>
-        }
-    }
-
-    public Secret getInfrastructureSecret() {
-<span class="nc" id="L44">        return infrastructureSecret;</span>
+    public ConfigMap getInfrastructureConfigMap() {
+<span class="fc" id="L39">        return infrastructureConfigMap;</span>
     }
 
     public String getK8SInternalServiceUrl() {
-<span class="nc" id="L48">        return decodeSecretValue(getInfrastructureSecret(), &quot;entandoK8SServiceInternalUrl&quot;);</span>
+<span class="fc" id="L43">        return getInfrastructureConfigMap().getData().get(ENTANDO_K8S_SERVICE_INTERNAL_URL_KEY);</span>
     }
 
     public String getK8SExternalServiceUrl() {
-<span class="nc" id="L52">        return decodeSecretValue(getInfrastructureSecret(), &quot;entandoK8SServiceExternalUrl&quot;);</span>
+<span class="fc" id="L47">        return getInfrastructureConfigMap().getData().get(ENTANDO_K8S_SERVICE_EXTERNAL_URL_KEY);</span>
     }
 
     public String getK8sServiceClientId() {
-<span class="nc" id="L56">        return decodeSecretValue(getInfrastructureSecret(), &quot;entandoK8SServiceClientId&quot;);</span>
+<span class="fc" id="L51">        return getInfrastructureConfigMap().getData().get(ENTANDO_K8S_SERVICE_CLIENT_ID_KEY);</span>
     }
+
+    public static String connectionConfigMapNameFor(ResourceReference rr) {
+<span class="fc" id="L55">        return connectionConfigMapNameFor(</span>
+<span class="fc" id="L56">                rr.getNamespace().orElseThrow(IllegalArgumentException::new),</span>
+<span class="fc" id="L57">                rr.getName());</span>
+    }
+
+    public static String connectionConfigMapNameFor(EntandoClusterInfrastructure infrastructure) {
+<span class="fc" id="L61">        return connectionConfigMapNameFor(infrastructure.getMetadata().getNamespace(), infrastructure.getMetadata().getName());</span>
+    }
+
+    private static String connectionConfigMapNameFor(String namespace, String name) {
+<span class="fc" id="L65">        return format(&quot;eci-%s-%s-connection-config&quot;, namespace,</span>
+                name);
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

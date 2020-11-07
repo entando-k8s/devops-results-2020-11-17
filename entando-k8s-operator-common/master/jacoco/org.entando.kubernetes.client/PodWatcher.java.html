@@ -33,8 +33,8 @@ public class PodWatcher implements Watcher&lt;Pod&gt; {
 <span class="fc" id="L33">        this.podPredicate = pod -&gt; {</span>
             try {
 <span class="fc" id="L35">                return podPredicate.test(pod);</span>
-<span class="nc" id="L36">            } catch (Exception e) {</span>
-<span class="nc" id="L37">                return false;</span>
+<span class="fc" id="L36">            } catch (Exception e) {</span>
+<span class="fc" id="L37">                return false;</span>
             }
         };
 <span class="fc" id="L40">        this.mutex = mutex;</span>
@@ -63,15 +63,20 @@ public class PodWatcher implements Watcher&lt;Pod&gt; {
     }
 
     public boolean shouldStillWait() {
-<span class="pc bpc" id="L66" title="1 of 4 branches missed.">        return !(hasTimedOut() || lastPodFulfillsCondition());</span>
+<span class="pc bpc" id="L66" title="1 of 4 branches missed.">        return !(hasTimedOut() || podResourceFulfillsCondition());</span>
     }
 
-    public boolean lastPodFulfillsCondition() {
-<span class="pc bpc" id="L70" title="1 of 4 branches missed.">        return lastPod != null &amp;&amp; podPredicate.test(lastPod);</span>
+    public boolean podResourceFulfillsCondition() {
+        try {
+<span class="fc" id="L71">            return podPredicate.test(lastPod);</span>
+<span class="nc" id="L72">        } catch (NullPointerException npe) {</span>
+            //Ignore NPEs and treat them as false
+<span class="nc" id="L74">            return false;</span>
+        }
     }
 
     private boolean hasTimedOut() {
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        return System.currentTimeMillis() &gt; startTime + timeout;</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        return System.currentTimeMillis() &gt; startTime + timeout;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

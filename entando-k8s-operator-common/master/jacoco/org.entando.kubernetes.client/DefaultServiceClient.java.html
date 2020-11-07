@@ -22,7 +22,7 @@ import io.fabric8.kubernetes.api.model.Endpoints;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import org.entando.kubernetes.controller.k8sclient.ServiceClient;
-import org.entando.kubernetes.model.EntandoCustomResource;
+import org.entando.kubernetes.model.EntandoBaseCustomResource;
 
 public class DefaultServiceClient implements ServiceClient {
 
@@ -33,7 +33,7 @@ public class DefaultServiceClient implements ServiceClient {
 <span class="fc" id="L33">    }</span>
 
     @Override
-    public void createOrReplaceEndpoints(EntandoCustomResource peerInNamespace, Endpoints endpoints) {
+    public void createOrReplaceEndpoints(EntandoBaseCustomResource&lt;?&gt; peerInNamespace, Endpoints endpoints) {
         //TODO remove the namespace overriding once we create delegate services from the correct context (the App)
 <span class="nc" id="L38">        String namespace = ofNullable(endpoints.getMetadata().getNamespace())</span>
 <span class="nc" id="L39">                .orElse(peerInNamespace.getMetadata().getNamespace());</span>
@@ -45,12 +45,12 @@ public class DefaultServiceClient implements ServiceClient {
 <span class="nc" id="L45">    }</span>
 
     @Override
-    public Service loadService(EntandoCustomResource peerInNamespace, String name) {
+    public Service loadService(EntandoBaseCustomResource&lt;?&gt; peerInNamespace, String name) {
 <span class="fc" id="L49">        return client.services().inNamespace(peerInNamespace.getMetadata().getNamespace()).withName(name).get();</span>
     }
 
     @Override
-    public Service createOrReplaceService(EntandoCustomResource peerInNamespace, Service service) {
+    public Service createOrReplaceService(EntandoBaseCustomResource&lt;?&gt; peerInNamespace, Service service) {
 <span class="fc" id="L54">        String namespace = ofNullable(service.getMetadata().getNamespace())</span>
 <span class="fc" id="L55">                .orElse(peerInNamespace.getMetadata().getNamespace());</span>
 <span class="fc" id="L56">        return client.services().inNamespace(namespace).createOrReplace(service);</span>

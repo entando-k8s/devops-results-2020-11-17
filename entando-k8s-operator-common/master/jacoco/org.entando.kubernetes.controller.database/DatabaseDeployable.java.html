@@ -32,85 +32,88 @@ import org.entando.kubernetes.controller.spi.Deployable;
 import org.entando.kubernetes.controller.spi.DeployableContainer;
 import org.entando.kubernetes.controller.spi.Secretive;
 import org.entando.kubernetes.model.EntandoBaseCustomResource;
+import org.entando.kubernetes.model.EntandoDeploymentSpec;
 
-public class DatabaseDeployable&lt;C extends EntandoBaseCustomResource&gt; implements Deployable&lt;DatabaseDeploymentResult, C&gt;, Secretive {
+public class DatabaseDeployable&lt;S extends EntandoDeploymentSpec&gt; implements
+        Deployable&lt;DatabaseDeploymentResult, S&gt;, Secretive {
 
     private final DbmsDockerVendorStrategy dbmsVendor;
-    private final C customResource;
+    private final EntandoBaseCustomResource&lt;S&gt; customResource;
     private final String nameQualifier;
     protected List&lt;DeployableContainer&gt; containers;
 
-<span class="fc" id="L43">    public DatabaseDeployable(DbmsDockerVendorStrategy dbmsVendor, C customResource, String nameQualifier, Integer portOverride) {</span>
-<span class="fc" id="L44">        this.dbmsVendor = dbmsVendor;</span>
-<span class="fc" id="L45">        this.customResource = customResource;</span>
-<span class="fc" id="L46">        this.nameQualifier = nameQualifier;</span>
-<span class="fc" id="L47">        this.containers = Arrays</span>
-<span class="fc" id="L48">                .asList(new DatabaseContainer(buildVariableInitializer(dbmsVendor), dbmsVendor, nameQualifier, portOverride));</span>
-<span class="fc" id="L49">    }</span>
+    public DatabaseDeployable(DbmsDockerVendorStrategy dbmsVendor, EntandoBaseCustomResource&lt;S&gt; customResource, String nameQualifier,
+<span class="fc" id="L46">            Integer portOverride) {</span>
+<span class="fc" id="L47">        this.dbmsVendor = dbmsVendor;</span>
+<span class="fc" id="L48">        this.customResource = customResource;</span>
+<span class="fc" id="L49">        this.nameQualifier = nameQualifier;</span>
+<span class="fc" id="L50">        this.containers = Arrays</span>
+<span class="fc" id="L51">                .asList(new DatabaseContainer(buildVariableInitializer(dbmsVendor), dbmsVendor, nameQualifier, portOverride));</span>
+<span class="fc" id="L52">    }</span>
 
     private VariableInitializer buildVariableInitializer(DbmsDockerVendorStrategy vendorStrategy) {
-<span class="pc bpc" id="L52" title="1 of 3 branches missed.">        switch (vendorStrategy) {</span>
+<span class="pc bpc" id="L55" title="1 of 3 branches missed.">        switch (vendorStrategy) {</span>
             case MYSQL:
-<span class="fc" id="L54">                return vars -&gt;</span>
+<span class="fc" id="L57">                return vars -&gt;</span>
                         //No DB creation. Dbs are created during schema creation
-<span class="fc" id="L56">                        vars.add(new EnvVar(&quot;MYSQL_ROOT_PASSWORD&quot;, null,</span>
-<span class="fc" id="L57">                                KubeUtils.secretKeyRef(getDatabaseAdminSecretName(), KubeUtils.PASSSWORD_KEY)));</span>
+<span class="fc" id="L59">                        vars.add(new EnvVar(&quot;MYSQL_ROOT_PASSWORD&quot;, null,</span>
+<span class="fc" id="L60">                                KubeUtils.secretKeyRef(getDatabaseAdminSecretName(), KubeUtils.PASSSWORD_KEY)));</span>
             case POSTGRESQL:
-<span class="fc" id="L59">                return vars -&gt; {</span>
-<span class="fc" id="L60">                    vars.add(new EnvVar(&quot;POSTGRESQL_DATABASE&quot;, getDatabaseName(), null));</span>
+<span class="fc" id="L62">                return vars -&gt; {</span>
+<span class="fc" id="L63">                    vars.add(new EnvVar(&quot;POSTGRESQL_DATABASE&quot;, getDatabaseName(), null));</span>
                     // This username will not be used, as we will be creating schema/user pairs,
                     // but without it the DB isn't created.
-<span class="fc" id="L63">                    vars.add(new EnvVar(&quot;POSTGRESQL_USER&quot;, getDatabaseName() + &quot;_user&quot;, null));</span>
-<span class="fc" id="L64">                    vars.add(new EnvVar(&quot;POSTGRESQL_PASSWORD&quot;, null,</span>
-<span class="fc" id="L65">                            KubeUtils.secretKeyRef(getDatabaseAdminSecretName(), KubeUtils.PASSSWORD_KEY)));</span>
-<span class="fc" id="L66">                    vars.add(new EnvVar(&quot;POSTGRESQL_ADMIN_PASSWORD&quot;, null,</span>
-<span class="fc" id="L67">                            KubeUtils.secretKeyRef(getDatabaseAdminSecretName(), KubeUtils.PASSSWORD_KEY)));</span>
+<span class="fc" id="L66">                    vars.add(new EnvVar(&quot;POSTGRESQL_USER&quot;, getDatabaseName() + &quot;_user&quot;, null));</span>
+<span class="fc" id="L67">                    vars.add(new EnvVar(&quot;POSTGRESQL_PASSWORD&quot;, null,</span>
+<span class="fc" id="L68">                            KubeUtils.secretKeyRef(getDatabaseAdminSecretName(), KubeUtils.PASSSWORD_KEY)));</span>
+<span class="fc" id="L69">                    vars.add(new EnvVar(&quot;POSTGRESQL_ADMIN_PASSWORD&quot;, null,</span>
+<span class="fc" id="L70">                            KubeUtils.secretKeyRef(getDatabaseAdminSecretName(), KubeUtils.PASSSWORD_KEY)));</span>
 
-<span class="fc" id="L69">                };</span>
+<span class="fc" id="L72">                };</span>
             default:
-<span class="nc" id="L71">                throw new IllegalStateException(</span>
-<span class="nc" id="L72">                        format(&quot;The DBMS %s not supported for containerized deployments&quot;, vendorStrategy.getName()));</span>
+<span class="nc" id="L74">                throw new IllegalStateException(</span>
+<span class="nc" id="L75">                        format(&quot;The DBMS %s not supported for containerized deployments&quot;, vendorStrategy.getName()));</span>
         }
     }
 
     @Override
     public Optional&lt;Long&gt; getFileSystemUserAndGroupId() {
-<span class="fc" id="L78">        return dbmsVendor.getFileSystemUserGroupid();</span>
+<span class="fc" id="L81">        return dbmsVendor.getFileSystemUserGroupid();</span>
     }
 
     @Override
     public List&lt;DeployableContainer&gt; getContainers() {
-<span class="fc" id="L83">        return containers;</span>
+<span class="fc" id="L86">        return containers;</span>
     }
 
     @Override
     public String getNameQualifier() {
-<span class="fc" id="L88">        return nameQualifier;</span>
+<span class="fc" id="L91">        return nameQualifier;</span>
     }
 
     @Override
-    public C getCustomResource() {
-<span class="fc" id="L93">        return customResource;</span>
+    public EntandoBaseCustomResource&lt;S&gt; getCustomResource() {
+<span class="fc" id="L96">        return customResource;</span>
     }
 
     @Override
     public DatabaseDeploymentResult createResult(Deployment deployment, Service service, Ingress ingress, Pod pod) {
-<span class="fc" id="L98">        return new DatabaseDeploymentResult(service, dbmsVendor, getDatabaseName(), getDatabaseAdminSecretName(), pod);</span>
+<span class="fc" id="L101">        return new DatabaseDeploymentResult(service, dbmsVendor, getDatabaseName(), getDatabaseAdminSecretName(), pod);</span>
     }
 
     @Override
     public List&lt;Secret&gt; buildSecrets() {
-<span class="fc" id="L103">        Secret secret = KubeUtils.generateSecret(customResource, getDatabaseAdminSecretName(),</span>
-<span class="fc" id="L104">                dbmsVendor.getDefaultAdminUsername());</span>
-<span class="fc" id="L105">        return Arrays.asList(secret);</span>
+<span class="fc" id="L106">        Secret secret = KubeUtils.generateSecret(customResource, getDatabaseAdminSecretName(),</span>
+<span class="fc" id="L107">                dbmsVendor.getDefaultAdminUsername());</span>
+<span class="fc" id="L108">        return Arrays.asList(secret);</span>
     }
 
     protected String getDatabaseAdminSecretName() {
-<span class="fc" id="L109">        return ExternalDatabaseDeployment.adminSecretName(customResource, getNameQualifier());</span>
+<span class="fc" id="L112">        return ExternalDatabaseDeployment.adminSecretName(customResource, getNameQualifier());</span>
     }
 
     protected String getDatabaseName() {
-<span class="fc" id="L113">        return ExternalDatabaseDeployment.databaseName(customResource, getNameQualifier());</span>
+<span class="fc" id="L116">        return ExternalDatabaseDeployment.databaseName(customResource, getNameQualifier());</span>
     }
 
     interface VariableInitializer {

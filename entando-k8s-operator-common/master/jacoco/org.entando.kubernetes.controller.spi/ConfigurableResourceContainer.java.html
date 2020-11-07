@@ -17,7 +17,7 @@
 package org.entando.kubernetes.controller.spi;
 
 import java.util.Optional;
-import org.entando.kubernetes.model.EntandoDeploymentSpec;
+import org.entando.kubernetes.model.EntandoIngressingDeploymentSpec;
 import org.entando.kubernetes.model.EntandoResourceRequirements;
 
 public interface ConfigurableResourceContainer extends DeployableContainer {
@@ -26,7 +26,7 @@ public interface ConfigurableResourceContainer extends DeployableContainer {
 <span class="fc" id="L26">        return getCustomResourceSpec().getResourceRequirements();</span>
     }
 
-    EntandoDeploymentSpec getCustomResourceSpec();
+    EntandoIngressingDeploymentSpec getCustomResourceSpec();
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
