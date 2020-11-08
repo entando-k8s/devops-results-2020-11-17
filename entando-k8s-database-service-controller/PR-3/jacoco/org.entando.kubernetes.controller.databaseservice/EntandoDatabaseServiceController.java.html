@@ -68,11 +68,11 @@ public class EntandoDatabaseServiceController extends AbstractDbAwareController&
 
                 @Override
                 public List&lt;Secret&gt; buildSecrets() {
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">                    if (getCustomResource().getSpec().getSecretName().isPresent()) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">                    if (getCustomResource().getSpec().getSecretName().isPresent()) {</span>
                         //because it already exists
 <span class="fc" id="L73">                        return Collections.emptyList();</span>
                     } else {
-<span class="nc" id="L75">                        return super.buildSecrets();</span>
+<span class="fc" id="L75">                        return super.buildSecrets();</span>
                     }
 
                 }
