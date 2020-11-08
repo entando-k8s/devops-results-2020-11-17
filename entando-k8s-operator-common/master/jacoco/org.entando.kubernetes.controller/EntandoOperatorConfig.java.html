@@ -56,13 +56,13 @@ public final class EntandoOperatorConfig extends EntandoOperatorConfigBase {
     }
 
     public static boolean isClusterScopedDeployment() {
-<span class="nc" id="L59">        return getNamespacesToObserve().stream().anyMatch(&quot;*&quot;::equals);</span>
+<span class="fc" id="L59">        return getNamespacesToObserve().stream().anyMatch(&quot;*&quot;::equals);</span>
     }
 
     public static List&lt;String&gt; getNamespacesToObserve() {
-<span class="nc" id="L63">        return lookupProperty(EntandoOperatorConfigProperty.ENTANDO_NAMESPACES_TO_OBSERVE).map(s -&gt; s.split(SEPERATOR_PATTERN))</span>
-<span class="nc" id="L64">                .map(Arrays::asList)</span>
-<span class="nc" id="L65">                .orElse(new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L63">        return lookupProperty(EntandoOperatorConfigProperty.ENTANDO_NAMESPACES_TO_OBSERVE).map(s -&gt; s.split(SEPERATOR_PATTERN))</span>
+<span class="fc" id="L64">                .map(Arrays::asList)</span>
+<span class="fc" id="L65">                .orElse(new ArrayList&lt;&gt;());</span>
     }
 
     public static List&lt;String&gt; getImagePullSecrets() {
