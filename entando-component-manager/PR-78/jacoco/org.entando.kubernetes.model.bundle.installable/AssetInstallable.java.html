@@ -5,60 +5,66 @@ import java.util.concurrent.CompletableFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.entando.kubernetes.client.core.EntandoCoreClient;
 import org.entando.kubernetes.controller.digitalexchange.job.model.InstallRequest.InstallAction;
+import org.entando.kubernetes.model.bundle.ComponentInstallationFlow;
 import org.entando.kubernetes.model.bundle.ComponentType;
 import org.entando.kubernetes.model.bundle.descriptor.AssetDescriptor;
 
-<span class="fc" id="L11">@Slf4j</span>
+<span class="fc" id="L12">@Slf4j</span>
 public class AssetInstallable extends Installable&lt;AssetDescriptor&gt; {
 
     private final File file;
     private final EntandoCoreClient engineService;
 
     public AssetInstallable(EntandoCoreClient service, AssetDescriptor assetDescriptor, InstallAction action) {
-<span class="fc" id="L18">        this(service, assetDescriptor, null, action);</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L19">        this(service, assetDescriptor, null, action);</span>
+<span class="fc" id="L20">    }</span>
 
     public AssetInstallable(EntandoCoreClient service, AssetDescriptor assetDescriptor, File file,
             InstallAction action) {
-<span class="fc" id="L23">        super(assetDescriptor, action);</span>
-<span class="fc" id="L24">        this.file = file;</span>
-<span class="fc" id="L25">        this.engineService = service;</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L24">        super(assetDescriptor, action);</span>
+<span class="fc" id="L25">        this.file = file;</span>
+<span class="fc" id="L26">        this.engineService = service;</span>
+<span class="fc" id="L27">    }</span>
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="fc" id="L30">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L31">            log.info(&quot;Registering CMS Asset {}&quot;, getName());</span>
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L33">                return; //Do nothing</span>
+<span class="fc" id="L31">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L32">            log.info(&quot;Registering CMS Asset {}&quot;, getName());</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L34">                return; //Do nothing</span>
             }
 
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L37">                engineService.createAsset(representation, file);</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L38">                engineService.createAsset(representation, file);</span>
             } else {
-<span class="nc" id="L39">                engineService.updateAsset(representation, file);</span>
+<span class="nc" id="L40">                engineService.updateAsset(representation, file);</span>
             }
-<span class="fc" id="L41">        });</span>
+<span class="fc" id="L42">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L46">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L47">            log.info(&quot;Removing Content {}&quot;, getName());</span>
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L49">                engineService.deleteAsset(&quot;cc=&quot; + getName());</span>
+<span class="fc" id="L47">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L48">            log.info(&quot;Removing Content {}&quot;, getName());</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L50">                engineService.deleteAsset(&quot;cc=&quot; + getName());</span>
             }
-<span class="fc" id="L51">        });</span>
+<span class="fc" id="L52">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L56">        return ComponentType.ASSET;</span>
+<span class="fc" id="L57">        return ComponentType.ASSET;</span>
+    }
+
+    @Override
+    public ComponentInstallationFlow getComponentInstallationFlow() {
+<span class="fc" id="L62">        return ComponentInstallationFlow.ASSET;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L61">        return representation.getCorrelationCode();</span>
+<span class="fc" id="L67">        return representation.getCorrelationCode();</span>
     }
 
 }

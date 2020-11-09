@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2019 - 2020 Entando Inc.</copyright>
     <item>
-      <title>File: 4,
+      <title>File: 7,
              Errors: 0,
-             Warnings: 4,
+             Warnings: 10,
              Infos: 0
       </title>
             <link>http://www.entando.com//checkstyle.html</link>
@@ -60,6 +60,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.processor.PageProcessor.java">org/entando/kubernetes/model/bundle/processor/PageProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.installable.PagePopulationInstallable.java">org/entando/kubernetes/model/bundle/installable/PagePopulationInstallable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.installable.GroupInstallable.java">org/entando/kubernetes/model/bundle/installable/GroupInstallable.java</a>
                 </td>
                 <td>
@@ -74,13 +102,27 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.installable.PageInstallable.java">org/entando/kubernetes/model/bundle/installable/PageInstallable.java</a>
+                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.installable.Installable.java">org/entando/kubernetes/model/bundle/installable/Installable.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
                   1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.entando.com//checkstyle.html#org.entando.kubernetes.model.bundle.installable.PageInitializationInstallable.java">org/entando/kubernetes/model/bundle/installable/PageInitializationInstallable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
                 </td>
                 <td>
                   0

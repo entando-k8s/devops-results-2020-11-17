@@ -9,41 +9,34 @@ import java.util.Arrays;
  */
 <span class="fc" id="L10">public enum ComponentType {</span>
 
-<span class="fc" id="L12">    PLUGIN(&quot;plugin&quot;, 0),</span>
-<span class="fc" id="L13">    DIRECTORY(&quot;directory&quot;, 1),</span>
-<span class="fc" id="L14">    CATEGORY(&quot;category&quot;, 2),</span>
-<span class="fc" id="L15">    GROUP(&quot;group&quot;, 3),</span>
-<span class="fc" id="L16">    LANGUAGE(&quot;language&quot;, 4),</span>
-<span class="fc" id="L17">    LABEL(&quot;label&quot;, 5),</span>
-<span class="fc" id="L18">    RESOURCE(&quot;asset&quot;, 6),</span>
-<span class="fc" id="L19">    WIDGET(&quot;widget&quot;, 7),</span>
-<span class="fc" id="L20">    CONTENT_TYPE(&quot;contentType&quot;, 8),</span>
-<span class="fc" id="L21">    CONTENT_TEMPLATE(&quot;contentTemplate&quot;, 9),</span>
-<span class="fc" id="L22">    ASSET(&quot;asset&quot;, 10),</span>
-<span class="fc" id="L23">    CONTENT(&quot;content&quot;, 11),</span>
-<span class="fc" id="L24">    FRAGMENT(&quot;fragment&quot;, 12),</span>
-<span class="fc" id="L25">    PAGE_TEMPLATE(&quot;pageTemplate&quot;, 13),</span>
-<span class="fc" id="L26">    PAGE(&quot;page&quot;, 14);</span>
+<span class="fc" id="L12">    PLUGIN(&quot;plugin&quot;),</span>
+<span class="fc" id="L13">    DIRECTORY(&quot;directory&quot;),</span>
+<span class="fc" id="L14">    CATEGORY(&quot;category&quot;),</span>
+<span class="fc" id="L15">    GROUP(&quot;group&quot;),</span>
+<span class="fc" id="L16">    LANGUAGE(&quot;language&quot;),</span>
+<span class="fc" id="L17">    LABEL(&quot;label&quot;),</span>
+<span class="fc" id="L18">    RESOURCE(&quot;asset&quot;),</span>
+<span class="fc" id="L19">    WIDGET(&quot;widget&quot;),</span>
+<span class="fc" id="L20">    CONTENT_TYPE(&quot;contentType&quot;),</span>
+<span class="fc" id="L21">    CONTENT_TEMPLATE(&quot;contentTemplate&quot;),</span>
+<span class="fc" id="L22">    ASSET(&quot;asset&quot;),</span>
+<span class="fc" id="L23">    CONTENT(&quot;content&quot;),</span>
+<span class="fc" id="L24">    FRAGMENT(&quot;fragment&quot;),</span>
+<span class="fc" id="L25">    PAGE_TEMPLATE(&quot;pageTemplate&quot;),</span>
+<span class="fc" id="L26">    PAGE(&quot;page&quot;);</span>
 
-    private String typeName;
-    private int installPriority;
+    private final String typeName;
 
-<span class="fc" id="L31">    ComponentType(String typeName, int installPriority) {</span>
-<span class="fc" id="L32">        this.typeName = typeName;</span>
-<span class="fc" id="L33">        this.installPriority = installPriority;</span>
-<span class="fc" id="L34">    }</span>
+<span class="fc" id="L30">    ComponentType(String typeName) {</span>
+<span class="fc" id="L31">        this.typeName = typeName;</span>
+<span class="fc" id="L32">    }</span>
 
     public static boolean isValidType(String type) {
-<span class="fc" id="L37">        return Arrays.stream(values()).anyMatch(e -&gt; e.getTypeName().equalsIgnoreCase(type));</span>
+<span class="fc" id="L35">        return Arrays.stream(values()).anyMatch(e -&gt; e.getTypeName().equalsIgnoreCase(type));</span>
     }
 
     public String getTypeName() {
-<span class="fc" id="L41">        return this.typeName;</span>
+<span class="fc" id="L39">        return this.typeName;</span>
     }
-
-    public int getInstallPriority() {
-<span class="fc" id="L45">        return this.installPriority;</span>
-    }
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
