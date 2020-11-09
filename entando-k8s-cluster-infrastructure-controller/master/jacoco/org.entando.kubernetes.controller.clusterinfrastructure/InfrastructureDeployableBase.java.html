@@ -23,35 +23,36 @@ import io.fabric8.kubernetes.api.model.extensions.Ingress;
 import org.entando.kubernetes.controller.KubeUtils;
 import org.entando.kubernetes.controller.spi.IngressingDeployable;
 import org.entando.kubernetes.model.infrastructure.EntandoClusterInfrastructure;
+import org.entando.kubernetes.model.infrastructure.EntandoClusterInfrastructureSpec;
 
 public abstract class InfrastructureDeployableBase implements
-        IngressingDeployable&lt;ClusterInfrastructureDeploymentResult, EntandoClusterInfrastructure&gt; {
+        IngressingDeployable&lt;ClusterInfrastructureDeploymentResult, EntandoClusterInfrastructureSpec&gt; {
 
     protected final EntandoClusterInfrastructure entandoClusterInfrastructure;
 
     protected InfrastructureDeployableBase(
-<span class="fc" id="L33">            EntandoClusterInfrastructure entandoClusterInfrastructure) {</span>
-<span class="fc" id="L34">        this.entandoClusterInfrastructure = entandoClusterInfrastructure;</span>
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L34">            EntandoClusterInfrastructure entandoClusterInfrastructure) {</span>
+<span class="fc" id="L35">        this.entandoClusterInfrastructure = entandoClusterInfrastructure;</span>
+<span class="fc" id="L36">    }</span>
 
     @Override
     public final EntandoClusterInfrastructure getCustomResource() {
-<span class="fc" id="L39">        return entandoClusterInfrastructure;</span>
+<span class="fc" id="L40">        return entandoClusterInfrastructure;</span>
     }
 
     @Override
     public final ClusterInfrastructureDeploymentResult createResult(Deployment deployment, Service service, Ingress ingress, Pod pod) {
-<span class="fc" id="L44">        return new ClusterInfrastructureDeploymentResult(pod, service, ingress);</span>
+<span class="fc" id="L45">        return new ClusterInfrastructureDeploymentResult(pod, service, ingress);</span>
     }
 
     @Override
     public final String getIngressName() {
-<span class="fc" id="L49">        return KubeUtils.standardIngressName(entandoClusterInfrastructure);</span>
+<span class="fc" id="L50">        return KubeUtils.standardIngressName(entandoClusterInfrastructure);</span>
     }
 
     @Override
     public final String getIngressNamespace() {
-<span class="fc" id="L54">        return entandoClusterInfrastructure.getMetadata().getNamespace();</span>
+<span class="fc" id="L55">        return entandoClusterInfrastructure.getMetadata().getNamespace();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
