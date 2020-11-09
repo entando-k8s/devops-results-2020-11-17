@@ -179,7 +179,7 @@ public class EntandoBundleServiceImpl implements EntandoBundleService {
 <span class="fc" id="L179">                .installed(bundle.isInstalled())</span>
 <span class="pc bpc" id="L180" title="1 of 2 branches missed.">                .version(bundle.isInstalled() ? bundle.getInstalledJob().getComponentVersion() : null)</span>
 <span class="pc bpc" id="L181" title="1 of 2 branches missed.">                .lastUpdate(bundle.isInstalled()</span>
-<span class="pc" id="L182">                        ? Date.from(bundle.getLastJob().getFinishedAt().atZone(ZoneOffset.UTC).toInstant()) : null)</span>
+<span class="pc" id="L182">                        ? Date.from(bundle.getInstalledJob().getFinishedAt().atZone(ZoneOffset.UTC).toInstant()) : null)</span>
 <span class="fc" id="L183">                .build();</span>
     }
 
