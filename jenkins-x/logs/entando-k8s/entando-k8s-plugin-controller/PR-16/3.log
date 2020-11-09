@@ -1,0 +1,14 @@
+
+Showing logs for build [32mmeta-entando-k8s-entando-k8s-pl-qg4ww-3[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-vcgvw[0m
+Unable to retrieve container logs for docker://097373786ce38a49a0dcbb04bca5c93e24ebe1acaf55fa42a62282e9f95fdd4c
+
+Showing logs for build [32mmeta-entando-k8s-entando-k8s-pl-qg4ww-3[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-f44nv[0m
+Unable to retrieve container logs for docker://7a3427d09712471d1435b150e4a5d41cab33659b2976c61f514d03fdc299e67e
+
+Showing logs for build [32mmeta-entando-k8s-entando-k8s-pl-qg4ww-3[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+Unable to retrieve container logs for docker://c4d7cf6f88aacf6d0270030f99044d5eac9174ceea720205abc6943502ebb365
+
+Showing logs for build [32mmeta-entando-k8s-entando-k8s-pl-qg4ww-3[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-entando-k8s-entando-k8s-pl-58prw[0m
+Unable to retrieve container logs for docker://9892f73274e34834d4e67ade77e6d74e886211ff7c3d5174f3e14949ca2a9c50
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-git-source-meta-entando-k8s-entando-k8s-pl-58prw'. The execution of the pipeline has stopped.[0m
