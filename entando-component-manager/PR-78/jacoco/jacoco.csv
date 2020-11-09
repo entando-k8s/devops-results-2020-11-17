@@ -52,7 +52,7 @@ Entando Component Manager,org.entando.kubernetes.model.bundle.reportable,Entando
 Entando Component Manager,org.entando.kubernetes.model.bundle.reportable,EntandoK8SServiceReportableProcessor,0,2,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.request,AnalysisReportClientRequestFactory,118,231,3,1,32,38,18,5,16,5
 Entando Component Manager,org.entando.kubernetes.service.digitalexchange,BundleUtilities,0,347,0,12,0,85,0,27,0,21
-Entando Component Manager,org.entando.kubernetes.client.core,DefaultEntandoCoreClient,896,701,5,7,87,75,33,29,28,28
+Entando Component Manager,org.entando.kubernetes.client.core,DefaultEntandoCoreClient,892,701,5,7,87,75,33,29,28,28
 Entando Component Manager,org.entando.kubernetes.client.core,DefaultEntandoCoreClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.core,DefaultEntandoCoreClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.exception.web,ConflictException,11,0,0,0,4,0,2,0,2,0
