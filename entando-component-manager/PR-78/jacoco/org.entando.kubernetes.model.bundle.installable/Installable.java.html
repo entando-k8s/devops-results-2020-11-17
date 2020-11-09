@@ -30,9 +30,10 @@ public abstract class Installable&lt;T extends Descriptor&gt; {
 <span class="fc" id="L30">        this.action = action;</span>
 <span class="fc" id="L31">    }</span>
 
+    @Deprecated
     public Installable(T representation) {
-<span class="fc" id="L34">        this(representation, InstallAction.CREATE);</span>
-<span class="fc" id="L35">    }</span>
+<span class="nc" id="L35">        this(representation, InstallAction.CREATE);</span>
+<span class="nc" id="L36">    }</span>
 
     /**
      * This method will be called when every component was validated on the Digital Exchange bundle file.
@@ -66,7 +67,7 @@ public abstract class Installable&lt;T extends Descriptor&gt; {
     public abstract String getName();
 
     public InstallAction getAction() {
-<span class="fc" id="L69">        return action;</span>
+<span class="fc" id="L70">        return action;</span>
     }
 
     /**
@@ -77,39 +78,39 @@ public abstract class Installable&lt;T extends Descriptor&gt; {
      */
     public String getChecksum() {
         try {
-<span class="fc" id="L80">            return DigestUtils.md5Hex(objectMapper.writeValueAsString(representation));</span>
-<span class="nc" id="L81">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L82">            log.error(&quot;Problem while processing checksum&quot;, e);</span>
+<span class="fc" id="L81">            return DigestUtils.md5Hex(objectMapper.writeValueAsString(representation));</span>
+<span class="nc" id="L82">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L83">            log.error(&quot;Problem while processing checksum&quot;, e);</span>
         }
-<span class="nc" id="L84">        return null;</span>
+<span class="nc" id="L85">        return null;</span>
     }
 
     public T getRepresentation() {
-<span class="fc" id="L88">        return this.representation;</span>
+<span class="fc" id="L89">        return this.representation;</span>
     }
 
     public int getPriority() {
-<span class="fc" id="L92">        return this.getComponentInstallationFlow().getInstallPriority();</span>
+<span class="fc" id="L93">        return this.getComponentInstallationFlow().getInstallPriority();</span>
     }
 
     public EntandoBundleComponentJobEntity getJob() {
-<span class="nc" id="L96">        return this.job;</span>
+<span class="nc" id="L97">        return this.job;</span>
     }
 
     public void setJob(EntandoBundleComponentJobEntity job) {
-<span class="nc" id="L100">        this.job = job;</span>
-<span class="nc" id="L101">    }</span>
+<span class="nc" id="L101">        this.job = job;</span>
+<span class="nc" id="L102">    }</span>
 
     public boolean shouldSkip() {
-<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        return action == InstallAction.SKIP;</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        return action == InstallAction.SKIP;</span>
     }
 
     public boolean shouldCreate() {
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        return action == InstallAction.CREATE;</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">        return action == InstallAction.CREATE;</span>
     }
 
     public boolean shouldOverride() {
-<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        return action == InstallAction.OVERRIDE;</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        return action == InstallAction.OVERRIDE;</span>
     }
 
 }

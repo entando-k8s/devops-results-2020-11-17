@@ -83,7 +83,7 @@ Entando Component Manager,org.entando.kubernetes.model.bundle.installable,Langua
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PageInitializationInstallable,32,37,5,1,9,11,6,6,3,6
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,AssetInstallable,9,75,3,3,2,21,3,10,0,10
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,FileInstallable,7,55,2,2,2,15,2,9,0,9
-Entando Component Manager,org.entando.kubernetes.model.bundle.installable,ContentTypeInstallable,7,61,3,3,2,18,3,9,0,9
+Entando Component Manager,org.entando.kubernetes.model.bundle.installable,ContentTypeInstallable,7,62,3,3,2,18,3,9,0,9
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,DirectoryInstallable,1,61,2,4,1,16,2,10,0,9
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,FragmentInstallable,7,62,3,3,2,18,3,9,0,9
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PageTemplateInstallable,7,62,3,3,2,18,3,9,0,9
@@ -94,7 +94,7 @@ Entando Component Manager,org.entando.kubernetes.model.bundle.installable,Plugin
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PagePopulationInstallable,25,59,4,2,7,16,5,8,2,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,CategoryInstallable,7,62,3,3,2,18,3,9,0,9
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,GroupInstallable,7,62,3,3,2,18,3,9,0,9
-Entando Component Manager,org.entando.kubernetes.model.bundle.installable,Installable,19,59,3,3,6,15,5,10,2,10
+Entando Component Manager,org.entando.kubernetes.model.bundle.installable,Installable,24,54,3,3,8,13,6,9,3,9
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,ContentInstallable,7,62,3,3,2,18,3,9,0,9
 Entando Component Manager,org.entando.kubernetes.service,KubernetesService,65,192,3,7,14,42,8,15,5,13
 Entando Component Manager,org.entando.kubernetes.model.web,ResilientListWrapper,46,0,4,0,11,0,5,0,3,0
