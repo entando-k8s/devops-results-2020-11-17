@@ -1,0 +1,1449 @@
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-f2h67[0m
+{"level":"warn","ts":1604921119.0710893,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604921119.0759711,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-ls2c6[0m
+{"level":"warn","ts":1604921121.7983778,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1604921121.8047266,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-k8s-entando-k8s-composi-b4xr8[0m
+{"level":"warn","ts":1604921215.0832386,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1604921216.6114902,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando-k8s/entando-k8s-composite-app-controller.git @ master in path /workspace/source"}
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:67866f3119fb6f44d3fcf06be8ed3d576f58c508,14:e8a7db1e63595fd88ae7652c03c25a76808b396f
+DEBUG: ran git fetch --unshallow origin e8a7db1e63595fd88ae7652c03c25a76808b396f: 67866f3119fb6f44d3fcf06be8ed3d576f58c508: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard 67866f3119fb6f44d3fcf06be8ed3d576f58c508 in 
+DEBUG: ran clean --force -d . in 
+DEBUG: ran git merge e8a7db1e63595fd88ae7652c03c25a76808b396f in 
+Merged SHA e8a7db1e63595fd88ae7652c03c25a76808b396f with commit message 'ENG-1447 enforcing strict mode' into base branch master
+Merged SHA 4ada02ff76f3ee15289657b592dfa180cbe865ab with commit message 'ENG-1447 bumped to latest custom-model and implemented EntandoCustomResourceReference logic for deployment sequencing' into base branch master
+Merged SHA 72747f6113087eb9a7028d24027721c738d8944e with commit message 'poste proposal' into base branch master
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-set-version[0m
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.entando:entando-k8s-composite-app-controller:jar:6.2.0-SNAPSHOT
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.yaml:snakeyaml:jar -> version 1.27 vs ${snakeyaml.version} @ org.entando:entando-quarkus-parent:6.2.5, /home/jenkins/.mvnrepository/org/entando/entando-quarkus-parent/6.2.5/entando-quarkus-parent-6.2.5.pom, line 283, column 25
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------< org.entando:entando-k8s-composite-app-controller >----------
+[INFO] Building Entando K8S Composite App Controller 6.2.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- versions-maven-plugin:2.8.1:set (default-cli) @ entando-k8s-composite-app-controller ---
+[INFO] Local aggregation ****: /workspace/source
+[INFO] Processing change of org.entando:entando-k8s-composite-app-controller:6.2.0-SNAPSHOT -> 0.0.0-SNAPSHOT-PR-14-2
+[INFO] Processing org.entando:entando-k8s-composite-app-controller
+[INFO]     Updating project org.entando:entando-k8s-composite-app-controller
+[INFO]         from version 6.2.0-SNAPSHOT to 0.0.0-SNAPSHOT-PR-14-2
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.748 s
+[INFO] Finished at: 2020-11-09T11:27:12Z
+[INFO] ------------------------------------------------------------------------
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-fix-git-for-sonar[0m
+M	pom.xml
+Switched to a new branch 'PR-14'
+Deleted branch master (was e8a7db1).
+From https://github.com/entando-k8s/entando-k8s-composite-app-controller
+ * [new branch]      master     -> master
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-mvn-verify-pr[0m
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293288752,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzI4ODc1Mg==",
+  "state": "pending",
+  "description": "Pre-deployment tests pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/surefire-report.html",
+  "context": "Pre-deployment tests",
+  "created_at": "2020-11-09T11:27:15Z",
+  "updated_at": "2020-11-09T11:27:15Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 12  1897    0     0  100   228      0    294 --:--:-- --:--:-- --:--:--   294100  1897  100  1669  100   228   2153    294 --:--:-- --:--:-- --:--:--  2153
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293288837,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzI4ODgzNw==",
+  "state": "pending",
+  "description": "Post-deployment tests pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/failsafe-report.html",
+  "context": "Post-deployment tests",
+  "created_at": "2020-11-09T11:27:16Z",
+  "updated_at": "2020-11-09T11:27:16Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/**********/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/entando-**/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/**********/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1901  100  1671  100   230   2538    349 --:--:-- --:--:-- --:--:--  2539
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293288940,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzI4ODk0MA==",
+  "state": "pending",
+  "description": "Checkstyle pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/checkstyle.html",
+  "context": "Checkstyle",
+  "created_at": "2020-11-09T11:27:16Z",
+  "updated_at": "2020-11-09T11:27:16Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 10  1847    0     0  100   203      0    220 --:--:-- --:--:-- --:--:--   221100  1847  100  1644  100   203   1784    220 --:--:-- --:--:-- --:--:--  1792
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293289079,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzI4OTA3OQ==",
+  "state": "pending",
+  "description": "OWASP CVE pending!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/dependency-check-report.html",
+  "context": "OWASP CVE",
+  "created_at": "2020-11-09T11:27:17Z",
+  "updated_at": "2020-11-09T11:27:17Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/entando-**",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/**********/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/**********/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 11  1869    0     0  100   214      0    346 --:--:-- --:--:-- --:--:--   346100  1869  100  1655  100   214   2664    344 --:--:-- --:--:-- --:--:--  2665
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.entando:entando-k8s-composite-app-controller:jar:0.0.0-SNAPSHOT-PR-14-2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.yaml:snakeyaml:jar -> version 1.27 vs ${snakeyaml.version} @ org.entando:entando-quarkus-parent:6.2.5, /home/jenkins/.mvnrepository/org/entando/entando-quarkus-parent/6.2.5/entando-quarkus-parent-6.2.5.pom, line 283, column 25
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------< org.entando:entando-k8s-composite-app-controller >----------
+[INFO] Building Entando K8S Composite App Controller 0.0.0-SNAPSHOT-PR-14-2
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:3.1.1:check (validate) @ entando-k8s-composite-app-controller ---
+[INFO] Starting audit...
+Audit done.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:3.1.1:checkstyle (validate) @ entando-k8s-composite-app-controller ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:prepare-agent (prepare-agent) @ entando-k8s-composite-app-controller ---
+[INFO] argLine set to -javaagent:/home/jenkins/.mvnrepository/org/jacoco/org.jacoco.agent/0.8.5/org.jacoco.agent-0.8.5-runtime.jar=destfile=/workspace/source/target/jacoco.e**c
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ entando-k8s-composite-app-controller ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ entando-k8s-composite-app-controller ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /workspace/source/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ entando-k8s-composite-app-controller ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ entando-k8s-composite-app-controller ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /workspace/source/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ entando-k8s-composite-app-controller ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.entando.kubernetes.compositeapp.controller.inprocesstests.CompositeAppControllerMockedTest
+Nov 09, 2020 11:27:37 AM okhttp3.mockwebserver.MockWebServer$2 e**cute
+INFO: MockWebServer[45207] starting to accept connections
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces/entando/configmaps HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:38 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: PATCH /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions/entandoplugins.entando.org HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:39 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions/entandocompositeapps.entando.org HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:40 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:41 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions/entandokeycloakservers.entando.org HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers/test-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:42 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets/test-keycloak-carcpr14-controller-ca-cert-secret HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:43 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:43 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:43 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-keycloak-carcpr14-deployer-azu8btajur&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:43 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoKeycloakServer%3Dtest-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:43 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-keycloak-carcpr14-deployer-azu8btajur&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:43 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager$1 onResponse
+INFO: Watch terminated unexpectedly. reason: \n not found: limit=1449 content=7b2261706956657273696f6e223a227631222c226b696e64223a224c69737422…
+Nov 09, 2020 11:27:44 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-keycloak-carcpr14-deployer-azu8btajur&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:44 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:44 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager$1 onResponse
+INFO: Watch terminated unexpectedly. reason: \n not found: limit=1449 content=7b2261706956657273696f6e223a227631222c226b696e64223a224c69737422…
+Nov 09, 2020 11:27:44 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager scheduleReconnect
+WARN: Ignoring error for already closed/closing connection
+Nov 09, 2020 11:27:44 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:44 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets/test-plugin-carcpr14-controller-ca-cert-secret HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-plugin-carcpr14-deployer-u6p9ngdpoz&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoPlugin%3Dtest-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-plugin-carcpr14-deployer-u6p9ngdpoz&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager$1 onResponse
+INFO: Watch terminated unexpectedly. reason: \n not found: limit=2827 content=7b2261706956657273696f6e223a227631222c226b696e64223a224c69737422…
+Nov 09, 2020 11:27:45 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager scheduleReconnect
+WARN: Ignoring error for already closed/closing connection
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:45 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoResourceKind%3DEntandoKeycloakServer%2CEntandoKeycloakServer%3Dtest-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoResourceKind%3DEntandoKeycloakServer%2CEntandoKeycloakServer%3Dtest-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:46 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers/test-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoPlugin%3Dtest-plugin-carcpr14%2CEntandoResourceKind%3DEntandoPlugin HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoPlugin%3Dtest-plugin-carcpr14%2CEntandoResourceKind%3DEntandoPlugin HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:47 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[45207] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$2 acceptConnections
+INFO: MockWebServer[45207] done accepting connections: Socket closed
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$2 e**cute
+INFO: MockWebServer[48500] starting to accept connections
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:48 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces/entando/configmaps HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: PATCH /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:49 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:50 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando/configmaps/entando-docker-image-info-v6.1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:51 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers/test-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets/test-keycloak-carcpr14-controller-ca-cert-secret HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-keycloak-carcpr14-deployer-xigmsyivp9&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-keycloak-carcpr14-deployer-xigmsyivp9&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:52 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoKeycloakServer%3Dtest-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:52 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager$1 onResponse
+INFO: Watch terminated unexpectedly. reason: \n not found: limit=1449 content=7b2261706956657273696f6e223a227631222c226b696e64223a224c69737422…
+Nov 09, 2020 11:27:53 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager$1 onResponse
+INFO: Watch terminated unexpectedly. reason: \n not found: limit=1449 content=7b2261706956657273696f6e223a227631222c226b696e64223a224c69737422…
+Nov 09, 2020 11:27:53 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:53 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-keycloak-carcpr14-deployer-xigmsyivp9&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:53 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager scheduleReconnect
+WARN: Ignoring error for already closed/closing connection
+Nov 09, 2020 11:27:53 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:53 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:53 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:53 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets/test-plugin-carcpr14-controller-ca-cert-secret HTTP/1.1 and responded: HTTP/1.1 404 Client Error
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/secrets HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: POST /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-plugin-carcpr14-deployer-5omehcdvtp&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?fieldSelector=metadata.name%3Dtest-plugin-carcpr14-deployer-5omehcdvtp&watch=true HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoPlugin%3Dtest-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager$1 onResponse
+INFO: Watch terminated unexpectedly. reason: \n not found: limit=2827 content=7b2261706956657273696f6e223a227631222c226b696e64223a224c69737422…
+Nov 09, 2020 11:27:54 AM io.fabric8.kubernetes.client.dsl.internal.WatchHTTPManager scheduleReconnect
+WARN: Ignoring error for already closed/closing connection
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:54 AM org.entando.kubernetes.compositeapp.controller.EntandoCompositeAppController synchronizeDeploymentState
+SEVERE: Unexpected exception occurred while adding EntandoPlugin entando-k8s-composite-app-controller-carcpr14/test-plugin-carcpr14
+Nov 09, 2020 11:27:54 AM org.entando.kubernetes.controller.AbstractDbAwareController processAction
+SEVERE: Unexpected exception occurred while adding EntandoCompositeApp entando-k8s-composite-app-controller-carcpr14/my-app-carcpr14
+org.entando.kubernetes.controller.EntandoControllerException: Unexpected exception occurred while adding EntandoPlugin entando-k8s-composite-app-controller-carcpr14/test-plugin-carcpr14
+	at org.entando.kubernetes.compositeapp.controller.EntandoCompositeAppController.synchronizeDeploymentState(EntandoCompositeAppController.java:100)
+	at org.entando.kubernetes.compositeapp.controller.EntandoCompositeAppController.synchronizeDeploymentState(EntandoCompositeAppController.java:43)
+	at org.entando.kubernetes.controller.AbstractDbAwareController.processAction(AbstractDbAwareController.java:148)
+	at org.entando.kubernetes.controller.AbstractDbAwareController.processCommand(AbstractDbAwareController.java:130)
+	at org.entando.kubernetes.compositeapp.controller.EntandoCompositeAppController.onStartup(EntandoCompositeAppController.java:65)
+	at org.entando.kubernetes.compositeapp.controller.inprocesstests.CompositeAppControllerMockedTest.startController(CompositeAppControllerMockedTest.java:118)
+	at org.entando.kubernetes.compositeapp.controller.inprocesstests.CompositeAppControllerMockedTest.performCreate(CompositeAppControllerMockedTest.java:84)
+	at org.entando.kubernetes.compositeapp.controller.AbstractCompositeAppControllerTest.testE**cuteControllerPod(AbstractCompositeAppControllerTest.java:124)
+	at org.entando.kubernetes.compositeapp.controller.inprocesstests.CompositeAppControllerMockedTest.testFailure(CompositeAppControllerMockedTest.java:105)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.e**cution.E**cutableInvoker.invoke(E**cutableInvoker.java:117)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:184)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:180)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.e**cute(TestMethodTestDescriptor.java:127)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.e**cute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.e**cuteRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.e**cute(NodeTestTask.java:80)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestE**cutorService.invokeAll(SameThreadHierarchicalTestE**cutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.e**cuteRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.e**cute(NodeTestTask.java:80)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestE**cutorService.invokeAll(SameThreadHierarchicalTestE**cutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$e**cuteRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.e**cute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.e**cuteRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.e**cute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestE**cutorService.submit(SameThreadHierarchicalTestE**cutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestE**cutor.e**cute(HierarchicalTestE**cutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.e**cute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.e**cute(DefaultLauncher.java:220)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$e**cute$6(DefaultLauncher.java:188)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:202)
+	at org.junit.platform.launcher.core.DefaultLauncher.e**cute(DefaultLauncher.java:181)
+	at org.junit.platform.launcher.core.DefaultLauncher.e**cute(DefaultLauncher.java:128)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:142)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:117)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.e**cute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:54 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: PATCH /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 202 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoResourceKind%3DEntandoKeycloakServer%2CEntandoKeycloakServer%3Dtest-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoResourceKind%3DEntandoKeycloakServer%2CEntandoKeycloakServer%3Dtest-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandokeycloakservers/test-keycloak-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:55 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoPlugin%3Dtest-plugin-carcpr14%2CEntandoResourceKind%3DEntandoPlugin HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/pods?labelSelector=EntandoPlugin%3Dtest-plugin-carcpr14%2CEntandoResourceKind%3DEntandoPlugin HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:56 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandoplugins/test-plugin-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /api/v1/namespaces/entando-k8s-composite-app-controller-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$3 processOneRequest
+INFO: MockWebServer[48500] received request: GET /apis/entando.org/v1/namespaces/entando-k8s-composite-app-controller-carcpr14/entandocompositeapps/my-app-carcpr14 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Nov 09, 2020 11:27:57 AM okhttp3.mockwebserver.MockWebServer$2 acceptConnections
+INFO: MockWebServer[48500] done accepting connections: Socket closed
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.373 s - in org.entando.kubernetes.compositeapp.controller.inprocesstests.CompositeAppControllerMockedTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ entando-k8s-composite-app-controller ---
+[INFO] Building jar: /workspace/source/target/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2.jar
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:test-jar (build-test-jar) @ entando-k8s-composite-app-controller ---
+[INFO] Building jar: /workspace/source/target/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2-tests.jar
+[INFO] 
+[INFO] --- quarkus-maven-plugin:1.2.0.Final:build (default) @ entando-k8s-composite-app-controller ---
+[WARNING] [io.quarkus.creator.curator.Curator] These dependencies are not recommended:
+	- jakarta.xml.bind:jakarta.xml.bind-api should be replaced by org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec
+	- javax.activation:activation should be replaced by com.sun.activation:jakarta.activation
+You might end up with two different versions of the same classes or with an artifact you shouldn't have in your classpath.
+[INFO] [org.jboss.threads] JBoss Threads version 3.0.0.Final
+[INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building thin jar: /workspace/source/target/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2-runner.jar
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 1437ms
+[INFO] 
+[INFO] --- maven-surefire-report-plugin:3.0.0-M4:failsafe-report-only (integration-tests) @ entando-k8s-composite-app-controller ---
+[INFO] 
+[INFO] --- dependency-check-maven:5.3.2:aggregate (default) @ entando-k8s-composite-app-controller ---
+[INFO] 
+
+Dependency-Check is an open source tool performing a best effort analysis of 3rd party dependencies; ***** positives and ***** negatives may exist in the analysis performed by the tool. Use of the tool and the reporting provided constitutes acceptance for use in an AS IS condition, and there are NO warranties, implied or otherwise, with regard to the analysis or its use. Any use of the tool and the reporting provided is at the user’s risk. In no event shall the copyright holder or OWASP be held liable for any damages whatsoever arising out of or in connection with the use of this tool, the analysis performed, or the resulting report.
+
+
+[INFO] Analysis Started
+[INFO] Finished Archive Analyzer (0 seconds)
+[INFO] Finished File Name Analyzer (0 seconds)
+[INFO] Finished Jar Analyzer (0 seconds)
+[INFO] Finished Dependency Merging Analyzer (0 seconds)
+[INFO] Finished Version Filter Analyzer (0 seconds)
+[INFO] Finished Hint Analyzer (0 seconds)
+[INFO] Created CPE Index (2 seconds)
+[INFO] Finished CPE Analyzer (4 seconds)
+[INFO] Finished False Positive Analyzer (0 seconds)
+[INFO] Finished NVD CVE Analyzer (0 seconds)
+[INFO] Finished Sonatype OSS Index Analyzer (1 seconds)
+[INFO] Finished Vulnerability Suppression Analyzer (0 seconds)
+[INFO] Finished Dependency Bundling Analyzer (0 seconds)
+[INFO] Analysis Complete (7 seconds)
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:report (report) @ entando-k8s-composite-app-controller ---
+[INFO] Loading e**cution data file /workspace/source/target/jacoco.e**c
+[INFO] Analyzed bundle 'Entando K8S Composite App Controller' with 1 classes
+[INFO] 
+[INFO] --- maven-surefire-report-plugin:3.0.0-M4:report-only (unit-tests) @ entando-k8s-composite-app-controller ---
+[WARNING] Unable to locate Test Source XRef to link to - DISABLED
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ entando-k8s-composite-app-controller ---
+[INFO] Installing /workspace/source/target/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2.jar to /home/jenkins/.mvnrepository/org/entando/entando-k8s-composite-app-controller/0.0.0-SNAPSHOT-PR-14-2/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2.jar
+[INFO] Installing /workspace/source/pom.xml to /home/jenkins/.mvnrepository/org/entando/entando-k8s-composite-app-controller/0.0.0-SNAPSHOT-PR-14-2/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2.pom
+[INFO] Installing /workspace/source/target/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2-tests.jar to /home/jenkins/.mvnrepository/org/entando/entando-k8s-composite-app-controller/0.0.0-SNAPSHOT-PR-14-2/entando-k8s-composite-app-controller-0.0.0-SNAPSHOT-PR-14-2-tests.jar
+[INFO] 
+[INFO] ----------< org.entando:entando-k8s-composite-app-controller >----------
+[INFO] Building Entando K8S Composite App Controller 0.0.0-SNAPSHOT-PR-14-2
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar-maven-plugin:3.7.0.1746:sonar (default-cli) @ entando-k8s-composite-app-controller ---
+[INFO] User cache: /****/.sonar/cache
+[INFO] SonarQube version: 8.0.0
+[INFO] Default locale: "en_US", source code encoding: "UTF-8"
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=261ms
+[INFO] Server id: 1BD809FA-AWHW8ct9-T_TB3XqouNu
+[INFO] User cache: /****/.sonar/cache
+[INFO] Load/download plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=85ms
+[INFO] Load/download plugins (done) | time=21369ms
+[INFO] Loaded core extensions: developer-scanner
+[INFO] JavaScript/TypeScript frontend is enabled
+[INFO] Load project settings for component key: 'entando-k8s_entando-k8s-composite-app-controller'
+[INFO] Load project settings for component key: 'entando-k8s_entando-k8s-composite-app-controller' (done) | time=26ms
+[INFO] Process project properties
+[INFO] E**cute project builders
+[INFO] E**cute project builders (done) | time=2ms
+[INFO] Project key: entando-k8s_entando-k8s-composite-app-controller
+[INFO] Base dir: /workspace/source
+[INFO] Working dir: /workspace/source/target/sonar
+[INFO] Load project branches
+[INFO] Load project branches (done) | time=33ms
+[INFO] Check ALM binding of project 'entando-k8s_entando-k8s-composite-app-controller'
+[INFO] Detected project binding: BOUND
+[INFO] Check ALM binding of project 'entando-k8s_entando-k8s-composite-app-controller' (done) | time=21ms
+[INFO] Load project pull requests
+[INFO] Load project pull requests (done) | time=33ms
+[INFO] Load branch configuration
+[INFO] Load branch configuration (done) | time=577ms
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=62ms
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=1231ms
+[INFO] Organization key: entando-k8s
+[INFO] Pull request 14 for merge into master from ENG-1447_bumped_to_latest_libs
+[INFO] SCM collecting changed files in the branch
+[WARNING] Exception caught during e**cution of command '[/usr/local/git/bin/git, config, --******, --edit]' in '/usr/local/git/bin', return code '128', error message 'fatal: Invalid path '/usr/local/git/etc': No such file or directory
+'
+[INFO] SCM collecting changed files in the branch (done) | time=321ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 7 files inde**d
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Quality profile for java: Sonar way
+[INFO] Quality profile for xml: Sonar way
+[INFO] ------------- Run sensors on module Entando K8S Composite App Controller
+[INFO] JavaScript/TypeScript frontend is enabled
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=29ms
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by net.sf.cglib.core.ReflectUtils$1 (file:/****/.sonar/cache/a89f1943fc75b65becd9fb4ecab8d913/sonar-tsql-plugin.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of net.sf.cglib.core.ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Sensor JavaSquidSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 8
+[INFO] JavaClasspath initialization
+[INFO] JavaClasspath initialization (done) | time=18ms
+[INFO] JavaTestClasspath initialization
+[INFO] JavaTestClasspath initialization (done) | time=4ms
+[INFO] Java Main Files AST scan
+[INFO] 1 source files to be analyzed
+[INFO] 1/1 source files have been analyzed
+[INFO] Java Main Files AST scan (done) | time=2902ms
+[INFO] Java Test Files AST scan
+[INFO] 5 source files to be analyzed
+[INFO] Java Test Files AST scan (done) | time=635ms
+[INFO] Java Generated Files AST scan
+[INFO] 0 source files to be analyzed
+[INFO] 5/5 source files have been analyzed
+[INFO] Java Generated Files AST scan (done) | time=4ms
+[INFO] 0/0 source files have been analyzed
+[INFO] Sensor JavaSquidSensor [java] (done) | time=3743ms
+[INFO] Sensor SonarCSS Rules [cssfamily]
+[INFO] No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[INFO] Sensor SonarCSS Rules [cssfamily] (done) | time=2ms
+[INFO] Sensor C# Properties [csharp]
+[INFO] Sensor C# Properties [csharp] (done) | time=2ms
+[INFO] Sensor Import of Checkstyle issues [java]
+[INFO] Importing /workspace/source/target/checkstyle-result.xml
+[INFO] Sensor Import of Checkstyle issues [java] (done) | time=586ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [/workspace/source/target/surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=34ms
+[INFO] Sensor JavaXmlSensor [java]
+[INFO] 1 source files to be analyzed
+[INFO] Sensor JavaXmlSensor [java] (done) | time=247ms
+[INFO] 1/1 source files have been analyzed
+[INFO] Sensor HTML [web]
+[INFO] Sensor HTML [web] (done) | time=7ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source files to be analyzed
+[INFO] 1/1 source files have been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=176ms
+[INFO] Sensor VB.NET Properties [vbnet]
+[INFO] Sensor VB.NET Properties [vbnet] (done) | time=1ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=18ms
+[INFO] Sensor ThymeLeaf template sensor [securityjavafrontend]
+[INFO] Sensor ThymeLeaf template sensor [securityjavafrontend] (done) | time=2ms
+[INFO] Sensor JavaSecuritySensor [security]
+[INFO] Reading type hierarchy from: /workspace/source/target/sonar/ucfg2/java
+[INFO] Read 47 type definitions
+[INFO] Reading UCFGs from: /workspace/source/target/sonar/ucfg2/java
+[INFO] 11:28:52.690241 Building Type propagation graph
+[INFO] 11:28:52.698876 Running Tarjan on 35 nodes
+[INFO] 11:28:52.70071 Tarjan found 35 components
+[INFO] 11:28:52.703247 Variable type analysis: done
+[INFO] 11:28:52.703859 Building Type propagation graph
+[INFO] 11:28:52.706238 Running Tarjan on 35 nodes
+[INFO] 11:28:52.706786 Tarjan found 35 components
+[INFO] 11:28:52.707153 Variable type analysis: done
+[INFO] Analyzing 6 ucfgs to detect vulnerabilities.
+[INFO] All rules entrypoints : 0 Retained UCFGs : 0
+[INFO] rule: S5131, entrypoints: 0
+[INFO] rule: S5131 done
+[INFO] rule: S3649, entrypoints: 0
+[INFO] rule: S3649 done
+[INFO] rule: S2076, entrypoints: 0
+[INFO] rule: S2076 done
+[INFO] rule: S2091, entrypoints: 0
+[INFO] rule: S2091 done
+[INFO] rule: S2078, entrypoints: 0
+[INFO] rule: S2078 done
+[INFO] rule: S2631, entrypoints: 0
+[INFO] rule: S2631 done
+[INFO] rule: S5135, entrypoints: 0
+[INFO] rule: S5135 done
+[INFO] rule: S2083, entrypoints: 0
+[INFO] rule: S2083 done
+[INFO] rule: S5167, entrypoints: 0
+[INFO] rule: S5167 done
+[INFO] rule: S5144, entrypoints: 0
+[INFO] rule: S5144 done
+[INFO] rule: S5145, entrypoints: 0
+[INFO] rule: S5145 done
+[INFO] rule: S5146, entrypoints: 0
+[INFO] rule: S5146 done
+[INFO] rule: S5334, entrypoints: 0
+[INFO] rule: S5334 done
+[INFO] Sensor JavaSecuritySensor [security] (done) | time=393ms
+[INFO] Sensor CSharpSecuritySensor [security]
+[INFO] Reading type hierarchy from: /workspace/source/target/ucfg_cs2
+[INFO] Read 0 type definitions
+[INFO] Reading UCFGs from: /workspace/source/target/ucfg_cs2
+[INFO] No UCFGs have been included for analysis.
+[INFO] Sensor CSharpSecuritySensor [security] (done) | time=1ms
+[INFO] Sensor PhpSecuritySensor [security]
+[INFO] Reading type hierarchy from: /workspace/source/target/sonar/ucfg2/php
+[INFO] Read 0 type definitions
+[INFO] Reading UCFGs from: /workspace/source/target/sonar/ucfg2/php
+[INFO] No UCFGs have been included for analysis.
+[INFO] Sensor PhpSecuritySensor [security] (done) | time=2ms
+[INFO] Sensor PythonSecuritySensor [security]
+[INFO] Reading type hierarchy from: /workspace/source/target/sonar/ucfg2/python
+[INFO] Read 0 type definitions
+[INFO] Reading UCFGs from: /workspace/source/target/sonar/ucfg2/python
+[INFO] No UCFGs have been included for analysis.
+[INFO] Sensor PythonSecuritySensor [security] (done) | time=2ms
+[INFO] Sensor JsSecuritySensor [security]
+[INFO] Reading type hierarchy from: /workspace/source/target/sonar/ucfg2/js
+[INFO] Read 0 type definitions
+[INFO] Reading UCFGs from: /workspace/source/target/sonar/ucfg2/js
+[INFO] No UCFGs have been included for analysis.
+[INFO] Sensor JsSecuritySensor [security] (done) | time=1ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=0ms
+[INFO] Sensor Java CPD Block Inde**r
+[INFO] Sensor Java CPD Block Inde**r (done) | time=37ms
+[INFO] SCM Publisher SCM provider for this project is: git
+[INFO] SCM Publisher 5 source files to be analyzed
+[INFO] SCM Publisher 4/5 source files have been analyzed (done) | time=104ms
+[WARNING] Missing blame information for the following files:
+[WARNING]   * pom.xml
+[WARNING] This may lead to missing/broken features in SonarCloud
+[INFO] CPD E**cutor Calculating CPD for 1 file
+[INFO] CPD E**cutor CPD calculation finished (done) | time=10ms
+[INFO] SCM writing changed lines
+[INFO] SCM writing changed lines (done) | time=87ms
+[INFO] Analysis report generated in 262ms, dir size=222 KB
+[INFO] Analysis report compressed in 29ms, zip size=56 KB
+[INFO] Analysis report uploaded in 133ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: https://sonarcloud.io/dashboard?id=entando-k8s_entando-k8s-composite-app-controller&pullRequest=14
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at https://sonarcloud.io/api/ce/task?id=AXWsxBbpPOAnaJWzaHzO
+[INFO] Analysis total time: 12.086 s
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:33 min
+[INFO] Finished at: 2020-11-09T11:28:53Z
+[INFO] ------------------------------------------------------------------------
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.entando:entando-k8s-composite-app-controller:jar:0.0.0-SNAPSHOT-PR-14-2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.yaml:snakeyaml:jar -> version 1.27 vs ${snakeyaml.version} @ org.entando:entando-quarkus-parent:6.2.5, /home/jenkins/.mvnrepository/org/entando/entando-quarkus-parent/6.2.5/entando-quarkus-parent-6.2.5.pom, line 283, column 25
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------< org.entando:entando-k8s-composite-app-controller >----------
+[INFO] Building Entando K8S Composite App Controller 0.0.0-SNAPSHOT-PR-14-2
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-site-plugin:3.9.0:site (default-site) @ entando-k8s-composite-app-controller ---
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:3.0.0
+[INFO] 9 reports configured for maven-project-info-reports-plugin:3.0.0: dependency-info, distribution-management, index, ci-management, issue-management, licenses, plugins, scm, summary
+[INFO] Rendering site with default locale English (en)
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Relativizing decoration links with respect to localized project URL: https://central.entando.com
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.3 skin.
+[INFO] Generating "Dependency Information" report --- maven-project-info-reports-plugin:3.0.0:dependency-info
+[INFO] Generating "About" report         --- maven-project-info-reports-plugin:3.0.0:index
+[INFO] Generating "Issue Management" report --- maven-project-info-reports-plugin:3.0.0:issue-management
+[INFO] Generating "Licenses" report      --- maven-project-info-reports-plugin:3.0.0:licenses
+[INFO] Generating "Plugins" report       --- maven-project-info-reports-plugin:3.0.0:plugins
+[INFO] Generating "Source Code Management" report --- maven-project-info-reports-plugin:3.0.0:scm
+[INFO] Generating "Summary" report       --- maven-project-info-reports-plugin:3.0.0:summary
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.976 s
+[INFO] Finished at: 2020-11-09T11:29:04Z
+[INFO] ------------------------------------------------------------------------
+shallow cloning https://github.com/entando-k8s/devops-results.git branch gh-pages
+ran git init in /tmp/jenkins-x-collect521584138
+ran git add remote origin https://github.com/entando-k8s/devops-results.git in /tmp/jenkins-x-collect521584138
+ran git fetch origin --depth=1 gh-pages in dir /tmp/jenkins-x-collect521584138
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/checkstyle.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/checkstyle.rss
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/maven-base.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/maven-theme.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/print.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/site.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-check-junit.xml
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-check-report.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-check-report.xml
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-info.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/collapsed.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/expanded.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/external.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_error_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_info_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_success_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_warning_sml.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/logos/build-by-maven-black.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/logos/build-by-maven-white.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/logos/maven-feather.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/newwindow.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/rss.png
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/index.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/issue-management.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/index.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/branchfc.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/branchnc.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/branchpc.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/bundle.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/class.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/down.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/greenbar.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/group.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/method.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/package.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/prettify.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/prettify.js
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/redbar.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/report.css
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/report.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/session.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/sort.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/sort.js
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/source.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/up.gif
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-sessions.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco.csv
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco.xml
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/EntandoCompositeAppController.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/EntandoCompositeAppController.java.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/index.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/index.source.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/licenses.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/plugins.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/project-info.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/scm.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/summary.html
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/surefire-report.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/checkstyle.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/checkstyle.rss
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/maven-base.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/maven-theme.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/print.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/css/site.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-check-junit.xml
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-check-report.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-check-report.xml
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/dependency-info.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/collapsed.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/expanded.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/external.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_error_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_info_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_success_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/icon_warning_sml.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/logos/build-by-maven-black.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/logos/build-by-maven-white.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/logos/maven-feather.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/newwindow.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/images/rss.png
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/index.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/issue-management.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/index.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/branchfc.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/branchnc.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/branchpc.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/bundle.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/class.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/down.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/greenbar.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/group.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/method.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/package.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/prettify.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/prettify.js
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/redbar.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/report.css
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/report.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/session.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/sort.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/sort.js
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/source.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-resources/up.gif
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco-sessions.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco.csv
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/jacoco.xml
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/EntandoCompositeAppController.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/EntandoCompositeAppController.java.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/index.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/jacoco/org.entando.kubernetes.compositeapp.controller/index.source.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/licenses.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/plugins.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/project-info.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/scm.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/summary.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/surefire-report.html
+error: etcdserver: request is too large
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 12  1897    0     0  100   228      0    306 --:--:-- --:--:-- --:--:--   306100  1897  100  1669  100   228   2243    306 --:--:-- --:--:-- --:--:--  2243
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293310810,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzMxMDgxMA==",
+  "state": "success",
+  "description": "Pre-deployment tests success!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/surefire-report.html",
+  "context": "Pre-deployment tests",
+  "created_at": "2020-11-09T11:29:45Z",
+  "updated_at": "2020-11-09T11:29:45Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/**********/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/**********/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1847  100  1644  100   203   2685    331 --:--:-- --:--:-- --:--:--  2690
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293310922,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzMxMDkyMg==",
+  "state": "success",
+  "description": "Checkstyle success!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/checkstyle.html",
+  "context": "Checkstyle",
+  "created_at": "2020-11-09T11:29:46Z",
+  "updated_at": "2020-11-09T11:29:46Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/entando-**/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/**********/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1869  100  1655  100   214   2869    371 --:--:-- --:--:-- --:--:--  2868
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293311012,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzMxMTAxMg==",
+  "state": "success",
+  "description": "OWASP CVE success!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/dependency-check-report.html",
+  "context": "OWASP CVE",
+  "created_at": "2020-11-09T11:29:46Z",
+  "updated_at": "2020-11-09T11:29:46Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/entando-**",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/**********/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/entando-**/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+Congratulations! No build failures found for entando-k8s-composite-app-controller-PR-14.
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+Generating tags...
+ - entando/entando-k8s-composite-app-controller -> docker.io/entando/entando-k8s-composite-app-controller:0.0.0-SNAPSHOT-PR-14-2
+Checking cache...
+ - entando/entando-k8s-composite-app-controller: Not found. Building
+Building [entando/entando-k8s-composite-app-controller]...
+Sending build context to Docker daemon  536.1kBSending build context to Docker daemon  8.773MBSending build context to Docker daemon  20.39MBSending build context to Docker daemon  28.16MBSending build context to Docker daemon  35.33MBSending build context to Docker daemon  39.13MB
+Step 1/6 : FROM fabric8/java-alpine-openjdk8-jre
+ ---> 6383f0513235
+Step 2/6 : ENV JAVA_OPTIONS "-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+ ---> Using cache
+ ---> 781f0699f0f0
+Step 3/6 : ENV AB_ENABLED jmx_exporter
+ ---> Using cache
+ ---> 3d03a75b86f8
+Step 4/6 : COPY target/lib/* /deployments/lib/
+ ---> Using cache
+ ---> 0da5cd5e97c2
+Step 5/6 : COPY target/*-runner.jar /deployments/app.jar
+ ---> 5b75c5147c5d
+Step 6/6 : ENTRYPOINT /deployments/run-java.sh
+ ---> Running in c95adf454c4c
+ ---> 86b300641527
+Successfully built 86b300641527
+The push refers to a repository [docker.io/entando/entando-k8s-composite-app-controller]
+530c284e3496: Preparing
+7c151e0a84cd: Preparing
+a37d6baa8a5e: Preparing
+4246c252be29: Preparing
+bbc6d89e45a1: Preparing
+6a8968c88953: Preparing
+c11f0dd7f64f: Preparing
+081a861c7ecd: Preparing
+df5b415aa3df: Preparing
+77cae8ab23bf: Preparing
+6a8968c88953: Waiting
+c11f0dd7f64f: Waiting
+081a861c7ecd: Waiting
+df5b415aa3df: Waiting
+77cae8ab23bf: Waiting
+a37d6baa8a5e: Layer already exists
+7c151e0a84cd: Layer already exists
+4246c252be29: Layer already exists
+bbc6d89e45a1: Layer already exists
+081a861c7ecd: Layer already exists
+c11f0dd7f64f: Layer already exists
+6a8968c88953: Layer already exists
+df5b415aa3df: Layer already exists
+77cae8ab23bf: Layer already exists
+530c284e3496: Pushed
+0.0.0-SNAPSHOT-PR-14-2: digest: sha256:82b27690d4ab7fdc3d836ee63bd8cd2f9eff85ca0c6354309bf766e19f7231c9 size: 2410
+There is a new version (1.16.0) of Skaffold available. Download it at https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-postbuild-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-make-preview[0m
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-14-2/" Chart.yaml
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-14-2/" ../*/Chart.yaml
+sed -i -e "s|repository:.*|repository: docker.io\/entando\/entando-k8s-composite-app-controller|" values.yaml
+sed -i -e "s/tag:.*/tag: 0.0.0-SNAPSHOT-PR-14-2/" values.yaml
+sed -i -e "s/ENTANDO_DOCKER_REGISTRY_OVERRIDE:.*/ENTANDO_DOCKER_REGISTRY_OVERRIDE: docker.io/" values.yaml
+echo "  version: 0.0.0-SNAPSHOT-PR-14-2" >> requirements.yaml
+** step helm build
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-jx-preview[0m
+Creating a preview
+Found commit author match for: ampie with email address: ampie.private@gmail.com
+expose:
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+  config:
+    domain: *************
+    exposer: Ingress
+    http: "true"
+preview:
+  image:
+    repository: docker.io/entando/entando-k8s-composite-app-controller
+    tag: 0.0.0-SNAPSHOT-PR-14-2
+
+WARNING: Could not find the service URL in namespace entando-k8s-composite-app-controller-carcpr14 for names : Timed out after 1m0s, last error: %!s(<nil>)
+Updating PipelineActivities entando-k8s-entando-k8s-composite-app-controller-pr-14-2 which has status Running
+WARNING: Failed to find the service entando-k8s-composite-app-controller : failed to find service entando-k8s-composite-app-controller in namespace entando-k8s-composite-app-controller-carcpr14: services "entando-k8s-composite-app-controller" not found
+
+Showing logs for build [32mentando-k8s-entando-k8s-composi-g449k-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-run-post-deployment-tests[0m
+Picked up _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms1000m -Xmx12000m
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.entando:entando-k8s-composite-app-controller:jar:0.0.0-SNAPSHOT-PR-14-2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.yaml:snakeyaml:jar -> version 1.27 vs ${snakeyaml.version} @ org.entando:entando-quarkus-parent:6.2.5, /home/jenkins/.mvnrepository/org/entando/entando-quarkus-parent/6.2.5/entando-quarkus-parent-6.2.5.pom, line 283, column 25
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------< org.entando:entando-k8s-composite-app-controller >----------
+[INFO] Building Entando K8S Composite App Controller 0.0.0-SNAPSHOT-PR-14-2
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ entando-k8s-composite-app-controller ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ entando-k8s-composite-app-controller ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ entando-k8s-composite-app-controller ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ entando-k8s-composite-app-controller ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ entando-k8s-composite-app-controller ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ entando-k8s-composite-app-controller ---
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:test-jar (build-test-jar) @ entando-k8s-composite-app-controller ---
+[INFO] 
+[INFO] --- maven-failsafe-plugin:3.0.0-M4:integration-test (run-tests) @ entando-k8s-composite-app-controller ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.entando.kubernetes.compositeapp.controller.interprocesstests.CompositeAppControllerIntegratedTest
+Nov 09, 2020 11:31:46 AM org.entando.kubernetes.controller.integrationtest.support.DeletionWaiter lambda$deleteSingleItem$2
+WARNING: Deleting pods  entando-k8s-composite-app-controller-carcpr14/my-app-carcpr14-deployer-syuc7kkiqq
+Nov 09, 2020 11:31:48 AM org.entando.kubernetes.controller.integrationtest.support.DeletionWaiter lambda$deleteSingleItem$2
+WARNING: Deleting pods  entando-k8s-composite-app-controller-carcpr14/test-keycloak-carcpr14-deployer-zg8v0l8qre
+!!!!!!!On EntandoCompositeApp add!!!!!!!!!
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 299.515 s - in org.entando.kubernetes.compositeapp.controller.interprocesstests.CompositeAppControllerIntegratedTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-surefire-report-plugin:3.0.0-M4:failsafe-report-only (integration-tests) @ entando-k8s-composite-app-controller ---
+[WARNING] Unable to locate Test Source XRef to link to - DISABLED
+[INFO] 
+[INFO] --- maven-surefire-report-plugin:3.0.0-M4:report-only (unit-tests) @ entando-k8s-composite-app-controller ---
+[WARNING] Unable to locate Test Source XRef to link to - DISABLED
+[INFO] 
+[INFO] --- maven-failsafe-plugin:3.0.0-M4:verify (run-tests) @ entando-k8s-composite-app-controller ---
+[INFO] 
+[INFO] --- maven-site-plugin:3.9.0:site (default-site) @ entando-k8s-composite-app-controller ---
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:3.0.0
+[INFO] 9 reports configured for maven-project-info-reports-plugin:3.0.0: dependency-info, distribution-management, index, ci-management, issue-management, licenses, plugins, scm, summary
+[INFO] Rendering site with default locale English (en)
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Relativizing decoration links with respect to localized project URL: https://central.entando.com
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.3 skin.
+[INFO] Generating "Dependency Information" report --- maven-project-info-reports-plugin:3.0.0:dependency-info
+[INFO] Generating "About" report         --- maven-project-info-reports-plugin:3.0.0:index
+[INFO] Generating "Issue Management" report --- maven-project-info-reports-plugin:3.0.0:issue-management
+[INFO] Generating "Licenses" report      --- maven-project-info-reports-plugin:3.0.0:licenses
+[INFO] Generating "Plugins" report       --- maven-project-info-reports-plugin:3.0.0:plugins
+[INFO] Generating "Source Code Management" report --- maven-project-info-reports-plugin:3.0.0:scm
+[INFO] Generating "Summary" report       --- maven-project-info-reports-plugin:3.0.0:summary
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  05:09 min
+[INFO] Finished at: 2020-11-09T11:36:48Z
+[INFO] ------------------------------------------------------------------------
+shallow cloning https://github.com/entando-k8s/devops-results.git branch gh-pages
+ran git init in /tmp/jenkins-x-collect076995851
+ran git add remote origin https://github.com/entando-k8s/devops-results.git in /tmp/jenkins-x-collect076995851
+ran git fetch origin --depth=1 gh-pages in dir /tmp/jenkins-x-collect076995851
+Publishing https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/failsafe-report.html
+stashed: https://raw.githubusercontent.com/entando-k8s/devops-results/gh-pages/entando-k8s-composite-app-controller/PR-14/failsafe-report.html
+error: etcdserver: request is too large
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+{
+  "url": "https://api.github.com/repos/entando-k8s/entando-k8s-composite-app-controller/statuses/e8a7db1e63595fd88ae7652c03c25a76808b396f",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+  "id": 11293382856,
+  "node_id": "MDEzOlN0YXR1c0NvbnRleHQxMTI5MzM4Mjg1Ng==",
+  "state": "success",
+  "description": "Post-deployment tests success!",
+  "target_url": "https://entando-k8s.github.io/devops-results/entando-k8s-composite-app-controller/PR-14/failsafe-report.html",
+  "context": "Post-deployment tests",
+  "created_at": "2020-11-09T11:37:29Z",
+  "updated_at": "2020-11-09T11:37:29Z",
+  "creator": {
+    "login": "**********",
+    "id": 57885396,
+    "node_id": "MDQ6VXNlcjU3ODg1Mzk2",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/57885396?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/**********",
+    "html_url": "https://github.com/**********",
+    "followers_url": "https://api.github.com/users/**********/followers",
+    "following_url": "https://api.github.com/users/**********/following{/other_user}",
+    "gists_url": "https://api.github.com/users/**********/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/**********/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/**********/subscriptions",
+    "organizations_url": "https://api.github.com/users/**********/orgs",
+    "repos_url": "https://api.github.com/users/**********/repos",
+    "events_url": "https://api.github.com/users/**********/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/**********/received_events",
+    "type": "User",
+    "site_*****": *****
+  }
+}
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1901  100  1671  100   230   2224    306 --:--:-- --:--:-- --:--:--  2228
