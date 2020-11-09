@@ -22,14 +22,14 @@ import java.util.List;
 import java.util.Optional;
 import org.entando.kubernetes.controller.KeycloakClientConfig;
 import org.entando.kubernetes.controller.KeycloakConnectionConfig;
-import org.entando.kubernetes.controller.KubeUtils;
 import org.entando.kubernetes.controller.spi.DeployableContainer;
 import org.entando.kubernetes.controller.spi.KeycloakAware;
 import org.entando.kubernetes.controller.spi.KubernetesPermission;
 import org.entando.kubernetes.controller.spi.ParameterizableContainer;
 import org.entando.kubernetes.controller.spi.TlsAware;
-import org.entando.kubernetes.model.EntandoDeploymentSpec;
+import org.entando.kubernetes.model.EntandoIngressingDeploymentSpec;
 import org.entando.kubernetes.model.plugin.EntandoPlugin;
+import org.entando.kubernetes.model.plugin.EntandoPluginSpec;
 
 public class EntandoPluginSidecarDeployableContainer implements DeployableContainer, KeycloakAware, TlsAware, ParameterizableContainer {
 
@@ -85,7 +85,7 @@ public class EntandoPluginSidecarDeployableContainer implements DeployableContai
     @Override
     public KeycloakClientConfig getKeycloakClientConfig() {
 <span class="fc" id="L87">        String clientId = keycloakClientIdOf(this.entandoPlugin);</span>
-<span class="fc" id="L88">        return new KeycloakClientConfig(KubeUtils.ENTANDO_KEYCLOAK_REALM, clientId, clientId).withRole(REQUIRED_ROLE);</span>
+<span class="fc" id="L88">        return new KeycloakClientConfig(determineRealm(), clientId, clientId).withRole(REQUIRED_ROLE);</span>
     }
 
     @Override
@@ -100,13 +100,18 @@ public class EntandoPluginSidecarDeployableContainer implements DeployableContai
 
     @Override
     public List&lt;KubernetesPermission&gt; getKubernetesPermissions() {
-<span class="fc" id="L103">        return Arrays.asList(new KubernetesPermission(&quot;entando.org&quot;, &quot;entandoplugins&quot;, &quot;get&quot;, &quot;update&quot;),</span>
+<span class="nc" id="L103">        return Arrays.asList(new KubernetesPermission(&quot;entando.org&quot;, &quot;entandoplugins&quot;, &quot;get&quot;, &quot;update&quot;),</span>
                 new KubernetesPermission(&quot;&quot;, &quot;secrets&quot;, &quot;create&quot;, &quot;get&quot;, &quot;update&quot;, &quot;delete&quot;));
     }
 
     @Override
-    public EntandoDeploymentSpec getCustomResourceSpec() {
-<span class="fc" id="L109">        return entandoPlugin.getSpec();</span>
+    public EntandoIngressingDeploymentSpec getCustomResourceSpec() {
+<span class="fc" id="L109">        return getKeycloakAwareSpec();</span>
+    }
+
+    @Override
+    public EntandoPluginSpec getKeycloakAwareSpec() {
+<span class="fc" id="L114">        return entandoPlugin.getSpec();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
