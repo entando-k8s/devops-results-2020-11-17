@@ -158,10 +158,11 @@ Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.rs.model,
 Entando Plugin: CMS,org.entando.entando.plugins.jacms.apsadmin.content.rs.model,ContentJO,75,0,2,0,26,0,14,0,13,0
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearchEngineDAOFactory,107,243,17,11,19,68,13,24,0,23
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,LastReloadInfo,3,14,0,0,1,6,1,4,1,4
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,IndexerDAO,56,563,16,52,15,114,16,34,1,15
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearchEngineManager,99,512,18,44,23,148,17,51,1,35
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,IndexerDAO,58,585,18,52,15,116,18,33,1,15
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearchEngineManager,88,523,18,44,20,151,17,51,1,35
 Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,IndexLoaderThread,21,85,0,4,8,26,0,7,0,5
-Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearcherDAO,111,938,26,122,24,192,22,69,1,16
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,NumericSearchEngineFilter,0,36,0,0,0,11,0,4,0,4
+Entando Plugin: CMS,com.agiletec.plugins.jacms.aps.system.services.searchengine,SearcherDAO,46,1034,17,135,13,210,17,76,1,16
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.content.attribute.action.list,ListAttributeAction,48,109,7,7,11,29,9,11,3,10
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.system,ContentTypeConfigAction,122,42,14,2,34,14,16,8,8,8
 Entando Plugin: CMS,com.agiletec.plugins.jacms.apsadmin.system,ContentTypesAction,35,0,0,0,13,0,6,0,6,0
