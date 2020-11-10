@@ -217,9 +217,9 @@ import org.xml.sax.SAXException;
 <span class="fc" id="L217">                return null;</span>
             }
 <span class="fc" id="L219">            prototype = mainPrototype.getEntityPrototype();</span>
-<span class="fc" id="L220">        } catch (Exception e) {</span>
-<span class="fc" id="L221">            logger.error(&quot;Error while extracting entity type {}&quot;, typeCode, e);</span>
-<span class="fc" id="L222">            throw new RuntimeException(&quot;Error while extracting entity type &quot; + typeCode, e);</span>
+<span class="nc" id="L220">        } catch (Exception e) {</span>
+<span class="nc" id="L221">            logger.error(&quot;Error while extracting entity type {}&quot;, typeCode, e);</span>
+<span class="nc" id="L222">            throw new RuntimeException(&quot;Error while extracting entity type &quot; + typeCode, e);</span>
 <span class="fc" id="L223">        }</span>
 <span class="fc" id="L224">        return prototype;</span>
     }

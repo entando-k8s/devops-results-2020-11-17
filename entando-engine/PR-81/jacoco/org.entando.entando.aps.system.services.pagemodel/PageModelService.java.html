@@ -108,7 +108,7 @@ public class PageModelService implements IPageModelService, ApplicationContextAw
 
     @Override
     public boolean exists(String code) {
-<span class="nc bnc" id="L111" title="All 2 branches missed.">        return this.pageModelManager.getPageModel(code) == null;</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">        return this.pageModelManager.getPageModel(code) != null;</span>
     }
 
     @Override

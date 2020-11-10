@@ -86,65 +86,68 @@ import org.springframework.validation.BeanPropertyBindingResult;
 
     @Override
     public boolean exists(String code) throws EntException {
-<span class="nc" id="L89">        return this.getLangManager().getAssignableLangs().stream().filter(i -&gt; i.getCode().equals(code))</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">                .findFirst().orElse(null) != null;</span>
+<span class="nc" id="L89">        return this.getLangManager().getAssignableLangs().stream()</span>
+<span class="nc" id="L90">                .filter(lang -&gt; lang.getCode().equals(code))</span>
+<span class="nc" id="L91">                .map(lang -&gt; getLanguageDtoBuilder().convert(lang))</span>
+<span class="nc" id="L92">                .filter(LanguageDto::isActive)</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">                .findFirst().orElse(null) != null;</span>
     }
 
     @Override
     public LanguageDto updateLanguage(String code, boolean status) {
-<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (status) {</span>
-<span class="fc" id="L96">            return this.enableLang(code);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (status) {</span>
+<span class="fc" id="L99">            return this.enableLang(code);</span>
         } else {
-<span class="fc" id="L98">            return this.disableLang(code);</span>
+<span class="fc" id="L101">            return this.disableLang(code);</span>
         }
     }
 
     protected LanguageDto disableLang(String code) {
         try {
-<span class="fc" id="L104">            Lang sysLang = this.getLangManager().getAssignableLangs().stream().filter(i -&gt; i.getCode().equals(code)).findFirst().orElse(null);</span>
-<span class="fc bfc" id="L105" title="All 2 branches covered.">            if (null == sysLang) {</span>
-<span class="fc" id="L106">                logger.warn(&quot;no lang found with code {}&quot;, code);</span>
-<span class="fc" id="L107">                throw new ResourceNotFoundException(LanguageValidator.ERRCODE_LANGUAGE_DOES_NOT_EXISTS, &quot;language&quot;, code);</span>
+<span class="fc" id="L107">            Lang sysLang = this.getLangManager().getAssignableLangs().stream().filter(i -&gt; i.getCode().equals(code)).findFirst().orElse(null);</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">            if (null == sysLang) {</span>
+<span class="fc" id="L109">                logger.warn(&quot;no lang found with code {}&quot;, code);</span>
+<span class="fc" id="L110">                throw new ResourceNotFoundException(LanguageValidator.ERRCODE_LANGUAGE_DOES_NOT_EXISTS, &quot;language&quot;, code);</span>
             }
             //idempotent
-<span class="fc" id="L110">            Lang lang = this.getLangManager().getLang(code);</span>
-<span class="fc bfc" id="L111" title="All 2 branches covered.">            if (null != this.getLangManager().getLang(code)) {</span>
-<span class="fc" id="L112">                BeanPropertyBindingResult validations = this.validateDisable(lang);</span>
-<span class="fc bfc" id="L113" title="All 2 branches covered.">                if (validations.hasErrors()) {</span>
-<span class="fc" id="L114">                    throw new ValidationConflictException(validations);</span>
+<span class="fc" id="L113">            Lang lang = this.getLangManager().getLang(code);</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">            if (null != this.getLangManager().getLang(code)) {</span>
+<span class="fc" id="L115">                BeanPropertyBindingResult validations = this.validateDisable(lang);</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">                if (validations.hasErrors()) {</span>
+<span class="fc" id="L117">                    throw new ValidationConflictException(validations);</span>
                 }
             }
-<span class="fc" id="L117">            this.getLangManager().removeLang(code);</span>
-<span class="fc" id="L118">            return this.getLanguageDtoBuilder().convert(sysLang);</span>
-<span class="nc" id="L119">        } catch (EntException ex) {</span>
-<span class="nc" id="L120">            throw new RestServerError(&quot;error disabling language &quot; + code, ex);</span>
+<span class="fc" id="L120">            this.getLangManager().removeLang(code);</span>
+<span class="fc" id="L121">            return this.getLanguageDtoBuilder().convert(sysLang);</span>
+<span class="nc" id="L122">        } catch (EntException ex) {</span>
+<span class="nc" id="L123">            throw new RestServerError(&quot;error disabling language &quot; + code, ex);</span>
         }
     }
 
     protected LanguageDto enableLang(String code) {
         try {
-<span class="fc" id="L126">            Lang lang = this.getLangManager().getAssignableLangs().stream().filter(i -&gt; i.getCode().equals(code)).findFirst().orElse(null);</span>
-<span class="fc bfc" id="L127" title="All 2 branches covered.">            if (null == lang) {</span>
-<span class="fc" id="L128">                logger.warn(&quot;no lang found with code {}&quot;, code);</span>
-<span class="fc" id="L129">                throw new ResourceNotFoundException(LanguageValidator.ERRCODE_LANGUAGE_DOES_NOT_EXISTS, &quot;language&quot;, code);</span>
+<span class="fc" id="L129">            Lang lang = this.getLangManager().getAssignableLangs().stream().filter(i -&gt; i.getCode().equals(code)).findFirst().orElse(null);</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">            if (null == lang) {</span>
+<span class="fc" id="L131">                logger.warn(&quot;no lang found with code {}&quot;, code);</span>
+<span class="fc" id="L132">                throw new ResourceNotFoundException(LanguageValidator.ERRCODE_LANGUAGE_DOES_NOT_EXISTS, &quot;language&quot;, code);</span>
             }
             //idempotent
-<span class="fc bfc" id="L132" title="All 2 branches covered.">            if (null == this.getLangManager().getLang(code)) {</span>
-<span class="fc" id="L133">                logger.warn(&quot;the lang {} is already active&quot;, code);</span>
-<span class="fc" id="L134">                this.getLangManager().addLang(lang.getCode());</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">            if (null == this.getLangManager().getLang(code)) {</span>
+<span class="fc" id="L136">                logger.warn(&quot;the lang {} is already active&quot;, code);</span>
+<span class="fc" id="L137">                this.getLangManager().addLang(lang.getCode());</span>
             }
-<span class="fc" id="L136">            return this.getLanguageDtoBuilder().convert(lang);</span>
-<span class="nc" id="L137">        } catch (EntException ex) {</span>
-<span class="nc" id="L138">            throw new RestServerError(&quot;error enabling lang &quot; + code, ex);</span>
+<span class="fc" id="L139">            return this.getLanguageDtoBuilder().convert(lang);</span>
+<span class="nc" id="L140">        } catch (EntException ex) {</span>
+<span class="nc" id="L141">            throw new RestServerError(&quot;error enabling lang &quot; + code, ex);</span>
         }
     }
 
     protected BeanPropertyBindingResult validateDisable(Lang lang) {
-<span class="fc" id="L143">        BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(lang, &quot;lang&quot;);</span>
-<span class="fc bfc" id="L144" title="All 2 branches covered.">        if (lang.isDefault()) {</span>
-<span class="fc" id="L145">            bindingResult.reject(LanguageValidator.ERRCODE_LANGUAGE_CANNOT_DISABLE_DEFAULT, new Object[]{lang.getCode(), lang.getDescr()}, &quot;language.cannot.disable.default&quot;);</span>
+<span class="fc" id="L146">        BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(lang, &quot;lang&quot;);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (lang.isDefault()) {</span>
+<span class="fc" id="L148">            bindingResult.reject(LanguageValidator.ERRCODE_LANGUAGE_CANNOT_DISABLE_DEFAULT, new Object[]{lang.getCode(), lang.getDescr()}, &quot;language.cannot.disable.default&quot;);</span>
         }
-<span class="fc" id="L147">        return bindingResult;</span>
+<span class="fc" id="L150">        return bindingResult;</span>
 
     }
 
