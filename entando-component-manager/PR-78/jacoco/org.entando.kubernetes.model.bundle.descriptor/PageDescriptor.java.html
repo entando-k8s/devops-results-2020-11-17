@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PageDescriptor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Entando Component Manager</a> &gt; <a href="index.source.html" class="el_package">org.entando.kubernetes.model.bundle.descriptor</a> &gt; <span class="el_source">PageDescriptor.java</span></div><h1>PageDescriptor.java</h1><pre class="source lang-java linenums">package org.entando.kubernetes.model.bundle.descriptor;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,23 +16,31 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PageDescriptor implements Descriptor {
+
+    public static final String STUB_SUFFIX = &quot; - STUB&quot;;
 
     private String code;
     private String parentCode;
-    private Map&lt;String, String&gt; titles;
-    private String pageModel;
     private String ownerGroup;
-    private List&lt;String&gt; joinGroups;
-    private boolean displayedInMenu;
-    private boolean seo;
-    private String charset;
-    private String status;
-    private List&lt;WidgetConfigurationDescriptor&gt; widgets;
+    private String pageModel;
+    @Setter(AccessLevel.NONE)
+    private Map&lt;String, String&gt; titles;
+
+    public PageDescriptor setTitles(Map&lt;String, String&gt; titles) {
+<span class="fc" id="L32">        this.titles = titles.entrySet().stream()</span>
+<span class="fc" id="L33">                .map(entry -&gt; {</span>
+<span class="fc" id="L34">                    entry.setValue(entry.getValue() + STUB_SUFFIX);</span>
+<span class="fc" id="L35">                    return entry;</span>
+                })
+<span class="fc" id="L37">                .collect(Collectors.toMap(Entry::getKey, Entry::getValue));</span>
+<span class="fc" id="L38">        return this;</span>
+    }
 
     @Override
     public ComponentKey getComponentKey() {
-<span class="fc" id="L32">        return new ComponentKey(code);</span>
+<span class="fc" id="L43">        return new ComponentKey(code);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

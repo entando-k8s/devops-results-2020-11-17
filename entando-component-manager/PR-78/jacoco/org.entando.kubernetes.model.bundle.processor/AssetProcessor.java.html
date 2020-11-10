@@ -85,7 +85,7 @@ public class AssetProcessor extends BaseComponentProcessor&lt;AssetDescriptor&gt
     @Override
     public List&lt;Installable&lt;AssetDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L87">        return components.stream()</span>
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.ASSET)</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
 <span class="fc" id="L89">                .map(c -&gt; new AssetInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
 <span class="fc" id="L90">                .collect(Collectors.toList());</span>
     }

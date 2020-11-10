@@ -54,21 +54,16 @@ public class PluginInstallable extends Installable&lt;PluginDescriptor&gt; {
     }
 
     @Override
-    public ComponentInstallationFlow getComponentInstallationFlow() {
-<span class="fc" id="L58">        return ComponentInstallationFlow.PLUGIN;</span>
-    }
-
-    @Override
     public String getName() {
 
-<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (!StringUtils.isEmpty(this.representation.getDeploymentBaseName())) {</span>
-<span class="fc" id="L65">            return this.representation.getDeploymentBaseName();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (!StringUtils.isEmpty(this.representation.getDeploymentBaseName())) {</span>
+<span class="fc" id="L60">            return this.representation.getDeploymentBaseName();</span>
         } else {
             // TODO when we'll introduce a validation step, remove this try catch and move the check
             try {
-<span class="fc" id="L69">                return this.representation.getDockerImage().toString();</span>
-<span class="nc" id="L70">            } catch (Exception e) {</span>
-<span class="nc" id="L71">                throw new EntandoComponentManagerException(&quot;There is an error in the build of the docker image. Please &quot;</span>
+<span class="fc" id="L64">                return this.representation.getDockerImage().toString();</span>
+<span class="nc" id="L65">            } catch (Exception e) {</span>
+<span class="nc" id="L66">                throw new EntandoComponentManagerException(&quot;There is an error in the build of the docker image. Please &quot;</span>
                         + &quot;check to have supplied a valid docker image in the dedicated descriptor field&quot;);
             }
         }

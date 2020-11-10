@@ -91,7 +91,7 @@ public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescrip
     @Override
     public List&lt;Installable&lt;LanguageDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L93">        return components.stream()</span>
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.LANGUAGE)</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
 <span class="fc" id="L95">                .map(c -&gt; new LanguageInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
 <span class="fc" id="L96">                        c.getAction()))</span>
 <span class="fc" id="L97">                .collect(Collectors.toList());</span>

@@ -6,7 +6,6 @@ import java.util.concurrent.CompletableFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.entando.kubernetes.controller.digitalexchange.job.model.InstallRequest.InstallAction;
-import org.entando.kubernetes.model.bundle.ComponentInstallationFlow;
 import org.entando.kubernetes.model.bundle.ComponentType;
 import org.entando.kubernetes.model.bundle.descriptor.Descriptor;
 import org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity;
@@ -17,23 +16,23 @@ import org.entando.kubernetes.model.job.EntandoBundleComponentJobEntity;
  * @param &lt;T&gt; Can be essentially anything. A service, a component or any other part on the Entando architecture
  * @author Sergio Marcelino
  */
-<span class="fc" id="L20">@Slf4j</span>
+<span class="fc" id="L19">@Slf4j</span>
 public abstract class Installable&lt;T extends Descriptor&gt; {
 
     protected final T representation;
     protected final InstallAction action;
-<span class="fc" id="L25">    private final ObjectMapper objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L24">    private final ObjectMapper objectMapper = new ObjectMapper();</span>
     protected EntandoBundleComponentJobEntity job;
 
-<span class="fc" id="L28">    public Installable(T representation, InstallAction action) {</span>
-<span class="fc" id="L29">        this.representation = representation;</span>
-<span class="fc" id="L30">        this.action = action;</span>
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L27">    public Installable(T representation, InstallAction action) {</span>
+<span class="fc" id="L28">        this.representation = representation;</span>
+<span class="fc" id="L29">        this.action = action;</span>
+<span class="fc" id="L30">    }</span>
 
     @Deprecated
     public Installable(T representation) {
-<span class="nc" id="L35">        this(representation, InstallAction.CREATE);</span>
-<span class="nc" id="L36">    }</span>
+<span class="nc" id="L34">        this(representation, InstallAction.CREATE);</span>
+<span class="nc" id="L35">    }</span>
 
     /**
      * This method will be called when every component was validated on the Digital Exchange bundle file.
@@ -56,18 +55,10 @@ public abstract class Installable&lt;T extends Descriptor&gt; {
      */
     public abstract ComponentType getComponentType();
 
-    /**
-     * Should return the ComponentInstallationFlow to understand in which place of the installation flow this installable
-     * has to be managed
-     *
-     * @return {@link ComponentInstallationFlow}
-     */
-    public abstract ComponentInstallationFlow getComponentInstallationFlow();
-
     public abstract String getName();
 
     public InstallAction getAction() {
-<span class="fc" id="L70">        return action;</span>
+<span class="fc" id="L61">        return action;</span>
     }
 
     /**
@@ -78,40 +69,61 @@ public abstract class Installable&lt;T extends Descriptor&gt; {
      */
     public String getChecksum() {
         try {
-<span class="fc" id="L81">            return DigestUtils.md5Hex(objectMapper.writeValueAsString(representation));</span>
-<span class="nc" id="L82">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L83">            log.error(&quot;Problem while processing checksum&quot;, e);</span>
+<span class="fc" id="L72">            return DigestUtils.md5Hex(objectMapper.writeValueAsString(representation));</span>
+<span class="nc" id="L73">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L74">            log.error(&quot;Problem while processing checksum&quot;, e);</span>
         }
-<span class="nc" id="L85">        return null;</span>
+<span class="nc" id="L76">        return null;</span>
     }
 
     public T getRepresentation() {
-<span class="fc" id="L89">        return this.representation;</span>
+<span class="fc" id="L80">        return this.representation;</span>
     }
 
     public int getPriority() {
-<span class="fc" id="L93">        return this.getComponentInstallationFlow().getInstallPriority();</span>
+<span class="fc" id="L84">        return this.getComponentType().getInstallPriority();</span>
     }
 
     public EntandoBundleComponentJobEntity getJob() {
-<span class="nc" id="L97">        return this.job;</span>
+<span class="nc" id="L88">        return this.job;</span>
     }
 
     public void setJob(EntandoBundleComponentJobEntity job) {
-<span class="nc" id="L101">        this.job = job;</span>
-<span class="nc" id="L102">    }</span>
+<span class="nc" id="L92">        this.job = job;</span>
+<span class="nc" id="L93">    }</span>
 
     public boolean shouldSkip() {
-<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        return action == InstallAction.SKIP;</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        return action == InstallAction.SKIP;</span>
     }
 
     public boolean shouldCreate() {
-<span class="pc bpc" id="L109" title="1 of 2 branches missed.">        return action == InstallAction.CREATE;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        return action == InstallAction.CREATE;</span>
     }
 
     public boolean shouldOverride() {
-<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        return action == InstallAction.OVERRIDE;</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        return action == InstallAction.OVERRIDE;</span>
     }
 
+    protected void logConflictStrategyAction() {
+
+        String actionLogName;
+
+<span class="pc bpc" id="L111" title="3 of 4 branches missed.">        switch (action) {</span>
+            case SKIP:
+<span class="nc" id="L113">                actionLogName = &quot;Skipping&quot;;</span>
+<span class="nc" id="L114">                break;</span>
+            case CREATE:
+<span class="fc" id="L116">                actionLogName = &quot;Creating&quot;;</span>
+<span class="fc" id="L117">                break;</span>
+            case OVERRIDE:
+<span class="nc" id="L119">                actionLogName = &quot;Overriding&quot;;</span>
+<span class="nc" id="L120">                break;</span>
+            default:
+<span class="nc" id="L122">                actionLogName = &quot;Conflict strategy action not recognized&quot;;</span>
+                break;
+        }
+
+<span class="fc" id="L126">        log.info(&quot;{} {} {}&quot;, actionLogName, getComponentType().getTypeName(), getName());</span>
+<span class="fc" id="L127">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -82,7 +82,7 @@ public class PluginProcessor extends BaseComponentProcessor&lt;PluginDescriptor&
     @Override
     public List&lt;Installable&lt;PluginDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L84">        return components.stream()</span>
-<span class="pc bpc" id="L85" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.PLUGIN)</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
 <span class="fc" id="L86">                .map(c -&gt; new PluginInstallable(kubernetesService, buildDescriptorFromComponentJob(c), c.getAction()))</span>
 <span class="fc" id="L87">                .collect(Collectors.toList());</span>
     }

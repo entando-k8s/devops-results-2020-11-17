@@ -77,7 +77,7 @@ public class FragmentProcessor extends BaseComponentProcessor&lt;FragmentDescrip
     @Override
     public List&lt;Installable&lt;FragmentDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L79">        return components.stream()</span>
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.FRAGMENT)</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
 <span class="fc" id="L81">                .map(c -&gt; new FragmentInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
 <span class="fc" id="L82">                        c.getAction()))</span>
 <span class="fc" id="L83">                .collect(Collectors.toList());</span>

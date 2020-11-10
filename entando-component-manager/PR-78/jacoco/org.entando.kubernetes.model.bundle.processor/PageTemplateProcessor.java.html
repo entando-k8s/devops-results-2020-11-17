@@ -84,7 +84,7 @@ public class PageTemplateProcessor extends BaseComponentProcessor&lt;PageTemplat
     @Override
     public List&lt;Installable&lt;PageTemplateDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L86">        return components.stream()</span>
-<span class="pc bpc" id="L87" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.PAGE_TEMPLATE)</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
 <span class="fc" id="L88">                .map(c -&gt; new PageTemplateInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
 <span class="fc" id="L89">                        c.getAction()))</span>
 <span class="fc" id="L90">                .collect(Collectors.toList());</span>

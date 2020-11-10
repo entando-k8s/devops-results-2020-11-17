@@ -22,45 +22,38 @@ public class PageInstallable extends Installable&lt;PageDescriptor&gt; {
     @Override
     public CompletableFuture&lt;Void&gt; install() {
 <span class="fc" id="L24">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L25">            log.info(&quot;Registering Page {}&quot;, getName());</span>
+
+<span class="fc" id="L26">            logConflictStrategyAction();</span>
 
             //Create Page
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L29">                return; //Do nothing</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L30">                return; //Do nothing</span>
             }
 
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L33">                engineService.createPage(representation);</span>
-            } else {
-<span class="nc" id="L35">                engineService.updatePage(representation);</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L34">                engineService.createPage(representation);</span>
             }
-
-            //Configure Page Widgets
-<span class="fc" id="L39">            Optional.ofNullable(representation.getWidgets())</span>
-<span class="fc" id="L40">                    .orElse(new ArrayList&lt;&gt;())</span>
-<span class="fc" id="L41">                    .parallelStream()</span>
-<span class="fc" id="L42">                    .forEach(w -&gt; engineService.configurePageWidget(representation, w));</span>
-<span class="fc" id="L43">        });</span>
+<span class="fc" id="L36">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L48">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L49">            log.info(&quot;Removing Page {}&quot;, getName());</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if(shouldCreate()) {</span>
-<span class="fc" id="L51">                engineService.deletePage(getName());</span>
+<span class="fc" id="L41">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L42">            log.info(&quot;Removing Page {}&quot;, getName());</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L44">                engineService.deletePage(getName());</span>
             }
-<span class="fc" id="L53">        });</span>
+<span class="fc" id="L46">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L58">        return ComponentType.PAGE;</span>
+<span class="fc" id="L51">        return ComponentType.PAGE;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L63">        return representation.getCode();</span>
+<span class="fc" id="L56">        return representation.getCode();</span>
     }
 
 }

@@ -89,7 +89,7 @@ public class WidgetProcessor extends BaseComponentProcessor&lt;WidgetDescriptor&
     @Override
     public List&lt;Installable&lt;WidgetDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
 <span class="fc" id="L91">        return components.stream()</span>
-<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == ComponentType.WIDGET)</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
 <span class="fc" id="L93">                .map(c -&gt; new WidgetInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
 <span class="fc" id="L94">                .collect(Collectors.toList());</span>
     }

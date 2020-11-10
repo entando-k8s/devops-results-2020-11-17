@@ -170,16 +170,16 @@ public class EntandoBundleServiceImpl implements EntandoBundleService {
     public EntandoBundleEntity convertToEntityFromBundle(EntandoBundle bundle) {
 <span class="fc" id="L171">        return EntandoBundleEntity.builder()</span>
 <span class="fc" id="L172">                .id(bundle.getCode())</span>
-<span class="fc" id="L173">                .name(bundle.getTitle())</span>
+                //.name(bundle.getTitle())
 <span class="fc" id="L174">                .name(bundle.getCode())</span>
 <span class="fc" id="L175">                .description(bundle.getDescription())</span>
 <span class="fc" id="L176">                .image(bundle.getThumbnail())</span>
                 //.organization(entity.getOrganization())
 <span class="fc" id="L178">                .type(bundle.getComponentTypes())</span>
 <span class="fc" id="L179">                .installed(bundle.isInstalled())</span>
-<span class="pc bpc" id="L180" title="1 of 2 branches missed.">                .version(bundle.isInstalled() ? bundle.getInstalledJob().getComponentVersion() : null)</span>
-<span class="pc bpc" id="L181" title="1 of 2 branches missed.">                .lastUpdate(bundle.isInstalled()</span>
-<span class="pc" id="L182">                        ? Date.from(bundle.getInstalledJob().getFinishedAt().atZone(ZoneOffset.UTC).toInstant()) : null)</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">                .version(bundle.isInstalled() ? bundle.getInstalledJob().getComponentVersion() : null)</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">                .lastUpdate(bundle.isInstalled()</span>
+<span class="fc" id="L182">                        ? Date.from(bundle.getInstalledJob().getFinishedAt().atZone(ZoneOffset.UTC).toInstant()) : null)</span>
 <span class="fc" id="L183">                .build();</span>
     }
 

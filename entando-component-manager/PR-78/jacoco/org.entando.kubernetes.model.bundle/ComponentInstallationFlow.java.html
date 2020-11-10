@@ -4,33 +4,33 @@
  * Represents the flow of the installation process.
  * Since it differs from the component list, we are using a different enum instead of heaping all in the ComponentType
  */
-<span class="fc" id="L7">public enum ComponentInstallationFlow {</span>
+<span class="nc" id="L7">public enum ComponentInstallationFlow {</span>
 
-<span class="fc" id="L9">    PLUGIN(0),</span>
-<span class="fc" id="L10">    DIRECTORY(1),</span>
-<span class="fc" id="L11">    CATEGORY(2),</span>
-<span class="fc" id="L12">    GROUP(3),</span>
-<span class="fc" id="L13">    LANGUAGE(4),</span>
-<span class="fc" id="L14">    LABEL(5),</span>
-<span class="fc" id="L15">    RESOURCE(6),</span>
-<span class="fc" id="L16">    WIDGET(7),</span>
-<span class="fc" id="L17">    CONTENT_TYPE(8),</span>
-<span class="fc" id="L18">    CONTENT_TEMPLATE(9),</span>
-<span class="fc" id="L19">    ASSET(10),</span>
-<span class="fc" id="L20">    PAGE_TEMPLATE(11),</span>
-<span class="fc" id="L21">    PAGE_INIT(12),</span>
-<span class="fc" id="L22">    CONTENT(13),</span>
-<span class="fc" id="L23">    FRAGMENT(14),</span>
-<span class="fc" id="L24">    PAGE_POPULATION(15);</span>
+<span class="nc" id="L9">    PLUGIN(0),</span>
+<span class="nc" id="L10">    DIRECTORY(1),</span>
+<span class="nc" id="L11">    CATEGORY(2),</span>
+<span class="nc" id="L12">    GROUP(3),</span>
+<span class="nc" id="L13">    LANGUAGE(4),</span>
+<span class="nc" id="L14">    LABEL(5),</span>
+<span class="nc" id="L15">    RESOURCE(6),</span>
+<span class="nc" id="L16">    WIDGET(7),</span>
+<span class="nc" id="L17">    CONTENT_TYPE(8),</span>
+<span class="nc" id="L18">    CONTENT_TEMPLATE(9),</span>
+<span class="nc" id="L19">    ASSET(10),</span>
+<span class="nc" id="L20">    PAGE_TEMPLATE(11),</span>
+<span class="nc" id="L21">    PAGE_INIT(12),</span>
+<span class="nc" id="L22">    CONTENT(13),</span>
+<span class="nc" id="L23">    FRAGMENT(14),</span>
+<span class="nc" id="L24">    PAGE_POPULATION(15);</span>
 
     private final int installPriority;
 
-<span class="fc" id="L28">    ComponentInstallationFlow(int installPriority) {</span>
-<span class="fc" id="L29">        this.installPriority = installPriority;</span>
-<span class="fc" id="L30">    }</span>
+<span class="nc" id="L28">    ComponentInstallationFlow(int installPriority) {</span>
+<span class="nc" id="L29">        this.installPriority = installPriority;</span>
+<span class="nc" id="L30">    }</span>
 
     public int getInstallPriority() {
-<span class="fc" id="L33">        return this.installPriority;</span>
+<span class="nc" id="L33">        return this.installPriority;</span>
     }
 
 }

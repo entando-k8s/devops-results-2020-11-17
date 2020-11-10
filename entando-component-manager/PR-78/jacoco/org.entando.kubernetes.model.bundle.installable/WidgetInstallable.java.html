@@ -21,42 +21,39 @@ public class WidgetInstallable extends Installable&lt;WidgetDescriptor&gt; {
     @Override
     public CompletableFuture&lt;Void&gt; install() {
 <span class="fc" id="L23">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L24">            log.info(&quot;Registering Widget {}&quot;, getName());</span>
-<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L26">                return; //Do nothing</span>
+
+<span class="fc" id="L25">            logConflictStrategyAction();</span>
+
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L28">                return; //Do nothing</span>
             }
 
-<span class="pc bpc" id="L29" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L30">                engineService.createWidget(representation);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L32">                engineService.createWidget(representation);</span>
             } else {
-<span class="nc" id="L32">                engineService.updateWidget(representation);</span>
+<span class="nc" id="L34">                engineService.updateWidget(representation);</span>
             }
-<span class="fc" id="L34">        });</span>
+<span class="fc" id="L36">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L39">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L40">            log.info(&quot;Removing Widget {}&quot;, getName());</span>
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">            if(shouldCreate()) {</span>
-<span class="fc" id="L42">                engineService.deleteWidget(getName());</span>
+<span class="fc" id="L41">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L42">            log.info(&quot;Removing Widget {}&quot;, getName());</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L44">                engineService.deleteWidget(getName());</span>
             }
-<span class="fc" id="L44">        });</span>
+<span class="fc" id="L46">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L49">        return ComponentType.WIDGET;</span>
-    }
-
-    @Override
-    public ComponentInstallationFlow getComponentInstallationFlow() {
-<span class="fc" id="L54">        return ComponentInstallationFlow.WIDGET;</span>
+<span class="fc" id="L51">        return ComponentType.WIDGET;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L59">        return representation.getCode();</span>
+<span class="fc" id="L56">        return representation.getCode();</span>
     }
 
 }
