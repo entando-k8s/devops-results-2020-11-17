@@ -102,7 +102,7 @@ public class EntandoAppServerDeployable implements PublicIngressingDeployable&lt
 
     @Override
     public String getIngressName() {
-<span class="fc" id="L105">        return entandoApp.getMetadata().getName() + &quot;-&quot; + KubeUtils.DEFAULT_INGRESS_SUFFIX;</span>
+<span class="fc" id="L105">        return KubeUtils.standardIngressName(entandoApp);</span>
     }
 
     @Override
