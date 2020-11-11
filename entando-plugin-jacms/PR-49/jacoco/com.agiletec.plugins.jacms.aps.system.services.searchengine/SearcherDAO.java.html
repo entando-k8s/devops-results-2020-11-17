@@ -150,9 +150,9 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="fc" id="L150">            result.setContentsId(contentsId);</span>
 <span class="nc" id="L151">        } catch (IndexNotFoundException inf) {</span>
 <span class="nc" id="L152">            logger.error(&quot;no index was found in the Directory&quot;, inf);</span>
-<span class="fc" id="L153">        } catch (Throwable t) {</span>
-<span class="fc" id="L154">            logger.error(&quot;Error extracting documents&quot;, t);</span>
-<span class="fc" id="L155">            throw new EntException(&quot;Error extracting documents&quot;, t);</span>
+<span class="nc" id="L153">        } catch (Throwable t) {</span>
+<span class="nc" id="L154">            logger.error(&quot;Error extracting documents&quot;, t);</span>
+<span class="nc" id="L155">            throw new EntException(&quot;Error extracting documents&quot;, t);</span>
         } finally {
 <span class="fc" id="L157">            this.releaseResources(searcher);</span>
         }

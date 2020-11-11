@@ -285,9 +285,9 @@ import org.entando.entando.ent.util.EntLogging.EntLogFactory;
 <span class="fc" id="L285">        FacetedContentsResult result = null;</span>
         try {
 <span class="fc" id="L287">            result = this.getSearcherDao().searchFacetedContents(filters, categories, allowedGroups);</span>
-<span class="fc" id="L288">        } catch (Throwable t) {</span>
-<span class="fc" id="L289">            logger.error(&quot;Error searching faceted contents&quot;, t);</span>
-<span class="fc" id="L290">            throw new EntException(&quot;Error searching faceted contents&quot;, t);</span>
+<span class="nc" id="L288">        } catch (Throwable t) {</span>
+<span class="nc" id="L289">            logger.error(&quot;Error searching faceted contents&quot;, t);</span>
+<span class="nc" id="L290">            throw new EntException(&quot;Error searching faceted contents&quot;, t);</span>
 <span class="fc" id="L291">        }</span>
 <span class="fc" id="L292">        return result;</span>
     }

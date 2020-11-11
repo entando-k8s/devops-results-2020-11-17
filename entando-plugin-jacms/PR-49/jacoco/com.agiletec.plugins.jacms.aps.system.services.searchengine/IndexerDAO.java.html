@@ -151,64 +151,71 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
 <span class="nc bnc" id="L151" title="All 2 branches missed.">                || ((attribute instanceof DateAttribute || attribute instanceof NumberAttribute) &amp;&amp; attribute.isSearchable())) {</span>
 <span class="fc" id="L152">            String valueToIndex = null;</span>
 <span class="fc" id="L153">            Long number = null;</span>
-<span class="fc bfc" id="L154" title="All 2 branches covered.">            if (attribute instanceof DateAttribute) {</span>
-<span class="fc" id="L155">                Date date = ((DateAttribute) attribute).getDate();</span>
-<span class="pc bpc" id="L156" title="1 of 2 branches missed.">                number = (null != date) ? date.getTime() : null;</span>
-<span class="pc bpc" id="L157" title="1 of 2 branches missed.">                valueToIndex = (null != number) ? DateTools.timeToString(number, DateTools.Resolution.MINUTE) : valueToIndex;</span>
-<span class="fc bfc" id="L158" title="All 2 branches covered.">            } else if (attribute instanceof NumberAttribute) {</span>
-<span class="fc" id="L159">                BigDecimal value = ((NumberAttribute) attribute).getValue();</span>
-<span class="pc bpc" id="L160" title="1 of 2 branches missed.">                number = (null != value) ? value.longValue() : null;</span>
-<span class="pc bpc" id="L161" title="1 of 2 branches missed.">                valueToIndex = (null != number) ? String.valueOf(number) : valueToIndex;</span>
-<span class="fc" id="L162">            } else {</span>
-<span class="fc" id="L163">                valueToIndex = ((IndexableAttributeInterface) attribute).getIndexeableFieldValue();</span>
+<span class="fc" id="L154">            boolean isDate = false;</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">            if (attribute instanceof DateAttribute) {</span>
+<span class="fc" id="L156">                Date date = ((DateAttribute) attribute).getDate();</span>
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">                number = (null != date) ? date.getTime() : null;</span>
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">                valueToIndex = (null != number) ? DateTools.timeToString(number, DateTools.Resolution.MINUTE) : valueToIndex;</span>
+<span class="fc" id="L159">                isDate = true;</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">            } else if (attribute instanceof NumberAttribute) {</span>
+<span class="fc" id="L161">                BigDecimal value = ((NumberAttribute) attribute).getValue();</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">                number = (null != value) ? value.longValue() : null;</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">                valueToIndex = (null != number) ? String.valueOf(number) : valueToIndex;</span>
+<span class="fc" id="L164">            } else {</span>
+<span class="fc" id="L165">                valueToIndex = ((IndexableAttributeInterface) attribute).getIndexeableFieldValue();</span>
             }
-<span class="pc bpc" id="L165" title="1 of 2 branches missed.">            if (null == valueToIndex) {</span>
-<span class="nc" id="L166">                return;</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">            if (null == valueToIndex) {</span>
+<span class="nc" id="L168">                return;</span>
             }
-<span class="pc bpc" id="L168" title="1 of 2 branches missed.">            if (attribute instanceof IndexableAttributeInterface) {</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">            if (attribute instanceof IndexableAttributeInterface) {</span>
                 // full text search
-<span class="fc" id="L170">                String indexingType = attribute.getIndexingType();</span>
-<span class="pc bpc" id="L171" title="1 of 2 branches missed.">                if (null != indexingType</span>
-<span class="pc bpc" id="L172" title="1 of 2 branches missed.">                        &amp;&amp; IndexableAttributeInterface.INDEXING_TYPE_UNSTORED.equalsIgnoreCase(indexingType)) {</span>
-<span class="nc" id="L173">                    document.add(new TextField(lang.getCode(), valueToIndex, Field.Store.NO));</span>
+<span class="fc" id="L172">                String indexingType = attribute.getIndexingType();</span>
+<span class="pc bpc" id="L173" title="1 of 2 branches missed.">                if (null != indexingType</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">                        &amp;&amp; IndexableAttributeInterface.INDEXING_TYPE_UNSTORED.equalsIgnoreCase(indexingType)) {</span>
+<span class="nc" id="L175">                    document.add(new TextField(lang.getCode(), valueToIndex, Field.Store.NO));</span>
                 }
-<span class="pc bpc" id="L175" title="1 of 2 branches missed.">                if (null != indexingType</span>
-<span class="fc bfc" id="L176" title="All 2 branches covered.">                        &amp;&amp; IndexableAttributeInterface.INDEXING_TYPE_TEXT.equalsIgnoreCase(indexingType)) {</span>
-<span class="fc" id="L177">                    document.add(new TextField(lang.getCode(), valueToIndex, Field.Store.YES));</span>
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">                if (null != indexingType</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">                        &amp;&amp; IndexableAttributeInterface.INDEXING_TYPE_TEXT.equalsIgnoreCase(indexingType)) {</span>
+<span class="fc" id="L179">                    document.add(new TextField(lang.getCode(), valueToIndex, Field.Store.YES));</span>
                 }
             }
-<span class="fc" id="L180">            String fieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getName();</span>
-<span class="fc" id="L181">            this.indexValue(document, fieldName, valueToIndex, number);</span>
-<span class="fc bfc" id="L182" title="All 2 branches covered.">            if (null == attribute.getRoles()) {</span>
-<span class="fc" id="L183">                return;</span>
+<span class="fc" id="L182">            String fieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getName();</span>
+<span class="fc" id="L183">            this.indexValue(document, fieldName, valueToIndex, number, isDate);</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">            if (null == attribute.getRoles()) {</span>
+<span class="fc" id="L185">                return;</span>
             }
-<span class="fc bfc" id="L185" title="All 2 branches covered.">            for (int i = 0; i &lt; attribute.getRoles().length; i++) {</span>
-<span class="fc" id="L186">                String roleFieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getRoles()[i];</span>
-<span class="fc" id="L187">                this.indexValue(document, roleFieldName, valueToIndex, number);</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">            for (int i = 0; i &lt; attribute.getRoles().length; i++) {</span>
+<span class="fc" id="L188">                String roleFieldName = lang.getCode().toLowerCase() + &quot;_&quot; + attribute.getRoles()[i];</span>
+<span class="fc" id="L189">                this.indexValue(document, roleFieldName, valueToIndex, number, isDate);</span>
             }
         }
-<span class="fc" id="L190">    }</span>
+<span class="fc" id="L192">    }</span>
     
-    private void indexValue(Document document, String fieldName, String valueToIndex, Long number) {
-<span class="fc" id="L193">        document.add(new TextField(fieldName, valueToIndex.toLowerCase(), Field.Store.YES));</span>
-<span class="fc bfc" id="L194" title="All 2 branches covered.">        if (null != number) {</span>
-<span class="fc" id="L195">            document.add(new LongPoint(fieldName, number));</span>
-<span class="fc" id="L196">            document.add(new SortedNumericDocValuesField(fieldName + SORTERED_FIELD_SUFFIX, number));</span>
-        } else {
-<span class="fc bfc" id="L198" title="All 2 branches covered.">            String sortableValue = (valueToIndex.length() &gt; 100) ? valueToIndex.substring(0, 99) : valueToIndex;</span>
-<span class="fc" id="L199">            document.add(new SortedDocValuesField(fieldName + SORTERED_FIELD_SUFFIX, new BytesRef(sortableValue)));</span>
+    private void indexValue(Document document, String fieldName, String valueToIndex, Long number, boolean isDate) {
+<span class="fc" id="L195">        document.add(new TextField(fieldName, valueToIndex.toLowerCase(), Field.Store.YES));</span>
+<span class="fc" id="L196">        boolean sortString = true;</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">        if (null != number) {</span>
+<span class="fc" id="L198">            document.add(new LongPoint(fieldName, number));</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">            if (!isDate) {</span>
+<span class="fc" id="L200">                document.add(new SortedNumericDocValuesField(fieldName + SORTERED_FIELD_SUFFIX, number));</span>
+<span class="fc" id="L201">                sortString = false;</span>
+            }
         }
-<span class="fc" id="L201">    }</span>
+<span class="fc bfc" id="L204" title="All 2 branches covered.">        if (sortString) {</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            String sortableValue = (valueToIndex.length() &gt; 100) ? valueToIndex.substring(0, 99) : valueToIndex;</span>
+<span class="fc" id="L206">            document.add(new SortedDocValuesField(fieldName + SORTERED_FIELD_SUFFIX, new BytesRef(sortableValue)));</span>
+        }
+<span class="fc" id="L208">    }</span>
 
     protected void indexCategory(Document document, ITreeNode categoryToIndex) {
-<span class="pc bpc" id="L204" title="1 of 4 branches missed.">        if (null == categoryToIndex || categoryToIndex.isRoot()) {</span>
-<span class="fc" id="L205">            return;</span>
+<span class="pc bpc" id="L211" title="1 of 4 branches missed.">        if (null == categoryToIndex || categoryToIndex.isRoot()) {</span>
+<span class="fc" id="L212">            return;</span>
         }
-<span class="fc" id="L207">        document.add(new StringField(CONTENT_CATEGORY_FIELD_NAME,</span>
-<span class="fc" id="L208">                categoryToIndex.getPath(CONTENT_CATEGORY_SEPARATOR, false, this.getTreeNodeManager()), Field.Store.YES));</span>
-<span class="fc" id="L209">        ITreeNode parentCategory = this.getTreeNodeManager().getNode(categoryToIndex.getParentCode());</span>
-<span class="fc" id="L210">        this.indexCategory(document, parentCategory);</span>
-<span class="fc" id="L211">    }</span>
+<span class="fc" id="L214">        document.add(new StringField(CONTENT_CATEGORY_FIELD_NAME,</span>
+<span class="fc" id="L215">                categoryToIndex.getPath(CONTENT_CATEGORY_SEPARATOR, false, this.getTreeNodeManager()), Field.Store.YES));</span>
+<span class="fc" id="L216">        ITreeNode parentCategory = this.getTreeNodeManager().getNode(categoryToIndex.getParentCode());</span>
+<span class="fc" id="L217">        this.indexCategory(document, parentCategory);</span>
+<span class="fc" id="L218">    }</span>
 
     /**
      * Cancella un documento.
@@ -220,43 +227,43 @@ import org.entando.entando.ent.util.EntLogging.EntLogger;
     @Override
     public synchronized void delete(String name, String value) throws EntException {
         try {
-<span class="fc" id="L223">            IndexWriter writer = new IndexWriter(this.dir, this.getIndexWriterConfig());</span>
-<span class="fc" id="L224">            writer.deleteDocuments(new Term(name, value));</span>
-<span class="fc" id="L225">            writer.close();</span>
-<span class="nc" id="L226">        } catch (IOException e) {</span>
-<span class="nc" id="L227">            _logger.error(&quot;Error deleting document&quot;, e);</span>
-<span class="nc" id="L228">            throw new EntException(&quot;Error deleting document&quot;, e);</span>
-<span class="fc" id="L229">        }</span>
-<span class="fc" id="L230">    }</span>
+<span class="fc" id="L230">            IndexWriter writer = new IndexWriter(this.dir, this.getIndexWriterConfig());</span>
+<span class="fc" id="L231">            writer.deleteDocuments(new Term(name, value));</span>
+<span class="fc" id="L232">            writer.close();</span>
+<span class="nc" id="L233">        } catch (IOException e) {</span>
+<span class="nc" id="L234">            _logger.error(&quot;Error deleting document&quot;, e);</span>
+<span class="nc" id="L235">            throw new EntException(&quot;Error deleting document&quot;, e);</span>
+<span class="fc" id="L236">        }</span>
+<span class="fc" id="L237">    }</span>
 
     @Override
     public void close() {
         // nothing to do
-<span class="nc" id="L235">    }</span>
+<span class="nc" id="L242">    }</span>
 
     private Analyzer getAnalyzer() {
-<span class="fc" id="L238">        return new StandardAnalyzer();</span>
+<span class="fc" id="L245">        return new StandardAnalyzer();</span>
     }
 
     private IndexWriterConfig getIndexWriterConfig() {
-<span class="fc" id="L242">        return new IndexWriterConfig(this.getAnalyzer());</span>
+<span class="fc" id="L249">        return new IndexWriterConfig(this.getAnalyzer());</span>
     }
 
     protected ILangManager getLangManager() {
-<span class="fc" id="L246">        return langManager;</span>
+<span class="fc" id="L253">        return langManager;</span>
     }
     @Override
     public void setLangManager(ILangManager langManager) {
-<span class="fc" id="L250">        this.langManager = langManager;</span>
-<span class="fc" id="L251">    }</span>
+<span class="fc" id="L257">        this.langManager = langManager;</span>
+<span class="fc" id="L258">    }</span>
 
     public ITreeNodeManager getTreeNodeManager() {
-<span class="fc" id="L254">        return treeNodeManager;</span>
+<span class="fc" id="L261">        return treeNodeManager;</span>
     }
     @Override
     public void setTreeNodeManager(ITreeNodeManager treeNodeManager) {
-<span class="fc" id="L258">        this.treeNodeManager = treeNodeManager;</span>
-<span class="fc" id="L259">    }</span>
+<span class="fc" id="L265">        this.treeNodeManager = treeNodeManager;</span>
+<span class="fc" id="L266">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
