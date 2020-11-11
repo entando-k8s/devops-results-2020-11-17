@@ -1,0 +1,105 @@
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-l7pc4[0m
+Unable to retrieve container logs for docker://daeedfdc04d6cf79eeb6df330aa2c870fbc6444cb24f91649e4caf9b9d0db34d
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-sgsrr[0m
+Unable to retrieve container logs for docker://372ecc67442200604b045eb7630c423bb8e52815cb0ee3161c9ba1ef5377ee32
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-k8s-entando-k8s-cluster-j8z6q[0m
+Unable to retrieve container logs for docker://e13dc7baf46f817aaac7000bf930dd2bafc689c8574efa153db12c1303992b32
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:3d5d21817fba3c31b23fe33b789ff5b4eda7373c
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Unable to retrieve container logs for docker://dcbe5bcc27236611db98383a745dab24f4242785e32cf95c65b021bb4ac7a610
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-build-fetch-history-for-sonar[0m
+From https://github.com/entando-k8s/entando-k8s-cluster-infrastructure-controller
+ * [new branch]      ENG-1329_bumped_to_latest_operator_common -> origin/ENG-1329_bumped_to_latest_operator_common
+ * [new branch]      master     -> origin/master
+ * [new branch]      poste      -> origin/poste
+ * [new branch]      remove_digital-exchange_deployment -> origin/remove_digital-exchange_deployment
+ * [new tag]         v6.2.8     -> v6.2.8
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-build-mvn-deploy-release[0m
+Unable to retrieve container logs for docker://7337c9995422f46b6763ef6756f4b16e6dd55b9a69416c5d6253304d0ab2da4c
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+Generating tags...
+ - entando/entando-k8s-cluster-infrastructure-controller -> docker.io/entando/entando-k8s-cluster-infrastructure-controller:6.2.8
+Checking cache...
+ - entando/entando-k8s-cluster-infrastructure-controller: Not found. Building
+Building [entando/entando-k8s-cluster-infrastructure-controller]...
+Sending build context to Docker daemon  540.7kBSending build context to Docker daemon  2.722MBSending build context to Docker daemon  7.106MBSending build context to Docker daemon  15.38MBSending build context to Docker daemon  24.85MBSending build context to Docker daemon  30.93MBSending build context to Docker daemon  35.33MBSending build context to Docker daemon  40.05MB
+Step 1/6 : FROM fabric8/java-alpine-openjdk8-jre
+ ---> 6383f0513235
+Step 2/6 : ENV JAVA_OPTIONS "-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+ ---> Using cache
+ ---> 781f0699f0f0
+Step 3/6 : ENV AB_ENABLED jmx_exporter
+ ---> Using cache
+ ---> 3d03a75b86f8
+Step 4/6 : COPY target/lib/* /deployments/lib/
+ ---> Using cache
+ ---> 070277b897f9
+Step 5/6 : COPY target/*-runner.jar /deployments/app.jar
+ ---> e5cbdcb3bded
+Step 6/6 : ENTRYPOINT /deployments/run-java.sh
+ ---> Running in a0c0129e2ab2
+ ---> 190347750dbb
+Successfully built 190347750dbb
+The push refers to a repository [docker.io/entando/entando-k8s-cluster-infrastructure-controller]
+811070f819be: Preparing
+158adce2f8b3: Preparing
+a37d6baa8a5e: Preparing
+4246c252be29: Preparing
+bbc6d89e45a1: Preparing
+6a8968c88953: Preparing
+c11f0dd7f64f: Preparing
+081a861c7ecd: Preparing
+6a8968c88953: Waiting
+c11f0dd7f64f: Waiting
+df5b415aa3df: Preparing
+77cae8ab23bf: Preparing
+77cae8ab23bf: Waiting
+df5b415aa3df: Waiting
+081a861c7ecd: Waiting
+4246c252be29: Layer already exists
+bbc6d89e45a1: Layer already exists
+a37d6baa8a5e: Layer already exists
+6a8968c88953: Layer already exists
+081a861c7ecd: Layer already exists
+c11f0dd7f64f: Layer already exists
+158adce2f8b3: Mounted from entando/entando-k8s-keycloak-controller
+77cae8ab23bf: Layer already exists
+df5b415aa3df: Layer already exists
+811070f819be: Pushed
+6.2.8: digest: sha256:0a45850f681976542951eb0774c05450088838e7a801cc661ff13442479f5d66 size: 2410
+There is a new version (1.16.0) of Skaffold available. Download it at https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-postbuild-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-changelog[0m
+Converted /workspace/source to an unshallow repository
+Generating change log from git ref 1eea2686c0f313f94f2de74a373566a11ae33c53 => 72038b8099c760b02c1a3da734f17b0683f67faa
+Associating user ampie in users.jenkins.io with email ampie.private@gmail.com to git GitProvider user with login ampie-barnard as emails match
+Adding label jenkins.io/git-github-userid=ampie-barnard to user ampie in users.jenkins.io
+Associating user ampie in users.jenkins.io with email ampie.private@gmail.com to git GitProvider user with login ampie-barnard as emails match
+Adding label jenkins.io/git-github-userid=ampie-barnard to user ampie in users.jenkins.io
+Finding issues in commit messages using git format
+WARNING: No release found for entando-k8s/entando-k8s-cluster-infrastructure-controller and tag v6.2.8 so creating a new release
+Updated the release information at https://github.com/entando-k8s/entando-k8s-cluster-infrastructure-controller/releases/tag/v6.2.8
+generated: /workspace/source/charts/entando-k8s-cluster-infrastructure-controller/templates/release.yaml
+Created Release entando-k8s-cluster-infrastructure-controller-6-2-8 resource in namespace **
+Updating PipelineActivity entando-k8s-entando-k8s-cluster-infrastructure-controller-master-38 with version 6.2.8
+Updated PipelineActivities entando-k8s-entando-k8s-cluster-infrastructure-controller-master-38 with release notes URL: https://github.com/entando-k8s/entando-k8s-cluster-infrastructure-controller/releases/tag/v6.2.8
+
+Showing logs for build [32mentando-k8s-entando-k8s-cluster-prjkt-38[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-update-image-map[0m
+Publishing image info for entando-k8s-cluster-infrastructure-controller
+configmap/entando-docker-image-info-v6.1 patched
