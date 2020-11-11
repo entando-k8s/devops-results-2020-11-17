@@ -46,31 +46,31 @@ public class InstallActionsByComponentType {
     private Map&lt;String, InstallAction&gt; languages = new HashMap&lt;&gt;();
 
     public Map&lt;String, InstallAction&gt; getActionsByType(ComponentType type) {
-<span class="fc bfc" id="L49" title="All 15 branches covered.">        switch (type) {</span>
+<span class="pc bpc" id="L49" title="7 of 15 branches missed.">        switch (type) {</span>
             case WIDGET:
-<span class="fc" id="L51">                return widgets;</span>
+<span class="nc" id="L51">                return widgets;</span>
             case FRAGMENT:
-<span class="fc" id="L53">                return fragments;</span>
+<span class="nc" id="L53">                return fragments;</span>
             case PAGE:
 <span class="fc" id="L55">                return pages;</span>
             case PAGE_TEMPLATE:
 <span class="fc" id="L57">                return pageTemplates;</span>
             case CONTENT:
-<span class="fc" id="L59">                return contents;</span>
+<span class="nc" id="L59">                return contents;</span>
             case CONTENT_TEMPLATE:
-<span class="fc" id="L61">                return contentTemplates;</span>
+<span class="nc" id="L61">                return contentTemplates;</span>
             case CONTENT_TYPE:
 <span class="fc" id="L63">                return contentTypes;</span>
             case ASSET:
-<span class="fc" id="L65">                return assets;</span>
+<span class="nc" id="L65">                return assets;</span>
             case RESOURCE:
 <span class="fc" id="L67">                return resources;</span>
             case PLUGIN:
 <span class="fc" id="L69">                return plugins;</span>
             case CATEGORY:
-<span class="fc" id="L71">                return categories;</span>
+<span class="nc" id="L71">                return categories;</span>
             case GROUP:
-<span class="fc" id="L73">                return groups;</span>
+<span class="nc" id="L73">                return groups;</span>
             case LABEL:
 <span class="fc" id="L75">                return labels;</span>
             case LANGUAGE:

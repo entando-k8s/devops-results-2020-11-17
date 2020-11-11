@@ -45,12 +45,12 @@ public class AssetProcessor extends BaseComponentProcessor&lt;AssetDescriptor&gt
 
     @Override
     public Class&lt;AssetDescriptor&gt; getDescriptorClass() {
-<span class="fc" id="L48">        return AssetDescriptor.class;</span>
+<span class="nc" id="L48">        return AssetDescriptor.class;</span>
     }
 
     @Override
     public Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn() {
-<span class="fc" id="L53">        return Optional.of(ComponentSpecDescriptor::getAssets);</span>
+<span class="nc" id="L53">        return Optional.of(ComponentSpecDescriptor::getAssets);</span>
     }
 
 
@@ -64,19 +64,19 @@ public class AssetProcessor extends BaseComponentProcessor&lt;AssetDescriptor&gt
     public List&lt;Installable&lt;AssetDescriptor&gt;&gt; process(BundleReader bundleReader, InstallAction conflictStrategy,
             InstallActionsByComponentType actions, AnalysisReport report) {
         try {
-<span class="fc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
+<span class="nc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
 
-<span class="fc" id="L69">            List&lt;Installable&lt;AssetDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L69">            List&lt;Installable&lt;AssetDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
 
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (String fileName : descriptorList) {</span>
-<span class="fc" id="L72">                AssetDescriptor assetDescriptor = bundleReader.readDescriptorFile(fileName, AssetDescriptor.class);</span>
-<span class="fc" id="L73">                InstallAction action = extractInstallAction(assetDescriptor.getCorrelationCode(), actions,</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            for (String fileName : descriptorList) {</span>
+<span class="nc" id="L72">                AssetDescriptor assetDescriptor = bundleReader.readDescriptorFile(fileName, AssetDescriptor.class);</span>
+<span class="nc" id="L73">                InstallAction action = extractInstallAction(assetDescriptor.getCorrelationCode(), actions,</span>
                         conflictStrategy, report);
-<span class="fc" id="L75">                installables.add(new AssetInstallable(engineService, assetDescriptor, bundleReader.getAssetFile(</span>
-<span class="fc" id="L76">                        assetDescriptor.getCorrelationCode(), assetDescriptor.getName()), action));</span>
-<span class="fc" id="L77">            }</span>
+<span class="nc" id="L75">                installables.add(new AssetInstallable(engineService, assetDescriptor, bundleReader.getAssetFile(</span>
+<span class="nc" id="L76">                        assetDescriptor.getCorrelationCode(), assetDescriptor.getName()), action));</span>
+<span class="nc" id="L77">            }</span>
 
-<span class="fc" id="L79">            return installables;</span>
+<span class="nc" id="L79">            return installables;</span>
 <span class="nc" id="L80">        } catch (IOException e) {</span>
 <span class="nc" id="L81">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
@@ -84,17 +84,17 @@ public class AssetProcessor extends BaseComponentProcessor&lt;AssetDescriptor&gt
 
     @Override
     public List&lt;Installable&lt;AssetDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="fc" id="L87">        return components.stream()</span>
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="fc" id="L89">                .map(c -&gt; new AssetInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="fc" id="L90">                .collect(Collectors.toList());</span>
+<span class="nc" id="L87">        return components.stream()</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="nc" id="L89">                .map(c -&gt; new AssetInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
+<span class="nc" id="L90">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public AssetDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="fc" id="L95">        return AssetDescriptor.builder()</span>
-<span class="fc" id="L96">                .correlationCode(component.getComponentId())</span>
-<span class="fc" id="L97">                .build();</span>
+<span class="nc" id="L95">        return AssetDescriptor.builder()</span>
+<span class="nc" id="L96">                .correlationCode(component.getComponentId())</span>
+<span class="nc" id="L97">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

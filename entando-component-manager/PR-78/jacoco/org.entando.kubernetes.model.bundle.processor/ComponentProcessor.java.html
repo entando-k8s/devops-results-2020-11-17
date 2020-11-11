@@ -44,7 +44,7 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
     Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn();
 
     default boolean doesComponentDscriptorContainMoreThanOneSingleEntity() {
-<span class="fc" id="L47">        return false;</span>
+<span class="nc" id="L47">        return false;</span>
     }
 
     /**
@@ -114,31 +114,6 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
 <span class="fc" id="L114">        return ofNullable(descriptor.getComponents())</span>
 <span class="fc" id="L115">                .map(componentSpecDescriptor -&gt; getComponentSelectionFn().get().apply(componentSpecDescriptor))</span>
 <span class="fc" id="L116">                .orElse(new ArrayList&lt;&gt;());</span>
-    }
-
-    /**
-     * reads the keys of the components from the descriptor identified by the received filename.
-     *
-     * @param bundleReader the bundler reader to use in order to read the bundle
-     * @param fileName     the filename identifying the descriptor file to read
-     * @return the list of the keys of the components read from the descriptor
-     */
-    default List&lt;String&gt; readDescriptorKeys(BundleReader bundleReader, String fileName) {
-
-        try {
-<span class="fc bfc" id="L129" title="All 2 branches covered.">            if (this.doesComponentDscriptorContainMoreThanOneSingleEntity()) {</span>
-<span class="fc" id="L130">                return bundleReader.readListOfDescriptorFile(fileName, this.getDescriptorClass())</span>
-<span class="fc" id="L131">                        .stream().map(descriptor -&gt; descriptor.getComponentKey().getKey())</span>
-<span class="fc" id="L132">                        .collect(Collectors.toList());</span>
-            } else {
-<span class="fc" id="L134">                return Arrays.asList(bundleReader.readDescriptorFile(fileName, this.getDescriptorClass())</span>
-<span class="fc" id="L135">                        .getComponentKey().getKey());</span>
-            }
-<span class="nc" id="L137">        } catch (IOException e) {</span>
-<span class="nc" id="L138">            throw new EntandoComponentManagerException(String.format(</span>
-                    &quot;Error parsing content type %s from descriptor %s&quot;,
-<span class="nc" id="L140">                    this.getSupportedComponentType(), fileName), e);</span>
-        }
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -22,35 +22,35 @@ public class PageConfigurationInstallable extends Installable&lt;PageConfigurati
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="fc" id="L25">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="nc" id="L25">        return CompletableFuture.runAsync(() -&gt; {</span>
 
-<span class="fc" id="L27">            logConflictStrategyAction();</span>
+<span class="nc" id="L27">            logConflictStrategyAction();</span>
 
             //Create Page
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            if (shouldSkip()) {</span>
 <span class="nc" id="L31">                return; //Do nothing</span>
             }
 
-<span class="fc" id="L34">            engineService.createPageConfiguration(representation);</span>
+<span class="nc" id="L34">            engineService.createPageConfiguration(representation);</span>
 
             //Configure Page Widgets
-<span class="fc" id="L37">            Optional.ofNullable(representation.getWidgets())</span>
-<span class="fc" id="L38">                    .orElse(new ArrayList&lt;&gt;())</span>
-<span class="fc" id="L39">                    .parallelStream()</span>
-<span class="fc" id="L40">                    .forEach(w -&gt; engineService.configurePageWidget(representation, w));</span>
-<span class="fc" id="L41">        });</span>
+<span class="nc" id="L37">            Optional.ofNullable(representation.getWidgets())</span>
+<span class="nc" id="L38">                    .orElse(new ArrayList&lt;&gt;())</span>
+<span class="nc" id="L39">                    .parallelStream()</span>
+<span class="nc" id="L40">                    .forEach(w -&gt; engineService.configurePageWidget(representation, w));</span>
+<span class="nc" id="L41">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L46">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="nc" id="L46">        return CompletableFuture.runAsync(() -&gt; {</span>
             // UNINSTALL IN THE PageInstallable
-<span class="fc" id="L48">        });</span>
+<span class="nc" id="L48">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L53">        return ComponentType.PAGE_CONFIGURATION;</span>
+<span class="nc" id="L53">        return ComponentType.PAGE_CONFIGURATION;</span>
     }
 
     @Override

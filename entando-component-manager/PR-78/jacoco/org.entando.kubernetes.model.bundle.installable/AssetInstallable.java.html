@@ -8,59 +8,59 @@ import org.entando.kubernetes.controller.digitalexchange.job.model.InstallReques
 import org.entando.kubernetes.model.bundle.ComponentType;
 import org.entando.kubernetes.model.bundle.descriptor.AssetDescriptor;
 
-<span class="fc" id="L11">@Slf4j</span>
+<span class="nc" id="L11">@Slf4j</span>
 public class AssetInstallable extends Installable&lt;AssetDescriptor&gt; {
 
     private final File file;
     private final EntandoCoreClient engineService;
 
     public AssetInstallable(EntandoCoreClient service, AssetDescriptor assetDescriptor, InstallAction action) {
-<span class="fc" id="L18">        this(service, assetDescriptor, null, action);</span>
-<span class="fc" id="L19">    }</span>
+<span class="nc" id="L18">        this(service, assetDescriptor, null, action);</span>
+<span class="nc" id="L19">    }</span>
 
     public AssetInstallable(EntandoCoreClient service, AssetDescriptor assetDescriptor, File file,
             InstallAction action) {
-<span class="fc" id="L23">        super(assetDescriptor, action);</span>
-<span class="fc" id="L24">        this.file = file;</span>
-<span class="fc" id="L25">        this.engineService = service;</span>
-<span class="fc" id="L26">    }</span>
+<span class="nc" id="L23">        super(assetDescriptor, action);</span>
+<span class="nc" id="L24">        this.file = file;</span>
+<span class="nc" id="L25">        this.engineService = service;</span>
+<span class="nc" id="L26">    }</span>
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="fc" id="L30">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="nc" id="L30">        return CompletableFuture.runAsync(() -&gt; {</span>
 
-<span class="fc" id="L32">            logConflictStrategyAction();</span>
+<span class="nc" id="L32">            logConflictStrategyAction();</span>
 
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (shouldSkip()) {</span>
 <span class="nc" id="L35">                return; //Do nothing</span>
             }
 
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L39">                engineService.createAsset(representation, file);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="nc" id="L39">                engineService.createAsset(representation, file);</span>
             } else {
 <span class="nc" id="L41">                engineService.updateAsset(representation, file);</span>
             }
-<span class="fc" id="L43">        });</span>
+<span class="nc" id="L43">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L48">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L49">            log.info(&quot;Removing Content {}&quot;, getName());</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L51">                engineService.deleteAsset(&quot;cc=&quot; + getName());</span>
+<span class="nc" id="L48">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="nc" id="L49">            log.info(&quot;Removing Content {}&quot;, getName());</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="nc" id="L51">                engineService.deleteAsset(&quot;cc=&quot; + getName());</span>
             }
-<span class="fc" id="L53">        });</span>
+<span class="nc" id="L53">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L58">        return ComponentType.ASSET;</span>
+<span class="nc" id="L58">        return ComponentType.ASSET;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L63">        return representation.getCorrelationCode();</span>
+<span class="nc" id="L63">        return representation.getCorrelationCode();</span>
     }
 
 }

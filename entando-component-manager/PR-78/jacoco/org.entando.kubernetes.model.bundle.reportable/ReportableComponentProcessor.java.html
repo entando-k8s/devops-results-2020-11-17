@@ -6,7 +6,9 @@ package org.entando.kubernetes.model.bundle.reportable;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.entando.kubernetes.exception.EntandoComponentManagerException;
 import org.entando.kubernetes.model.bundle.processor.ComponentProcessor;
 import org.entando.kubernetes.model.bundle.reader.BundleReader;
@@ -31,19 +33,45 @@ public interface ReportableComponentProcessor {
      */
     default Reportable getReportable(BundleReader bundleReader, ComponentProcessor&lt;?&gt; componentProcessor) {
 
-<span class="fc" id="L34">        List&lt;String&gt; idList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L36">        List&lt;String&gt; idList = new ArrayList&lt;&gt;();</span>
 
         try {
-<span class="fc" id="L37">            List&lt;String&gt; contentDescriptorList = componentProcessor.getDescriptorList(bundleReader);</span>
-<span class="fc bfc" id="L38" title="All 2 branches covered.">            for (String fileName : contentDescriptorList) {</span>
-<span class="fc" id="L39">                idList.addAll(componentProcessor.readDescriptorKeys(bundleReader, fileName));</span>
-<span class="fc" id="L40">            }</span>
+<span class="fc" id="L39">            List&lt;String&gt; contentDescriptorList = componentProcessor.getDescriptorList(bundleReader);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            for (String fileName : contentDescriptorList) {</span>
+<span class="fc" id="L41">                idList.addAll(this.readDescriptorKeys(bundleReader, fileName, componentProcessor));</span>
+<span class="fc" id="L42">            }</span>
 
-<span class="fc" id="L42">            return new Reportable(componentProcessor.getSupportedComponentType(), idList,</span>
-<span class="fc" id="L43">                    this.getReportableRemoteHandler());</span>
+<span class="fc" id="L44">            return new Reportable(componentProcessor.getSupportedComponentType(), idList,</span>
+<span class="fc" id="L45">                    this.getReportableRemoteHandler());</span>
 
-<span class="nc" id="L45">        } catch (IOException e) {</span>
-<span class="nc" id="L46">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
+<span class="nc" id="L47">        } catch (IOException e) {</span>
+<span class="nc" id="L48">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
+        }
+    }
+
+    /**
+     * reads the keys of the components from the descriptor identified by the received filename.
+     *
+     * @param bundleReader the bundler reader to use in order to read the bundle
+     * @param fileName     the filename identifying the descriptor file to read
+     * @return the list of the keys of the components read from the descriptor
+     */
+    default List&lt;String&gt; readDescriptorKeys(BundleReader bundleReader, String fileName,
+            ComponentProcessor&lt;?&gt; componentProcessor) {
+
+        try {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (componentProcessor.doesComponentDscriptorContainMoreThanOneSingleEntity()) {</span>
+<span class="nc" id="L64">                return bundleReader.readListOfDescriptorFile(fileName, componentProcessor.getDescriptorClass())</span>
+<span class="nc" id="L65">                        .stream().map(descriptor -&gt; descriptor.getComponentKey().getKey())</span>
+<span class="nc" id="L66">                        .collect(Collectors.toList());</span>
+            } else {
+<span class="nc" id="L68">                return Arrays.asList(bundleReader.readDescriptorFile(fileName, componentProcessor.getDescriptorClass())</span>
+<span class="nc" id="L69">                        .getComponentKey().getKey());</span>
+            }
+<span class="nc" id="L71">        } catch (IOException e) {</span>
+<span class="nc" id="L72">            throw new EntandoComponentManagerException(String.format(</span>
+                    &quot;Error parsing content type %s from descriptor %s&quot;,
+<span class="nc" id="L74">                    componentProcessor.getSupportedComponentType(), fileName), e);</span>
         }
     }
 }

@@ -41,7 +41,7 @@ public class LabelProcessor extends BaseComponentProcessor&lt;LabelDescriptor&gt
 
     @Override
     public Class&lt;LabelDescriptor&gt; getDescriptorClass() {
-<span class="fc" id="L44">        return LabelDescriptor.class;</span>
+<span class="nc" id="L44">        return LabelDescriptor.class;</span>
     }
 
     @Override
@@ -51,7 +51,7 @@ public class LabelProcessor extends BaseComponentProcessor&lt;LabelDescriptor&gt
 
     @Override
     public boolean doesComponentDscriptorContainMoreThanOneSingleEntity() {
-<span class="fc" id="L54">        return true;</span>
+<span class="nc" id="L54">        return true;</span>
     }
 
     @Override
@@ -85,17 +85,17 @@ public class LabelProcessor extends BaseComponentProcessor&lt;LabelDescriptor&gt
 
     @Override
     public List&lt;Installable&lt;LabelDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="fc" id="L88">        return components.stream()</span>
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="fc" id="L90">                .map(c -&gt; new LabelInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="fc" id="L91">                .collect(Collectors.toList());</span>
+<span class="nc" id="L88">        return components.stream()</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="nc" id="L90">                .map(c -&gt; new LabelInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
+<span class="nc" id="L91">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public LabelDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="fc" id="L96">        return LabelDescriptor.builder()</span>
-<span class="fc" id="L97">                .key(component.getComponentId())</span>
-<span class="fc" id="L98">                .build();</span>
+<span class="nc" id="L96">        return LabelDescriptor.builder()</span>
+<span class="nc" id="L97">                .key(component.getComponentId())</span>
+<span class="nc" id="L98">                .build();</span>
     }
 
 }

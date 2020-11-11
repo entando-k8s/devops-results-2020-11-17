@@ -41,17 +41,17 @@ public class CategoryProcessor extends BaseComponentProcessor&lt;CategoryDescrip
 
     @Override
     public Class&lt;CategoryDescriptor&gt; getDescriptorClass() {
-<span class="fc" id="L44">        return CategoryDescriptor.class;</span>
+<span class="nc" id="L44">        return CategoryDescriptor.class;</span>
     }
 
     @Override
     public Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn() {
-<span class="fc" id="L49">        return Optional.of(ComponentSpecDescriptor::getCategories);</span>
+<span class="nc" id="L49">        return Optional.of(ComponentSpecDescriptor::getCategories);</span>
     }
 
     @Override
     public boolean doesComponentDscriptorContainMoreThanOneSingleEntity() {
-<span class="fc" id="L54">        return true;</span>
+<span class="nc" id="L54">        return true;</span>
     }
 
     @Override
@@ -64,20 +64,20 @@ public class CategoryProcessor extends BaseComponentProcessor&lt;CategoryDescrip
     public List&lt;Installable&lt;CategoryDescriptor&gt;&gt; process(BundleReader bundleReader, InstallAction conflictStrategy,
             InstallActionsByComponentType actions, AnalysisReport report) {
         try {
-<span class="fc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
+<span class="nc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
 
-<span class="fc" id="L69">            List&lt;Installable&lt;CategoryDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L69">            List&lt;Installable&lt;CategoryDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
 
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (String fileName : descriptorList) {</span>
-<span class="fc" id="L72">                List&lt;CategoryDescriptor&gt; categoryDescriptorList = bundleReader</span>
-<span class="fc" id="L73">                        .readListOfDescriptorFile(fileName, CategoryDescriptor.class);</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">                for (CategoryDescriptor cd : categoryDescriptorList) {</span>
-<span class="fc" id="L75">                    InstallAction action = extractInstallAction(cd.getCode(), actions, conflictStrategy, report);</span>
-<span class="fc" id="L76">                    installables.add(new CategoryInstallable(engineService, cd, action));</span>
-<span class="fc" id="L77">                }</span>
-<span class="fc" id="L78">            }</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            for (String fileName : descriptorList) {</span>
+<span class="nc" id="L72">                List&lt;CategoryDescriptor&gt; categoryDescriptorList = bundleReader</span>
+<span class="nc" id="L73">                        .readListOfDescriptorFile(fileName, CategoryDescriptor.class);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                for (CategoryDescriptor cd : categoryDescriptorList) {</span>
+<span class="nc" id="L75">                    InstallAction action = extractInstallAction(cd.getCode(), actions, conflictStrategy, report);</span>
+<span class="nc" id="L76">                    installables.add(new CategoryInstallable(engineService, cd, action));</span>
+<span class="nc" id="L77">                }</span>
+<span class="nc" id="L78">            }</span>
 
-<span class="fc" id="L80">            return installables;</span>
+<span class="nc" id="L80">            return installables;</span>
 <span class="nc" id="L81">        } catch (IOException e) {</span>
 <span class="nc" id="L82">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
@@ -85,18 +85,18 @@ public class CategoryProcessor extends BaseComponentProcessor&lt;CategoryDescrip
 
     @Override
     public List&lt;Installable&lt;CategoryDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="fc" id="L88">        return components.stream()</span>
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="fc" id="L90">                .map(c -&gt; new CategoryInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
-<span class="fc" id="L91">                        c.getAction()))</span>
-<span class="fc" id="L92">                .collect(Collectors.toList());</span>
+<span class="nc" id="L88">        return components.stream()</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="nc" id="L90">                .map(c -&gt; new CategoryInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
+<span class="nc" id="L91">                        c.getAction()))</span>
+<span class="nc" id="L92">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public CategoryDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="fc" id="L97">        return CategoryDescriptor.builder()</span>
-<span class="fc" id="L98">                .code(component.getComponentId())</span>
-<span class="fc" id="L99">                .build();</span>
+<span class="nc" id="L97">        return CategoryDescriptor.builder()</span>
+<span class="nc" id="L98">                .code(component.getComponentId())</span>
+<span class="nc" id="L99">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
