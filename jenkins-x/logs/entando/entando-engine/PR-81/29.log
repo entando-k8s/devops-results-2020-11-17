@@ -1,0 +1,24 @@
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-qvtdv[0m
+Unable to retrieve container logs for docker://684cb784bdf0363f7b53ff3cca92617beb1b87c45d9a19523f9c641b3d30b52b
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-ksvj6[0m
+Unable to retrieve container logs for docker://f46864d2fb8c5048d728a5ec1233ad4f606e26eb47e189051e7d1d97fb8a8a44
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+Unable to retrieve container logs for docker://79c3f2cd85b271550788447d1298b91f1c43fc495b60061f9fa8cd8a68273b6e
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-entando-engine-pr-81-pr-7zjwv[0m
+Unable to retrieve container logs for docker://d9ec0655f57bdf5daf48fb6efe1f2309f03e5a8f9260da1694b705f02e5d8328
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Unable to retrieve container logs for docker://688c17346d3bf345d42e5dd0780b2d0bd64fb2da2ea0175d44ef138636de964f
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-build-set-version[0m
+Unable to retrieve container logs for docker://d939eb82aba48a42d05297fa7fe99f377da71327af71913f490f453dd83aa12d
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-build-fix-git-for-sonar[0m
+Unable to retrieve container logs for docker://4d9566458bfffb5960ed0ca8c993691bd91e159cad4d291b230fbca71e2bb03d
+
+Showing logs for build [32mentando-entando-engine-pr-81-pr-gdk2b-29[0m stage [32mfrom-build-pack[0m and container [32mstep-build-mvn-verify-pr[0m
+Unable to retrieve container logs for docker://fe2b152ecc150909832674fb4ed2262517021823be375b74c01d28299bd74e6f
