@@ -41,12 +41,12 @@ public class ContentTemplateProcessor extends BaseComponentProcessor&lt;ContentT
 
     @Override
     public Class&lt;ContentTemplateDescriptor&gt; getDescriptorClass() {
-<span class="nc" id="L44">        return ContentTemplateDescriptor.class;</span>
+<span class="fc" id="L44">        return ContentTemplateDescriptor.class;</span>
     }
 
     @Override
     public Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn() {
-<span class="nc" id="L49">        return Optional.of(ComponentSpecDescriptor::getContentTemplates);</span>
+<span class="fc" id="L49">        return Optional.of(ComponentSpecDescriptor::getContentTemplates);</span>
     }
 
     @Override
@@ -60,24 +60,24 @@ public class ContentTemplateProcessor extends BaseComponentProcessor&lt;ContentT
             InstallAction conflictStrategy,
             InstallActionsByComponentType actions, AnalysisReport report) {
         try {
-<span class="nc" id="L63">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
+<span class="fc" id="L63">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
 
-<span class="nc" id="L65">            List&lt;Installable&lt;ContentTemplateDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
-<span class="nc bnc" id="L66" title="All 2 branches missed.">            for (String fileName : descriptorList) {</span>
-<span class="nc" id="L67">                ContentTemplateDescriptor contentTemplateDescriptor = bundleReader.readDescriptorFile(fileName,</span>
+<span class="fc" id="L65">            List&lt;Installable&lt;ContentTemplateDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            for (String fileName : descriptorList) {</span>
+<span class="fc" id="L67">                ContentTemplateDescriptor contentTemplateDescriptor = bundleReader.readDescriptorFile(fileName,</span>
                         ContentTemplateDescriptor.class);
 
-<span class="nc bnc" id="L70" title="All 2 branches missed.">                if (contentTemplateDescriptor.getContentShapePath() != null) {</span>
-<span class="nc" id="L71">                    String csPath = getRelativePath(fileName, contentTemplateDescriptor.getContentShapePath());</span>
-<span class="nc" id="L72">                    contentTemplateDescriptor.setContentShape(bundleReader.readFileAsString(csPath));</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">                if (contentTemplateDescriptor.getContentShapePath() != null) {</span>
+<span class="fc" id="L71">                    String csPath = getRelativePath(fileName, contentTemplateDescriptor.getContentShapePath());</span>
+<span class="fc" id="L72">                    contentTemplateDescriptor.setContentShape(bundleReader.readFileAsString(csPath));</span>
                 }
 
-<span class="nc" id="L75">                InstallAction action = extractInstallAction(contentTemplateDescriptor.getId(), actions,</span>
+<span class="fc" id="L75">                InstallAction action = extractInstallAction(contentTemplateDescriptor.getId(), actions,</span>
                         conflictStrategy, report);
-<span class="nc" id="L77">                installables.add(new ContentTemplateInstallable(engineService, contentTemplateDescriptor, action));</span>
-<span class="nc" id="L78">            }</span>
+<span class="fc" id="L77">                installables.add(new ContentTemplateInstallable(engineService, contentTemplateDescriptor, action));</span>
+<span class="fc" id="L78">            }</span>
 
-<span class="nc" id="L80">            return installables;</span>
+<span class="fc" id="L80">            return installables;</span>
 <span class="nc" id="L81">        } catch (IOException e) {</span>
 <span class="nc" id="L82">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
@@ -85,18 +85,18 @@ public class ContentTemplateProcessor extends BaseComponentProcessor&lt;ContentT
 
     @Override
     public List&lt;Installable&lt;ContentTemplateDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L88">        return components.stream()</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="nc" id="L90">                .map(c -&gt; new ContentTemplateInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
-<span class="nc" id="L91">                        c.getAction()))</span>
-<span class="nc" id="L92">                .collect(Collectors.toList());</span>
+<span class="fc" id="L88">        return components.stream()</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="fc" id="L90">                .map(c -&gt; new ContentTemplateInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
+<span class="fc" id="L91">                        c.getAction()))</span>
+<span class="fc" id="L92">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public ContentTemplateDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L97">        return ContentTemplateDescriptor.builder()</span>
-<span class="nc" id="L98">                .id(component.getComponentId())</span>
-<span class="nc" id="L99">                .build();</span>
+<span class="fc" id="L97">        return ContentTemplateDescriptor.builder()</span>
+<span class="fc" id="L98">                .id(component.getComponentId())</span>
+<span class="fc" id="L99">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

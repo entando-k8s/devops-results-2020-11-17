@@ -7,52 +7,52 @@ import org.entando.kubernetes.controller.digitalexchange.job.model.InstallReques
 import org.entando.kubernetes.model.bundle.ComponentType;
 import org.entando.kubernetes.model.bundle.descriptor.GroupDescriptor;
 
-<span class="nc" id="L10">@Slf4j</span>
+<span class="fc" id="L10">@Slf4j</span>
 public class GroupInstallable extends Installable&lt;GroupDescriptor&gt; {
 
     private final EntandoCoreClient engineService;
 
     public GroupInstallable(EntandoCoreClient engineService, GroupDescriptor descriptor, InstallAction action) {
-<span class="nc" id="L16">        super(descriptor, action);</span>
-<span class="nc" id="L17">        this.engineService = engineService;</span>
-<span class="nc" id="L18">    }</span>
+<span class="fc" id="L16">        super(descriptor, action);</span>
+<span class="fc" id="L17">        this.engineService = engineService;</span>
+<span class="fc" id="L18">    }</span>
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="nc" id="L22">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L22">        return CompletableFuture.runAsync(() -&gt; {</span>
 
-<span class="nc" id="L24">            logConflictStrategyAction();</span>
+<span class="fc" id="L24">            logConflictStrategyAction();</span>
 
-<span class="nc bnc" id="L26" title="All 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
 <span class="nc" id="L27">                return; //Do nothing</span>
             }
 
-<span class="nc bnc" id="L30" title="All 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="nc" id="L31">                engineService.createGroup(representation);</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L31">                engineService.createGroup(representation);</span>
             } else {
 <span class="nc" id="L33">                engineService.updateGroup(representation);</span>
             }
-<span class="nc" id="L35">        });</span>
+<span class="fc" id="L35">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="nc" id="L40">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="nc" id="L41">            log.info(&quot;Removing Label {}&quot;, getName());</span>
-<span class="nc bnc" id="L42" title="All 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="nc" id="L43">                engineService.deleteGroup(getName());</span>
+<span class="fc" id="L40">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L41">            log.info(&quot;Removing Label {}&quot;, getName());</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L43">                engineService.deleteGroup(getName());</span>
             }
-<span class="nc" id="L45">        });</span>
+<span class="fc" id="L45">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="nc" id="L50">        return ComponentType.GROUP;</span>
+<span class="fc" id="L50">        return ComponentType.GROUP;</span>
     }
 
     @Override
     public String getName() {
-<span class="nc" id="L55">        return representation.getCode();</span>
+<span class="fc" id="L55">        return representation.getCode();</span>
     }
 
 }

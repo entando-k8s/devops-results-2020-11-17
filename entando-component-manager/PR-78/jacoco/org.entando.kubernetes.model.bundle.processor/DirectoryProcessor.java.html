@@ -77,16 +77,16 @@ public class DirectoryProcessor extends BaseComponentProcessor&lt;DirectoryDescr
 <span class="fc" id="L77">                installables.add(new DirectoryInstallable(engineService, new DirectoryDescriptor(componentFolder, true),</span>
                         rootDirectoryAction));
 
-<span class="fc" id="L80">                List&lt;String&gt; resourceFolders = bundleReader.getResourceFolders().stream().sorted()</span>
-<span class="fc" id="L81">                        .collect(Collectors.toList());</span>
-<span class="fc bfc" id="L82" title="All 2 branches covered.">                for (final String resourceFolder : resourceFolders) {</span>
-<span class="fc" id="L83">                    Path fileFolder = Paths.get(BundleProperty.RESOURCES_FOLDER_PATH.getValue())</span>
-<span class="fc" id="L84">                            .relativize(Paths.get(resourceFolder));</span>
-<span class="fc" id="L85">                    String folder = Paths.get(componentFolder).resolve(fileFolder).toString();</span>
-<span class="fc" id="L86">                    InstallAction action = extractInstallAction(folder, actions, conflictStrategy, report);</span>
-<span class="fc" id="L87">                    installables.add(new DirectoryInstallable(engineService, new DirectoryDescriptor(folder, false),</span>
+                /*List&lt;String&gt; resourceFolders = bundleReader.getResourceFolders().stream().sorted()
+                        .collect(Collectors.toList());
+                for (final String resourceFolder : resourceFolders) {
+                    Path fileFolder = Paths.get(BundleProperty.RESOURCES_FOLDER_PATH.getValue())
+                            .relativize(Paths.get(resourceFolder));
+                    String folder = Paths.get(componentFolder).resolve(fileFolder).toString();
+                    InstallAction action = extractInstallAction(folder, actions, conflictStrategy, report);
+                    installables.add(new DirectoryInstallable(engineService, new DirectoryDescriptor(folder, false),
                             action));
-<span class="fc" id="L89">                }</span>
+                }*/
             }
 <span class="nc" id="L91">        } catch (IOException e) {</span>
 <span class="nc" id="L92">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
@@ -97,43 +97,43 @@ public class DirectoryProcessor extends BaseComponentProcessor&lt;DirectoryDescr
 
     @Override
     public List&lt;Installable&lt;DirectoryDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L100">        return components.stream()</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="nc" id="L102">                .map(c -&gt; new DirectoryInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
-<span class="nc" id="L103">                        c.getAction()))</span>
-<span class="nc" id="L104">                .collect(Collectors.toList());</span>
+<span class="fc" id="L100">        return components.stream()</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="fc" id="L102">                .map(c -&gt; new DirectoryInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
+<span class="fc" id="L103">                        c.getAction()))</span>
+<span class="fc" id="L104">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public DirectoryDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L109">        Path dirPath = Paths.get(component.getComponentId());</span>
-<span class="nc" id="L110">        boolean isRoot = false;</span>
-<span class="nc bnc" id="L111" title="All 2 branches missed.">        if (dirPath.getParent().equals(dirPath.getRoot())) {</span>
-<span class="nc" id="L112">            isRoot = true;</span>
+<span class="fc" id="L109">        Path dirPath = Paths.get(component.getComponentId());</span>
+<span class="fc" id="L110">        boolean isRoot = false;</span>
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">        if (dirPath.getParent().equals(dirPath.getRoot())) {</span>
+<span class="fc" id="L112">            isRoot = true;</span>
         }
-<span class="nc" id="L114">        return new DirectoryDescriptor(component.getComponentId(), isRoot);</span>
+<span class="fc" id="L114">        return new DirectoryDescriptor(component.getComponentId(), isRoot);</span>
     }
 
     @Override
     public Reportable getReportable(BundleReader bundleReader, ComponentProcessor&lt;?&gt; componentProcessor) {
 
-<span class="nc" id="L120">        List&lt;String&gt; idList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L120">        List&lt;String&gt; idList = new ArrayList&lt;&gt;();</span>
 
         try {
-<span class="nc" id="L123">            final String componentFolder = &quot;/&quot; + bundleReader.getBundleCode();</span>
-<span class="nc" id="L124">            idList.add(componentFolder);</span>
+<span class="fc" id="L123">            final String componentFolder = &quot;/&quot; + bundleReader.getBundleCode();</span>
+<span class="fc" id="L124">            idList.add(componentFolder);</span>
 
-<span class="nc" id="L126">            List&lt;String&gt; resourceFolders = bundleReader.getResourceFolders().stream().sorted()</span>
-<span class="nc" id="L127">                    .collect(Collectors.toList());</span>
-<span class="nc bnc" id="L128" title="All 2 branches missed.">            for (final String resourceFolder : resourceFolders) {</span>
-<span class="nc" id="L129">                Path fileFolder = Paths.get(BundleProperty.RESOURCES_FOLDER_PATH.getValue())</span>
-<span class="nc" id="L130">                        .relativize(Paths.get(resourceFolder));</span>
-<span class="nc" id="L131">                String folder = Paths.get(componentFolder).resolve(fileFolder).toString();</span>
-<span class="nc" id="L132">                idList.add(folder);</span>
-<span class="nc" id="L133">            }</span>
+<span class="fc" id="L126">            List&lt;String&gt; resourceFolders = bundleReader.getResourceFolders().stream().sorted()</span>
+<span class="fc" id="L127">                    .collect(Collectors.toList());</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">            for (final String resourceFolder : resourceFolders) {</span>
+<span class="fc" id="L129">                Path fileFolder = Paths.get(BundleProperty.RESOURCES_FOLDER_PATH.getValue())</span>
+<span class="fc" id="L130">                        .relativize(Paths.get(resourceFolder));</span>
+<span class="fc" id="L131">                String folder = Paths.get(componentFolder).resolve(fileFolder).toString();</span>
+<span class="fc" id="L132">                idList.add(folder);</span>
+<span class="fc" id="L133">            }</span>
 
-<span class="nc" id="L135">            return new Reportable(componentProcessor.getSupportedComponentType(), idList,</span>
-<span class="nc" id="L136">                    this.getReportableRemoteHandler());</span>
+<span class="fc" id="L135">            return new Reportable(componentProcessor.getSupportedComponentType(), idList,</span>
+<span class="fc" id="L136">                    this.getReportableRemoteHandler());</span>
 
 <span class="nc" id="L138">        } catch (IOException e) {</span>
 <span class="nc" id="L139">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>

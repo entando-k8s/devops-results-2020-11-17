@@ -19,40 +19,28 @@ public class DirectoryInstallable extends Installable&lt;DirectoryDescriptor&gt;
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="nc" id="L22">        return CompletableFuture.runAsync(() -&gt; {</span>
-
-<span class="nc" id="L24">            logConflictStrategyAction();</span>
-
-<span class="nc bnc" id="L26" title="All 2 branches missed.">            if (!shouldCreate()) {</span>
-<span class="nc" id="L27">                return; //Do nothing</span>
-            }
-
-<span class="nc" id="L30">            engineService.createFolder(representation.getName());</span>
-<span class="nc" id="L31">        });</span>
+<span class="fc" id="L22">        return CompletableFuture.runAsync(() -&gt; {</span>
+            //Do nothing
+<span class="fc" id="L24">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="nc" id="L36">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="nc bnc" id="L37" title="All 4 branches missed.">            if (this.representation.isRoot() &amp;&amp; shouldCreate()) {</span>
-                /* TODO
-                 * uninstall should delete individual folders, because one install
-                 * could have created the root folder and another version
-                 * could have added new folders and files
-                 */
-<span class="nc" id="L43">                engineService.deleteFolder(this.representation.getName());</span>
+<span class="fc" id="L29">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="pc bpc" id="L30" title="2 of 4 branches missed.">            if (this.representation.isRoot() &amp;&amp; shouldCreate()) {</span>
+<span class="fc" id="L31">                engineService.deleteFolder(this.representation.getName());</span>
             }
-<span class="nc" id="L45">        });</span>
+<span class="fc" id="L33">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L50">        return ComponentType.DIRECTORY;</span>
+<span class="fc" id="L38">        return ComponentType.DIRECTORY;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L55">        return representation.getName();</span>
+<span class="fc" id="L43">        return representation.getName();</span>
     }
 
 

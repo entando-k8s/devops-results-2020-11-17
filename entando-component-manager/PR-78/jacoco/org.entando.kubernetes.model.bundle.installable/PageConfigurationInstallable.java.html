@@ -7,14 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.entando.kubernetes.client.core.EntandoCoreClient;
 import org.entando.kubernetes.controller.digitalexchange.job.model.InstallRequest.InstallAction;
 import org.entando.kubernetes.model.bundle.ComponentType;
-import org.entando.kubernetes.model.bundle.descriptor.PageConfigurationDescriptor;
+import org.entando.kubernetes.model.bundle.descriptor.PageDescriptor;
 
 <span class="fc" id="L12">@Slf4j</span>
-public class PageConfigurationInstallable extends Installable&lt;PageConfigurationDescriptor&gt; {
+public class PageConfigurationInstallable extends Installable&lt;PageDescriptor&gt; {
 
     private final EntandoCoreClient engineService;
 
-    public PageConfigurationInstallable(EntandoCoreClient engineService, PageConfigurationDescriptor pd,
+    public PageConfigurationInstallable(EntandoCoreClient engineService, PageDescriptor pd,
             InstallAction action) {
 <span class="fc" id="L19">        super(pd, action);</span>
 <span class="fc" id="L20">        this.engineService = engineService;</span>
@@ -22,40 +22,42 @@ public class PageConfigurationInstallable extends Installable&lt;PageConfigurati
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="nc" id="L25">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L25">        return CompletableFuture.runAsync(() -&gt; {</span>
 
-<span class="nc" id="L27">            logConflictStrategyAction();</span>
+<span class="fc" id="L27">            logConflictStrategyAction();</span>
 
-            //Create Page
-<span class="nc bnc" id="L30" title="All 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L31">                return; //Do nothing</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L30">                return; //Do nothing</span>
             }
 
-<span class="nc" id="L34">            engineService.createPageConfiguration(representation);</span>
+<span class="fc" id="L33">            engineService.updatePageConfiguration(representation);</span>
 
             //Configure Page Widgets
-<span class="nc" id="L37">            Optional.ofNullable(representation.getWidgets())</span>
-<span class="nc" id="L38">                    .orElse(new ArrayList&lt;&gt;())</span>
-<span class="nc" id="L39">                    .parallelStream()</span>
-<span class="nc" id="L40">                    .forEach(w -&gt; engineService.configurePageWidget(representation, w));</span>
-<span class="nc" id="L41">        });</span>
+<span class="fc" id="L36">            Optional.ofNullable(representation.getWidgets())</span>
+<span class="fc" id="L37">                    .orElse(new ArrayList&lt;&gt;())</span>
+<span class="fc" id="L38">                    .parallelStream()</span>
+<span class="fc" id="L39">                    .forEach(w -&gt; engineService.configurePageWidget(representation, w));</span>
+
+            //Publish Page
+<span class="fc" id="L42">            engineService.publishPage(representation);</span>
+<span class="fc" id="L43">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="nc" id="L46">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L48">        return CompletableFuture.runAsync(() -&gt; {</span>
             // UNINSTALL IN THE PageInstallable
-<span class="nc" id="L48">        });</span>
+<span class="fc" id="L50">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="nc" id="L53">        return ComponentType.PAGE_CONFIGURATION;</span>
+<span class="fc" id="L55">        return ComponentType.PAGE_CONFIGURATION;</span>
     }
 
     @Override
     public String getName() {
-<span class="fc" id="L58">        return representation.getCode();</span>
+<span class="fc" id="L60">        return representation.getCode();</span>
     }
 
 }

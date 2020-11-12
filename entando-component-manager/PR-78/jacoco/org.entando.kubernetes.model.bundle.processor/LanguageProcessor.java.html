@@ -42,7 +42,7 @@ public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescrip
 
     @Override
     public Class&lt;LanguageDescriptor&gt; getDescriptorClass() {
-<span class="nc" id="L45">        return LanguageDescriptor.class;</span>
+<span class="fc" id="L45">        return LanguageDescriptor.class;</span>
     }
 
     @Override
@@ -52,7 +52,7 @@ public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescrip
 
     @Override
     public boolean doesComponentDscriptorContainMoreThanOneSingleEntity() {
-<span class="nc" id="L55">        return true;</span>
+<span class="fc" id="L55">        return true;</span>
     }
 
     @Override
@@ -90,18 +90,18 @@ public class LanguageProcessor extends BaseComponentProcessor&lt;LanguageDescrip
 
     @Override
     public List&lt;Installable&lt;LanguageDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L93">        return components.stream()</span>
-<span class="nc bnc" id="L94" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="nc" id="L95">                .map(c -&gt; new LanguageInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
-<span class="nc" id="L96">                        c.getAction()))</span>
-<span class="nc" id="L97">                .collect(Collectors.toList());</span>
+<span class="fc" id="L93">        return components.stream()</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="fc" id="L95">                .map(c -&gt; new LanguageInstallable(engineService, this.buildDescriptorFromComponentJob(c),</span>
+<span class="fc" id="L96">                        c.getAction()))</span>
+<span class="fc" id="L97">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public LanguageDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L102">        return LanguageDescriptor.builder()</span>
-<span class="nc" id="L103">                .code(component.getComponentId())</span>
-<span class="nc" id="L104">                .build();</span>
+<span class="fc" id="L102">        return LanguageDescriptor.builder()</span>
+<span class="fc" id="L103">                .code(component.getComponentId())</span>
+<span class="fc" id="L104">                .build();</span>
     }
 
 }

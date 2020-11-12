@@ -44,12 +44,12 @@ public class WidgetProcessor extends BaseComponentProcessor&lt;WidgetDescriptor&
 
     @Override
     public Class&lt;WidgetDescriptor&gt; getDescriptorClass() {
-<span class="nc" id="L47">        return WidgetDescriptor.class;</span>
+<span class="fc" id="L47">        return WidgetDescriptor.class;</span>
     }
 
     @Override
     public Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn() {
-<span class="nc" id="L52">        return Optional.of(ComponentSpecDescriptor::getWidgets);</span>
+<span class="fc" id="L52">        return Optional.of(ComponentSpecDescriptor::getWidgets);</span>
     }
 
     @Override
@@ -62,25 +62,25 @@ public class WidgetProcessor extends BaseComponentProcessor&lt;WidgetDescriptor&
     public List&lt;Installable&lt;WidgetDescriptor&gt;&gt; process(BundleReader bundleReader, InstallAction conflictStrategy,
             InstallActionsByComponentType actions, AnalysisReport report) {
         try {
-<span class="nc" id="L65">            BundleDescriptor descriptor = bundleReader.readBundleDescriptor();</span>
+<span class="fc" id="L65">            BundleDescriptor descriptor = bundleReader.readBundleDescriptor();</span>
 
-<span class="nc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
-<span class="nc" id="L68">            final List&lt;Installable&lt;WidgetDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
+<span class="fc" id="L68">            final List&lt;Installable&lt;WidgetDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
 
-<span class="nc bnc" id="L70" title="All 2 branches missed.">            for (final String fileName : descriptorList) {</span>
-<span class="nc" id="L71">                final WidgetDescriptor widgetDescriptor = bundleReader</span>
-<span class="nc" id="L72">                        .readDescriptorFile(fileName, WidgetDescriptor.class);</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">                if (widgetDescriptor.getCustomUiPath() != null) {</span>
-<span class="nc" id="L74">                    String widgetUiPath = getRelativePath(fileName, widgetDescriptor.getCustomUiPath());</span>
-<span class="nc" id="L75">                    widgetDescriptor.setCustomUi(bundleReader.readFileAsString(widgetUiPath));</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            for (final String fileName : descriptorList) {</span>
+<span class="fc" id="L71">                final WidgetDescriptor widgetDescriptor = bundleReader</span>
+<span class="fc" id="L72">                        .readDescriptorFile(fileName, WidgetDescriptor.class);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">                if (widgetDescriptor.getCustomUiPath() != null) {</span>
+<span class="fc" id="L74">                    String widgetUiPath = getRelativePath(fileName, widgetDescriptor.getCustomUiPath());</span>
+<span class="fc" id="L75">                    widgetDescriptor.setCustomUi(bundleReader.readFileAsString(widgetUiPath));</span>
                 }
-<span class="nc" id="L77">                widgetDescriptor.setBundleId(descriptor.getCode());</span>
-<span class="nc" id="L78">                InstallAction action = extractInstallAction(widgetDescriptor.getCode(), actions, conflictStrategy,</span>
+<span class="fc" id="L77">                widgetDescriptor.setBundleId(descriptor.getCode());</span>
+<span class="fc" id="L78">                InstallAction action = extractInstallAction(widgetDescriptor.getCode(), actions, conflictStrategy,</span>
                         report);
-<span class="nc" id="L80">                installables.add(new WidgetInstallable(engineService, widgetDescriptor, action));</span>
-<span class="nc" id="L81">            }</span>
+<span class="fc" id="L80">                installables.add(new WidgetInstallable(engineService, widgetDescriptor, action));</span>
+<span class="fc" id="L81">            }</span>
 
-<span class="nc" id="L83">            return installables;</span>
+<span class="fc" id="L83">            return installables;</span>
 <span class="nc" id="L84">        } catch (IOException e) {</span>
 <span class="nc" id="L85">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
@@ -88,17 +88,17 @@ public class WidgetProcessor extends BaseComponentProcessor&lt;WidgetDescriptor&
 
     @Override
     public List&lt;Installable&lt;WidgetDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L91">        return components.stream()</span>
-<span class="nc bnc" id="L92" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="nc" id="L93">                .map(c -&gt; new WidgetInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="nc" id="L94">                .collect(Collectors.toList());</span>
+<span class="fc" id="L91">        return components.stream()</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="fc" id="L93">                .map(c -&gt; new WidgetInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
+<span class="fc" id="L94">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public WidgetDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L99">        return WidgetDescriptor.builder()</span>
-<span class="nc" id="L100">                .code(component.getComponentId())</span>
-<span class="nc" id="L101">                .build();</span>
+<span class="fc" id="L99">        return WidgetDescriptor.builder()</span>
+<span class="fc" id="L100">                .code(component.getComponentId())</span>
+<span class="fc" id="L101">                .build();</span>
     }
 
 }

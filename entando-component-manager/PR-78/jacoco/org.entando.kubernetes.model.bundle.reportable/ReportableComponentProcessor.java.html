@@ -60,13 +60,13 @@ public interface ReportableComponentProcessor {
             ComponentProcessor&lt;?&gt; componentProcessor) {
 
         try {
-<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (componentProcessor.doesComponentDscriptorContainMoreThanOneSingleEntity()) {</span>
-<span class="nc" id="L64">                return bundleReader.readListOfDescriptorFile(fileName, componentProcessor.getDescriptorClass())</span>
-<span class="nc" id="L65">                        .stream().map(descriptor -&gt; descriptor.getComponentKey().getKey())</span>
-<span class="nc" id="L66">                        .collect(Collectors.toList());</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if (componentProcessor.doesComponentDscriptorContainMoreThanOneSingleEntity()) {</span>
+<span class="fc" id="L64">                return bundleReader.readListOfDescriptorFile(fileName, componentProcessor.getDescriptorClass())</span>
+<span class="fc" id="L65">                        .stream().map(descriptor -&gt; descriptor.getComponentKey().getKey())</span>
+<span class="fc" id="L66">                        .collect(Collectors.toList());</span>
             } else {
-<span class="nc" id="L68">                return Arrays.asList(bundleReader.readDescriptorFile(fileName, componentProcessor.getDescriptorClass())</span>
-<span class="nc" id="L69">                        .getComponentKey().getKey());</span>
+<span class="fc" id="L68">                return Arrays.asList(bundleReader.readDescriptorFile(fileName, componentProcessor.getDescriptorClass())</span>
+<span class="fc" id="L69">                        .getComponentKey().getKey());</span>
             }
 <span class="nc" id="L71">        } catch (IOException e) {</span>
 <span class="nc" id="L72">            throw new EntandoComponentManagerException(String.format(</span>

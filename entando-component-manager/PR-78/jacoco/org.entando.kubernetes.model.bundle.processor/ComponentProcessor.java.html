@@ -5,12 +5,10 @@ import static java.util.Optional.ofNullable;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import org.entando.kubernetes.controller.digitalexchange.job.model.AnalysisReport;
 import org.entando.kubernetes.controller.digitalexchange.job.model.InstallActionsByComponentType;
 import org.entando.kubernetes.controller.digitalexchange.job.model.InstallRequest.InstallAction;
@@ -44,7 +42,7 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
     Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn();
 
     default boolean doesComponentDscriptorContainMoreThanOneSingleEntity() {
-<span class="nc" id="L47">        return false;</span>
+<span class="fc" id="L45">        return false;</span>
     }
 
     /**
@@ -77,10 +75,10 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
     List&lt;Installable&lt;T&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components);
 
     default Installable&lt;T&gt; process(EntandoBundleComponentJobEntity componentJob) {
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (supportComponent(componentJob.getComponentType())) {</span>
-<span class="fc" id="L81">            return process(Collections.singletonList(componentJob)).get(0);</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (supportComponent(componentJob.getComponentType())) {</span>
+<span class="fc" id="L79">            return process(Collections.singletonList(componentJob)).get(0);</span>
         }
-<span class="nc" id="L83">        return null;</span>
+<span class="nc" id="L81">        return null;</span>
     }
 
     T buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component);
@@ -88,11 +86,11 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
     ComponentType getSupportedComponentType();
 
     default boolean supportComponent(ComponentType ct) {
-<span class="fc" id="L91">        return this.getSupportedComponentType().equals(ct);</span>
+<span class="fc" id="L89">        return this.getSupportedComponentType().equals(ct);</span>
     }
 
     default String getRelativePath(String referenceFile, String fileName) {
-<span class="fc" id="L95">        return Paths.get(referenceFile).resolveSibling(fileName).toString();</span>
+<span class="fc" id="L93">        return Paths.get(referenceFile).resolveSibling(fileName).toString();</span>
     }
 
     /**
@@ -105,15 +103,15 @@ public interface ComponentProcessor&lt;T extends Descriptor&gt; {
      */
     default List&lt;String&gt; getDescriptorList(BundleReader bundleReader) throws IOException {
 
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        if (this.getComponentSelectionFn().isEmpty()) {</span>
-<span class="nc" id="L109">            throw new EntandoComponentManagerException(</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        if (this.getComponentSelectionFn().isEmpty()) {</span>
+<span class="nc" id="L107">            throw new EntandoComponentManagerException(</span>
                     &quot;Extracting components from BundleDescriptor for null componentSelectionFunction&quot;);
         }
 
-<span class="fc" id="L113">        BundleDescriptor descriptor = bundleReader.readBundleDescriptor();</span>
-<span class="fc" id="L114">        return ofNullable(descriptor.getComponents())</span>
-<span class="fc" id="L115">                .map(componentSpecDescriptor -&gt; getComponentSelectionFn().get().apply(componentSpecDescriptor))</span>
-<span class="fc" id="L116">                .orElse(new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L111">        BundleDescriptor descriptor = bundleReader.readBundleDescriptor();</span>
+<span class="fc" id="L112">        return ofNullable(descriptor.getComponents())</span>
+<span class="fc" id="L113">                .map(componentSpecDescriptor -&gt; getComponentSelectionFn().get().apply(componentSpecDescriptor))</span>
+<span class="fc" id="L114">                .orElse(new ArrayList&lt;&gt;());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

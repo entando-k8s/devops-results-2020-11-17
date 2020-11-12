@@ -41,17 +41,17 @@ public class GroupProcessor extends BaseComponentProcessor&lt;GroupDescriptor&gt
 
     @Override
     public Class&lt;GroupDescriptor&gt; getDescriptorClass() {
-<span class="nc" id="L44">        return GroupDescriptor.class;</span>
+<span class="fc" id="L44">        return GroupDescriptor.class;</span>
     }
 
     @Override
     public Optional&lt;Function&lt;ComponentSpecDescriptor, List&lt;String&gt;&gt;&gt; getComponentSelectionFn() {
-<span class="nc" id="L49">        return Optional.of(ComponentSpecDescriptor::getGroups);</span>
+<span class="fc" id="L49">        return Optional.of(ComponentSpecDescriptor::getGroups);</span>
     }
 
     @Override
     public boolean doesComponentDscriptorContainMoreThanOneSingleEntity() {
-<span class="nc" id="L54">        return true;</span>
+<span class="fc" id="L54">        return true;</span>
     }
 
     @Override
@@ -64,20 +64,20 @@ public class GroupProcessor extends BaseComponentProcessor&lt;GroupDescriptor&gt
     public List&lt;Installable&lt;GroupDescriptor&gt;&gt; process(BundleReader bundleReader, InstallAction conflictStrategy,
             InstallActionsByComponentType actions, AnalysisReport report) {
         try {
-<span class="nc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
+<span class="fc" id="L67">            final List&lt;String&gt; descriptorList = getDescriptorList(bundleReader);</span>
 
-<span class="nc" id="L69">            List&lt;Installable&lt;GroupDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L69">            List&lt;Installable&lt;GroupDescriptor&gt;&gt; installables = new LinkedList&lt;&gt;();</span>
 
-<span class="nc bnc" id="L71" title="All 2 branches missed.">            for (String fileName : descriptorList) {</span>
-<span class="nc" id="L72">                List&lt;GroupDescriptor&gt; groupDescriptorList = bundleReader</span>
-<span class="nc" id="L73">                        .readListOfDescriptorFile(fileName, GroupDescriptor.class);</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">                for (GroupDescriptor gd : groupDescriptorList) {</span>
-<span class="nc" id="L75">                    InstallAction action = extractInstallAction(gd.getCode(), actions, conflictStrategy, report);</span>
-<span class="nc" id="L76">                    installables.add(new GroupInstallable(engineService, gd, action));</span>
-<span class="nc" id="L77">                }</span>
-<span class="nc" id="L78">            }</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (String fileName : descriptorList) {</span>
+<span class="fc" id="L72">                List&lt;GroupDescriptor&gt; groupDescriptorList = bundleReader</span>
+<span class="fc" id="L73">                        .readListOfDescriptorFile(fileName, GroupDescriptor.class);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                for (GroupDescriptor gd : groupDescriptorList) {</span>
+<span class="fc" id="L75">                    InstallAction action = extractInstallAction(gd.getCode(), actions, conflictStrategy, report);</span>
+<span class="fc" id="L76">                    installables.add(new GroupInstallable(engineService, gd, action));</span>
+<span class="fc" id="L77">                }</span>
+<span class="fc" id="L78">            }</span>
 
-<span class="nc" id="L80">            return installables;</span>
+<span class="fc" id="L80">            return installables;</span>
 <span class="nc" id="L81">        } catch (IOException e) {</span>
 <span class="nc" id="L82">            throw new EntandoComponentManagerException(&quot;Error reading bundle&quot;, e);</span>
         }
@@ -85,17 +85,17 @@ public class GroupProcessor extends BaseComponentProcessor&lt;GroupDescriptor&gt
 
     @Override
     public List&lt;Installable&lt;GroupDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L88">        return components.stream()</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="nc" id="L90">                .map(c -&gt; new GroupInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="nc" id="L91">                .collect(Collectors.toList());</span>
+<span class="fc" id="L88">        return components.stream()</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="fc" id="L90">                .map(c -&gt; new GroupInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
+<span class="fc" id="L91">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public GroupDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L96">        return GroupDescriptor.builder()</span>
-<span class="nc" id="L97">                .code(component.getComponentId())</span>
-<span class="nc" id="L98">                .build();</span>
+<span class="fc" id="L96">        return GroupDescriptor.builder()</span>
+<span class="fc" id="L97">                .code(component.getComponentId())</span>
+<span class="fc" id="L98">                .build();</span>
     }
 
 }

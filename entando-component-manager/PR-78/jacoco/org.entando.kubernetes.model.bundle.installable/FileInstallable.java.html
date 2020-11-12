@@ -20,27 +20,27 @@ public class FileInstallable extends Installable&lt;FileDescriptor&gt; {
 
     @Override
     public CompletableFuture&lt;Void&gt; install() {
-<span class="nc" id="L23">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L23">        return CompletableFuture.runAsync(() -&gt; {</span>
 
-<span class="nc" id="L25">            logConflictStrategyAction();</span>
+<span class="fc" id="L25">            logConflictStrategyAction();</span>
 
-<span class="nc bnc" id="L27" title="All 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
 <span class="nc" id="L28">                return; //Do nothing</span>
             }
 
-<span class="nc bnc" id="L31" title="All 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="nc" id="L32">                engineService.createFile(representation);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L32">                engineService.createFile(representation);</span>
             } else {
 <span class="nc" id="L34">                engineService.updateFile(representation);</span>
             }
-<span class="nc" id="L36">        });</span>
+<span class="fc" id="L36">        });</span>
     }
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="nc" id="L41">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L41">        return CompletableFuture.runAsync(() -&gt; {</span>
             //Do nothing since Directories and Assets are uninstalled in a different way
-<span class="nc" id="L43">        });</span>
+<span class="fc" id="L43">        });</span>
     }
 
     @Override

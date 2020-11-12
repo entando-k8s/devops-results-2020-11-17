@@ -40,7 +40,7 @@ public class EntandoBundleJobService {
     }
 
     public List&lt;EntandoBundleJobEntity&gt; getJobs(String componentId) {
-<span class="nc" id="L43">        return jobRepository.findAllByComponentIdOrderByStartedAtDesc(componentId);</span>
+<span class="fc" id="L43">        return jobRepository.findAllByComponentIdOrderByStartedAtDesc(componentId);</span>
     }
 
     public List&lt;EntandoBundleComponentJobEntity&gt; getJobRelatedComponentJobs(EntandoBundleJobEntity job) {
@@ -66,15 +66,15 @@ public class EntandoBundleJobService {
 <span class="fc" id="L66">        EntandoBundleJobEntity installCompletedJob = null;</span>
 
 <span class="fc" id="L68">        Optional&lt;EntandoBundleJobEntity&gt; optionalExistingJob = getExistingJob(bundle);</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (optionalExistingJob.isPresent()) {</span>
-<span class="nc" id="L70">            EntandoBundleJobEntity j = optionalExistingJob.get();</span>
-<span class="nc" id="L71">            JobStatus js = j.getStatus();</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">            if (js.equals(JobStatus.INSTALL_COMPLETED)) {</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (optionalExistingJob.isPresent()) {</span>
+<span class="fc" id="L70">            EntandoBundleJobEntity j = optionalExistingJob.get();</span>
+<span class="fc" id="L71">            JobStatus js = j.getStatus();</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">            if (js.equals(JobStatus.INSTALL_COMPLETED)) {</span>
 <span class="nc" id="L73">                installCompletedJob = j;</span>
             }
-<span class="nc bnc" id="L75" title="All 2 branches missed.">            if (js.isOfType(JobType.UNFINISHED)) {</span>
-<span class="nc" id="L76">                throw new JobConflictException(&quot;Conflict with another job for the component &quot; + j.getComponentId()</span>
-<span class="nc" id="L77">                        + &quot; - JOB ID: &quot; + j.getId());</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">            if (js.isOfType(JobType.UNFINISHED)) {</span>
+<span class="fc" id="L76">                throw new JobConflictException(&quot;Conflict with another job for the component &quot; + j.getComponentId()</span>
+<span class="fc" id="L77">                        + &quot; - JOB ID: &quot; + j.getId());</span>
             }
         }
 <span class="fc" id="L80">        return Optional.ofNullable(installCompletedJob);</span>
@@ -86,10 +86,10 @@ public class EntandoBundleJobService {
 <span class="fc" id="L86">                .findFirstByComponentIdOrderByStartedAtDesc(componentId);</span>
 <span class="fc bfc" id="L87" title="All 2 branches covered.">        if (lastJobStarted.isPresent()) {</span>
             // To be an existing job it should be in a Running state
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">            if (JobStatus.getCompletedStatuses().contains(lastJobStarted.get().getStatus())) {</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            if (JobStatus.getCompletedStatuses().contains(lastJobStarted.get().getStatus())) {</span>
 <span class="fc" id="L90">                return Optional.empty();</span>
             }
-<span class="nc" id="L92">            return lastJobStarted;</span>
+<span class="fc" id="L92">            return lastJobStarted;</span>
         }
 <span class="fc" id="L94">        return Optional.empty();</span>
     }

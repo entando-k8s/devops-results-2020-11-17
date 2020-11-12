@@ -40,7 +40,7 @@ public class PageProcessor extends BaseComponentProcessor&lt;PageDescriptor&gt; 
 
     @Override
     public Class&lt;PageDescriptor&gt; getDescriptorClass() {
-<span class="nc" id="L43">        return PageDescriptor.class;</span>
+<span class="fc" id="L43">        return PageDescriptor.class;</span>
     }
 
     @Override
@@ -77,17 +77,17 @@ public class PageProcessor extends BaseComponentProcessor&lt;PageDescriptor&gt; 
 
     @Override
     public List&lt;Installable&lt;PageDescriptor&gt;&gt; process(List&lt;EntandoBundleComponentJobEntity&gt; components) {
-<span class="nc" id="L80">        return components.stream()</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
-<span class="nc" id="L82">                .map(c -&gt; new PageInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
-<span class="nc" id="L83">                .collect(Collectors.toList());</span>
+<span class="fc" id="L80">        return components.stream()</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">                .filter(c -&gt; c.getComponentType() == getSupportedComponentType())</span>
+<span class="fc" id="L82">                .map(c -&gt; new PageInstallable(engineService, this.buildDescriptorFromComponentJob(c), c.getAction()))</span>
+<span class="fc" id="L83">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public PageDescriptor buildDescriptorFromComponentJob(EntandoBundleComponentJobEntity component) {
-<span class="nc" id="L88">        return PageDescriptor.builder()</span>
-<span class="nc" id="L89">                .code(component.getComponentId())</span>
-<span class="nc" id="L90">                .build();</span>
+<span class="fc" id="L88">        return PageDescriptor.builder()</span>
+<span class="fc" id="L89">                .code(component.getComponentId())</span>
+<span class="fc" id="L90">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
