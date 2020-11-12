@@ -71,7 +71,7 @@ public class PluginProcessor extends BaseComponentProcessor&lt;PluginDescriptor&
 <span class="fc" id="L71">            List&lt;Installable&lt;PluginDescriptor&gt;&gt; installableList = new ArrayList&lt;&gt;();</span>
 <span class="fc bfc" id="L72" title="All 2 branches covered.">            for (String filename : descriptorList) {</span>
 <span class="fc" id="L73">                PluginDescriptor plugin = bundleReader.readDescriptorFile(filename, PluginDescriptor.class);</span>
-<span class="fc" id="L74">                InstallAction action = extractInstallAction(plugin.getDockerImage().toString(), actions,</span>
+<span class="fc" id="L74">                InstallAction action = extractInstallAction(plugin.getComponentKey().getKey(), actions,</span>
                         conflictStrategy, report);
 <span class="fc" id="L76">                installableList.add(new PluginInstallable(kubernetesService, plugin, action));</span>
 <span class="fc" id="L77">            }</span>
@@ -95,18 +95,18 @@ public class PluginProcessor extends BaseComponentProcessor&lt;PluginDescriptor&
     }
 
 
-    @Override
-    public List&lt;String&gt; readDescriptorKeys(BundleReader bundleReader, String fileName,
-            ComponentProcessor&lt;?&gt; componentProcessor) {
-
-        try {
-<span class="fc" id="L103">            PluginDescriptor pluginDescriptor = bundleReader.readDescriptorFile(fileName, this.getDescriptorClass());</span>
-<span class="fc" id="L104">            return Arrays.asList(BundleUtilities.extractNameFromDescriptor(pluginDescriptor));</span>
-<span class="nc" id="L105">        } catch (IOException e) {</span>
-<span class="nc" id="L106">            throw new EntandoComponentManagerException(String.format(</span>
-                    &quot;Error parsing content type %s from descriptor %s&quot;,
-<span class="nc" id="L108">                    this.getSupportedComponentType(), fileName), e);</span>
-        }
-    }
+//    @Override
+//    public List&lt;String&gt; readDescriptorKeys(BundleReader bundleReader, String fileName,
+//            ComponentProcessor&lt;?&gt; componentProcessor) {
+//
+//        try {
+//            PluginDescriptor pluginDescriptor = bundleReader.readDescriptorFile(fileName, this.getDescriptorClass());
+//            return Arrays.asList(BundleUtilities.extractNameFromDescriptor(pluginDescriptor));
+//        } catch (IOException e) {
+//            throw new EntandoComponentManagerException(String.format(
+//                    &quot;Error parsing content type %s from descriptor %s&quot;,
+//                    this.getSupportedComponentType(), fileName), e);
+//        }
+//    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
