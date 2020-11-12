@@ -79,7 +79,7 @@ Entando Core: Engine,com.agiletec.aps.system.services.category,CategoryManager,2
 Entando Core: Engine,com.agiletec.aps.system.services.category,ReloadingCategoryReferencesThread,19,29,0,0,8,11,4,4,4,4
 Entando Core: Engine,com.agiletec.aps.system.services.category,CategoryDAO,83,245,0,2,20,74,0,13,0,12
 Entando Core: Engine,org.entando.entando.aps.system.common.command.tracer,DefaultBulkCommandTracer,44,0,4,0,11,0,9,0,7,0
-Entando Core: Engine,org.entando.entando.web.filebrowser.validator,FileBrowserValidator,67,97,8,8,11,22,7,6,2,3
+Entando Core: Engine,org.entando.entando.web.filebrowser.validator,FileBrowserValidator,73,70,8,6,14,16,8,4,3,2
 Entando Core: Engine,com.agiletec.aps.system.services.keygenerator.cache,KeyGeneratorManagerCacheWrapper,7,75,0,0,2,20,1,7,1,7
 Entando Core: Engine,org.entando.entando.aps.system.services.page.serializer,WidgetConfigPropertiesDeserializer,162,56,12,6,29,11,12,3,4,2
 Entando Core: Engine,org.entando.entando.aps.system.services.page.serializer,WidgetConfigPropertiesSerializer,305,61,29,5,67,16,26,5,10,4
@@ -159,7 +159,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services,RequestListProcesso
 Entando Core: Engine,com.agiletec.aps.system.services.i18n.wrapper,I18nLabelBuilder,47,0,8,0,11,0,7,0,3,0
 Entando Core: Engine,org.entando.entando.web.analysis,AnalysisController,12,86,1,9,1,20,1,11,0,3
 Entando Core: Engine,org.entando.entando.web.analysis,IAnalysisController,15,170,2,10,3,37,2,9,0,4
-Entando Core: Engine,org.entando.entando.web.analysis,AnalysisResponse.ObjectType,0,94,0,0,0,3,0,1,0,1
+Entando Core: Engine,org.entando.entando.web.analysis,AnalysisResponse.ObjectType,0,104,0,0,0,3,0,1,0,1
 Entando Core: Engine,org.entando.entando.web.analysis,AnalysisResponse,0,6,0,0,0,3,0,1,0,1
 Entando Core: Engine,org.entando.entando.web.analysis,AnalysisResponse.Status,0,34,0,0,0,2,0,1,0,1
 Entando Core: Engine,org.entando.entando.web.dashboard,DashboardController,38,95,9,3,16,23,8,9,3,8
@@ -753,7 +753,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.userpreferences,Use
 Entando Core: Engine,org.entando.entando.aps.system.services.oauth2.model,ApiConsumer,0,176,1,3,0,55,1,24,0,23
 Entando Core: Engine,org.entando.entando.aps.system.services.oauth2.model,OAuth2AccessTokenImpl,0,25,0,0,0,11,0,7,0,7
 Entando Core: Engine,org.entando.entando.aps.system.services.oauth2.model,ConsumerRecordVO,0,66,0,0,0,28,0,19,0,19
-Entando Core: Engine,org.entando.entando.web.filebrowser,FileBrowserController,32,397,6,16,7,80,7,20,1,15
+Entando Core: Engine,org.entando.entando.web.filebrowser,FileBrowserController,37,392,7,15,8,79,8,19,1,15
 Entando Core: Engine,org.entando.entando.aps.system.services.controller.executor,ExecutorBeanContainer,23,0,0,0,10,0,5,0,5,0
 Entando Core: Engine,org.entando.entando.aps.system.services.i18n.response,I18nLabelResponseResult,4,3,0,0,1,1,1,1,1,1
 Entando Core: Engine,org.entando.entando.aps.system.services.i18n.response,I18nLabelResponse,8,7,0,0,3,2,2,2,2,2
@@ -781,7 +781,7 @@ Entando Core: Engine,org.entando.entando.aps.system.services.storage,BasicFileAt
 Entando Core: Engine,org.entando.entando.aps.system.services.storage,StorageManagerUtil,4,223,5,45,2,65,5,30,0,10
 Entando Core: Engine,org.entando.entando.aps.system.services.storage,LocalStorageManager,261,653,57,67,44,147,53,46,9,28
 Entando Core: Engine,org.entando.entando.aps.system.services.storage,RootFolderAttributeView,0,20,0,0,0,8,0,3,0,3
-Entando Core: Engine,org.entando.entando.aps.system.services.storage,FileBrowserService,158,371,3,21,34,83,5,24,2,15
+Entando Core: Engine,org.entando.entando.aps.system.services.storage,FileBrowserService,158,390,3,23,34,88,5,26,2,16
 Entando Core: Engine,org.entando.entando.aps.system.services.storage,FileBrowserService.new DtoBuilder() {...},0,11,0,0,0,2,0,2,0,2
 Entando Core: Engine,com.agiletec.aps.system.common.renderer,TextAttributeCharReplaceInfo,0,41,0,0,0,16,0,8,0,8
 Entando Core: Engine,com.agiletec.aps.system.common.renderer,DefaultVelocityRenderer,101,44,9,3,29,20,9,9,2,8

@@ -115,8 +115,8 @@ import java.util.Map;
     public ResponseEntity&lt;RestResponse&lt;Map, Map&gt;&gt; addFile(
             @Valid @RequestBody FileBrowserFileRequest request,
             BindingResult bindingResult) {
-<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
-<span class="fc" id="L119">            throw new ValidationGenericException(bindingResult);</span>
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
+<span class="nc" id="L119">            throw new ValidationGenericException(bindingResult);</span>
         }
 <span class="fc" id="L121">        this.getValidator().validate(request, bindingResult);</span>
 <span class="pc bpc" id="L122" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
