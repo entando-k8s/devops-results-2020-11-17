@@ -142,7 +142,7 @@ Entando Core: Engine,com.agiletec.aps.tags.util,BaseFrameDecoratorContainer,50,0
 Entando Core: Engine,com.agiletec.aps.tags.util,SmallCategory,23,0,0,0,8,0,6,0,6,0
 Entando Core: Engine,com.agiletec.aps.tags.util,HeadInfoContainer,41,0,4,0,11,0,5,0,3,0
 Entando Core: Engine,org.entando.entando.web.user.validator,UserAuthorityValidator,0,21,0,4,0,3,0,6,0,4
-Entando Core: Engine,org.entando.entando.web.user.validator,UserValidator,80,404,11,45,14,93,11,43,2,24
+Entando Core: Engine,org.entando.entando.web.user.validator,UserValidator,80,408,11,45,14,94,11,43,2,24
 Entando Core: Engine,org.entando.entando.web.dataobject.model,DataTypesBodyResponse,26,0,0,0,9,0,4,0,4,0
 Entando Core: Engine,org.entando.entando.web.dataobject.model,DataTypeDtoRequest,48,24,2,0,13,11,3,7,2,7
 Entando Core: Engine,org.entando.entando.web.dataobject.model,DataTypeRefreshRequest,0,15,0,0,0,5,0,3,0,3
