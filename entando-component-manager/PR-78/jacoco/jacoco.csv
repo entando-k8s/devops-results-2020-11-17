@@ -92,24 +92,25 @@ Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PageTe
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,LabelInstallable,25,39,4,2,7,12,5,6,2,6
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,ContentTemplateInstallable,64,0,6,0,19,0,11,0,8,0
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,WidgetInstallable,64,0,6,0,19,0,11,0,8,0
-Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PluginInstallable,12,74,3,5,5,20,3,9,0,8
+Entando Component Manager,org.entando.kubernetes.model.bundle.installable,PluginInstallable,22,74,5,5,7,20,4,9,0,8
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,CategoryInstallable,64,0,6,0,19,0,11,0,8,0
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,GroupInstallable,64,0,6,0,19,0,11,0,8,0
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,Installable,38,78,7,3,14,17,10,9,4,9
 Entando Component Manager,org.entando.kubernetes.model.bundle.installable,ContentInstallable,64,0,6,0,19,0,11,0,8,0
-Entando Component Manager,org.entando.kubernetes.service,KubernetesService,65,192,3,7,14,42,8,15,5,13
+Entando Component Manager,org.entando.kubernetes.service,KubernetesService,88,192,3,7,20,42,9,15,6,13
 Entando Component Manager,org.entando.kubernetes.model.web,ResilientListWrapper,46,0,4,0,11,0,5,0,3,0
 Entando Component Manager,org.entando.kubernetes.model.web,ResilientPagedMetadata,26,0,2,0,7,0,3,0,2,0
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
+Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
 Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
-Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient,121,867,16,14,24,184,17,46,4,44
+Entando Component Manager,org.entando.kubernetes.client.k8ssvc,DefaultK8SServiceClient,201,867,20,14,40,184,21,46,6,44
 Entando Component Manager,org.entando.kubernetes.model.bundle.downloader,GitBundleDownloader,28,66,1,1,6,17,2,3,1,3
 Entando Component Manager,org.entando.kubernetes.model.bundle.downloader,NpmBundleDownloader,54,158,8,8,13,35,6,8,0,6
 Entando Component Manager,org.entando.kubernetes.model.bundle.downloader,BundleDownloader.Type,0,24,0,0,0,3,0,1,0,1

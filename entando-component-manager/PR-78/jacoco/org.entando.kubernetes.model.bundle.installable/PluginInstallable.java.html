@@ -28,49 +28,52 @@ public class PluginInstallable extends Installable&lt;PluginDescriptor&gt; {
 
 <span class="fc" id="L29">            logConflictStrategyAction();</span>
 
-<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L32">                return; //Do nothing</span>
+
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L33">                return; //Do nothing</span>
             }
 
-<span class="fc" id="L35">            EntandoPlugin plugin = BundleUtilities.generatePluginFromDescriptor(representation);</span>
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
-<span class="fc" id="L37">                kubernetesService.linkPluginAndWaitForSuccess(plugin);</span>
+<span class="fc" id="L36">            EntandoPlugin plugin = BundleUtilities.generatePluginFromDescriptor(representation);</span>
+
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">            if (shouldCreate()) {</span>
+<span class="fc" id="L39">                kubernetesService.linkPluginAndWaitForSuccess(plugin);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            } else if (shouldOverride()) {</span>
+<span class="nc" id="L41">                kubernetesService.updatePlugin(plugin);</span>
             } else {
-                // TODO do create or replace
-<span class="nc" id="L40">                kubernetesService.linkPluginAndWaitForSuccess(plugin);</span>
+<span class="nc" id="L43">                throw new EntandoComponentManagerException(&quot;Illegal state detected&quot;);</span>
             }
-<span class="fc" id="L42">        });</span>
+<span class="fc" id="L45">        });</span>
     }
 
 
     @Override
     public CompletableFuture&lt;Void&gt; uninstall() {
-<span class="fc" id="L48">        return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="fc" id="L49">            log.info(&quot;Removing link to plugin {}&quot;, getName());</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
-<span class="nc" id="L51">                return; //Do nothing</span>
+<span class="fc" id="L51">        return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="fc" id="L52">            log.info(&quot;Removing link to plugin {}&quot;, getName());</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (shouldSkip()) {</span>
+<span class="nc" id="L54">                return; //Do nothing</span>
             }
 
-<span class="fc" id="L54">            kubernetesService.unlinkPlugin(BundleUtilities.extractNameFromDescriptor(representation));</span>
-<span class="fc" id="L55">        });</span>
+<span class="fc" id="L57">            kubernetesService.unlinkPlugin(BundleUtilities.extractNameFromDescriptor(representation));</span>
+<span class="fc" id="L58">        });</span>
     }
 
     @Override
     public ComponentType getComponentType() {
-<span class="fc" id="L60">        return ComponentType.PLUGIN;</span>
+<span class="fc" id="L63">        return ComponentType.PLUGIN;</span>
     }
 
     @Override
     public String getName() {
 
-<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (!StringUtils.isEmpty(this.representation.getDeploymentBaseName())) {</span>
-<span class="fc" id="L67">            return this.representation.getDeploymentBaseName();</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (!StringUtils.isEmpty(this.representation.getDeploymentBaseName())) {</span>
+<span class="fc" id="L70">            return this.representation.getDeploymentBaseName();</span>
         } else {
             // TODO when we'll introduce a validation step, remove this try catch and move the check
             try {
-<span class="fc" id="L71">                return this.representation.getDockerImage().toString();</span>
-<span class="nc" id="L72">            } catch (Exception e) {</span>
-<span class="nc" id="L73">                throw new EntandoComponentManagerException(&quot;There is an error in the build of the docker image. Please &quot;</span>
+<span class="fc" id="L74">                return this.representation.getDockerImage().toString();</span>
+<span class="nc" id="L75">            } catch (Exception e) {</span>
+<span class="nc" id="L76">                throw new EntandoComponentManagerException(&quot;There is an error in the build of the docker image. Please &quot;</span>
                         + &quot;check to have supplied a valid docker image in the dedicated descriptor field&quot;);
             }
         }
