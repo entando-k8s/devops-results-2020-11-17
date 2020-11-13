@@ -200,7 +200,7 @@ import org.springframework.validation.BeanPropertyBindingResult;
 
     @Override
     public boolean exists(String code) throws EntException {
-<span class="nc" id="L203">        return this.getStorageManager().exists(code, false);</span>
+<span class="fc" id="L203">        return this.getStorageManager().exists(code, false);</span>
     }
 
     protected void createFolderIfNotExists(String path, boolean protectedFolder) throws EntException {

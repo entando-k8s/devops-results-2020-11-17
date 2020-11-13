@@ -228,12 +228,12 @@ import java.util.stream.Collectors;
     }
 
     public boolean exists(String pageCode, String status) {
-<span class="nc bnc" id="L231" title="All 2 branches missed.">        return this.loadPage(pageCode, status) != null;</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">        return this.loadPage(pageCode, status) != null;</span>
     }
 
     @Override
     public boolean exists(String code) {
-<span class="nc bnc" id="L236" title="All 4 branches missed.">        return this.exists(code, IPageService.STATUS_DRAFT) || this.exists(code, IPageService.STATUS_ONLINE);</span>
+<span class="pc bpc" id="L236" title="1 of 4 branches missed.">        return this.exists(code, IPageService.STATUS_DRAFT) || this.exists(code, IPageService.STATUS_ONLINE);</span>
     }
 
     @Override
@@ -659,7 +659,7 @@ import java.util.stream.Collectors;
             default:
                 break;
         }
-<span class="pc bpc" id="L662" title="3 of 6 branches missed.">        if (status.equals(STATUS_ONLINE) &amp;&amp; null == page &amp;&amp; null != this.getPageManager().getDraftPage(pageCode)) {</span>
+<span class="pc bpc" id="L662" title="1 of 6 branches missed.">        if (status.equals(STATUS_ONLINE) &amp;&amp; null == page &amp;&amp; null != this.getPageManager().getDraftPage(pageCode)) {</span>
 <span class="nc" id="L663">            BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(page, &quot;page&quot;);</span>
 <span class="nc" id="L664">            bindingResult.reject(ERRCODE_PAGE_ONLY_DRAFT, new Object[]{pageCode}, &quot;page.status.draftOnly&quot;);</span>
 <span class="nc" id="L665">            throw new ValidationGenericException(bindingResult);</span>
