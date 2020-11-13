@@ -1,0 +1,36 @@
+
+Showing logs for build [32mmeta-entando-app-builder-pr-849-z5kxl-24[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-krdjb[0m
+{"level":"warn","ts":1605290041.5347145,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1605290041.5429285,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-849-z5kxl-24[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-9f7jm[0m
+{"level":"warn","ts":1605290043.2253475,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1605290043.6200376,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully e**cuted command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-849-z5kxl-24[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmeta-entando-app-builder-pr-849-z5kxl-24[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-entando-app-builder-pr-849-rwtsk[0m
+{"level":"warn","ts":1605290054.2330253,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1605290058.2642188,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/entando/app-builder.git @ 4d5f35f3c82c3803f6927d546174042f5e620ac8 in path /workspace/source"}
+
+Showing logs for build [32mmeta-entando-app-builder-pr-849-z5kxl-24[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:4d5f35f3c82c3803f6927d546174042f5e620ac8,849:2a189e955226b18dc5ebcbc24591563fdb33fa93
+DEBUG: ran git fetch --unshallow origin 2a189e955226b18dc5ebcbc24591563fdb33fa93: 4d5f35f3c82c3803f6927d546174042f5e620ac8: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard 4d5f35f3c82c3803f6927d546174042f5e620ac8 in 
+DEBUG: ran clean --force -d . in 
+error: error during merge: merging 2a189e955226b18dc5ebcbc24591563fdb33fa93 into master: git output: Auto-merging test/ui/widgets/edit/EditWidgetFormContainer.test.js
+Auto-merging src/ui/widgets/common/WidgetForm.js
+CONFLICT (content): Merge conflict in src/ui/widgets/common/WidgetForm.js
+Auto-merging src/locales/pt.js
+Auto-merging src/locales/it.js
+Auto-merging src/locales/en.js
+Automatic merge failed; fix conflicts and then commit the result.: failed to run 'git merge 2a189e955226b18dc5ebcbc24591563fdb33fa93' command in directory '', output: 'Auto-merging test/ui/widgets/edit/EditWidgetFormContainer.test.js
+Auto-merging src/ui/widgets/common/WidgetForm.js
+CONFLICT (content): Merge conflict in src/ui/widgets/common/WidgetForm.js
+Auto-merging src/locales/pt.js
+Auto-merging src/locales/it.js
+Auto-merging src/locales/en.js
+Automatic merge failed; fix conflicts and then commit the result.'
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-git-merge'. The execution of the pipeline has stopped.[0m
