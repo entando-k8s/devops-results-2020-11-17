@@ -1,0 +1,24 @@
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-slm4k[0m
+Unable to retrieve container logs for docker://b83a9a909890b564339185055122166393dff212d7ef086b47bccba693381c7b
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-7hfzp[0m
+Unable to retrieve container logs for docker://d003aa39b8865076e1ec8a9635210c4ecbc3fe01b193942a676507aa519b1572
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+Unable to retrieve container logs for docker://2d1eae19f50cad35ebe32549fceed00cfb54ec7995e0ab0e0aa40f89b180026e
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-entando-entando-admin-console-p-b2fgv[0m
+Unable to retrieve container logs for docker://bf3ca320326e0d0c5c4d9fbc0e42730adf9b91d4f34c9769584d9b9190be3341
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Unable to retrieve container logs for docker://411a69200533415fda8c83bf3b984d0b4c312fb01cf8af0c03464a97ea420c1e
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-set-version[0m
+Unable to retrieve container logs for docker://895580ae15bd9b5d0bc851d516ce7a11a10a4fc11d3fa8522a6ea7570be9d537
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-fix-git-for-sonar[0m
+Unable to retrieve container logs for docker://7d64d1687f25a035f6ca19fbadddd65f7049668a1f04765df7704d9f0504d926
+
+Showing logs for build [32mentando-entando-admin-console-p-wgmfm-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-mvn-verify-pr[0m
+Unable to retrieve container logs for docker://8e14bf5048bfa63a0aa37986abcba817fc1bc02b4e101e4ca7000e03003e244e
